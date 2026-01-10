@@ -21,6 +21,7 @@ if (typeof window !== 'undefined' && !document.getElementById('flash-animations'
   document.head.appendChild(style)
 }
 import { useTheme } from '@/components/theme-provider'
+import { ScrollHandler } from '@/components/ScrollHandler'
 import { Mail, Linkedin, ChevronDown, Menu, X, FileText, Network, Building2, Package, FolderKanban } from 'lucide-react'
 
 export const Route = createRootRoute({
@@ -56,6 +57,7 @@ function RootLayout() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
+      <ScrollHandler />
       {/* Top Bar */}
       <div className="bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -159,10 +161,7 @@ function RootLayout() {
             <div className="hidden md:block">
               <button
                 onClick={() => {
-                  const section = document.getElementById("services-section")
-                  if (section) {
-                    section.scrollIntoView({ behavior: "smooth" })
-                  }
+                  window.location.href = '/#services-section'
                 }}
                 className="px-5 py-2.5 bg-sky-500 text-white text-sm font-semibold rounded-lg shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:bg-sky-600 transition-all hover:scale-105 relative overflow-hidden group"
               >
@@ -236,12 +235,14 @@ function RootLayout() {
                 Contact
               </Link>
               <div className="pt-4">
-                <Link 
-                  to="/contact"
+                <button
+                  onClick={() => {
+                    window.location.href = '/#services-section'
+                  }}
                   className="block w-full px-5 py-3 bg-sky-500 text-white text-center font-semibold rounded-lg hover:bg-sky-600 transition-colors hover:scale-105 animate-pulse hover:animate-none"
                 >
                   Book Assessment
-                </Link>
+                </button>
               </div>
             </div>
           </div>

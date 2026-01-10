@@ -121,10 +121,10 @@ function HomePage() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-slate-300 rounded-full flex items-start justify-center p-2">
-            <div className="w-1.5 h-2.5 bg-blue-600 rounded-full animate-pulse" />
+        {/* Scroll Indicator - Hidden on mobile */}
+        <div className="hidden md:block absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-5 h-8 border-2 border-slate-300 rounded-full flex items-start justify-center p-1.5">
+            <div className="w-1 h-2 bg-blue-600 rounded-full animate-pulse" />
           </div>
         </div>
       </section>
