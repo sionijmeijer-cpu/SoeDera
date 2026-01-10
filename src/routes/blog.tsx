@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { SEOHead } from '@/components/SEOHead'
 import { blogPosts } from '../data/blogPosts'
 import { Calendar, Clock, User, ChevronRight, FileText, Settings, Building2, Briefcase, Package } from 'lucide-react'
 import { useState } from 'react'
@@ -17,6 +18,13 @@ const categories = [
 ]
 
 function BlogPage() {
+  SEOHead({
+    title: 'Blog - Energy Documentation & RDS Insights',
+    description: 'Expert insights on Reference Designation Systems (IEC 81346), document management, BIM, and asset data best practices for the energy sector.',
+    keywords: 'RDS blog, IEC 81346 guide, document management tips, energy sector insights, asset data articles',
+    canonicalUrl: 'https://www.soedera.eu/blog'
+  })
+
   const [selectedCategory, setSelectedCategory] = useState('all')
   const navigate = useNavigate()
 

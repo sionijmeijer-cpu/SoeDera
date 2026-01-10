@@ -1,4 +1,5 @@
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
+import { SEOHead } from '@/components/SEOHead'
 import { 
   FileText, 
   Network, 
@@ -18,6 +19,14 @@ export const Route = createFileRoute('/')({  component: HomePage,})
 
 function HomePage() {
   const navigate = useNavigate()
+
+  // SEO for homepage
+  SEOHead({
+    title: 'Energy Documentation & Asset Data Consulting',
+    description: 'SøDera helps energy companies improve documentation, Reference Designation Systems (IEC 81346), and asset data management. 15+ years experience serving Europe.',
+    keywords: 'RDS, Reference Designation System, IEC 81346, energy documentation, asset data management, document management, energy consulting, Denmark',
+    canonicalUrl: 'https://www.soedera.eu/'
+  })
 
   const scrollToServices = () => {
     const servicesSection = document.getElementById("services-section")
@@ -53,7 +62,7 @@ function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative py-16 sm:py-24 flex items-center justify-center overflow-hidden">
+      <section className="relative py-12 sm:py-16 md:py-24 flex items-center justify-center overflow-hidden min-h-[500px] sm:min-h-[600px]">
         {/* Blurred background image */}
         <div 
           className="absolute inset-0"
@@ -70,24 +79,24 @@ function HomePage() {
         <div className="absolute inset-0 bg-black/60" />
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-500/10 border border-sky-500/20 rounded-full text-sky-600 text-sm font-medium mb-4">
             <Zap size={16} />
             Energy Sector Experts
           </div>
           
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 2px 40px rgba(0,0,0,0.6)' }}>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-tight px-4" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 2px 40px rgba(0,0,0,0.6)' }}>
             We help energy companies improve documentation, RDS, and asset data.
           </h1>
           
-          <p className="text-lg sm:text-xl text-white max-w-3xl mx-auto mb-8 leading-relaxed" style={{ textShadow: '0 3px 15px rgba(0,0,0,0.9), 0 1px 30px rgba(0,0,0,0.6)' }}>
+          <p className="text-base sm:text-lg md:text-xl text-white max-w-3xl mx-auto mb-8 leading-relaxed px-4" style={{ textShadow: '0 3px 15px rgba(0,0,0,0.9), 0 1px 30px rgba(0,0,0,0.6)' }}>
             We take a practical, hands-on approach, working directly with teams, from Reference Designation Systems (IEC 81346) to document and asset management, to reduce complexity, improve compliance, and stay in control of their information.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 w-full">
             <Link 
               to="/services"
-              className="px-8 py-4 bg-sky-500 text-white font-semibold rounded-xl shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:bg-sky-600 transition-all flex items-center gap-2 group"
+              className="w-full sm:w-auto px-8 py-4 bg-sky-500 text-white font-semibold rounded-xl shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:bg-sky-600 transition-all flex items-center justify-center gap-2 group"
             >
               Learn More
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -96,7 +105,7 @@ function HomePage() {
           </div>
 
           {/* Trust Indicators */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-8 text-slate-300 text-sm">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-slate-300 text-sm px-4">
             <div className="flex items-center gap-2">
               <Shield size={18} className="text-sky-500" />
               <span>Certified</span>
@@ -121,7 +130,7 @@ function HomePage() {
       </section>
 
       {/* Quick Assessments Section */}
-      <section className="py-24 bg-white" id="services-section">
+      <section className="py-12 sm:py-16 md:py-24 bg-white" id="services-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-sky-600 font-semibold text-sm uppercase tracking-wider">Start Here</span>
@@ -133,9 +142,9 @@ function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
             {/* RDS Review Card */}
-            <div className="relative bg-gradient-to-br from-sky-50 to-white border-2 border-sky-100 rounded-2xl p-8 hover:border-sky-300 hover:shadow-xl transition-all shadow-lg shadow-sky-200/50">
+            <div className="relative bg-gradient-to-br from-sky-50 to-white border-2 border-sky-100 rounded-2xl p-6 sm:p-8 hover:border-sky-300 hover:shadow-xl transition-all shadow-lg shadow-sky-200/50">
               <div className="absolute top-6 right-6">
                 <span className="px-3 py-1 bg-sky-500 text-white text-xs font-semibold rounded-full">
                   IEC 81346
@@ -194,7 +203,7 @@ function HomePage() {
             </div>
 
             {/* Document Management Card */}
-            <div className="relative bg-gradient-to-br from-sky-50 to-white border-2 border-sky-100 rounded-2xl p-8 hover:border-sky-300 hover:shadow-xl transition-all shadow-lg shadow-sky-200/50">
+            <div className="relative bg-gradient-to-br from-sky-50 to-white border-2 border-sky-100 rounded-2xl p-6 sm:p-8 hover:border-sky-300 hover:shadow-xl transition-all shadow-lg shadow-sky-200/50">
               <div className="w-14 h-14 bg-sky-500/10 rounded-xl flex items-center justify-center mb-6">
                 <FileText className="text-sky-500" size={28} />
               </div>
@@ -263,7 +272,7 @@ function HomePage() {
       </section>
 
       {/* Services Grid Section */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-12 sm:py-16 md:py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-sky-600 font-semibold text-sm uppercase tracking-wider">What We Do</span>
@@ -274,7 +283,7 @@ function HomePage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {services.map((service, index) => (
               <div 
                 key={index}
@@ -306,7 +315,7 @@ function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-sky-600 to-blue-600">
+      <section className="py-12 sm:py-16 md:py-24 bg-gradient-to-r from-sky-600 to-blue-600">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
             Ready to Transform Your Operations?

@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
+import { SEOHead } from '@/components/SEOHead'
 import { Building2, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react'
 
 export const Route = createFileRoute('/service-bim')({
@@ -6,6 +7,13 @@ export const Route = createFileRoute('/service-bim')({
 })
 
 function BIMPage() {
+  SEOHead({
+    title: 'BIM Services - Building Information Modeling for Energy',
+    description: 'BIM integration services for energy sector asset lifecycle management. 3D modeling, data integration, and digital twin solutions.',
+    keywords: 'BIM services, Building Information Modeling, energy sector BIM, digital twin, asset lifecycle',
+    canonicalUrl: 'https://www.soedera.eu/service-bim'
+  })
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

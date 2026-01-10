@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
+import { SEOHead } from '@/components/SEOHead'
 import { FileText, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react'
 
 export const Route = createFileRoute('/service-document-management')({
@@ -6,6 +7,13 @@ export const Route = createFileRoute('/service-document-management')({
 })
 
 function DocumentManagementPage() {
+  SEOHead({
+    title: 'Document Management Services - Technical Documentation Solutions',
+    description: 'Professional document management services for energy companies. ISO 9001 compliant systems, workflow optimization, and technical documentation control.',
+    keywords: 'document management services, technical documentation, ISO 9001, document control, energy sector documentation',
+    canonicalUrl: 'https://www.soedera.eu/service-document-management'
+  })
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

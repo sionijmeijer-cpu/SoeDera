@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
+import { SEOHead } from '@/components/SEOHead'
 import { 
   Target, 
   Eye, 
@@ -17,6 +18,13 @@ export const Route = createFileRoute('/about')({
 })
 
 function AboutPage() {
+  SEOHead({
+    title: 'About SøDera - Energy Documentation Experts',
+    description: 'SøDera: 15+ years helping energy companies with documentation, Reference Designation Systems (IEC 81346), and asset data management. Based in Denmark, serving Europe.',
+    keywords: 'about SøDera, energy consulting company, RDS experts Denmark, IEC 81346 specialists',
+    canonicalUrl: 'https://www.soedera.eu/about'
+  })
+
   const values = [
     {
       icon: Award,

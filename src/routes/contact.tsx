@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { SEOHead } from '@/components/SEOHead'
 import { useState } from 'react'
 import { 
   Mail, 
@@ -16,6 +17,13 @@ export const Route = createFileRoute('/contact')({
 })
 
 function ContactPage() {
+  SEOHead({
+    title: 'Contact Us - Book a Consultation',
+    description: 'Get in touch with S\u00f8Dera for expert consulting on documentation, RDS (IEC 81346), and asset data management. Book a free assessment today.',
+    keywords: 'contact S\u00f8Dera, RDS consultation, document management help, energy consulting Denmark',
+    canonicalUrl: 'https://www.soedera.eu/contact'
+  })
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -47,7 +55,7 @@ function ContactPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-sky-50 to-white relative overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-sky-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
             linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)`,
@@ -69,11 +77,11 @@ function ContactPage() {
       </section>
 
       {/* Contact Content */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-8 sm:py-12 md:py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
             {/* Contact Form */}
-            <div className="bg-white border-2 border-slate-200 rounded-2xl p-8 md:p-10 hover:shadow-xl transition-all">
+            <div className="bg-white border-2 border-slate-200 rounded-2xl p-6 sm:p-8 md:p-10 hover:shadow-xl transition-all">
               <h2 className="text-2xl font-bold text-slate-900 mb-2">Send Us a Message</h2>
               <p className="text-slate-600 mb-8">
                 Fill out the form below and we&apos;ll get back to you within 24 hours.
@@ -159,7 +167,7 @@ function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-6 py-3 bg-sky-500 text-white font-semibold rounded-lg hover:bg-sky-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+                    className="w-full px-6 py-3 bg-sky-500 text-white font-semibold rounded-lg hover:bg-sky-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 text-sm sm:text-base"
                   >
                     <Send size={16} />
                     {isSubmitting ? 'Sending...' : 'Send Message'}
@@ -171,7 +179,7 @@ function ContactPage() {
             {/* Contact Information */}
             <div className="space-y-6">
               {/* Contact Details */}
-              <div className="bg-white border-2 border-slate-200 rounded-2xl p-8 hover:shadow-xl transition-all">
+              <div className="bg-white border-2 border-slate-200 rounded-2xl p-6 sm:p-8 hover:shadow-xl transition-all">
                 <h3 className="text-xl font-bold text-slate-900 mb-6">Contact Information</h3>
                 
                 <div className="space-y-4">
@@ -205,7 +213,7 @@ function ContactPage() {
               </div>
 
               {/* Quick Links */}
-              <div className="bg-white border-2 border-slate-200 rounded-2xl p-8 hover:shadow-xl transition-all">
+              <div className="bg-white border-2 border-slate-200 rounded-2xl p-6 sm:p-8 hover:shadow-xl transition-all">
                 <h3 className="text-xl font-bold text-slate-900 mb-4">Quick Assessments</h3>
                 <p className="text-slate-600 text-sm mb-4">
                   Ready to get started? Book one of our quick paid assessments:
@@ -223,7 +231,7 @@ function ContactPage() {
               </div>
 
               {/* Schedule Call */}
-              <div className="bg-gradient-to-br from-sky-50 to-sky-100 border-2 border-sky-200 rounded-2xl p-8">
+              <div className="bg-gradient-to-br from-sky-50 to-sky-100 border-2 border-sky-200 rounded-2xl p-6 sm:p-8">
                 <div className="flex items-start gap-3 mb-4">
                   <Calendar size={20} className="text-sky-600 shrink-0 mt-1" />
                   <div>
@@ -238,7 +246,7 @@ function ContactPage() {
                   href="https://outlook.office.com/book/AssessmentBooking1@soedera.eu/s/GDHl_HOriUOW0kXs3yLfJA2?ismsaljsauthenabled"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full px-4 py-2 bg-sky-500 text-white font-semibold rounded-lg hover:bg-sky-600 transition-all text-sm text-center block"
+                  className="w-full px-4 py-3 bg-sky-500 text-white font-semibold rounded-lg hover:bg-sky-600 transition-all text-sm text-center block"
                 >
                   Schedule Now
                 </a>
@@ -249,7 +257,7 @@ function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-white">
+      <section className="py-8 sm:py-12 md:py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
@@ -279,7 +287,7 @@ function ContactPage() {
             ].map((faq, index) => (
               <details
                 key={index}
-                className="group bg-slate-50 border-2 border-slate-200 hover:border-sky-300 rounded-xl p-6 cursor-pointer transition-all"
+                className="group bg-slate-50 border-2 border-slate-200 hover:border-sky-300 rounded-xl p-4 sm:p-6 cursor-pointer transition-all"
               >
                 <summary className="flex items-center justify-between font-semibold text-slate-900">
                   {faq.question}

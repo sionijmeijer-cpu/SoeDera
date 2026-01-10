@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
+import { SEOHead } from '@/components/SEOHead'
 import { FolderKanban, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react'
 
 export const Route = createFileRoute('/service-project-management')({
@@ -6,6 +7,13 @@ export const Route = createFileRoute('/service-project-management')({
 })
 
 function ProjectManagementPage() {
+  SEOHead({
+    title: 'Project Management Services - Energy Sector Projects',
+    description: 'Expert project management for energy sector documentation and asset data projects. Structured delivery, risk management, stakeholder coordination.',
+    keywords: 'project management services, energy project management, documentation projects, asset data projects',
+    canonicalUrl: 'https://www.soedera.eu/service-project-management'
+  })
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

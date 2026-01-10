@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
+import { SEOHead } from '@/components/SEOHead'
 import { 
   FileText, 
   Network, 
@@ -15,6 +16,13 @@ export const Route = createFileRoute('/services')({
 })
 
 function ServicesPage() {
+  SEOHead({
+    title: 'Services - Documentation, RDS & Asset Data Solutions',
+    description: 'Expert consulting services: Document Management, Reference Designation Systems (IEC 81346), BIM Services, Product Development, and Project Management for energy companies.',
+    keywords: 'RDS consulting, document management services, IEC 81346 implementation, BIM energy sector, asset data consulting',
+    canonicalUrl: 'https://www.soedera.eu/services'
+  })
+
   const services = [
     {
       id: 'document-management',

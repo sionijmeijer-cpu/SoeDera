@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
+import { SEOHead } from '@/components/SEOHead'
 import { Package, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react'
 
 export const Route = createFileRoute('/service-product-development')({
@@ -6,6 +7,13 @@ export const Route = createFileRoute('/service-product-development')({
 })
 
 function ProductDevelopmentPage() {
+  SEOHead({
+    title: 'Product Development Services - Energy Sector Solutions',
+    description: 'Product development consulting for energy sector. From concept to market-ready solutions with documentation and compliance built-in.',
+    keywords: 'product development services, energy product development, concept development, energy solutions',
+    canonicalUrl: 'https://www.soedera.eu/service-product-development'
+  })
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

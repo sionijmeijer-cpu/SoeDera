@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
+import { SEOHead } from '@/components/SEOHead'
 import { Network, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react'
 
 export const Route = createFileRoute('/service-rds')({
@@ -6,6 +7,13 @@ export const Route = createFileRoute('/service-rds')({
 })
 
 function RDSPage() {
+  SEOHead({
+    title: 'Reference Designation System (RDS) Services - IEC 81346 Experts',
+    description: 'Expert RDS implementation and IEC 81346 compliance services for energy companies. Clear asset identification, reduced complexity, improved documentation.',
+    keywords: 'RDS services, Reference Designation System, IEC 81346 compliance, asset identification, energy sector RDS',
+    canonicalUrl: 'https://www.soedera.eu/service-rds'
+  })
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

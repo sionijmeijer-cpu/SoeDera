@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
+import { SEOHead } from '@/components/SEOHead'
 import { Calendar, Clock, ArrowLeft, User, Linkedin, Twitter, Mail, Link2, Check, Tag, FileText, Layers, FolderKanban, Package } from 'lucide-react'
 import { useState } from 'react'
 import { blogPosts } from '../data/blogPosts'
@@ -12,6 +13,18 @@ function ArticlePage() {
   const [copied, setCopied] = useState(false)
   
   const article = blogPosts.find(post => post.id === articleId)
+
+  // Dynamic SEO for each article
+  if (article) {
+    SEOHead({
+      title: article.title,
+      description: article.excerpt,
+      keywords: `${article.category}, energy documentation, SøDera`,
+      canonicalUrl: `https://www.soedera.eu/blog/${articleId}`,
+      ogType: 'article',
+      articlePublishedTime: article.date
+    })
+  }
   
   if (!article) {
     return (

@@ -255,17 +255,17 @@ function RootLayout() {
 
       {/* Footer */}
       <footer className="bg-slate-900 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Brand Column */}
-            <div className="lg:col-span-1">
-              <Link to="/" className="flex items-center gap-2 mb-4">
+            <div className="lg:col-span-1 text-center md:text-left">
+              <Link to="/" className="flex items-center gap-2 mb-4 justify-center md:justify-start">
                 <img src="https://i.imgur.com/yAobb2F.png" alt="SøDera" className="h-20 w-auto" />
               </Link>
               <p className="text-gray-400 text-sm mb-6">
                 Helping energy companies fix documentation, implement Reference Designation Systems (IEC 81346), and optimize asset data management.
               </p>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 justify-center md:justify-start">
                 <a 
                   href="https://www.linkedin.com/company/s%C3%B8dera" 
                   target="_blank" 
@@ -328,12 +328,8 @@ function RootLayout() {
         <div className="border-t border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-              <p>© {new Date().getFullYear()} SøDera. All rights reserved.</p>
-              <div className="flex items-center gap-6">
-                <Link to="/contact" className="hover:text-sky-400 transition-colors">Privacy Policy</Link>
-                <Link to="/contact" className="hover:text-sky-400 transition-colors">Terms of Service</Link>
-                <Link to="/contact" className="hover:text-sky-400 transition-colors">Contact</Link>
-              </div>
+              <p>© 2025 SøDera. All rights reserved.</p>
+              <Link to="/contact" className="hover:text-sky-400 transition-colors">Contact</Link>
             </div>
           </div>
         </div>
