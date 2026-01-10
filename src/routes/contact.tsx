@@ -234,9 +234,14 @@ function ContactPage() {
                 <p className="text-slate-600 text-sm mb-4">
                   Prefer a direct conversation? Schedule a free 30-minute call with our team to discuss your needs.
                 </p>
-                <button className="w-full px-4 py-2 bg-sky-500 text-white font-semibold rounded-lg hover:bg-sky-600 transition-all text-sm">
+                <a 
+                  href="https://outlook.office.com/book/AssessmentBooking1@soedera.eu/s/GDHl_HOriUOW0kXs3yLfJA2?ismsaljsauthenabled"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full px-4 py-2 bg-sky-500 text-white font-semibold rounded-lg hover:bg-sky-600 transition-all text-sm text-center block"
+                >
                   Schedule Now
-                </button>
+                </a>
               </div>
             </div>
           </div>

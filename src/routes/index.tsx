@@ -183,7 +183,7 @@ function HomePage() {
                   </div>
                 </div>
                 <a 
-                  href="https://outlook.microsoft.com/calendar/0/deeplink/compose?to=contact@sodera.dk&subject=RDS%20Assessment%20Inquiry"
+                  href="https://outlook.office.com/book/AssessmentBooking1@soedera.eu/s/GDHl_HOriUOW0kXs3yLfJA2?ismsaljsauthenabled"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-5 py-2.5 bg-sky-500 hover:bg-sky-600 text-white font-medium rounded-lg transition-all text-sm text-center"
@@ -242,7 +242,7 @@ function HomePage() {
                   </div>
                 </div>
                 <a 
-                  href="https://outlook.microsoft.com/calendar/0/deeplink/compose?to=contact@sodera.dk&subject=Document%20Management%20Assessment%20Inquiry"
+                  href="https://outlook.office.com/book/AssessmentBooking1@soedera.eu/s/GDHl_HOriUOW0kXs3yLfJA2?ismsaljsauthenabled"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-5 py-2.5 bg-sky-500 hover:bg-sky-600 text-white font-medium rounded-lg transition-all text-sm text-center"
