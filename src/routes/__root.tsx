@@ -329,7 +329,7 @@ function RootLayout() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
               <p>© 2025 SøDera. All rights reserved.</p>
-              <Link to="/contact" className="hover:text-sky-400 transition-colors">Contact</Link>
+
             </div>
           </div>
         </div>
