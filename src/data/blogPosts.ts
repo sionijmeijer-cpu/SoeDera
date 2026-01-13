@@ -429,43 +429,34 @@ Every energy infrastructure project produces thousands, sometimes millions of do
 - Inspection and test records  
 
  
-
 The real challenge isn’t volume it’s finding the right document at the right moment, knowing it’s accurate and applicable. 
 
- 
 
 ## Best Practice 1: Establish Clear Document Hierarchies  
 
- 
 
 If users don’t understand where documents belong, they will never trust the system. 
 
 A strong hierarchy mirrors how people actually think and work. So consider the following: 
 
- 
 
 ### Organize by Functional Structure  
 
 Group documents by systems, units, or functions. Operations teams don’t think in folders; they think in pumps, transformers, and process units. Your document structure should reflect that reality 
 
- 
 
 ### Separate by Project or Lifecycle Phase  
 
 Design documents, construction records, and operational procedures serve very different purposes. Clear separation helps users instantly understand document maturity and relevance. 
 
- 
 
 ### Standardize by Document Type  
 
 Drawings, procedures, specifications, and reports should follow predictable structures. This enables consistent review, approval, and change processes. 
 
- 
 
-###Rule of thumb: 
+### Rule of thumb: 
 If a new engineer needs intensive training to understand your folder structure, it’s too complex. 
-
- 
 
 ## Best Practice 2: Implement Robust Version Control  
 
@@ -473,11 +464,9 @@ Version confusion is one of the most common and dangerous failures in document m
 
 Effective version control means: 
 
- 
+- ** Clear and consistent revision schemes **: For example: numeric revision for approved or newly uploaded files and alphabetical versions for updated made to the metadata. (e.g., Vers. A, B, C, D; Rev 0, 1, 2, 3)  
 
-- **Clear and consistent revision schemes**: For example: numeric revision for approved or newly uploaded files and alphabetical versions for updated made to the metadata. (e.g., Vers. A, B, C, D; Rev 0, 1, 2, 3)  
-
-- **Transparent revision histories**: Every change should answer three questions: what changed, why, and who approved it. A clear audit trail.  
+- ### Transparent revision histories: Every change should answer three questions: what changed, why, and who approved it. A clear audit trail.  
 
 - **Strict control of obsolete documents**: Outdated versions must be clearly indicated or removed entirely to avoid accidental use. 
 
