@@ -464,7 +464,7 @@ Version confusion is one of the most common and dangerous failures in document m
 
 Effective version control means: 
 
-- #### Clear and consistent revision schemes : For example: numeric revision for approved or newly uploaded files and alphabetical versions for updated made to the metadata. (e.g., Vers. A, B, C, D; Rev 0, 1, 2, 3)  
+- <b>Clear and consistent revision schemes</b>: For example: numeric revision for approved or newly uploaded files and alphabetical versions for updated made to the metadata. (e.g., Vers. A, B, C, D; Rev 0, 1, 2, 3)  
 
 - #### Transparent revision histories: Every change should answer three questions: what changed, why, and who approved it. A clear audit trail.  
 
