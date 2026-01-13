@@ -1,6 +1,15 @@
 {
+  "routes": [
+    {
+      "route": "/blog/*",
+      "rewrite": "/api/seo-handler"
+    }
+  ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/assets/*", "/*.css", "/*.js", "/*.ico", "/*.png", "/*.svg"]
+    "exclude": ["/api/*", "/assets/*", "*.css", "*.js", "*.png", "*.jpg", "*.svg", "*.ico"]
+  },
+  "platform": {
+    "apiRuntime": "node:18"
   }
 }
