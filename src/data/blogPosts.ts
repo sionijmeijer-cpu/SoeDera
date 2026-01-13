@@ -464,9 +464,9 @@ Version confusion is one of the most common and dangerous failures in document m
 
 Effective version control means: 
 
-- ** Clear and consistent revision schemes **: For example: numeric revision for approved or newly uploaded files and alphabetical versions for updated made to the metadata. (e.g., Vers. A, B, C, D; Rev 0, 1, 2, 3)  
+- #### Clear and consistent revision schemes : For example: numeric revision for approved or newly uploaded files and alphabetical versions for updated made to the metadata. (e.g., Vers. A, B, C, D; Rev 0, 1, 2, 3)  
 
-- ### Transparent revision histories: Every change should answer three questions: what changed, why, and who approved it. A clear audit trail.  
+- #### Transparent revision histories: Every change should answer three questions: what changed, why, and who approved it. A clear audit trail.  
 
 - **Strict control of obsolete documents**: Outdated versions must be clearly indicated or removed entirely to avoid accidental use. 
 
@@ -475,7 +475,6 @@ Effective version control means:
 Good version control doesn’t slow teams down — it protects them from costly mistakes. 
 
  
-
 ## Best Practice 3: Define Metadata Standards  
 
  
@@ -496,7 +495,6 @@ Without consistent metadata, even the most powerful document management system b
 
 - Linked equipment, system, or tag 
 
- 
 
 ###Metadata that separates Good from Great 
 
