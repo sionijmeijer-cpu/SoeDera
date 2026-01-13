@@ -315,8 +315,17 @@ function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 md:py-24 bg-gradient-to-r from-sky-600 to-blue-600">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden bg-cover bg-center bg-fixed" style={{
+        backgroundImage: 'linear-gradient(to right, rgba(14, 116, 188, 0.55), rgba(37, 99, 235, 0.55)), url(https://i.imgur.com/BrTo5LL.jpeg)',
+        backgroundBlendMode: 'overlay',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+        WebkitBackgroundSize: 'cover',
+        filter: 'blur(6px)'
+      }}>
+        
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
             Ready to Transform Your Operations?
           </h2>

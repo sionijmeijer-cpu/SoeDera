@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { SEOHead } from '@/components/SEOHead'
 import { blogPosts } from '../data/blogPosts'
-import { Calendar, Clock, User, ChevronRight, FileText, Settings, Building2, Briefcase, Package } from 'lucide-react'
+import { Calendar, Clock, User, ChevronRight, FileText, Settings, Building2, Briefcase, Package, Download } from 'lucide-react'
 import { useState } from 'react'
 
 export const Route = createFileRoute('/blog')({
@@ -40,13 +40,21 @@ function BlogPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-900 dark:to-indigo-900 text-white py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative py-12 sm:py-16 overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ 
+            backgroundImage: 'url(https://i.imgur.com/HcE9N83.jpeg)',
+            filter: 'blur(12px)'
+          }}
+        />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 text-black">
               Insights & Resources
             </h1>
-            <p className="text-base sm:text-lg text-blue-100 dark:text-blue-200">
+            <p className="text-base sm:text-lg text-black">
               Expert perspectives on RDS, BIM, document management, and industry best practices
             </p>
           </div>
@@ -129,10 +137,28 @@ function BlogPage() {
 
                   {/* Read More Link */}
                   <div className="mt-3">
+                    {post.pdfDownload ? (
+                    <div className="flex items-center gap-2">
+                      <span className="inline-flex items-center gap-1 text-blue-600 dark:text-blue-400 font-semibold text-sm group-hover:gap-2 transition-all">
+                        Read Article
+                        <ChevronRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+                      </span>
+                      <a
+                        href={post.pdfDownload}
+                        download
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1 px-2 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded transition-colors"
+                      >
+                        <Download size={12} />
+                        PDF
+                      </a>
+                    </div>
+                  ) : (
                     <span className="inline-flex items-center gap-1 text-blue-600 dark:text-blue-400 font-semibold text-sm group-hover:gap-2 transition-all">
                       Read Article
                       <ChevronRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
                     </span>
+                  )}
                   </div>
                 </div>
               </div>

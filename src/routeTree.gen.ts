@@ -16,6 +16,7 @@ import { Route as ContactImport } from './routes/contact'
 import { Route as BlogImport } from './routes/blog'
 import { Route as AboutImport } from './routes/about'
 import { Route as IndexImport } from './routes/index'
+import { Route as BookAssessmentImport } from './routes/book-assessment'
 import { Route as BlogArticleIdImport } from './routes/blog.$articleId'
 import { Route as ServiceBimImport } from './routes/service-bim'
 import { Route as ServiceRdsImport } from './routes/service-rds'
@@ -52,6 +53,12 @@ const AboutRoute = AboutImport.update({
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BookAssessmentRoute = BookAssessmentImport.update({
+  id: '/book-assessment',
+  path: '/book-assessment',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -130,6 +137,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesImport
       parentRoute: typeof rootRoute
     }
+    '/book-assessment': {
+      id: '/book-assessment'
+      path: '/book-assessment'
+      fullPath: '/book-assessment'
+      preLoaderRoute: typeof BookAssessmentImport
+      parentRoute: typeof rootRoute
+    }
     '/blog/$articleId': {
       id: '/blog/$articleId'
       path: '/blog/$articleId'
@@ -183,6 +197,7 @@ export interface FileRoutesByFullPath {
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/book-assessment': typeof BookAssessmentRoute
   '/blog/$articleId': typeof BlogArticleIdRoute
   '/service-bim': typeof ServiceBimRoute
   '/service-rds': typeof ServiceRdsRoute
@@ -197,6 +212,7 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/book-assessment': typeof BookAssessmentRoute
   '/blog/$articleId': typeof BlogArticleIdRoute
   '/service-bim': typeof ServiceBimRoute
   '/service-rds': typeof ServiceRdsRoute
@@ -212,6 +228,7 @@ export interface FileRoutesById {
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/book-assessment': typeof BookAssessmentRoute
   '/blog/$articleId': typeof BlogArticleIdRoute
   '/service-bim': typeof ServiceBimRoute
   '/service-rds': typeof ServiceRdsRoute
@@ -228,6 +245,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/contact'
     | '/services'
+    | '/book-assessment'
     | '/blog/$articleId'
     | '/service-bim'
     | '/service-rds'
@@ -241,6 +259,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/contact'
     | '/services'
+    | '/book-assessment'
     | '/blog/$articleId'
     | '/service-bim'
     | '/service-rds'
@@ -254,6 +273,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/contact'
     | '/services'
+    | '/book-assessment'
     | '/blog/$articleId'
     | '/service-bim'
     | '/service-rds'
@@ -269,6 +289,7 @@ export interface RootRouteChildren {
   BlogRoute: typeof BlogRoute
   ContactRoute: typeof ContactRoute
   ServicesRoute: typeof ServicesRoute
+  BookAssessmentRoute: typeof BookAssessmentRoute
   BlogArticleIdRoute: typeof BlogArticleIdRoute
   ServiceBimRoute: typeof ServiceBimRoute
   ServiceRdsRoute: typeof ServiceRdsRoute
@@ -283,6 +304,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogRoute: BlogRoute,
   ContactRoute: ContactRoute,
   ServicesRoute: ServicesRoute,
+  BookAssessmentRoute: BookAssessmentRoute,
   BlogArticleIdRoute: BlogArticleIdRoute,
   ServiceBimRoute: ServiceBimRoute,
   ServiceRdsRoute: ServiceRdsRoute,

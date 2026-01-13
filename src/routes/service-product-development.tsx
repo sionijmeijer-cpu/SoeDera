@@ -154,8 +154,16 @@ function ProductDevelopmentPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-sky-600 to-blue-700">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-20 relative overflow-hidden" style={{
+        backgroundImage: 'linear-gradient(to right, rgba(14, 116, 188, 0.55), rgba(29, 78, 216, 0.55)), url(https://i.imgur.com/BrTo5LL.jpeg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+        backgroundBlendMode: 'overlay',
+        WebkitBackgroundSize: 'cover',
+        filter: 'blur(6px)'
+      }}>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
             Ready to Transform Your Operations?
           </h2>

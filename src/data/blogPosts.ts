@@ -8,9 +8,338 @@ export interface BlogPost {
   category: 'RDS' | 'Document Management' | 'BIM' | 'Project Management' | 'Product Development'
   author: string
   color: string
+  pdfDownload?: string
 }
 
 export const blogPosts: BlogPost[] = [
+  {
+    id: 'future-of-document-management-construction',
+    title: 'The Future of Document Management in Construction',
+    excerpt: 'Explore how digital transformation and automation are reshaping document management practices in the construction and energy sectors.',
+    content: `The construction and energy industries are undergoing a significant digital transformation. Document management, once a manual and paper-heavy process, is now at the forefront of this change. This article explores the trends shaping the future of document management in these sectors.
+
+## The Digital Transformation Journey
+
+The shift from paper-based to digital document management has been gradual but accelerating. Today's leading organizations are moving beyond simple digitization to embrace intelligent document management systems that leverage:
+
+- **Cloud Computing**: Enabling anywhere, anytime access to critical documents
+- **Artificial Intelligence**: Automating document classification, extraction, and routing
+- **Machine Learning**: Improving search accuracy and suggesting related documents
+- **Mobile Technology**: Empowering field workers with instant access to drawings and specifications
+
+## Key Trends Shaping the Future
+
+### 1. Intelligent Document Processing
+
+AI-powered systems can now automatically:
+- Extract key information from unstructured documents
+- Classify documents based on content analysis
+- Identify relationships between documents
+- Flag potential compliance issues
+
+### 2. Real-Time Collaboration
+
+Modern document management enables teams to:
+- Work on documents simultaneously
+- Track changes in real-time
+- Communicate within the document context
+- Resolve issues faster through integrated workflows
+
+### 3. Integration with BIM and Digital Twins
+
+Documents are increasingly linked to:
+- 3D models and visualizations
+- Asset management systems
+- IoT sensor data
+- Maintenance and operations platforms
+
+### 4. Enhanced Security and Compliance
+
+Future systems will offer:
+- Blockchain-based audit trails
+- Advanced encryption and access controls
+- Automated compliance checking
+- Intelligent data retention policies
+
+## Preparing for the Future
+
+Organizations should:
+
+1. **Assess Current Capabilities**: Understand where you are today and identify gaps
+2. **Define a Roadmap**: Plan your digital transformation journey in phases
+3. **Invest in Training**: Ensure your team can leverage new technologies
+4. **Choose Flexible Solutions**: Select systems that can evolve with your needs
+5. **Focus on Data Quality**: Clean, structured data is the foundation for AI and automation
+
+## The Role of Standards
+
+Standards like IEC 81346 for reference designations become even more critical in a digital environment. Consistent naming and classification enable:
+- Better searchability
+- Automated document linking
+- Improved data exchange between systems
+- More accurate analytics and reporting
+
+## Conclusion
+
+The future of document management in construction and energy is intelligent, integrated, and increasingly automated. Organizations that embrace these trends will gain competitive advantages through improved efficiency, better compliance, and enhanced decision-making capabilities.`,
+    date: '2026-01-10',
+    readTime: '9 min read',
+    category: 'Document Management',
+    author: 'Søren Christensen',
+    color: 'from-blue-500 to-blue-400'
+  },
+  {
+    id: 'essential-guide-document-control-systems',
+    title: 'Essential Guide to Document Control Systems',
+    excerpt: 'A comprehensive guide to implementing and optimizing document control systems for engineering and infrastructure projects. Download our free PDF guide.',
+    content: `Effective document control is the backbone of successful engineering and infrastructure projects. This comprehensive guide covers everything you need to know about implementing and optimizing document control systems.
+
+## What is Document Control?
+
+Document control is the systematic management of documents throughout their lifecycle, ensuring that:
+- The right people have access to the right documents
+- Documents are reviewed and approved appropriately
+- Changes are tracked and managed
+- Obsolete documents are identified and controlled
+- Regulatory and compliance requirements are met
+
+## Core Components of Document Control
+
+### 1. Document Registration
+
+Every document entering the system should be:
+- Assigned a unique identifier
+- Classified by type and discipline
+- Tagged with relevant metadata
+- Linked to related equipment or systems
+
+### 2. Version Control
+
+Effective version control includes:
+- Clear revision numbering schemes
+- Revision history tracking
+- Supersession management
+- Draft vs. approved status indication
+
+### 3. Review and Approval Workflows
+
+Structured workflows ensure:
+- Appropriate reviews by qualified personnel
+- Documented approval decisions
+- Timely processing of documents
+- Clear accountability
+
+### 4. Distribution and Access Control
+
+Documents must be:
+- Distributed to those who need them
+- Protected from unauthorized access
+- Available when and where needed
+- Controlled when printed or downloaded
+
+### 5. Transmittals and Correspondence
+
+Track document exchanges:
+- Formal transmittals with acknowledgment
+- Comment and response tracking
+- Deadline management
+- Status reporting
+
+## Implementation Best Practices
+
+### Start with Clear Procedures
+Document your processes before implementing systems. Include:
+- Naming conventions
+- Metadata requirements
+- Workflow definitions
+- Roles and responsibilities
+
+### Choose the Right System
+Select a system that:
+- Meets your specific requirements
+- Integrates with other tools
+- Scales with your organization
+- Provides good user experience
+
+### Train Your Team
+Invest in comprehensive training:
+- System functionality
+- Procedures and standards
+- Best practices
+- Troubleshooting
+
+### Monitor and Improve
+Continuously assess performance:
+- Track key metrics
+- Gather user feedback
+- Identify bottlenecks
+- Implement improvements
+
+## Common Challenges and Solutions
+
+| Challenge | Solution |
+|-----------|----------|
+| User adoption | Provide training and support, demonstrate value |
+| Data migration | Plan carefully, validate data, phase the migration |
+| Integration issues | Define requirements early, test thoroughly |
+| Maintaining compliance | Automate checks, conduct regular audits |
+
+## Measuring Success
+
+Key performance indicators include:
+- Document processing time
+- Error and rework rates
+- User satisfaction scores
+- Compliance audit results
+- Search and retrieval time
+
+## Conclusion
+
+A well-implemented document control system is essential for project success. By following best practices and continuously improving your processes, you can ensure that your organization manages documents effectively throughout the project lifecycle.
+
+**Download our comprehensive PDF guide for detailed checklists and templates to help you implement or improve your document control system.**`,
+    date: '2026-01-08',
+    readTime: '11 min read',
+    category: 'Document Management',
+    author: 'Sylvia Awoudu',
+    color: 'from-blue-500 to-blue-400',
+    pdfDownload: '/document-control-guide.pdf'
+  },
+  {
+    id: 'rds-compliance-what-you-need-to-know',
+    title: 'RDS Compliance: What You Need to Know',
+    excerpt: 'Understanding regulatory requirements and industry standards for Reference Designation Systems in energy and infrastructure projects.',
+    content: `Reference Designation System (RDS) compliance is increasingly important in the energy and infrastructure sectors. This article explains the key standards, regulatory requirements, and best practices for ensuring your organization meets compliance obligations.
+
+## Why RDS Compliance Matters
+
+Compliance with RDS standards is not just about following rules—it delivers real business benefits:
+
+- **Regulatory Approval**: Many jurisdictions require standards-compliant documentation
+- **Interoperability**: Enables data exchange between organizations and systems
+- **Quality Assurance**: Demonstrates commitment to industry best practices
+- **Risk Reduction**: Reduces errors and misunderstandings in critical systems
+
+## Key Standards and Regulations
+
+### IEC 81346 Series
+
+The primary international standard for reference designations:
+
+- **IEC 81346-1**: Basic rules for creating designations
+- **IEC 81346-2**: Classification of objects and codes
+- **IEC 81346-10**: Power plants (specific application rules)
+- **IEC 81346-12**: Buildings and building services
+
+### Industry-Specific Requirements
+
+Different sectors have additional requirements:
+
+#### Power Generation
+- Grid code compliance requirements
+- Safety system documentation standards
+- Environmental reporting obligations
+
+#### Oil and Gas
+- NORSOK standards (Norwegian sector)
+- API standards (American Petroleum Institute)
+- HSE documentation requirements
+
+#### Renewable Energy
+- Wind turbine designation standards
+- Solar installation documentation
+- Grid connection requirements
+
+## Compliance Requirements Checklist
+
+### Documentation Requirements
+
+✓ Consistent use of approved designation structure
+✓ Complete equipment lists with valid designations
+✓ Document-to-equipment linking
+✓ Revision control and audit trails
+✓ As-built documentation accuracy
+
+### Process Requirements
+
+✓ Documented RDS application procedures
+✓ Training and competency records
+✓ Quality assurance processes
+✓ Change management procedures
+✓ Regular compliance audits
+
+### System Requirements
+
+✓ Tools that support the designation structure
+✓ Validation rules and checks
+✓ Integration between systems
+✓ Reporting and analytics capabilities
+✓ Archive and retention compliance
+
+## Common Compliance Issues
+
+### Issue 1: Inconsistent Application
+**Problem**: Different teams apply designations differently
+**Solution**: Develop a company application guide with clear examples
+
+### Issue 2: Legacy Data
+**Problem**: Historical data doesn't conform to current standards
+**Solution**: Prioritize migration based on risk, develop mapping rules
+
+### Issue 3: Supplier Deliverables
+**Problem**: Vendors deliver non-compliant documentation
+**Solution**: Include RDS requirements in contracts, validate deliverables
+
+### Issue 4: System Limitations
+**Problem**: Software doesn't support required designation structure
+**Solution**: Configure or customize systems, consider alternatives
+
+## Achieving and Maintaining Compliance
+
+### Step 1: Gap Assessment
+- Review current practices against standards
+- Identify non-conformances and risks
+- Prioritize issues for resolution
+
+### Step 2: Develop Standards
+- Create company-specific application guide
+- Define procedures and workflows
+- Establish quality checkpoints
+
+### Step 3: Implement Controls
+- Configure systems to enforce standards
+- Train personnel on requirements
+- Establish review and approval processes
+
+### Step 4: Monitor and Audit
+- Conduct regular compliance checks
+- Track and report metrics
+- Address issues promptly
+
+### Step 5: Continuous Improvement
+- Learn from audits and incidents
+- Update standards as needed
+- Share lessons across the organization
+
+## Preparing for Audits
+
+When facing compliance audits:
+
+1. **Gather Evidence**: Collect documentation demonstrating compliance
+2. **Review Procedures**: Ensure procedures are current and followed
+3. **Check Systems**: Verify system configurations and data quality
+4. **Brief Personnel**: Ensure team understands requirements and can explain practices
+5. **Address Known Issues**: Resolve or document plans for known gaps
+
+## Conclusion
+
+RDS compliance is essential for organizations in the energy and infrastructure sectors. By understanding the relevant standards, implementing robust processes, and maintaining vigilant oversight, organizations can ensure they meet compliance obligations while realizing the operational benefits of standardized reference designations.`,
+    date: '2026-01-05',
+    readTime: '12 min read',
+    category: 'RDS',
+    author: 'Søren Christensen',
+    color: 'from-emerald-500 to-emerald-400'
+  },
   {
     id: 'understanding-iec-81346-guide',
     title: 'Understanding IEC 81346: A Practical Guide to Reference Designation Systems',
