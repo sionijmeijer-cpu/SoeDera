@@ -22,7 +22,7 @@ export function SEOHead({
   articleAuthor = 'SøDera'
 }: SEOHeadProps) {
   useEffect(() => {
-    // Update document title
+    // Update document title immediately
     document.title = `${title} | SøDera`
 
     // Helper to update or create meta tag
@@ -37,26 +37,35 @@ export function SEOHead({
       meta.content = content
     }
 
-    // Update meta tags
+    // Update standard meta tags
     updateMeta('description', description)
     if (keywords) updateMeta('keywords', keywords)
     
-    // Open Graph
-    updateMeta('og:title', `${title} | SøDera`, true)
+    // Update Open Graph tags (LinkedIn reads these FIRST)
+    updateMeta('og:type', ogType, true)
+    updateMeta('og:title', title, true)
     updateMeta('og:description', description, true)
     updateMeta('og:image', ogImage, true)
-    updateMeta('og:type', ogType, true)
-    if (canonicalUrl) updateMeta('og:url', canonicalUrl, true)
+    updateMeta('og:image:width', '1200', true)
+    updateMeta('og:image:height', '630', true)
+    updateMeta('og:image:type', 'image/jpeg', true)
+    updateMeta('og:site_name', 'SøDera', true)
+    if (canonicalUrl) {
+      updateMeta('og:url', canonicalUrl, true)
+    }
     
-    // Twitter
-    updateMeta('twitter:title', `${title} | SøDera`, true)
+    // Twitter Card tags
+    updateMeta('twitter:card', 'summary_large_image', true)
+    updateMeta('twitter:title', title, true)
     updateMeta('twitter:description', description, true)
     updateMeta('twitter:image', ogImage, true)
+    updateMeta('twitter:site', '@soedera', true)
     
-    // Article specific
+    // Article-specific tags (for blog posts)
     if (ogType === 'article' && articlePublishedTime) {
       updateMeta('article:published_time', articlePublishedTime, true)
       updateMeta('article:author', articleAuthor, true)
+      updateMeta('article:section', 'Technology', true)
     }
 
     // Update canonical link

@@ -10,20 +10,18 @@ export const Route = createFileRoute('/blog/$articleId')({
 
 function ArticlePage() {
   const { articleId } = Route.useParams()
-  const [copied, setCopied] = useState(false)
-  
   const article = blogPosts.find(post => post.id === articleId)
 
-  // Dynamic SEO for each article
-  if (article) {
-    SEOHead({
-      title: article.title,
-      description: article.excerpt,
-      keywords: `${article.category}, energy documentation, SøDera`,
-      canonicalUrl: `https://www.soedera.eu/blog/${articleId}`,
-      ogType: 'article',
-      articlePublishedTime: article.date
-    })
+  // Generate category-specific OG image or use default
+  const getOGImage = (category: string) => {
+    const categoryImages: { [key: string]: string } = {
+      'Document Management': 'https://i.imgur.com/HcE9N83.jpeg',
+      'RDS': 'https://i.imgur.com/lCNBEPI.jpeg',
+      'BIM': 'https://i.imgur.com/lCNBEPI.jpeg',
+      'Project Management': 'https://i.imgur.com/lCNBEPI.jpeg',
+      'Product Development': 'https://i.imgur.com/lCNBEPI.jpeg'
+    }
+    return categoryImages[category] || 'https://i.imgur.com/lCNBEPI.jpeg'
   }
   
   if (!article) {
@@ -38,6 +36,21 @@ function ArticlePage() {
         </div>
       </div>
     )
+  }
+
+  // Hooks must come AFTER early returns are no longer possible
+  const [copied, setCopied] = useState(false)
+
+  // Set SEO meta tags for this article
+  const seoProps = {
+    title: article.title,
+    description: article.excerpt,
+    keywords: `${article.category}, energy documentation, SøDera`,
+    canonicalUrl: `https://www.soedera.eu/blog/${articleId}`,
+    ogImage: getOGImage(article.category),
+    ogType: 'article' as const,
+    articlePublishedTime: article.date,
+    articleAuthor: article.author
   }
 
   const getCategoryIcon = (category: string) => {
@@ -133,6 +146,7 @@ function ArticlePage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
+      <SEOHead {...seoProps} />
       {/* Compact Header */}
       <div className={`${getCategoryColor(article.category)} py-4 px-4`}>
         <div className="max-w-5xl mx-auto">
