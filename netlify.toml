@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/.netlify/functions/seo-handler"
+  status = 200
+  force = true
+  conditions = {Role = ["LinkedInBot", "facebookexternalhit", "Twitterbot", "Googlebot"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
