@@ -33,6 +33,7 @@ The application will start and display the local URL in your terminal.
 ## 📜 Available Scripts
 
 - `bun dev` - Start development server
+- `bun start` - Start production server
 - `bun build` - Build for production
 - `bun lint` - Run linter
 
