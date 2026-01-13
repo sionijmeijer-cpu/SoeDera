@@ -40,26 +40,25 @@ function BlogPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
       {/* Hero Section */}
-      <div className="relative py-12 sm:py-16 overflow-hidden">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ 
-            backgroundImage: 'url(https://i.imgur.com/HcE9N83.jpeg)',
-            filter: 'blur(12px)'
-          }}
-        />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 text-black">
-              Insights & Resources
-            </h1>
-            <p className="text-base sm:text-lg text-black">
-              Expert perspectives on RDS, BIM, document management, and industry best practices
-            </p>
-          </div>
+      <section className="py-20 relative overflow-hidden" style={{
+        backgroundImage: 'url(https://i.imgur.com/HcE9N83.jpeg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center top',
+        backgroundAttachment: 'fixed'
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-white font-semibold text-sm uppercase tracking-wider">Insights & Resources</span>
+          <h1 className="text-4xl sm:text-5xl font-bold text-white mt-3 mb-6">
+            Expert Knowledge
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-sky-400"> Hub</span>
+          </h1>
+          <p className="text-white/90 text-lg max-w-3xl mx-auto">
+            Expert perspectives on RDS, BIM, document management, and industry best practices
+          </p>
         </div>
-      </div>
+      </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {/* Category Filter */}

@@ -82,21 +82,21 @@ function AboutPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-sky-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }} />
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-sky-400/10 rounded-full blur-[150px]" />
+      <section className="py-20 relative overflow-hidden" style={{
+        backgroundImage: 'url(https://i.imgur.com/L0OivFj.jpeg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundAttachment: 'fixed'
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-sky-600 font-semibold text-sm uppercase tracking-wider">Who We Are</span>
-          <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mt-3 mb-6">
+          <span className="text-white font-semibold text-sm uppercase tracking-wider">Who We Are</span>
+          <h1 className="text-4xl sm:text-5xl font-bold text-white mt-3 mb-6">
             Experts in Energy
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-sky-400"> Documentation</span>
           </h1>
-          <p className="text-slate-600 text-lg max-w-3xl mx-auto">
+          <p className="text-white/90 text-lg max-w-3xl mx-auto">
             SøDera was founded with a single mission: to help energy companies unlock the value of their 
             documentation and asset data through structured, standards-compliant approaches.
           </p>
@@ -223,17 +223,20 @@ function AboutPage() {
 
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-sky-500 to-sky-400 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFF' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }} />
+      <section className="py-20 relative overflow-hidden" style={{
+        backgroundImage: 'url(https://i.imgur.com/BrTo5LL.jpeg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundAttachment: 'fixed'
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Ready to Transform Your Operations?
+            How can we assist you?
           </h2>
           <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-            Let&apos;s discuss how we can help optimize your business processes
+            If you would like to discuss further on how we can support refining your business processes for a productive operation, please contact us.
           </p>
           <Link
             to="/contact"

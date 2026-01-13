@@ -315,22 +315,20 @@ function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden bg-cover bg-center bg-fixed" style={{
-        backgroundImage: 'linear-gradient(to right, rgba(14, 116, 188, 0.55), rgba(37, 99, 235, 0.55)), url(https://i.imgur.com/BrTo5LL.jpeg)',
-        backgroundBlendMode: 'overlay',
+      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden" style={{
+        backgroundImage: 'url(https://i.imgur.com/BrTo5LL.jpeg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        WebkitBackgroundSize: 'cover',
-        filter: 'blur(6px)'
+        backgroundAttachment: 'fixed'
       }}>
+        <div className="absolute inset-0 bg-black/40" />
         
         <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Operations?
+            How can we assist you?
           </h2>
           <p className="text-xl text-sky-100 mb-8">
-            Let&apos;s discuss how we can help optimize your business processes
+            If you would like to discuss further on how we can support refining your business processes for a productive operation, please contact us.
           </p>
           <Link 
             to="/contact"

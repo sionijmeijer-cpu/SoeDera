@@ -351,10 +351,10 @@ RDS compliance is essential for organizations in the energy and infrastructure s
 IEC 81346 is an international standard that defines principles for structuring systems, including structuring of information about systems. It provides a systematic approach to organizing and identifying objects within a system hierarchy.
 
 The standard consists of multiple parts:
-- **IEC 81346-1: Basic rules for designation
-- **IEC 81346-2: Classification of objects and codes for classes
-- **IEC 81346-10: Power plants (sector-specific application)
-- **IEC 81346-12: Buildings and building services
+- **IEC 81346-1**: Basic rules for designation
+- **IEC 81346-2**: Classification of objects and codes for classes
+- **IEC 81346-10**: Power plants (sector-specific application)
+- **IEC 81346-12**: Buildings and building services
 
 ## Why Implement IEC 81346?
 
@@ -393,9 +393,9 @@ Roll out the new system in phases, starting with new projects and gradually migr
 
 Many organizations face challenges during implementation:
 
-- **Legacy data migration: Converting existing designations to the new standard
-- **Tool integration: Ensuring software systems support the designation structure
-- **Stakeholder alignment: Getting buy-in from all departments
+- **Legacy data migration**: Converting existing designations to the new standard
+- **Tool integration**: Ensuring software systems support the designation structure
+- **Stakeholder alignment**: Getting buy-in from all departments
 
 ## Conclusion
 
@@ -406,106 +406,89 @@ Implementing IEC 81346 is a significant undertaking, but the long-term benefits 
     author: 'Søren Christensen',
     color: 'from-emerald-500 to-emerald-400'
   },
-  { 
-id: 'document-management-best-practices', 
-title: 'Document Management Best Practices for Energy Infrastructure',  
-excerpt: 'Learn how leading energy companies are improving their documentation practices to enhance efficiency and compliance.',  
-content: `Effective document management is a cornerstone of safe, efficient, and compliant energy infrastructure operations. From early engineering through decades of operation, technical documentation supports decision-making, maintenance, audits, and change management. Yet many organizations still struggle because documents exist but the confidence in them does not. 
+  {
+    id: 'document-management-best-practices',
+    title: 'Document Management Best Practices for Energy Infrastructure',
+    excerpt: 'Learn how leading energy companies are improving their documentation practices to enhance efficiency and compliance.',
+    content: `Effective document management is critical for energy infrastructure organizations. With thousands of technical documents, drawings, and specifications to manage, having the right practices in place can make the difference between operational excellence and costly mistakes.
 
-## The Challenge of Technical Documentation  
+## The Challenge of Technical Documentation
 
-Every energy infrastructure project produces thousands, sometimes millions of documents, including: 
-- Engineering drawings and P&IDs 
-- Equipment specifications and datasheets  
-- Operating and maintenance procedures  
-- Compliance and regulatory documents  
-- As-built documentation  
-- Inspection and test records  
+Energy infrastructure projects generate vast amounts of documentation:
 
-The real challenge isn’t volume it’s finding the right document at the right moment, knowing it’s accurate and applicable. 
+- Engineering drawings and P&IDs
+- Equipment specifications and datasheets
+- Operating and maintenance procedures
+- Compliance and regulatory documents
+- As-built documentation
+- Inspection and test records
 
-## Best Practice 1: Establish Clear Document Hierarchies  
-If users don’t understand where documents belong, they will never trust the system. 
-A strong hierarchy mirrors how people actually think and work. So consider the following: 
+Managing this documentation effectively requires a systematic approach that addresses the entire document lifecycle.
 
-### Organize by Functional Structure  
-Group documents by systems, units, or functions. Operations teams don’t think in folders; they think in pumps, transformers, and process units. Your document structure should reflect that reality 
+## Best Practice 1: Establish Clear Document Hierarchies
 
-### Separate by Project or Lifecycle Phase  
-Design documents, construction records, and operational procedures serve very different purposes. Clear separation helps users instantly understand document maturity and relevance. 
+A well-defined document hierarchy makes it easier to find and manage information. Consider organizing documents by:
 
-### Standardize by Document Type  
-Drawings, procedures, specifications, and reports should follow predictable structures. This enables consistent review, approval, and change processes. 
+### Functional Structure
+Group documents by the systems or functions they support. This aligns with how operations and maintenance teams typically think about the plant.
 
-### Rule of thumb: 
-If a new engineer needs intensive training to understand your folder structure, it’s too complex. 
+### Project Phase
+Separate documents by lifecycle phase (design, construction, commissioning, operations) to track document maturity and applicability.
 
-## Best Practice 2: Implement Robust Version Control  
-Version confusion is one of the most common and dangerous failures in document management. 
+### Document Type
+Categorize by document type (drawings, procedures, reports, specifications) to enable consistent handling and review processes.
 
-Effective version control means: 
-- Clear and consistent revision schemes: For example: numeric revision for approved or newly uploaded files and alphabetical versions for updated made to the metadata. (e.g., Vers. A, B, C, D; Rev 0, 1, 2, 3)  
-- Transparent revision histories: Every change should answer three questions: what changed, why, and who approved it. A clear audit trail.  
-- Strict control of obsolete documents: Outdated versions must be clearly indicated or removed entirely to avoid accidental use. 
+## Best Practice 2: Implement Version Control
 
-Good version control doesn’t slow teams down — it protects them from costly mistakes. 
+Version control is essential for maintaining document integrity:
 
-## Best Practice 3: Define Metadata Standards  
-Folders help you browse. Metadata helps you find. 
-Without consistent metadata, even the most powerful document management system becomes a digital archive instead of a working tool. 
+- **Use clear version numbering**: Establish a consistent numbering scheme (e.g., Rev A, B, C for drafts; Rev 0, 1, 2 for approved versions)
+- **Track revision history**: Maintain a log of changes with dates, authors, and descriptions
+- **Control distribution**: Ensure obsolete versions are clearly marked and removed from circulation
 
-### Core Metadata every document should have: 
-- Document number and title 
-- Revision and issue date 
-- Author and approver 
-- Classification and security level 
-- Linked equipment, system, or tag 
+## Best Practice 3: Define Metadata Standards
 
-### Metadata that separates Good from Great 
-- Keywords and functional tags 
-- Relationships to other documents 
-- Superseded or replaced references 
-- Review, due date, or inspection dates 
+Rich metadata enables efficient document retrieval:
 
-💡 Want to go deeper? 
-If you want to learn how to design metadata that actually supports engineers and operators, read our dedicated blog on generating high-quality document metadata on the Sødera website. 
+### Essential Metadata Fields
+- Document number and title
+- Revision and date
+- Author and approver
+- Classification and security level
+- Related equipment or system references
 
-## Best Practice 4: Connect Documents to Assets 
-Documents should never live in isolation. 
+### Extended Metadata
+- Keywords and tags
+- Related documents
+- Superseded documents
+- Review and expiry dates
 
-Best-performing organizations ensure that every critical document is **explicitly linked to the asset it describes**: 
-- Use consistent equipment and tag naming across all systems 
-- Maintain document-to-equipment relationships centrally 
-- Allow users to navigate from an asset directly to all related documents 
-When documentation is asset-centric, teams stop searching and start working. 
+## Best Practice 4: Integrate with Asset Information
 
-## Best Practice 5: Make Search Fast, Simple, and Role-Based 
-In the field, nobody has time to “dig”. 
+Documents should be linked to the assets they describe:
 
-Effective retrieval means: 
-- Full-text search across documents 
-- Filtering by metadata (system, asset, revision, status)
-- Predefined views for engineers, operators, inspectors, and managers 
-- Mobile access for site and field personnel 
-If your system delivers the right document in seconds, users will trust it. If it doesn’t, they’ll build workarounds. 
+- Use consistent equipment designations across all documents
+- Maintain document-to-equipment relationships in your systems
+- Enable users to find all documents related to a specific piece of equipment
 
-## Final Thoughts 
-Document management in energy infrastructure is not a back-office function, it is a safety, reliability, and performance enabler. 
+## Best Practice 5: Enable Efficient Search and Retrieval
 
-The organizations that excel don’t just store documents; they: 
-- Structure them intelligently 
-- Govern them consistently 
-- Connect them to real assets 
-- And design systems around how people actually work 
+Fast access to the right information is critical:
 
-If you get this right, documentation stops being a burden and becomes a competitive advantage.`, 
-    
-    date: '2026-01-14', 
-    readTime: '5 min read', 
-    category: 'Document Management', 
-    author: 'Sylvia Awoudu', 
-    color: 'from-blue-500 to-blue-400' 
-  }, 
+- Implement full-text search capabilities
+- Use advanced filtering based on metadata
+- Create document views for different user roles
+- Enable mobile access for field personnel
+
+## Conclusion
+
+Implementing these best practices requires commitment and ongoing effort, but the benefits are substantial. Organizations with structured document management systems experience fewer errors, faster information access, and improved compliance with regulatory requirements.`,
+    date: '2025-10-22',
+    readTime: '10 min read',
+    category: 'Document Management',
+    author: 'Sylvia Awoudu',
+    color: 'from-blue-500 to-blue-400'
+  },
   {
     id: 'bim-energy-infrastructure',
     title: 'Applying BIM Methods in Energy Infrastructure Projects',

@@ -155,20 +155,18 @@ function DocumentManagementPage() {
 
       {/* CTA Section */}
       <section className="py-20 relative overflow-hidden" style={{
-        backgroundImage: 'linear-gradient(to right, rgba(14, 116, 188, 0.55), rgba(29, 78, 216, 0.55)), url(https://i.imgur.com/BrTo5LL.jpeg)',
+        backgroundImage: 'url(https://i.imgur.com/BrTo5LL.jpeg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundBlendMode: 'overlay',
-        WebkitBackgroundSize: 'cover',
-        filter: 'blur(6px)'
+        backgroundAttachment: 'fixed'
       }}>
+        <div className="absolute inset-0 bg-black/40" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Operations?
+            How can we assist you?
           </h2>
           <p className="text-xl text-sky-100 mb-8">
-            Let&apos;s discuss how we can help optimize your business processes
+            If you would like to discuss further on how we can support refining your business processes for a productive operation, please contact us.
           </p>
           <Link 
             to="/contact"

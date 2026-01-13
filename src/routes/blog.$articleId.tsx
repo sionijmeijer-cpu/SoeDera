@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { SEOHead } from '@/components/SEOHead'
-import { Calendar, Clock, ArrowLeft, User, Linkedin, Twitter, Mail, Link2, Check, Tag, FileText, Layers, FolderKanban, Package, Download } from 'lucide-react'
+import { Calendar, Clock, ArrowLeft, User, Linkedin, Twitter, Mail, Link2, Check, Tag, FileText, Layers, FolderKanban, Package } from 'lucide-react'
 import { useState } from 'react'
 import { blogPosts } from '../data/blogPosts'
 
@@ -208,27 +208,6 @@ function ArticlePage() {
                   </div>
                 ))}
               </div>
-
-              {/* PDF Download Section */}
-              {article.pdfDownload && (
-                <div className="mt-4 pt-4 border-t border-gray-200 dark:border-slate-700">
-                  <div className={`${getCategoryColor(article.category)} rounded-lg p-3 text-white`}>
-                    <div className="flex items-center gap-2 mb-2">
-                      <FileText size={18} />
-                      <h3 className="font-semibold text-sm">Download PDF Guide</h3>
-                    </div>
-                    <p className="text-xs text-white/90 mb-3">Get the full guide with detailed checklists and templates for implementing best practices in {article.category.toLowerCase()}.</p>
-                    <a
-                      href={article.pdfDownload}
-                      download
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-lg font-medium text-xs hover:bg-gray-100 transition-colors"
-                    >
-                      <Download size={16} />
-                      Download PDF
-                    </a>
-                  </div>
-                </div>
-              )}
 
               {/* Author Bio */}
               <div className="mt-3 pt-3 border-t border-gray-200 dark:border-slate-700">
