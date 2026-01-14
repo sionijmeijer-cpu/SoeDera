@@ -1,4 +1,8 @@
 {
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/images/*", "/assets/*", "*.css", "*.js", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.svg", "*.ico", "*.pdf", "/blog/*"]
+  },
   "routes": [
     {
       "route": "/blog/document-management-best-practices",
@@ -13,11 +17,7 @@
       "rewrite": "/blog/asset-data-management/index.html"
     }
   ],
-  "navigationFallback": {
-    "rewrite": "/index.html",
-    "exclude": ["/assets/*", "/blog/*", "*.css", "*.js", "*.png", "*.jpg", "*.svg", "*.ico", "*.pdf", "*.xml", "*.txt"]
-  },
-  "platform": {
-    "apiRuntime": "node:18"
+  "mimeTypes": {
+    ".json": "application/json"
   }
 }
