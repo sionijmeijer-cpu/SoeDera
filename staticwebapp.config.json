@@ -1,13 +1,21 @@
 {
   "routes": [
     {
-      "route": "/blog/*",
-      "rewrite": "/api/seo-handler"
+      "route": "/blog/document-management-best-practices",
+      "rewrite": "/api/seo-handler?article=document-management-best-practices"
+    },
+    {
+      "route": "/blog/iec-81346-implementation", 
+      "rewrite": "/api/seo-handler?article=iec-81346-implementation"
+    },
+    {
+      "route": "/blog/asset-data-management",
+      "rewrite": "/api/seo-handler?article=asset-data-management"
     }
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/api/*", "/assets/*", "*.css", "*.js", "*.png", "*.jpg", "*.svg", "*.ico"]
+    "exclude": ["/api/*", "/assets/*", "*.css", "*.js", "*.png", "*.jpg", "*.svg", "*.ico", "*.pdf", "*.xml", "*.txt"]
   },
   "platform": {
     "apiRuntime": "node:18"
