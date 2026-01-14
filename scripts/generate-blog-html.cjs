@@ -30,53 +30,6 @@ const BLOG_ARTICLES = {
   }
 };
 
-function generateHTML(articleId, article) {
-  const fullUrl = `https://www.soedera.eu/blog/${articleId}`;
-  
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${article.title}</title>
-<meta name="description" content="${article.description}">
-<link rel="canonical" href="${fullUrl}">
-<link rel="icon" type="image/png" href="https://i.imgur.com/TK8sXC2.png">
-<meta property="og:type" content="article">
-<meta property="og:url" content="${fullUrl}">
-<meta property="og:title" content="${article.title}">
-<meta property="og:description" content="${article.description}">
-<meta property="og:image" content="${article.image}">
-<meta property="og:site_name" content="SøDera">
-<meta property="article:published_time" content="${article.publishedTime}">
-<meta property="article:author" content="${article.author}">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="${fullUrl}">
-<meta name="twitter:title" content="${article.title}">
-<meta name="twitter:description" content="${article.description}">
-<meta name="twitter:image" content="${article.image}">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "${article.title.replace(' | SøDera', '')}",
-  "description": "${article.description}",
-  "image": "${article.image}",
-  "datePublished": "${article.publishedTime}",
-  "author": {"@type": "Organization", "name": "SøDera"},
-  "publisher": {"@type": "Organization", "name": "SøDera", "logo": {"@type": "ImageObject", "url": "https://i.imgur.com/yAobb2F.png"}},
-  "mainEntityOfPage": {"@type": "WebPage", "@id": "${fullUrl}"}
-}
-</script>
-<script type="module" crossorigin src="/assets/index.js"></script>
-<link rel="stylesheet" crossorigin href="/assets/index.css">
-</head>
-<body>
-<div id="root"></div>
-</body>
-</html>`;
-}
-
 // Get the directory of the script
 const scriptDir = __dirname;
 const distDir = path.join(scriptDir, '..', 'dist');
@@ -98,9 +51,9 @@ if (fs.existsSync(indexPath)) {
   const cssMatch = indexHtml.match(/href="(\/assets\/index-[^"]+\.css)"/);
   if (jsMatch) assetJs = jsMatch[1];
   if (cssMatch) assetCss = cssMatch[1];
+  console.log(`Found assets: JS=${assetJs}, CSS=${assetCss}`);
 }
 
-// Update generateHTML to use correct assets
 function generateHTMLWithAssets(articleId, article) {
   const fullUrl = `https://www.soedera.eu/blog/${articleId}`;
   
@@ -118,6 +71,8 @@ function generateHTMLWithAssets(articleId, article) {
 <meta property="og:title" content="${article.title}">
 <meta property="og:description" content="${article.description}">
 <meta property="og:image" content="${article.image}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="SøDera">
 <meta property="article:published_time" content="${article.publishedTime}">
 <meta property="article:author" content="${article.author}">
@@ -148,17 +103,22 @@ function generateHTMLWithAssets(articleId, article) {
 </html>`;
 }
 
-// Generate HTML for each article
+// Generate HTML for each article in TWO ways for maximum compatibility
 for (const [articleId, article] of Object.entries(BLOG_ARTICLES)) {
+  const html = generateHTMLWithAssets(articleId, article);
+  
+  // Method 1: Create /blog/article-id/index.html (for /blog/article-id URLs)
   const articleDir = path.join(blogDir, articleId);
   if (!fs.existsSync(articleDir)) {
     fs.mkdirSync(articleDir, { recursive: true });
   }
+  fs.writeFileSync(path.join(articleDir, 'index.html'), html);
+  console.log(`Generated: dist/blog/${articleId}/index.html`);
   
-  const html = generateHTMLWithAssets(articleId, article);
-  const filePath = path.join(articleDir, 'index.html');
-  fs.writeFileSync(filePath, html);
-  console.log(`Generated: ${filePath}`);
+  // Method 2: Create /blog/article-id.html (for direct file access)
+  fs.writeFileSync(path.join(blogDir, `${articleId}.html`), html);
+  console.log(`Generated: dist/blog/${articleId}.html`);
 }
 
-console.log('Blog HTML generation complete!');
+console.log('\\nBlog HTML generation complete!');
+console.log(`Total files generated: ${Object.keys(BLOG_ARTICLES).length * 2}`);
