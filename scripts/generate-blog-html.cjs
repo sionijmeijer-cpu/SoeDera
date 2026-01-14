@@ -6,26 +6,48 @@
 const fs = require('fs');
 const path = require('path');
 
+// All blog articles - must match src/data/blogPosts.ts
 const BLOG_ARTICLES = {
+  'future-of-document-management-construction': {
+    title: 'The Future of Document Management in Construction | SøDera',
+    description: 'Explore how digital transformation and automation are reshaping document management practices in the construction and energy sectors.',
+    image: 'https://i.imgur.com/lCNBEPI.jpeg',
+    publishedTime: '2026-01-10T10:00:00Z',
+    author: 'Søren Christensen'
+  },
+  'essential-guide-document-control-systems': {
+    title: 'Essential Guide to Document Control Systems | SøDera',
+    description: 'A comprehensive guide to implementing and optimizing document control systems for engineering and infrastructure projects.',
+    image: 'https://i.imgur.com/lCNBEPI.jpeg',
+    publishedTime: '2026-01-08T10:00:00Z',
+    author: 'Sylvia Awoudu'
+  },
+  'rds-compliance-what-you-need-to-know': {
+    title: 'RDS Compliance: What You Need to Know | SøDera',
+    description: 'Understanding regulatory requirements and industry standards for Reference Designation Systems in energy and infrastructure projects.',
+    image: 'https://i.imgur.com/lCNBEPI.jpeg',
+    publishedTime: '2026-01-05T10:00:00Z',
+    author: 'Søren Christensen'
+  },
+  'understanding-iec-81346-guide': {
+    title: 'Understanding IEC 81346: A Practical Guide | SøDera',
+    description: 'Reference Designation Systems are the backbone of effective documentation in the energy sector. This guide explores the fundamentals of IEC 81346.',
+    image: 'https://i.imgur.com/lCNBEPI.jpeg',
+    publishedTime: '2025-12-15T10:00:00Z',
+    author: 'Søren Christensen'
+  },
   'document-management-best-practices': {
     title: 'Document Management Best Practices for Energy Infrastructure | SøDera',
-    description: 'Discover essential document management strategies for energy infrastructure projects. Learn how proper documentation improves project efficiency, compliance, and asset lifecycle management.',
+    description: 'Learn how leading energy companies are improving their documentation practices to enhance efficiency and compliance.',
     image: 'https://i.imgur.com/lCNBEPI.jpeg',
-    publishedTime: '2024-01-15T10:00:00Z',
-    author: 'SøDera Team'
+    publishedTime: '2025-10-22T10:00:00Z',
+    author: 'Sylvia Awoudu'
   },
-  'iec-81346-implementation': {
-    title: 'IEC 81346 Implementation Guide for Industrial Projects | SøDera',
-    description: 'Complete guide to implementing IEC 81346 reference designation system in industrial and energy projects. Standardize your asset identification for better data management.',
+  'bim-energy-infrastructure': {
+    title: 'Applying BIM Methods in Energy Infrastructure Projects | SøDera',
+    description: 'Building Information Modeling is transforming how energy infrastructure is designed, built, and operated.',
     image: 'https://i.imgur.com/lCNBEPI.jpeg',
-    publishedTime: '2024-01-20T10:00:00Z',
-    author: 'SøDera Team'
-  },
-  'asset-data-management': {
-    title: 'Asset Data Management in Energy Sector | SøDera',
-    description: 'Learn how effective asset data management transforms energy infrastructure operations. From data collection to lifecycle optimization, master your asset information.',
-    image: 'https://i.imgur.com/lCNBEPI.jpeg',
-    publishedTime: '2024-01-25T10:00:00Z',
+    publishedTime: '2025-09-18T10:00:00Z',
     author: 'SøDera Team'
   }
 };
@@ -89,7 +111,7 @@ function generateHTMLWithAssets(articleId, article) {
   "description": "${article.description}",
   "image": "${article.image}",
   "datePublished": "${article.publishedTime}",
-  "author": {"@type": "Organization", "name": "SøDera"},
+  "author": {"@type": "Person", "name": "${article.author}"},
   "publisher": {"@type": "Organization", "name": "SøDera", "logo": {"@type": "ImageObject", "url": "https://i.imgur.com/yAobb2F.png"}},
   "mainEntityOfPage": {"@type": "WebPage", "@id": "${fullUrl}"}
 }
@@ -103,11 +125,11 @@ function generateHTMLWithAssets(articleId, article) {
 </html>`;
 }
 
-// Generate HTML for each article in TWO ways for maximum compatibility
+// Generate HTML for each article
 for (const [articleId, article] of Object.entries(BLOG_ARTICLES)) {
   const html = generateHTMLWithAssets(articleId, article);
   
-  // Method 1: Create /blog/article-id/index.html (for /blog/article-id URLs)
+  // Create /blog/article-id/index.html
   const articleDir = path.join(blogDir, articleId);
   if (!fs.existsSync(articleDir)) {
     fs.mkdirSync(articleDir, { recursive: true });
@@ -115,10 +137,10 @@ for (const [articleId, article] of Object.entries(BLOG_ARTICLES)) {
   fs.writeFileSync(path.join(articleDir, 'index.html'), html);
   console.log(`Generated: dist/blog/${articleId}/index.html`);
   
-  // Method 2: Create /blog/article-id.html (for direct file access)
+  // Also create /blog/article-id.html for direct access
   fs.writeFileSync(path.join(blogDir, `${articleId}.html`), html);
   console.log(`Generated: dist/blog/${articleId}.html`);
 }
 
-console.log('\\nBlog HTML generation complete!');
+console.log('\nBlog HTML generation complete!');
 console.log(`Total files generated: ${Object.keys(BLOG_ARTICLES).length * 2}`);

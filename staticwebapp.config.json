@@ -5,16 +5,28 @@
   },
   "routes": [
     {
+      "route": "/blog/future-of-document-management-construction",
+      "rewrite": "/blog/future-of-document-management-construction/index.html"
+    },
+    {
+      "route": "/blog/essential-guide-document-control-systems",
+      "rewrite": "/blog/essential-guide-document-control-systems/index.html"
+    },
+    {
+      "route": "/blog/rds-compliance-what-you-need-to-know",
+      "rewrite": "/blog/rds-compliance-what-you-need-to-know/index.html"
+    },
+    {
+      "route": "/blog/understanding-iec-81346-guide",
+      "rewrite": "/blog/understanding-iec-81346-guide/index.html"
+    },
+    {
       "route": "/blog/document-management-best-practices",
       "rewrite": "/blog/document-management-best-practices/index.html"
     },
     {
-      "route": "/blog/iec-81346-implementation",
-      "rewrite": "/blog/iec-81346-implementation/index.html"
-    },
-    {
-      "route": "/blog/asset-data-management",
-      "rewrite": "/blog/asset-data-management/index.html"
+      "route": "/blog/bim-energy-infrastructure",
+      "rewrite": "/blog/bim-energy-infrastructure/index.html"
     }
   ],
   "mimeTypes": {
