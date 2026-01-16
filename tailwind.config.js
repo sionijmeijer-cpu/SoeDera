@@ -1,3 +1,5 @@
+import animatePlugin from 'tw-animate-css';
+
 export default {
   content: [
     "./index.html",
@@ -6,5 +8,5 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [animatePlugin],
 }

@@ -235,6 +235,29 @@ function ArticlePage() {
                 ))}
               </div>
 
+              {/* PDF Download Section */}
+              {article.pdfDownload && (
+                <div className="mt-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-700 dark:to-slate-600 rounded-xl border border-blue-200 dark:border-slate-500">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <FileText size={24} className="text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-900 dark:text-white text-sm">Download Free PDF Guide</h3>
+                      <p className="text-xs text-gray-600 dark:text-gray-300 mt-0.5">Get the complete guide with checklists and templates</p>
+                    </div>
+                    <a 
+                      href={article.pdfDownload} 
+                      download 
+                      className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2 flex-shrink-0"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      Download PDF
+                    </a>
+                  </div>
+                </div>
+              )}
+
               {/* Author Bio */}
               <div className="mt-3 pt-3 border-t border-gray-200 dark:border-slate-700">
                 <div className="flex items-start gap-3">
