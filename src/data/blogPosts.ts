@@ -457,7 +457,7 @@ Effective version control means:
 Good version control doesn’t slow teams down — it protects them from costly mistakes. 
 
 ## Best Practice 3: Define Metadata Standards  
-Folders help you browse. **Metadata helps you find**. 
+Folders help you browse. ###Metadata helps you find. 
 
 Without consistent metadata, even the most powerful document management system becomes a digital archive instead of a working tool. 
 
