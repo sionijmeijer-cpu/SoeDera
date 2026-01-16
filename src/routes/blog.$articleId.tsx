@@ -12,16 +12,10 @@ function ArticlePage() {
   const { articleId } = Route.useParams()
   const article = blogPosts.find(post => post.id === articleId)
 
-  // Generate category-specific OG image or use default
-  const getOGImage = (category: string) => {
-    const categoryImages: { [key: string]: string } = {
-      'Document Management': 'https://i.imgur.com/HcE9N83.jpeg',
-      'RDS': 'https://i.imgur.com/lCNBEPI.jpeg',
-      'BIM': 'https://i.imgur.com/lCNBEPI.jpeg',
-      'Project Management': 'https://i.imgur.com/lCNBEPI.jpeg',
-      'Product Development': 'https://i.imgur.com/lCNBEPI.jpeg'
-    }
-    return categoryImages[category] || 'https://i.imgur.com/lCNBEPI.jpeg'
+  // Use article's own image for OG sharing
+  const getOGImage = () => {
+    // Use the article's featured image for LinkedIn/social sharing
+    return article?.image || 'https://i.imgur.com/lCNBEPI.jpeg'
   }
   
   if (!article) {
@@ -47,7 +41,7 @@ function ArticlePage() {
     description: article.excerpt,
     keywords: `${article.category}, energy documentation, SøDera`,
     canonicalUrl: `https://www.soedera.eu/blog/${articleId}`,
-    ogImage: getOGImage(article.category),
+    ogImage: getOGImage(),
     ogType: 'article' as const,
     articlePublishedTime: article.date,
     articleAuthor: article.author
