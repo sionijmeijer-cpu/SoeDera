@@ -97,19 +97,31 @@ function BlogPage() {
                 onClick={() => handleCardClick(post.id)}
                 className="cursor-pointer group h-full bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-200 overflow-hidden border border-gray-100 dark:border-slate-700 hover:-translate-y-1"
               >
-                {/* Category Badge */}
-                <div className="bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-700 dark:to-indigo-700 px-4 py-2.5 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5">
-                    <CategoryIcon size={14} className="text-white" />
-                    <span className="text-white text-xs font-semibold uppercase tracking-wide">
-                      {post.category}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1 text-blue-100 text-xs">
-                    <Clock size={12} />
-                    <span>{post.readTime}</span>
+                {/* Blog Image */}
+                <div className="relative h-40 overflow-hidden">
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between">
+                    <div className="flex items-center gap-1.5">
+                      <CategoryIcon size={14} className="text-white" />
+                      <span className="text-white text-xs font-semibold uppercase tracking-wide">
+                        {post.category}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1 text-white/90 text-xs">
+                      <Clock size={12} />
+                      <span>{post.readTime}</span>
+                    </div>
                   </div>
                 </div>
+
+                {/* Category Badge - removed, now in image overlay */}
+                {/*<div className="bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-700 dark:to-indigo-700 px-4 py-2.5 flex items-center justify-between">
+                  */}
 
                 <div className="p-4">
                   {/* Title */}

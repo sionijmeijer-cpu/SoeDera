@@ -184,7 +184,19 @@ function ArticlePage() {
         <div className="flex flex-col lg:flex-row gap-5">
           {/* Article Content */}
           <article className="flex-1 min-w-0">
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm p-3 sm:p-4">
+            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-hidden">
+              {/* Featured Image */}
+              {article.image && (
+                <div className="w-full">
+                  <img 
+                    src={article.image} 
+                    alt={article.title}
+                    className="w-full h-48 sm:h-64 lg:h-80 object-cover"
+                  />
+                </div>
+              )}
+
+              <div className="p-3 sm:p-4">
               {/* Excerpt */}
               <p className="text-sm text-gray-700 dark:text-gray-300 leading-snug mb-3 pb-3 border-b border-gray-200 dark:border-slate-700 font-medium">
                 {article.excerpt}
@@ -236,6 +248,7 @@ function ArticlePage() {
                     </p>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           </article>

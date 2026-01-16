@@ -8,6 +8,7 @@ export interface BlogPost {
   category: 'RDS' | 'Document Management' | 'BIM' | 'Project Management' | 'Product Development'
   author: string
   color: string
+  image: string
   pdfDownload?: string
 }
 
@@ -16,6 +17,7 @@ export const blogPosts: BlogPost[] = [
     id: 'future-of-document-management-construction',
     title: 'The Future of Document Management in Construction',
     excerpt: 'Explore how digital transformation and automation are reshaping document management practices in the construction and energy sectors.',
+    image: 'https://i.imgur.com/Uu5dmAV.jpeg',
     content: `The construction and energy industries are undergoing a significant digital transformation. Document management, once a manual and paper-heavy process, is now at the forefront of this change. This article explores the trends shaping the future of document management in these sectors.
 
 ## The Digital Transformation Journey
@@ -92,6 +94,7 @@ The future of document management in construction and energy is intelligent, int
     id: 'essential-guide-document-control-systems',
     title: 'Essential Guide to Document Control Systems',
     excerpt: 'A comprehensive guide to implementing and optimizing document control systems for engineering and infrastructure projects. Download our free PDF guide.',
+    image: 'https://i.imgur.com/7TBf4SL.jpeg',
     content: `Effective document control is the backbone of successful engineering and infrastructure projects. This comprehensive guide covers everything you need to know about implementing and optimizing document control systems.
 
 ## What is Document Control?
@@ -209,6 +212,7 @@ A well-implemented document control system is essential for project success. By 
     id: 'rds-compliance-what-you-need-to-know',
     title: 'RDS Compliance: What You Need to Know',
     excerpt: 'Understanding regulatory requirements and industry standards for Reference Designation Systems in energy and infrastructure projects.',
+    image: 'https://i.imgur.com/M3Pia0U.jpeg',
     content: `Reference Designation System (RDS) compliance is increasingly important in the energy and infrastructure sectors. This article explains the key standards, regulatory requirements, and best practices for ensuring your organization meets compliance obligations.
 
 ## Why RDS Compliance Matters
@@ -344,6 +348,7 @@ RDS compliance is essential for organizations in the energy and infrastructure s
     id: 'understanding-iec-81346-guide',
     title: 'Understanding IEC 81346: A Practical Guide to Reference Designation Systems',
     excerpt: 'Reference Designation Systems are the backbone of effective documentation in the energy sector. This guide explores the fundamentals of IEC 81346 and how to implement it successfully in your organization.',
+    image: 'https://i.imgur.com/BVVLSIm.jpeg',
     content: `Reference Designation Systems (RDS) form the foundation of clear and consistent asset identification across industries. The IEC 81346 standard provides a structured framework that enables organizations to create unambiguous references to their assets and systems.
 
 ## What is IEC 81346?
@@ -410,6 +415,7 @@ Implementing IEC 81346 is a significant undertaking, but the long-term benefits 
     id: 'document-management-best-practices',
     title: 'Document Management Best Practices for Energy Infrastructure',
     excerpt: 'Learn how leading energy companies are improving their documentation practices to enhance efficiency and compliance.',
+    image: 'https://i.imgur.com/1VO39FL.jpeg',
     content: `Effective document management is critical for energy infrastructure organizations. With thousands of technical documents, drawings, and specifications to manage, having the right practices in place can make the difference between operational excellence and costly mistakes.
 
 ## The Challenge of Technical Documentation
@@ -493,6 +499,7 @@ Implementing these best practices requires commitment and ongoing effort, but th
     id: 'bim-energy-infrastructure',
     title: 'Applying BIM Methods in Energy Infrastructure Projects',
     excerpt: 'Building Information Modeling is transforming how energy infrastructure is designed, built, and operated.',
+    image: 'https://i.imgur.com/dnUFtc2.jpeg',
     content: `Building Information Modeling (BIM) has revolutionized the architecture and construction industries. Now, energy infrastructure organizations are discovering how BIM methods can improve project delivery and operational efficiency.
 
 ## What is BIM for Energy Infrastructure?
@@ -563,6 +570,7 @@ BIM methods offer significant benefits for energy infrastructure organizations, 
     id: 'rds-implementation-lessons',
     title: 'Lessons Learned from RDS Implementation Projects',
     excerpt: 'Real-world insights from organizations that have successfully implemented Reference Designation Systems.',
+    image: 'https://i.imgur.com/RY0Dsk2.jpeg',
     content: `After working on dozens of Reference Designation System implementations, we've learned valuable lessons about what works and what doesn't. This article shares practical insights from real-world projects.
 
 ## Lesson 1: Executive Support is Essential
@@ -670,6 +678,7 @@ Implementing an RDS is a significant undertaking that requires careful planning,
     id: 'project-management-energy-sector',
     title: 'Focused Project Management in the Energy Sector',
     excerpt: 'How structured project management approaches improve outcomes in complex energy infrastructure projects.',
+    image: 'https://i.imgur.com/Sbxq4Ff.jpeg',
     content: `Energy infrastructure projects are among the most complex undertakings in industry. With multiple stakeholders, technical complexity, regulatory requirements, and significant capital at stake, focused project management is essential for success.
 
 ## The Challenge of Energy Projects
@@ -806,6 +815,7 @@ Focused project management in the energy sector requires a systematic approach t
     id: 'structured-product-development',
     title: 'Structured Product Development for Technical Solutions',
     excerpt: 'How to bring structure to product development in technical industries through focused processes.',
+    image: 'https://i.imgur.com/uDABO15.jpeg',
     content: `Developing technical products for the energy and infrastructure sectors requires a structured approach that balances creativity with discipline. This article explores how organizations can improve their product development processes to deliver better results.
 
 ## The Product Development Challenge

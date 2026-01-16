@@ -31,5 +31,9 @@ export default defineConfig({
     host: "0.0.0.0",
     strictPort: true,
     allowedHosts: [".modal.host", "shipper.now", "localhost", ".localhost"],
+    hmr: {
+      clientPort: 443,
+      protocol: "wss",
+    },
   },
 });
