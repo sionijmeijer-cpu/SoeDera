@@ -461,7 +461,7 @@ Implementing IEC 81346 is a significant undertaking, but the long-term benefits 
   },
   {
     id: 'document-management-best-practices',
-    title: 'Document Management Best Practices for Energy Infrastructure',
+    title: 'Document Management Best Practices for Energy Infrastructure 2026',
     excerpt: 'Learn how leading energy companies are improving their documentation practices to enhance efficiency and compliance.',
     image: 'https://i.imgur.com/1VO39FL.jpeg',
     content: `Learn how leading energy companies are improving their documentation practices to enhance efficiency and compliance.
@@ -574,8 +574,8 @@ The organizations that excel don't just store documents; they:
 - And design systems around how people actually work
 
 If you get this right, documentation stops being a burden and becomes a competitive advantage.`,
-    date: '2026-01-16',
-    readTime: '5 min read',
+    date: '2025-10-22',
+    readTime: '10 min read',
     category: 'Document Management',
     author: 'Sylvia Awoudu',
     color: 'from-blue-500 to-blue-400'

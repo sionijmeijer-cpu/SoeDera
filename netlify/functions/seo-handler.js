@@ -1,4 +1,4 @@
-// Netlify Edge Function for serving SEO-optimized HTML to crawlers
+// Netlify Function for serving SEO-optimized HTML to crawlers
 
 const blogArticles = {
   'document-management-best-practices': {
@@ -37,12 +37,40 @@ const blogArticles = {
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=630&fit=crop',
     publishDate: '2024-03-01',
   },
+  'metadata-design-technical-documentation': {
+    title: 'How to Design Metadata That Actually Works for Technical Documentation',
+    description: 'Learn how to design effective metadata schemas for technical documentation that improves searchability, compliance, and long-term maintainability.',
+    image: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1200&h=630&fit=crop',
+    publishDate: '2024-03-15',
+  },
 };
 
-function generateBlogHTML(articleId, article) {
-  const url = `https://www.soedera.eu/blog/${articleId}`;
-  
-  return `<!doctype html>
+exports.handler = async (event) => {
+  const userAgent = (event.headers['user-agent'] || '').toLowerCase();
+  const path = event.path || '';
+  const articleId = path.replace('/blog/', '').replace(/\/$/, '');
+  const article = blogArticles[articleId];
+
+  // Check if this is a bot/crawler
+  const isCrawler = /linkedinbot|facebookexternalhit|twitterbot|googlebot|bingbot|slackbot|whatsapp|telegram/i.test(userAgent);
+
+  // If not a crawler, redirect to the main app
+  if (!isCrawler) {
+    return {
+      statusCode: 302,
+      headers: {
+        'Location': `/blog/${articleId}`,
+        'Cache-Control': 'no-cache',
+      },
+      body: '',
+    };
+  }
+
+  // For crawlers, serve SEO-optimized HTML
+  if (article) {
+    const url = `https://www.soedera.eu/blog/${articleId}`;
+    
+    const html = `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -54,6 +82,8 @@ function generateBlogHTML(articleId, article) {
 <meta property="og:title" content="${article.title}" />
 <meta property="og:description" content="${article.description}" />
 <meta property="og:image" content="${article.image}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 <meta property="og:site_name" content="SøDera" />
 <meta property="article:published_time" content="${article.publishDate}" />
 <meta property="article:author" content="SøDera" />
@@ -64,21 +94,15 @@ function generateBlogHTML(articleId, article) {
 <meta name="twitter:image" content="${article.image}" />
 <link rel="icon" type="image/png" href="https://i.imgur.com/TK8sXC2.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="refresh" content="0;url=${url}" />
 </head>
 <body>
-<div id="root"></div>
-<script type="module" src="/src/main.tsx"></script>
+<h1>${article.title}</h1>
+<p>${article.description}</p>
+<p>Redirecting to <a href="${url}">${url}</a></p>
 </body>
 </html>`;
-}
 
-exports.handler = async (event) => {
-  const path = event.path || '';
-  const articleId = path.replace('/blog/', '').replace(/\/$/, '');
-  const article = blogArticles[articleId];
-
-  if (article) {
-    const html = generateBlogHTML(articleId, article);
     return {
       statusCode: 200,
       headers: {
@@ -89,9 +113,13 @@ exports.handler = async (event) => {
     };
   }
 
-  // Fallback - return 404
+  // Fallback - redirect to blog index
   return {
-    statusCode: 404,
-    body: 'Article not found',
+    statusCode: 302,
+    headers: {
+      'Location': '/blog',
+      'Cache-Control': 'no-cache',
+    },
+    body: '',
   };
 };

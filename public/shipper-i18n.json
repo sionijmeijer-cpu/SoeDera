@@ -1,0 +1,27 @@
+{
+  "enabled": false,
+  "source": "en",
+  "languages": [],
+  "translations": {},
+  "pendingTranslations": {
+    "SøDera": "SøDera",
+    "| SøDera": "| SøDera",
+    "Redirecting to": "Redirecting to",
+    "BIM Implementation in the Energy Sector": "BIM Implementation in the Energy Sector",
+    "RDS-PP for Offshore Wind: A Complete Guide": "RDS-PP for Offshore Wind: A Complete Guide",
+    "The Future of Document Management in Construction": "The Future of Document Management in Construction",
+    "IEC 81346 Implementation Guide for Energy Companies": "IEC 81346 Implementation Guide for Energy Companies",
+    "Asset Data Management Strategy for Energy Operations": "Asset Data Management Strategy for Energy Operations",
+    "Document Management Best Practices for Energy Infrastructure": "Document Management Best Practices for Energy Infrastructure",
+    "How to Design Metadata That Actually Works for Technical Documentation": "How to Design Metadata That Actually Works for Technical Documentation",
+    "Discover best practices for implementing Building Information Modeling in energy infrastructure projects.": "Discover best practices for implementing Building Information Modeling in energy infrastructure projects.",
+    "Learn how to implement Reference Designation Systems (IEC 81346) to standardize your asset data management.": "Learn how to implement Reference Designation Systems (IEC 81346) to standardize your asset data management.",
+    "Develop a comprehensive asset data management strategy to improve operational efficiency and reduce downtime.": "Develop a comprehensive asset data management strategy to improve operational efficiency and reduce downtime.",
+    "Master the Reference Designation System for Power Plants (RDS-PP) specifically tailored for offshore wind farm applications.": "Master the Reference Designation System for Power Plants (RDS-PP) specifically tailored for offshore wind farm applications.",
+    "Implement effective document management systems to streamline operations and ensure compliance in energy infrastructure projects.": "Implement effective document management systems to streamline operations and ensure compliance in energy infrastructure projects.",
+    "Explore how digital transformation and automation are reshaping document management practices in the construction and energy sectors.": "Explore how digital transformation and automation are reshaping document management practices in the construction and energy sectors.",
+    "Learn how to design effective metadata schemas for technical documentation that improves searchability, compliance, and long-term maintainability.": "Learn how to design effective metadata schemas for technical documentation that improves searchability, compliance, and long-term maintainability."
+  },
+  "preservedKeys": [],
+  "preservedStore": {}
+}

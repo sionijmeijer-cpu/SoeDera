@@ -3,13 +3,15 @@
   publish = "dist"
   functions = "netlify/functions"
 
+# Serve SEO-optimized HTML to social media crawlers
 [[redirects]]
   from = "/blog/*"
   to = "/.netlify/functions/seo-handler"
   status = 200
   force = true
-  conditions = {Role = ["LinkedInBot", "facebookexternalhit", "Twitterbot", "Googlebot"]}
+  conditions = {Role = ["LinkedInBot", "facebookexternalhit", "Twitterbot", "Googlebot", "bingbot"]}
 
+# SPA fallback for all other requests (real users)
 [[redirects]]
   from = "/*"
   to = "/index.html"
