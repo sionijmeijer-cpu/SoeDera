@@ -39,7 +39,7 @@
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/images/*", "/assets/*", "/blog/*/index.html", "*.css", "*.js", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.svg", "*.ico", "*.pdf"]
+    "exclude": ["/images/*.{png,jpg,jpeg,gif,svg,ico}", "/assets/*.{css,js,png,jpg,jpeg,gif,svg,ico}", "*.{css,js,png,jpg,jpeg,gif,svg,ico,pdf}"]
   },
   "mimeTypes": {
     ".json": "application/json"
