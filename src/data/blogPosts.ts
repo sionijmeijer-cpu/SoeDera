@@ -257,137 +257,97 @@ And when it's ignored, no document management system can compensate.
     pdfDownload: '/document-control-checklist.pdf'
   },
   {
-    id: 'rds-compliance-what-you-need-to-know',
-    title: 'RDS Compliance: What You Need to Know',
-    excerpt: 'Understanding regulatory requirements and industry standards for Reference Designation Systems in energy and infrastructure projects.',
+    id: 'rdspp-vs.rdsps',
+    title: 'RDS-PP vs. RDS-PS',
+    excerpt: 'Understanding Standardization, Flexibility, and the Choices Power Asset Owners Must Make.',
     image: 'https://i.imgur.com/M3Pia0U.jpeg',
-    content: `Reference Designation System (RDS) compliance is increasingly important in the energy and infrastructure sectors. This article explains the key standards, regulatory requirements, and best practices for ensuring your organization meets compliance obligations.
+    content: `Over the past decades, the power and energy industry has navigated two distinct naming conventions defined by the International Organization for Standardization (ISO). These conventions are rooted in the ISO 81346 standard series, which covers Reference Designation Systems (RDS). 
 
-## Why RDS Compliance Matters
+ISO 81346-1 and ISO 81346-2 establish the foundational principles of RDS. Building on this, ISO 81346-10 introduced a more domain-specific application—first as RDS-PP (Reference Designation System for Power Plants) and later as RDS-PS (Reference Designation System for Power Supply Systems). 
 
-Compliance with RDS standards is not just about following rules—it delivers real business benefits:
+While both aim to bring order and clarity to complex technical assets, the transition from RDS-PP to RDS-PS has caused notable disruption across the industry. Most notably, RDS-PS is not backward-compatible with RDS-PP, leaving many organizations uncertain about which path to follow. 
 
-- **Regulatory Approval**: Many jurisdictions require standards-compliant documentation
-- **Interoperability**: Enables data exchange between organizations and systems
-- **Quality Assurance**: Demonstrates commitment to industry best practices
-- **Risk Reduction**: Reduces errors and misunderstandings in critical systems
+This insight article provides a clear perspective on both naming conventions and offers guidance for companies considering the implementation of a standardized Reference Designation System. 
 
-## Key Standards and Regulations
 
-### IEC 81346 Series
+## Confusion in the Industry 
 
-The primary international standard for reference designations:
+Can I choose—and what should I choose? 
 
-- **IEC 81346-1**: Basic rules for creating designations
-- **IEC 81346-2**: Classification of objects and codes
-- **IEC 81346-10**: Power plants (specific application rules)
-- **IEC 81346-12**: Buildings and building services
+Whether you apply RDS-PP or RDS-PS, your physical assets remain unchanged. A transformer does not become more or less complex simply because it is named Frank instead of Peter. However, the way assets are structured, communicated, and governed does change—and this can have significant long-term implications. 
 
-### Industry-Specific Requirements
+Let’s look at the core differences. 
 
-Different sectors have additional requirements:
+## RDS-PP: Proven, Structured, and Operationally Focused 
+RDS-PP has a long and successful track record, particularly within the power plant sector. Its strength lies in fixed principles, predefined system boundaries, and consistent rules, which together enable a high level of standardization. 
+For example, regardless of geography, Europe or Asia, the transformer system within a substation is always identified using the same functional code, such as: 
+=T001 ATA10 
 
-#### Power Generation
-- Grid code compliance requirements
-- Safety system documentation standards
-- Environmental reporting obligations
+### Key characteristics of RDS-PP include: 
+- Fixed syntax and consistent use of leading zeros 
+- Strong human readability 
+- Clear, predefined system boundaries 
+- Extensive application guidelines published by VGB 
 
-#### Oil and Gas
-- NORSOK standards (Norwegian sector)
-- API standards (American Petroleum Institute)
-- HSE documentation requirements
+This consistency makes RDS-PP easy to understand, compare, and scale across large fleets of assets. 
 
-#### Renewable Energy
-- Wind turbine designation standards
-- Solar installation documentation
-- Grid connection requirements
+### RDS-PS: Flexible, Purpose-Driven, and Controversial 
+RDS-PS represents a fundamental shift in philosophy. 
 
-## Compliance Requirements Checklist
+ISO 81346-10:2022 explicitly states: 
+“The reference designation is not bound to a fixed structural pattern.” 
 
-### Documentation Requirements
+This means the user is free to define the structure of the designation system, as long the correct classification codes are used (for example =B1.KF1). In practice, two companies are not required to structure their RDS-PS in the same way. 
+This flexibility offers clear advantages: 
+- Adaptability to different business purposes 
+- Better alignment with engineering, digitalization, or lifecycle strategies 
+- Greater future-proofing for evolving systems 
 
-✓ Consistent use of approved designation structure
-✓ Complete equipment lists with valid designations
-✓ Document-to-equipment linking
-✓ Revision control and audit trails
-✓ As-built documentation accuracy
+However, it also introduces a downside: reduced standardization across organizations. 
 
-### Process Requirements
+Example: Transformer System 
+Consider a transformer system in a substation: 
 
-✓ Documented RDS application procedures
-✓ Training and competency records
-✓ Quality assurance processes
-✓ Change management procedures
-✓ Regular compliance audits
+Naming convention: Designation
 
-### System Requirements
+RDS-PP T32 edition 1: =T001 ATA10 
 
-✓ Tools that support the designation structure
-✓ Validation rules and checks
-✓ Integration between systems
-✓ Reporting and analytics capabilities
-✓ Archive and retention compliance
+RDS-PS (user A): =B1.KF1 
 
-## Common Compliance Issues
+RDS-PS (user B): =B1.HD1.KF1
 
-### Issue 1: Inconsistent Application
-**Problem**: Different teams apply designations differently
-**Solution**: Develop a company application guide with clear examples
+Both RDS-PS examples comply with the ISO 81346 series, yet they represent different structural interpretations of the same asset. Unlike RDS-PP, where system boundaries are predefined in VGB application guidelines, RDS-PS leaves boundary definition to the user. 
 
-### Issue 2: Legacy Data
-**Problem**: Historical data doesn't conform to current standards
-**Solution**: Prioritize migration based on risk, develop mapping rules
+In short: RDS-PS enables customization, while RDS-PP enforces consistency. 
 
-### Issue 3: Supplier Deliverables
-**Problem**: Vendors deliver non-compliant documentation
-**Solution**: Include RDS requirements in contracts, validate deliverables
 
-### Issue 4: System Limitations
-**Problem**: Software doesn't support required designation structure
-**Solution**: Configure or customize systems, consider alternatives
+### Industry Mitigation: Raising the Bar with Application Guidelines 
 
-## Achieving and Maintaining Compliance
+Recognizing the risk of inconsistency, parts of the industry, most notably the wind sector, have taken proactive steps. 
 
-### Step 1: Gap Assessment
-- Review current practices against standards
-- Identify non-conformances and risks
-- Prioritize issues for resolution
+The TIM Wind (https://timwind.org/) working group has developed application guidelines for wind power plants, effectively creating a shared foundation for implementing RDS-PS. These guidelines significantly improve consistency while retaining the flexibility intended by the standard. 
 
-### Step 2: Develop Standards
-- Create company-specific application guide
-- Define procedures and workflows
-- Establish quality checkpoints
+That said, even with such guidelines in place, RDS-PS implementations will still vary from company to company. Each organization must define its structure according to its own needs and purpose. 
 
-### Step 3: Implement Controls
-- Configure systems to enforce standards
-- Train personnel on requirements
-- Establish review and approval processes
 
-### Step 4: Monitor and Audit
-- Conduct regular compliance checks
-- Track and report metrics
-- Address issues promptly
+#### Conclusion: Choosing the Right Path Forward 
 
-### Step 5: Continuous Improvement
-- Learn from audits and incidents
-- Update standards as needed
-- Share lessons across the organization
+### RDS-PS, by design, requires each company to create its own specification. This is not a weakness, it is an intentional feature of the standard. ISO itself recommends that projects define project-specific designation specifications, ideally supported by industry guidelines such as those from TIM Wind. 
 
-## Preparing for Audits
+### RDS-PP, meanwhile, is far from obsolete. It continues to be maintained and updated by VGB Energy (https://www.vgbe.energy/en/) and remains compliant with ISO 81346-1 and parts of ISO 81346-2 (2019). For organizations with an existing fleet structured under RDS-PP, continuing with this system often makes practical and economic sense. 
 
-When facing compliance audits:
+So, what should you choose? 
 
-1. **Gather Evidence**: Collect documentation demonstrating compliance
-2. **Review Procedures**: Ensure procedures are current and followed
-3. **Check Systems**: Verify system configurations and data quality
-4. **Brief Personnel**: Ensure team understands requirements and can explain practices
-5. **Address Known Issues**: Resolve or document plans for known gaps
+- Brownfield assets / existing fleets → RDS-PP remains a strong and reliable option 
 
-## Conclusion
+- Greenfield projects or major asset restructurings → RDS-PS is generally the more future-proof choice 
 
-RDS compliance is essential for organizations in the energy and infrastructure sectors. By understanding the relevant standards, implementing robust processes, and maintaining vigilant oversight, organizations can ensure they meet compliance obligations while realizing the operational benefits of standardized reference designations.`,
-    date: '2026-01-05',
-    readTime: '12 min read',
+The key is not choosing the “right” standard, but choosing the right implementation strategy. 
+
+That is where experience, domain knowledge, and a clear understanding of both standards make the difference.`,
+  
+    date: '2026-01-18',
+    readTime: '4 min read',
     category: 'RDS',
     author: 'Søren Christensen',
     color: 'from-emerald-500 to-emerald-400'
