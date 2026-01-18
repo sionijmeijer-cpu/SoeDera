@@ -1,5 +1,6 @@
 import { createRootRoute, Link, Outlet, useLocation } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
+import { ThemeProvider } from '@/components/theme-provider'
 
 // Add flash and shimmer animations
 if (typeof window !== 'undefined' && !document.getElementById('flash-animations')) {
@@ -33,6 +34,13 @@ function RootLayout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const location = useLocation()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +64,8 @@ function RootLayout() {
   ]
 
   return (
-    <div className="min-h-screen bg-white text-slate-900">
+    <ThemeProvider defaultTheme="system" storageKey="soedera-theme">
+    <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors">
       <ScrollHandler />
       {/* Top Bar */}
       <div className="bg-slate-50 border-b border-slate-200">
@@ -332,5 +341,6 @@ function RootLayout() {
         </div>
       </footer>
     </div>
+    </ThemeProvider>
   )
 }

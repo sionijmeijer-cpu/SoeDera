@@ -461,7 +461,7 @@ Implementing IEC 81346 is a significant undertaking, but the long-term benefits 
   },
   {
     id: 'document-management-best-practices',
-    title: 'Document Management Best Practices for Energy Infrastructure 2026',
+    title: 'Document Management Best Practices for Energy Infrastructure',
     excerpt: 'Learn how leading energy companies are improving their documentation practices to enhance efficiency and compliance.',
     image: 'https://i.imgur.com/1VO39FL.jpeg',
     content: `Learn how leading energy companies are improving their documentation practices to enhance efficiency and compliance.
