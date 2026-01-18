@@ -16,42 +16,72 @@ const blogPosts = [
     id: 'future-of-document-management-construction',
     title: 'The Future of Document Management in Construction',
     description: 'Explore how digital transformation is revolutionizing document management in the construction industry, from BIM integration to AI-powered systems.',
-    author: 'SøDera Team'
+    author: 'Søren Christensen'
   },
   {
     id: 'essential-guide-document-control-systems',
-    title: 'Essential Guide to Document Control Systems',
-    description: 'Learn everything you need to know about implementing effective document control systems in your organization.',
-    author: 'SøDera Team'
+    title: 'How to Design Metadata That Actually Works for Technical Documentation',
+    description: 'Learn how to design metadata that supports real work in energy infrastructure, not just system configuration. A practical guide to metadata that users barely notice because it just works.',
+    author: 'Sylvia Awoudu'
   },
   {
     id: 'rds-compliance-what-you-need-to-know',
     title: 'RDS Compliance: What You Need to Know',
     description: 'A comprehensive guide to understanding and implementing RDS (Reference Designation System) compliance in your projects.',
-    author: 'SøDera Team'
+    author: 'Søren Christensen'
   },
   {
     id: 'understanding-iec-81346-guide',
-    title: 'Understanding IEC 81346: A Complete Guide',
-    description: 'Master the IEC 81346 standard for industrial systems, installations and equipment and industrial products.',
-    author: 'SøDera Team'
+    title: 'Understanding IEC 81346: A Practical Guide to Reference Designation Systems',
+    description: 'Reference Designation Systems are the backbone of effective documentation in the energy sector. This guide explores the fundamentals of IEC 81346.',
+    author: 'Søren Christensen'
   },
   {
     id: 'document-management-best-practices',
-    title: 'Document Management Best Practices for 2024',
-    description: 'Discover the latest best practices for document management that will help your organization stay organized and efficient.',
-    author: 'SøDera Team'
+    title: 'Document Management Best Practices for Energy Infrastructure 2026',
+    description: 'Learn how leading energy companies are improving their documentation practices to enhance efficiency and compliance.',
+    author: 'Sylvia Awoudu'
   },
   {
     id: 'bim-energy-infrastructure',
-    title: 'BIM in Energy Infrastructure Projects',
-    description: 'How Building Information Modeling is transforming energy infrastructure development and management.',
-    author: 'SøDera Team'
+    title: 'Applying BIM Methods in Energy Infrastructure Projects',
+    description: 'Building Information Modeling is transforming how energy infrastructure is designed, built, and operated.',
+    author: 'Sylvia Awoudu'
+  },
+  {
+    id: 'rds-implementation-lessons',
+    title: 'Lessons Learned from RDS Implementation Projects',
+    description: 'Real-world insights from organizations that have successfully implemented Reference Designation Systems.',
+    author: 'Søren Christensen'
+  },
+  {
+    id: 'project-management-energy-sector',
+    title: 'Focused Project Management in the Energy Sector',
+    description: 'How structured project management approaches improve outcomes in complex energy infrastructure projects.',
+    author: 'Sylvia Awoudu'
+  },
+  {
+    id: 'structured-product-development',
+    title: 'Structured Product Development for Technical Solutions',
+    description: 'How to bring structure to product development in technical industries through focused processes.',
+    author: 'Sylvia Awoudu'
   }
 ];
 
 function generateBlogHTML(post) {
   const url = `${SITE_URL}/blog/${post.id}`;
+  
+  // Read the built index.html to get the correct asset references
+  const distIndexPath = path.join(__dirname, '..', 'dist', 'index.html');
+  let assetTags = '';
+  
+  if (fs.existsSync(distIndexPath)) {
+    const indexContent = fs.readFileSync(distIndexPath, 'utf8');
+    // Extract CSS and JS references from the built index.html
+    const cssMatch = indexContent.match(/<link[^>]*rel="stylesheet"[^>]*href="([^"]+)"[^>]*>/g) || [];
+    const jsMatch = indexContent.match(/<script[^>]*src="([^"]+)"[^>]*>/g) || [];
+    assetTags = [...cssMatch, ...jsMatch].join('\n  ');
+  }
   
   return `<!DOCTYPE html>
 <html lang="en">
@@ -89,46 +119,18 @@ function generateBlogHTML(post) {
   <!-- Canonical -->
   <link rel="canonical" href="${url}">
   
-  <!-- Redirect to SPA after meta tags are read -->
-  <meta http-equiv="refresh" content="0;url=${url}">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-    }
-    .loading {
-      text-align: center;
-      padding: 2rem;
-    }
-    .spinner {
-      width: 40px;
-      height: 40px;
-      border: 4px solid rgba(255,255,255,0.3);
-      border-top-color: white;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 1rem;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-  </style>
+  ${assetTags}
 </head>
 <body>
-  <div class="loading">
-    <div class="spinner"></div>
-    <p>Loading article...</p>
-  </div>
+  <div id="root"></div>
   <script>
-    // Immediate redirect for browsers
-    window.location.replace('${url}');
+    // Set the current path for the React router
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState({}, '', '${url.replace(SITE_URL, '')}');
+    }
   </script>
 </body>
 </html>`;
@@ -146,6 +148,13 @@ function main() {
   console.log('Generating blog HTML files...');
   console.log('Using OG image:', OG_IMAGE_URL);
   
+  // Read the main index.html to copy script/css references
+  const mainIndexPath = path.join(distDir, 'index.html');
+  let mainIndexContent = '';
+  if (fs.existsSync(mainIndexPath)) {
+    mainIndexContent = fs.readFileSync(mainIndexPath, 'utf8');
+  }
+  
   blogPosts.forEach(post => {
     const html = generateBlogHTML(post);
     
@@ -159,11 +168,6 @@ function main() {
     const indexPath = path.join(postDir, 'index.html');
     fs.writeFileSync(indexPath, html);
     console.log(`Generated: ${indexPath}`);
-    
-    // Also create a flat HTML file for direct access
-    const flatPath = path.join(blogDir, `${post.id}.html`);
-    fs.writeFileSync(flatPath, html);
-    console.log(`Generated: ${flatPath}`);
   });
   
   console.log(`\nSuccessfully generated ${blogPosts.length} blog HTML files!`);

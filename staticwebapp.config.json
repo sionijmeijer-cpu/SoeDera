@@ -2,40 +2,44 @@
   "routes": [
     {
       "route": "/blog/document-management-best-practices",
-      "rewrite": "/index.html"
+      "rewrite": "/blog/document-management-best-practices/index.html"
     },
     {
       "route": "/blog/future-of-document-management-construction",
-      "rewrite": "/index.html"
+      "rewrite": "/blog/future-of-document-management-construction/index.html"
     },
     {
       "route": "/blog/essential-guide-document-control-systems",
-      "rewrite": "/index.html"
+      "rewrite": "/blog/essential-guide-document-control-systems/index.html"
     },
     {
       "route": "/blog/rds-compliance-what-you-need-to-know",
-      "rewrite": "/index.html"
+      "rewrite": "/blog/rds-compliance-what-you-need-to-know/index.html"
     },
     {
       "route": "/blog/understanding-iec-81346-guide",
-      "rewrite": "/index.html"
+      "rewrite": "/blog/understanding-iec-81346-guide/index.html"
     },
     {
       "route": "/blog/bim-energy-infrastructure",
-      "rewrite": "/index.html"
+      "rewrite": "/blog/bim-energy-infrastructure/index.html"
     },
     {
-      "route": "/blog/metadata-design-technical-documentation",
-      "rewrite": "/index.html"
+      "route": "/blog/rds-implementation-lessons",
+      "rewrite": "/blog/rds-implementation-lessons/index.html"
     },
     {
-      "route": "/blog/*",
-      "rewrite": "/index.html"
+      "route": "/blog/project-management-energy-sector",
+      "rewrite": "/blog/project-management-energy-sector/index.html"
+    },
+    {
+      "route": "/blog/structured-product-development",
+      "rewrite": "/blog/structured-product-development/index.html"
     }
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/images/*", "/assets/*", "*.css", "*.js", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.svg", "*.ico", "*.pdf"]
+    "exclude": ["/images/*", "/assets/*", "/blog/*/index.html", "*.css", "*.js", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.svg", "*.ico", "*.pdf"]
   },
   "mimeTypes": {
     ".json": "application/json"
