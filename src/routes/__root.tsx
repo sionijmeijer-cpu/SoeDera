@@ -40,8 +40,6 @@ function RootLayout() {
     setMounted(true)
   }, [])
 
-  if (!mounted) return null
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40)
@@ -54,6 +52,8 @@ function RootLayout() {
     setIsMobileMenuOpen(false)
     setIsServicesOpen(false)
   }, [location.pathname])
+
+  if (!mounted) return null
 
   const services = [
     { name: 'Document Management', href: '/service-document-management', icon: FileText },
