@@ -464,9 +464,7 @@ Implementing IEC 81346 is a significant undertaking, but the long-term benefits 
     title: 'Document Management Best Practices for Energy Infrastructure',
     excerpt: 'Learn how leading energy companies are improving their documentation practices to enhance efficiency and compliance.',
     image: 'https://i.imgur.com/1VO39FL.jpeg',
-    content: `Learn how leading energy companies are improving their documentation practices to enhance efficiency and compliance.
-
-Effective document management is a cornerstone of safe, efficient, and compliant energy infrastructure operations. From early engineering through decades of operation, technical documentation supports decision-making, maintenance, audits, and change management. Yet many organizations still struggle because documents exist but the confidence in them does not.
+    content: `Effective document management is a cornerstone of safe, efficient, and compliant energy infrastructure operations. From early engineering through decades of operation, technical documentation supports decision-making, maintenance, audits, and change management. Yet many organizations still struggle because documents exist but the confidence in them does not.
 
 ## The Challenge of Technical Documentation
 
@@ -499,7 +497,7 @@ Design documents, construction records, and operational procedures serve very di
 
 Drawings, procedures, specifications, and reports should follow predictable structures. This enables consistent review, approval, and change processes.
 
-**Rule of thumb:**
+### Rule of thumb:
 If a new engineer needs intensive training to understand your folder structure, it's too complex.
 
 ## Best Practice 2: Implement Robust Version Control
@@ -508,9 +506,9 @@ Version confusion is one of the most common and dangerous failures in document m
 
 Effective version control means:
 
-- **Clear and consistent revision schemes:** For example: numeric revision for approved or newly uploaded files and alphabetical versions for updates made to the metadata. (e.g., Vers. A, B, C, D; Rev 0, 1, 2, 3)
-- **Transparent revision histories:** Every change should answer three questions: what changed, why, and who approved it. A clear audit trail.
-- **Strict control of obsolete documents:** Outdated versions must be clearly indicated or removed entirely to avoid accidental use.
+- **Clear and consistent revision schemes: For example: numeric revision for approved or newly uploaded files and alphabetical versions for updates made to the metadata. (e.g., Vers. A, B, C, D; Rev 0, 1, 2, 3)
+- **Transparent revision histories: Every change should answer three questions: what changed, why, and who approved it. A clear audit trail.
+- **Strict control of obsolete documents: Outdated versions must be clearly indicated or removed entirely to avoid accidental use.
 
 Good version control doesn't slow teams down — it protects them from costly mistakes.
 
@@ -533,7 +531,7 @@ Without consistent metadata, even the most powerful document management system b
 - Superseded or replaced references
 - Review, due date, or inspection dates
 
-💡 **Want to go deeper?**
+💡 Want to go deeper?
 
 If you want to learn how to design metadata that actually supports engineers and operators, read our dedicated blog on generating high-quality document metadata on the Sødera website.
 
@@ -541,7 +539,7 @@ If you want to learn how to design metadata that actually supports engineers and
 
 Documents should never live in isolation.
 
-Best-performing organizations ensure that every critical document is **explicitly linked to the asset it describes**:
+Best-performing organizations ensure that every critical document is explicitly linked to the asset it describes:
 
 - Use consistent equipment and tag naming across all systems
 - Maintain document-to-equipment relationships centrally
@@ -574,8 +572,8 @@ The organizations that excel don't just store documents; they:
 - And design systems around how people actually work
 
 If you get this right, documentation stops being a burden and becomes a competitive advantage.`,
-    date: '2025-10-22',
-    readTime: '10 min read',
+    date: '2026-01-17',
+    readTime: '5 min read',
     category: 'Document Management',
     author: 'Sylvia Awoudu',
     color: 'from-blue-500 to-blue-400'
