@@ -68,19 +68,27 @@ const blogPosts = [
   }
 ];
 
-function generateBlogHTML(post) {
+function generateBlogHTML(post, mainIndexContent) {
   const url = `${SITE_URL}/blog/${post.id}`;
   
-  // Read the built index.html to get the correct asset references
-  const distIndexPath = path.join(__dirname, '..', 'dist', 'index.html');
-  let assetTags = '';
+  // Extract the head content (CSS links, preloads, etc.) from main index.html
+  const headMatch = mainIndexContent.match(/<head[^>]*>([\s\S]*?)<\/head>/i);
+  let headContent = '';
+  if (headMatch) {
+    // Get everything from head except title and meta tags (we'll add our own)
+    headContent = headMatch[1]
+      .replace(/<title[^>]*>[\s\S]*?<\/title>/gi, '')
+      .replace(/<meta[^>]*name="(title|description|author)"[^>]*>/gi, '')
+      .replace(/<meta[^>]*property="og:[^"]*"[^>]*>/gi, '')
+      .replace(/<meta[^>]*name="twitter:[^"]*"[^>]*>/gi, '')
+      .replace(/<link[^>]*rel="canonical"[^>]*>/gi, '');
+  }
   
-  if (fs.existsSync(distIndexPath)) {
-    const indexContent = fs.readFileSync(distIndexPath, 'utf8');
-    // Extract CSS and JS references from the built index.html
-    const cssMatch = indexContent.match(/<link[^>]*rel="stylesheet"[^>]*href="([^"]+)"[^>]*>/g) || [];
-    const jsMatch = indexContent.match(/<script[^>]*src="([^"]+)"[^>]*>/g) || [];
-    assetTags = [...cssMatch, ...jsMatch].join('\n  ');
+  // Extract the body content (script tags) from main index.html
+  const bodyMatch = mainIndexContent.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+  let bodyContent = '<div id="root"></div>';
+  if (bodyMatch) {
+    bodyContent = bodyMatch[1];
   }
   
   return `<!DOCTYPE html>
@@ -114,24 +122,14 @@ function generateBlogHTML(post) {
   
   <!-- LinkedIn specific -->
   <meta property="og:image:secure_url" content="${OG_IMAGE_URL}">
-  <meta name="linkedin:image" content="${OG_IMAGE_URL}">
   
   <!-- Canonical -->
   <link rel="canonical" href="${url}">
   
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  
-  ${assetTags}
+  ${headContent}
 </head>
 <body>
-  <div id="root"></div>
-  <script>
-    // Set the current path for the React router
-    if (window.history && window.history.replaceState) {
-      window.history.replaceState({}, '', '${url.replace(SITE_URL, '')}');
-    }
-  </script>
+  ${bodyContent}
 </body>
 </html>`;
 }
@@ -153,10 +151,14 @@ function main() {
   let mainIndexContent = '';
   if (fs.existsSync(mainIndexPath)) {
     mainIndexContent = fs.readFileSync(mainIndexPath, 'utf8');
+    console.log('Found main index.html, extracting assets...');
+  } else {
+    console.error('ERROR: dist/index.html not found! Run vite build first.');
+    process.exit(1);
   }
   
   blogPosts.forEach(post => {
-    const html = generateBlogHTML(post);
+    const html = generateBlogHTML(post, mainIndexContent);
     
     // Create directory for the blog post
     const postDir = path.join(blogDir, post.id);
@@ -167,10 +169,10 @@ function main() {
     // Write index.html in the post directory
     const indexPath = path.join(postDir, 'index.html');
     fs.writeFileSync(indexPath, html);
-    console.log(`Generated: ${indexPath}`);
+    console.log(`Generated: /blog/${post.id}/index.html`);
   });
   
-  console.log(`\nSuccessfully generated ${blogPosts.length} blog HTML files!`);
+  console.log(`\nSuccessfully generated ${blogPosts.length} blog HTML files with full React app!`);
 }
 
 main();
