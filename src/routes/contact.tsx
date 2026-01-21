@@ -55,7 +55,7 @@ function ContactPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-sky-50 to-white relative overflow-hidden">
+      <section className="py-10 sm:py-12 md:py-14 bg-gradient-to-b from-sky-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
             linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)`,
@@ -77,7 +77,7 @@ function ContactPage() {
       </section>
 
       {/* Contact Content */}
-      <section className="py-8 sm:py-12 md:py-16 bg-slate-50">
+      <section className="py-6 sm:py-8 md:py-10 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
             {/* Contact Form */}
@@ -257,9 +257,9 @@ function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-8 sm:py-12 md:py-16 bg-white">
+      <section className="py-6 sm:py-8 md:py-10 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
             <p className="text-slate-600">
               Have a question? Check our FAQ below or reach out directly.

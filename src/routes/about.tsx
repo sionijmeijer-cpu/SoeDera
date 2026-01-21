@@ -82,7 +82,7 @@ function AboutPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-20 relative overflow-hidden" style={{
+      <section className="py-12 sm:py-16 relative overflow-hidden" style={{
         backgroundImage: 'url(https://i.imgur.com/L0OivFj.jpeg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
@@ -104,7 +104,7 @@ function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-10 sm:py-12 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Mission */}
@@ -133,7 +133,7 @@ function AboutPage() {
       </section>
 
       {/* Stats */}
-      <section className="py-12 bg-white">
+      <section className="py-8 sm:py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
@@ -149,9 +149,9 @@ function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-10 sm:py-14 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <span className="text-sky-600 font-semibold text-sm uppercase tracking-wider">Leadership Team</span>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 mb-4">Meet Our Experts</h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
@@ -191,9 +191,9 @@ function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-20 bg-white">
+      <section className="py-10 sm:py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <span className="text-sky-600 font-semibold text-sm uppercase tracking-wider">Our Values</span>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 mb-4">What Drives Us</h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
@@ -223,7 +223,7 @@ function AboutPage() {
 
 
       {/* CTA Section */}
-      <section className="py-20 relative overflow-hidden" style={{
+      <section className="py-12 sm:py-16 relative overflow-hidden" style={{
         backgroundImage: 'url(https://i.imgur.com/BrTo5LL.jpeg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center center',

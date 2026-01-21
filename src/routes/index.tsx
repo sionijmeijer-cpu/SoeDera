@@ -62,7 +62,7 @@ function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-16 md:py-24 flex items-center justify-center overflow-hidden min-h-[500px] sm:min-h-[600px]">
+      <section className="relative py-10 sm:py-12 md:py-16 flex items-center justify-center overflow-hidden min-h-[420px] sm:min-h-[500px]">
         {/* Blurred background image */}
         <div 
           className="absolute inset-0"
@@ -130,9 +130,9 @@ function HomePage() {
       </section>
 
       {/* Quick Assessments Section */}
-      <section className="py-12 sm:py-16 md:py-24 bg-white" id="services-section">
+      <section className="py-10 sm:py-12 md:py-16 bg-white" id="services-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <span className="text-sky-600 font-semibold text-sm uppercase tracking-wider">Start Here</span>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 mb-4">Quick Assessments</h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
@@ -272,9 +272,9 @@ function HomePage() {
       </section>
 
       {/* Services Grid Section */}
-      <section className="py-12 sm:py-16 md:py-24 bg-slate-50">
+      <section className="py-10 sm:py-12 md:py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <span className="text-sky-600 font-semibold text-sm uppercase tracking-wider">What We Do</span>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 mb-4">Our Services</h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
@@ -315,7 +315,7 @@ function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden" style={{
+      <section className="relative py-10 sm:py-12 md:py-16 overflow-hidden" style={{
         backgroundImage: 'url(https://i.imgur.com/BrTo5LL.jpeg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',

@@ -120,7 +120,7 @@ function ServicesPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-20 relative overflow-hidden" style={{
+      <section className="py-12 sm:py-16 relative overflow-hidden" style={{
         backgroundImage: 'url(https://i.imgur.com/L0OivFj.jpeg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
@@ -142,14 +142,14 @@ function ServicesPage() {
       </section>
 
       {/* Services List */}
-      <section className="py-16 bg-white">
+      <section className="py-10 sm:py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-12">
+          <div className="space-y-8">
             {services.map((service, index) => (
               <div 
                 key={service.id}
                 id={service.id}
-                className={`bg-gradient-to-br from-sky-50 to-white border-2 border-slate-200 ${service.borderColor} rounded-2xl p-8 md:p-10 transition-all hover:shadow-xl scroll-mt-32`}
+                className={`bg-gradient-to-br from-sky-50 to-white border-2 border-slate-200 ${service.borderColor} rounded-2xl p-6 md:p-8 transition-all hover:shadow-xl scroll-mt-24`}
               >
                 <div className="grid md:grid-cols-2 gap-8 items-start">
                   <div>
@@ -227,7 +227,7 @@ function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 relative overflow-hidden" style={{
+      <section className="py-12 sm:py-16 relative overflow-hidden" style={{
         backgroundImage: 'url(https://i.imgur.com/BrTo5LL.jpeg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center center',

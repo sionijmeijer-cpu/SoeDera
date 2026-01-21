@@ -65,42 +65,15 @@ function RootLayout() {
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="soedera-theme">
-    <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors">
+      <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors">
       <ScrollHandler />
-      {/* Top Bar */}
-      <div className="bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-10 text-sm">
-            <div className="w-0"></div>
-            <div className="flex items-center gap-4">
-              <a 
-                href="mailto:info@soedera.eu" 
-                className="flex items-center gap-2 text-slate-600 hover:text-sky-500 transition-colors"
-              >
-                <Mail size={14} />
-                <span className="hidden sm:inline">info@soedera.eu</span>
-              </a>
-              <a 
-                href="https://www.linkedin.com/company/s%C3%B8dera" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-slate-600 hover:text-sky-500 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={16} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navigation */}
       <nav className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled 
           ? 'bg-blue-950/95 backdrop-blur-md shadow-lg border-b border-blue-900' 
           : 'bg-blue-950 border-b border-blue-900'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group">
@@ -148,7 +121,7 @@ function RootLayout() {
                 className="px-4 py-2 text-sm font-medium text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-all"
                 activeProps={{ className: 'px-4 py-2 text-sm font-medium text-sky-400 bg-blue-900/50 rounded-lg' }}
               >
-                Blog
+                Insights
               </Link>
               <Link 
                 to="/about" 
@@ -227,7 +200,7 @@ function RootLayout() {
                 to="/blog" 
                 className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-colors"
               >
-                Blog
+                Insights
               </Link>
               <Link 
                 to="/about" 
@@ -261,7 +234,7 @@ function RootLayout() {
 
       {/* Footer */}
       <footer className="bg-slate-900 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Brand Column */}
             <div className="lg:col-span-1 text-center md:text-left">
@@ -332,7 +305,7 @@ function RootLayout() {
 
         {/* Bottom Bar */}
         <div className="border-t border-slate-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
               <p>© 2025 SøDera. All rights reserved.</p>
 
@@ -340,7 +313,7 @@ function RootLayout() {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
     </ThemeProvider>
   )
 }

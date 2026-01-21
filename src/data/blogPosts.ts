@@ -249,108 +249,138 @@ When designed with purpose, limited to what matters, and maintained as part of t
 And when it's ignored, no document management system can compensate.
 
 **Download our comprehensive PDF guide for detailed checklists and templates to help you design effective metadata for your technical documentation.**`,
-    date: '2026-01-08',
-    readTime: '11 min read',
-    category: 'Document Management',
+    date: '2025-01-18',
+    readTime: '4 min read',
+    category: 'RDS',
     author: 'Sylvia Awoudu',
     color: 'from-blue-500 to-blue-400',
-    pdfDownload: '/document-control-checklist.pdf'
+    pdfDownload: '/metadata-guide.pdf'
   },
   {
-    id: 'rdspp-vs.rdsps',
+    id: 'rdspp-vs-rdsps',
     title: 'RDS-PP vs. RDS-PS',
     excerpt: 'Understanding Standardization, Flexibility, and the Choices Power Asset Owners Must Make.',
     image: 'https://i.imgur.com/M3Pia0U.jpeg',
-    content: `Over the past decades, the power and energy industry has navigated two distinct naming conventions defined by the International Organization for Standardization (ISO). These conventions are rooted in the ISO 81346 standard series, which covers Reference Designation Systems (RDS). 
+    content: `Over the past decades, the power and energy industry has navigated two distinct naming conventions defined by the International Organization for Standardization (ISO). These conventions are rooted in the ISO 81346 standard series, which covers Reference Designation Systems (RDS).
 
-ISO 81346-1 and ISO 81346-2 establish the foundational principles of RDS. Building on this, ISO 81346-10 introduced a more domain-specific application—first as RDS-PP (Reference Designation System for Power Plants) and later as RDS-PS (Reference Designation System for Power Supply Systems). 
+ISO 81346-1 and ISO 81346-2 establish the foundational principles of RDS. Building on this, ISO 81346-10 introduced a more domain-specific application—first as RDS-PP (Reference Designation System for Power Plants) and later as RDS-PS (Reference Designation System for Power Supply Systems).
 
-While both aim to bring order and clarity to complex technical assets, the transition from RDS-PP to RDS-PS has caused notable disruption across the industry. Most notably, RDS-PS is not backward-compatible with RDS-PP, leaving many organizations uncertain about which path to follow. 
+While both aim to bring order and clarity to complex technical assets, the transition from RDS-PP to RDS-PS has caused notable disruption across the industry. Most notably, RDS-PS is not backward-compatible with RDS-PP, leaving many organizations uncertain about which path to follow.
 
-This insight article provides a clear perspective on both naming conventions and offers guidance for companies considering the implementation of a standardized Reference Designation System. 
+This insight article provides a clear perspective on both naming conventions and offers guidance for companies considering the implementation of a standardized Reference Designation System.
 
+## Confusion in the Industry
+Can I choose—and what should I choose?
 
-## Confusion in the Industry 
+Whether you apply RDS-PP or RDS-PS, your physical assets remain unchanged. A transformer does not become more or less complex simply because it is named Frank instead of Peter. However, the way assets are structured, communicated, and governed does change—and this can have significant long-term implications.
 
-Can I choose—and what should I choose? 
+Let's look at the core differences.
 
-Whether you apply RDS-PP or RDS-PS, your physical assets remain unchanged. A transformer does not become more or less complex simply because it is named Frank instead of Peter. However, the way assets are structured, communicated, and governed does change—and this can have significant long-term implications. 
+## RDS-PP: Proven, Structured, and Operationally Focused
 
-Let’s look at the core differences. 
+RDS-PP has a long and successful track record, particularly within the power plant sector. Its strength lies in fixed principles, predefined system boundaries, and consistent rules, which together enable a high level of standardization.
 
-## RDS-PP: Proven, Structured, and Operationally Focused 
-RDS-PP has a long and successful track record, particularly within the power plant sector. Its strength lies in fixed principles, predefined system boundaries, and consistent rules, which together enable a high level of standardization. 
-For example, regardless of geography, Europe or Asia, the transformer system within a substation is always identified using the same functional code, such as: 
-=T001 ATA10 
+For example, regardless of geography, Europe or Asia, the transformer system within a substation is always identified using the same functional code, such as:
 
-### Key characteristics of RDS-PP include: 
-- Fixed syntax and consistent use of leading zeros 
-- Strong human readability 
-- Clear, predefined system boundaries 
-- Extensive application guidelines published by VGB 
+**=T001 ATA10**
 
-This consistency makes RDS-PP easy to understand, compare, and scale across large fleets of assets. 
+Key characteristics of RDS-PP include:
+- Fixed syntax and consistent use of leading zeros
+- Strong human readability
+- Clear, predefined system boundaries
+- Extensive application guidelines published by VGB
 
-### RDS-PS: Flexible, Purpose-Driven, and Controversial 
-RDS-PS represents a fundamental shift in philosophy. 
+This consistency makes RDS-PP easy to understand, compare, and scale across large fleets of assets.
 
-ISO 81346-10:2022 explicitly states: 
-“The reference designation is not bound to a fixed structural pattern.” 
+## RDS-PS: Flexible, Purpose-Driven, and Controversial
 
-This means the user is free to define the structure of the designation system, as long the correct classification codes are used (for example =B1.KF1). In practice, two companies are not required to structure their RDS-PS in the same way. 
-This flexibility offers clear advantages: 
-- Adaptability to different business purposes 
-- Better alignment with engineering, digitalization, or lifecycle strategies 
-- Greater future-proofing for evolving systems 
+RDS-PS represents a fundamental shift in philosophy.
 
-However, it also introduces a downside: reduced standardization across organizations. 
+ISO 81346-10:2022 explicitly states:
 
-Example: Transformer System 
-Consider a transformer system in a substation: 
+*"The reference designation is not bound to a fixed structural pattern."*
 
-Naming convention: Designation
+This means the user is free to define the structure of the designation system, as long the correct classification codes are used (for example =B1.KF1). In practice, two companies are not required to structure their RDS-PS in the same way.
 
-RDS-PP T32 edition 1: =T001 ATA10 
+This flexibility offers clear advantages:
+- Adaptability to different business purposes
+- Better alignment with engineering, digitalization, or lifecycle strategies
+- Greater future-proofing for evolving systems
 
-RDS-PS (user A): =B1.KF1 
+However, it also introduces a downside: reduced standardization across organizations.
 
-RDS-PS (user B): =B1.HD1.KF1
+### Example: Transformer System
 
-Both RDS-PS examples comply with the ISO 81346 series, yet they represent different structural interpretations of the same asset. Unlike RDS-PP, where system boundaries are predefined in VGB application guidelines, RDS-PS leaves boundary definition to the user. 
+Consider a transformer system in a substation:
 
-In short: RDS-PS enables customization, while RDS-PP enforces consistency. 
+| Naming convention | Designation |
+|-------------------|-------------|
+| RDS-PP T32 edition 1 | =T001 ATA10 |
+| RDS-PS (user A) | =B1.KF1 |
+| RDS-PS (user B) | =B1.HD1.KF1 |
 
+Both RDS-PS examples comply with the ISO 81346 series, yet they represent different structural interpretations of the same asset. Unlike RDS-PP, where system boundaries are predefined in VGB application guidelines, RDS-PS leaves boundary definition to the user.
 
-### Industry Mitigation: Raising the Bar with Application Guidelines 
+In short: **RDS-PS enables customization, while RDS-PP enforces consistency.**
 
-Recognizing the risk of inconsistency, parts of the industry, most notably the wind sector, have taken proactive steps. 
+## Industry Mitigation: Raising the Bar with Application Guidelines
 
-The TIM Wind (https://timwind.org/) working group has developed application guidelines for wind power plants, effectively creating a shared foundation for implementing RDS-PS. These guidelines significantly improve consistency while retaining the flexibility intended by the standard. 
+Recognizing the risk of inconsistency, parts of the industry, most notably the wind sector, have taken proactive steps.
 
-That said, even with such guidelines in place, RDS-PS implementations will still vary from company to company. Each organization must define its structure according to its own needs and purpose. 
+The [TIM Wind](https://timwind.org/) working group has developed application guidelines for wind power plants, effectively creating a shared foundation for implementing RDS-PS. These guidelines significantly improve consistency while retaining the flexibility intended by the standard.
 
+That said, even with such guidelines in place, RDS-PS implementations will still vary from company to company. Each organization must define its structure according to its own needs and purpose.
 
-#### Conclusion: Choosing the Right Path Forward 
+## Conclusion: Choosing the Right Path Forward
 
-### RDS-PS, by design, requires each company to create its own specification. This is not a weakness, it is an intentional feature of the standard. ISO itself recommends that projects define project-specific designation specifications, ideally supported by industry guidelines such as those from TIM Wind. 
+**RDS-PS**, by design, requires each company to create its own specification. This is not a weakness, it is an intentional feature of the standard. ISO itself recommends that projects define project-specific designation specifications, ideally supported by industry guidelines such as those from TIM Wind.
 
-### RDS-PP, meanwhile, is far from obsolete. It continues to be maintained and updated by VGB Energy (https://www.vgbe.energy/en/) and remains compliant with ISO 81346-1 and parts of ISO 81346-2 (2019). For organizations with an existing fleet structured under RDS-PP, continuing with this system often makes practical and economic sense. 
+**RDS-PP**, meanwhile, is far from obsolete. It continues to be maintained and updated by [VGB Energy](https://www.vgbe.energy/en/) and remains compliant with ISO 81346-1 and parts of ISO 81346-2 (2019). For organizations with an existing fleet structured under RDS-PP, continuing with this system often makes practical and economic sense.
 
-So, what should you choose? 
+So, what should you choose?
 
-- Brownfield assets / existing fleets → RDS-PP remains a strong and reliable option 
+- **Brownfield assets / existing fleets** → RDS-PP remains a strong and reliable option
+- **Greenfield projects or major asset restructurings** → RDS-PS is generally the more future-proof choice
 
-- Greenfield projects or major asset restructurings → RDS-PS is generally the more future-proof choice 
+The key is not choosing the "right" standard, but choosing the right implementation strategy.
 
-The key is not choosing the “right” standard, but choosing the right implementation strategy. 
+That is where experience, domain knowledge, and a clear understanding of both standards make the difference.
 
-That is where experience, domain knowledge, and a clear understanding of both standards make the difference.`,
-  
-    date: '2026-01-18',
-    readTime: '4 min read',
+---
+
+**SC**  
+Søren Christensen  
+Expert consultant specializing in RDS and industrial best practices.
+3. Train team on power-specific conventions
+4. Ensure supplier alignment
+
+### For RDS-PS Implementation:
+1. Define your own classification scheme
+2. Create organization-specific application guide
+3. Build flexibility for future needs
+4. Consider integration requirements
+
+## Making the Decision
+
+Ask yourself these questions:
+
+1. **What type of facilities do we operate?**
+2. **What standards do our industry peers use?**
+3. **What do our suppliers and contractors expect?**
+4. **How much flexibility do we need?**
+5. **What are our long-term integration plans?**
+
+## Conclusion
+
+Both RDS-PP and RDS-PS are valid approaches to reference designation. The right choice depends on your industry, facilities, and organizational needs. RDS-PP offers proven structure for power plants, while RDS-PS provides flexibility for diverse industrial applications.
+
+Need help deciding? Contact Sødera for expert guidance on implementing the right RDS for your organization.`,
+    date: '2026-01-05',
+    readTime: '8 min read',
     category: 'RDS',
     author: 'Søren Christensen',
-    color: 'from-emerald-500 to-emerald-400'
+    color: 'from-emerald-500 to-emerald-400',
+    pdfDownload: '/rds-comparison-guide.pdf'
   },
   {
     id: 'understanding-iec-81346-guide',
@@ -424,7 +454,9 @@ Implementing IEC 81346 is a significant undertaking, but the long-term benefits 
     title: 'Document Management Best Practices for Energy Infrastructure',
     excerpt: 'Learn how leading energy companies are improving their documentation practices to enhance efficiency and compliance.',
     image: 'https://i.imgur.com/1VO39FL.jpeg',
-    content: `Effective document management is a cornerstone of safe, efficient, and compliant energy infrastructure operations. From early engineering through decades of operation, technical documentation supports decision-making, maintenance, audits, and change management. Yet many organizations still struggle because documents exist but the confidence in them does not.
+    content: `Learn how leading energy companies are improving their documentation practices to enhance efficiency and compliance.
+
+Effective document management is a cornerstone of safe, efficient, and compliant energy infrastructure operations. From early engineering through decades of operation, technical documentation supports decision-making, maintenance, audits, and change management. Yet many organizations still struggle because documents exist but the confidence in them does not.
 
 ## The Challenge of Technical Documentation
 
@@ -457,7 +489,7 @@ Design documents, construction records, and operational procedures serve very di
 
 Drawings, procedures, specifications, and reports should follow predictable structures. This enables consistent review, approval, and change processes.
 
-### Rule of thumb:
+**Rule of thumb:**
 If a new engineer needs intensive training to understand your folder structure, it's too complex.
 
 ## Best Practice 2: Implement Robust Version Control
@@ -466,9 +498,9 @@ Version confusion is one of the most common and dangerous failures in document m
 
 Effective version control means:
 
-- **Clear and consistent revision schemes: For example: numeric revision for approved or newly uploaded files and alphabetical versions for updates made to the metadata. (e.g., Vers. A, B, C, D; Rev 0, 1, 2, 3)
-- **Transparent revision histories: Every change should answer three questions: what changed, why, and who approved it. A clear audit trail.
-- **Strict control of obsolete documents: Outdated versions must be clearly indicated or removed entirely to avoid accidental use.
+- **Clear and consistent revision schemes:** For example: numeric revision for approved or newly uploaded files and alphabetical versions for updates made to the metadata. (e.g., Vers. A, B, C, D; Rev 0, 1, 2, 3)
+- **Transparent revision histories:** Every change should answer three questions: what changed, why, and who approved it. A clear audit trail.
+- **Strict control of obsolete documents:** Outdated versions must be clearly indicated or removed entirely to avoid accidental use.
 
 Good version control doesn't slow teams down — it protects them from costly mistakes.
 
@@ -491,7 +523,7 @@ Without consistent metadata, even the most powerful document management system b
 - Superseded or replaced references
 - Review, due date, or inspection dates
 
-💡 Want to go deeper?
+💡 **Want to go deeper?**
 
 If you want to learn how to design metadata that actually supports engineers and operators, read our dedicated blog on generating high-quality document metadata on the Sødera website.
 
@@ -499,7 +531,7 @@ If you want to learn how to design metadata that actually supports engineers and
 
 Documents should never live in isolation.
 
-Best-performing organizations ensure that every critical document is explicitly linked to the asset it describes:
+Best-performing organizations ensure that every critical document is **explicitly linked to the asset it describes**:
 
 - Use consistent equipment and tag naming across all systems
 - Maintain document-to-equipment relationships centrally
@@ -532,8 +564,8 @@ The organizations that excel don't just store documents; they:
 - And design systems around how people actually work
 
 If you get this right, documentation stops being a burden and becomes a competitive advantage.`,
-    date: '2026-01-17',
-    readTime: '5 min read',
+    date: '2025-10-22',
+    readTime: '10 min read',
     category: 'Document Management',
     author: 'Sylvia Awoudu',
     color: 'from-blue-500 to-blue-400'

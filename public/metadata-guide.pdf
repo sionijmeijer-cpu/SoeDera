@@ -1,0 +1,95 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 2800 >>
+stream
+BT
+/F1 24 Tf
+50 740 Td
+(Metadata Design Guide) Tj
+0 -40 Td
+/F1 14 Tf
+(For Technical Documentation in Energy Infrastructure) Tj
+0 -50 Td
+/F1 12 Tf
+(By SoDera - www.soedera.eu) Tj
+0 -60 Td
+/F1 16 Tf
+(Core Metadata Checklist) Tj
+0 -25 Td
+/F1 11 Tf
+([ ] Document number - unique identifier) Tj
+0 -18 Td
+([ ] Document title - clear and descriptive) Tj
+0 -18 Td
+([ ] Revision - version tracking) Tj
+0 -18 Td
+([ ] Status - draft, approved, superseded) Tj
+0 -18 Td
+([ ] Author and approver names) Tj
+0 -18 Td
+([ ] Effective or issue date) Tj
+0 -18 Td
+([ ] Related asset or system reference) Tj
+0 -40 Td
+/F1 16 Tf
+(Extended Metadata Options) Tj
+0 -25 Td
+/F1 11 Tf
+([ ] Equipment tag or asset ID) Tj
+0 -18 Td
+([ ] Discipline - mechanical, electrical, process) Tj
+0 -18 Td
+([ ] Document type - drawing, procedure, report) Tj
+0 -18 Td
+([ ] Keywords or functional tags) Tj
+0 -18 Td
+([ ] Related or referenced documents) Tj
+0 -18 Td
+([ ] Review or expiry date) Tj
+0 -40 Td
+/F1 16 Tf
+(Best Practices) Tj
+0 -25 Td
+/F1 11 Tf
+(1. Use controlled lists instead of free text) Tj
+0 -18 Td
+(2. Align asset identifiers with engineering systems) Tj
+0 -18 Td
+(3. Document metadata definitions in simple language) Tj
+0 -18 Td
+(4. Review metadata standards periodically) Tj
+0 -18 Td
+(5. Update metadata during reviews and approvals) Tj
+0 -18 Td
+(6. Archive or flag superseded documents clearly) Tj
+0 -40 Td
+/F1 14 Tf
+(Contact: info@soedera.eu) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f
+0000000009 00000 n
+0000000058 00000 n
+0000000115 00000 n
+0000000266 00000 n
+0000003118 00000 n
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+3195
+%%EOF

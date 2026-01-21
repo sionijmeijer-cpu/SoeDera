@@ -34,6 +34,11 @@ export default defineConfig({
     hmr: {
       clientPort: 443,
       protocol: "wss",
+      timeout: 30000,
+    },
+    watch: {
+      usePolling: true,
+      interval: 1000,
     },
   },
 });
