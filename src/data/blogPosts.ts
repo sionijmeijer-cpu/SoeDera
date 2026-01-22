@@ -256,7 +256,7 @@ And when it's ignored, no document management system can compensate.
     category: 'Document Management',
     author: 'Sylvia Awoudu',
     color: 'from-blue-500 to-blue-400',
-    pdfDownload: '/Project Metadata Structure Checklist.pdf',
+    pdfDownload: '/Project-Metadata-Structure-Checklist.pdf',
     published: true,
   },
   {
