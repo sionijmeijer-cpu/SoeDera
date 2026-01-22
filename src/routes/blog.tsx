@@ -20,17 +20,24 @@ const categories = [
 function InsightsPage() {
   SEOHead({
     title: 'Insights - Energy Documentation & RDS Expertise | SøDera',
-    description: 'Expert insights on Reference Designation Systems (IEC 81346), document management, BIM, and asset data best practices for the energy sector.',
-    keywords: 'RDS insights, IEC 81346 guide, document management, energy sector, asset data',
-    canonicalUrl: 'https://www.soedera.eu/blog'
+    description:
+      'Expert insights on Reference Designation Systems (IEC 81346), document management, BIM, and asset data best practices for the energy sector.',
+    keywords:
+      'RDS insights, IEC 81346 guide, document management, energy sector, asset data',
+    canonicalUrl: 'https://www.soedera.eu/blog',
   })
 
   const [selectedCategory, setSelectedCategory] = useState('all')
   const navigate = useNavigate()
 
-  const filteredPosts = selectedCategory === 'all' 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === selectedCategory)
+  // ✅ Only show published posts
+  const visiblePosts = blogPosts.filter((post) => post.published)
+
+  // ✅ Keep your existing category filtering logic, but apply it to visible posts
+  const filteredPosts =
+    selectedCategory === 'all'
+      ? visiblePosts
+      : visiblePosts.filter((post) => post.category === selectedCategory)
 
   // Get featured post (first one) and rest
   const featuredPost = filteredPosts[0]
@@ -44,6 +51,7 @@ function InsightsPage() {
     <div className="min-h-screen bg-gray-100">
       {/* Spacer for fixed header */}
       <div className="h-[104px]" />
+
       {/* Hero Section - Light gray */}
       <section className="bg-gray-200 pt-8 pb-10 sm:pt-12 sm:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,7 +63,7 @@ function InsightsPage() {
               Insights & Expertise
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed">
-              Deep dives into RDS, BIM, document management, and best practices 
+              Deep dives into RDS, BIM, document management, and best practices
               for the energy and infrastructure sectors.
             </p>
           </div>
@@ -66,27 +74,28 @@ function InsightsPage() {
         {/* Category Filter */}
         <div className="bg-white rounded-xl shadow-sm p-2 mb-6 overflow-x-auto">
           <div className="inline-flex flex-nowrap sm:flex-wrap gap-1 min-w-max sm:min-w-0">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-              className={`
-                px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
-                ${selectedCategory === cat.id
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-slate-600 hover:bg-gray-100'
-                }
-              `}
-            >
-              {cat.label}
-            </button>
-          ))}
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`
+                  px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
+                  ${
+                    selectedCategory === cat.id
+                      ? 'bg-blue-600 text-white shadow-sm'
+                      : 'text-slate-600 hover:bg-gray-100'
+                  }
+                `}
+              >
+                {cat.label}
+              </button>
+            ))}
           </div>
         </div>
 
         {/* Featured Article */}
         {featuredPost && (
-          <article 
+          <article
             onClick={() => handleCardClick(featuredPost.id)}
             className="cursor-pointer group mb-6"
           >
@@ -94,8 +103,8 @@ function InsightsPage() {
               <div className="grid lg:grid-cols-2 gap-0">
                 {/* Image Side */}
                 <div className="relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:min-h-[380px] overflow-hidden">
-                  <img 
-                    src={featuredPost.image} 
+                  <img
+                    src={featuredPost.image}
                     alt={featuredPost.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -140,7 +149,7 @@ function InsightsPage() {
         {/* Other Articles Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 pb-8">
           {otherPosts.map((post) => (
-            <article 
+            <article
               key={post.id}
               onClick={() => handleCardClick(post.id)}
               className="cursor-pointer group"
@@ -148,8 +157,8 @@ function InsightsPage() {
               <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col">
                 {/* Image */}
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <img 
-                    src={post.image} 
+                  <img
+                    src={post.image}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -178,7 +187,10 @@ function InsightsPage() {
                         {post.readTime}
                       </span>
                     </div>
-                    <ArrowRight size={16} className="text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                    <ArrowRight
+                      size={16}
+                      className="text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"
+                    />
                   </div>
                 </div>
               </div>
@@ -195,9 +207,7 @@ function InsightsPage() {
             <h3 className="text-lg font-bold text-slate-900 mb-2">
               No articles found
             </h3>
-            <p className="text-slate-600">
-              Try selecting a different category
-            </p>
+            <p className="text-slate-600">Try selecting a different category</p>
           </div>
         )}
       </div>

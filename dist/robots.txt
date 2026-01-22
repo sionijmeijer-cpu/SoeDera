@@ -1,0 +1,27 @@
+# robots.txt for SøDera
+# https://www.soedera.eu
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.soedera.eu/sitemap.xml
+
+# Crawl-delay suggestion
+Crawl-delay: 1
+
+# Allow all search engine bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Disallow admin/internal paths (none currently)
+# Disallow: /admin/

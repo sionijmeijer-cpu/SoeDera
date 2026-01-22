@@ -1,0 +1,35 @@
+# Blog URLs for Social Media Sharing
+# Generated: 2026-01-22T14:44:23.716Z
+# 
+# To add a new blog post:
+# 1. Edit src/data/blogPosts.ts
+# 2. Push to GitHub
+# 3. Your new URL will appear here after build
+
+The Future of Document Management in Construction
+https://www.soedera.eu/blog/future-of-document-management-construction
+
+How to Design Metadata That Actually Works for Technical Documentation
+https://www.soedera.eu/blog/essential-guide-document-control-systems
+
+RDS-PP vs. RDS-PS
+https://www.soedera.eu/blog/rdspp-vs-rdsps
+
+Understanding IEC 81346: A Practical Guide to Reference Designation Systems
+https://www.soedera.eu/blog/understanding-iec-81346-guide
+
+Document Management Best Practices for Energy Infrastructure
+https://www.soedera.eu/blog/document-management-best-practices
+
+Applying BIM Methods in Energy Infrastructure Projects
+https://www.soedera.eu/blog/bim-energy-infrastructure
+
+Lessons Learned from RDS Implementation Projects
+https://www.soedera.eu/blog/rds-implementation-lessons
+
+Focused Project Management in the Energy Sector
+https://www.soedera.eu/blog/project-management-energy-sector
+
+Structured Product Development for Technical Solutions
+https://www.soedera.eu/blog/structured-product-development
+
