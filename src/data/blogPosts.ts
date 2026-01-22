@@ -263,7 +263,7 @@ And when it's ignored, no document management system can compensate.
     image: 'https://i.imgur.com/WnO7OcP.png',
     content: `Over the past decades, the power and energy industry has navigated two distinct naming conventions defined by the International Organization for Standardization (ISO). These conventions are rooted in the ISO 81346 standard series, which covers Reference Designation Systems (RDS).
 
-ISO 81346-1 and ISO 81346-2 establish the foundational principles of RDS. Building on this, ISO 81346-10 introduced a more domain-specific application, first as ## RDS-PP (Reference Designation System for Power Plants) and later as ## RDS-PS (Reference Designation System for Power Supply Systems).
+ISO 81346-1 and ISO 81346-2 establish the foundational principles of RDS. Building on this, ISO 81346-10 introduced a more domain-specific application, first as  **RDS-PP (Reference Designation System for Power Plants)** and later as RDS-PS (Reference Designation System for Power Supply Systems).
 
 While both aim to bring order and clarity to complex technical assets, the transition from RDS-PP to RDS-PS has caused notable disruption across the industry. Most notably, RDS-PS is not backward-compatible with RDS-PP, leaving many organizations uncertain about which path to follow.
 
