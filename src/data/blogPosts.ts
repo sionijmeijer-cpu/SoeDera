@@ -323,7 +323,7 @@ Consider a transformer system in a substation:
 |-------------------|-------------|
 | RDS-PP T32 edition 1 | =T001 ATA10 |
 | RDS-PS (user A) | =B1.KF1 |
-| RDS-PS (user B) | =B1.HD1.KF1 |
+| RDS-PS (user B) | =B1.JE1.KF1 |
 
 Both RDS-PS examples comply with the ISO 81346 series, yet they represent different structural interpretations of the same asset. Unlike RDS-PP, where system boundaries are predefined in VGB application guidelines, **RDS-PS leaves boundary definition to the user**.
 
