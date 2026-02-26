@@ -460,72 +460,201 @@ Contact SøDera for expert guidance on implementing the right RDS for your organ
     published: true,
   },
   {
-    id: 'understanding-iec-81346-guide',
-    title: 'Understanding IEC 81346: A Practical Guide to Reference Designation Systems',
-    excerpt: 'Reference Designation Systems are the backbone of effective documentation in the energy sector. This guide explores the fundamentals of IEC 81346 and how to implement it successfully in your organization.',
-    image: 'https://i.imgur.com/BVVLSIm.jpeg',
-    content: `Reference Designation Systems (RDS) form the foundation of clear and consistent asset identification across industries. The IEC 81346 standard provides a structured framework that enables organizations to create unambiguous references to their assets and systems.
+id: 'information-management-offshore-wind-rds-cost',
+title: 'Information Management in Offshore Wind: Why RDS and Structured Data Save €20,000 Per Incident',
+excerpt: 'Poor information management in offshore wind can cost €8,000–€20,000 per incident. Learn how RDS (ISO 81346) and structured asset data reduce O&M costs and lifecycle risk.',
+image: 'https://i.imgur.com/vBWKKiV.jpeg',
+content: `# Information Management in Offshore Wind: Why RDS and Structured Data Save €20,000 Per Incident
 
-## What is IEC 81346?
+## The Real Cost of Poor Information Management Across the Asset Lifecycle
 
-IEC 81346 is an international standard that defines principles for structuring systems, including structuring of information about systems. It provides a systematic approach to organizing and identifying objects within a system hierarchy.
+Information management in energy and offshore wind projects is often underestimated — until the costs become visible.
 
-The standard consists of multiple parts:
-- **IEC 81346-1**: Basic rules for designation
-- **IEC 81346-2**: Classification of objects and codes for classes
-- **IEC 81346-10**: Power plants (sector-specific application)
-- **IEC 81346-12**: Buildings and building services
+Can you afford project delays, offshore re-mobilisation, and operational inefficiencies caused by missing or unstructured asset information?
 
-## Why Implement IEC 81346?
+If not, structured information management anchored in **Reference Designation Systems (RDS)** and aligned with **ISO 81346** and **ISO 19650** should be treated as a strategic priority.
 
-Organizations that adopt IEC 81346 experience several key benefits:
+This article explains how poor information management drives measurable operational losses — and how structured asset data transforms performance across the entire asset lifecycle.
 
-### 1. Improved Communication
-A standardized designation system ensures that everyone speaks the same language when referring to assets. This reduces misunderstandings and errors in maintenance, operations, and engineering activities.
+---
 
-### 2. Better Documentation Control
-When assets are consistently identified, documents can be reliably linked to the correct equipment. This improves searchability and reduces time spent locating relevant information.
+## Why Information Management Gets Deprioritized in Energy Projects
 
-### 3. Enhanced Data Quality
-Structured designations enable better data validation and quality control. Systems can automatically check for inconsistencies and duplicates.
+During construction, focus is rightly placed on engineering, fabrication, and installation. Information management rarely accelerates a weld or cable pull.
 
-### 4. Lifecycle Support
-A well-implemented RDS supports the entire asset lifecycle, from design through construction, operation, and eventual decommissioning.
+But when documentation is missing, inconsistent, or incorrectly tagged, the consequences surface quickly — especially offshore.
 
-## Implementation Steps
+> "Information management will not make the weld go faster. But on the day you need the right information and it isn't there, the cost becomes very visible."
 
-### Step 1: Assess Current State
-Begin by documenting your existing designation practices. Identify inconsistencies and gaps that need to be addressed.
+Information management ensures that the right asset data is accessible to the right people at the right time. Without structure, project closeout becomes chaotic:
 
-### Step 2: Define Your Structure
-Develop a company-specific application guide that defines how IEC 81346 will be applied within your organization.
+- Engineers demobilize with undocumented knowledge  
+- Asset data loses context  
+- Handover becomes reactive instead of structured  
+- Operations inherit incomplete documentation  
 
-### Step 3: Create Reference Libraries
-Build libraries of approved designations and classifications that can be reused across projects.
+The result: lifecycle inefficiency from day one.
 
-### Step 4: Train Your Team
-Ensure that all stakeholders understand the new system and their role in maintaining its integrity.
+---
 
-### Step 5: Implement Gradually
-Roll out the new system in phases, starting with new projects and gradually migrating legacy data.
+## The Cost of Poor Information Management in Offshore Wind Operations
 
-## Common Challenges
+### A €20,000 Problem Per Incident
 
-Many organizations face challenges during implementation:
+In offshore wind O&M environments, information gaps translate directly into financial loss.
 
-- **Legacy data migration**: Converting existing designations to the new standard
-- **Tool integration**: Ensuring software systems support the designation structure
-- **Stakeholder alignment**: Getting buy-in from all departments
+A common scenario:
 
-## Conclusion
+Technicians travel offshore with the wrong spare parts because equipment documentation was not structured or easily searchable.
 
-Implementing IEC 81346 is a significant undertaking, but the long-term benefits far outweigh the initial investment. Organizations that commit to standards-aligned designation systems position themselves for improved efficiency, better data quality, and smoother operations throughout the asset lifecycle.`,
-    date: '2025-12-15',
-    readTime: '12 min read',
-    category: 'RDS',
-    author: 'Søren Christensen',
-    color: 'from-emerald-500 to-emerald-400',
-    published: false,
+**Result: €8,000–€20,000 per incident — excluding lost production.**
+
+![Cost impact of poor information management in offshore wind](https://i.imgur.com/R7WwoQy.png)
+
+### Cost Breakdown Per Incident
+
+| Cost Component        | Assumption                                      | Estimated Cost |
+|-----------------------|------------------------------------------------|----------------|
+| Vessel Time (CTV)     | €7k/day — extra 0.5–1 day wasted               | €3,000–€7,000  |
+| Vessel Time (SOV)     | €100k/day — incremental hours                  | €8,000–€12,000 |
+| Technician Cost       | 3–4 techs @ €800/day, ~0.5–1 day lost          | €1,500–€3,000  |
+| Logistics & Rebooking | Miscellaneous buffer                           | €1,000–€2,000  |
+| Overhead & Admin      | ~15%                                           | Variable       |
+
+Across a wind farm with dozens of turbines and multiple annual O&M campaigns, this compounds into significant operational expenditure.
+
+---
+
+### Estimated Cost per Incident by Asset Type
+
+| Asset Type            | Estimated Cost / Incident |
+|-----------------------|--------------------------|
+| Offshore Substation   | €10,000                  |
+| Offshore WTG*         | €17,500                  |
+| Onshore Substation    | €2,400                   |
+| Onshore WTG           | €5,000                   |
+
+*Offshore WTG assumes a 10MW turbine losing 50% production during the incident window.
+
+The strategic question becomes:
+
+**Can you afford not to invest in structured information management?**
+
+---
+
+## How RDS (ISO 81346) Improves Asset Traceability
+
+Reference Designation Systems (RDS), defined under ISO 81346, provide structured system codes that connect documentation directly to physical assets.
+
+When correctly implemented:
+
+- P&IDs, manuals, and datasheets are linked to exact systems  
+- Missing contractor documentation becomes visible immediately  
+- Engineers can filter all documents tied to a specific subsystem  
+- Review deadlines are surfaced before becoming compliance risks  
+
+Instead of searching manually, teams navigate by system structure.
+
+Without RDS → information is fragmented.  
+With RDS → information is system-driven and traceable.
+
+---
+
+## Information Management During Project Execution
+
+Structured information management accelerates:
+
+- Project closeout  
+- Handover readiness  
+- Contractor document verification  
+- Compliance tracking  
+- Asset registration  
+
+When RDS tagging is implemented from design phase onward, document gaps become visible in real time — not during final handover.
+
+This reduces rework, accelerates acceptance, and improves operational readiness.
+
+---
+
+## Integrating RDS, BIM (ISO 19650), and the Digital Twin
+
+Structured asset information extends beyond documentation.
+
+When RDS (ISO 81346) aligns with BIM principles under ISO 19650, it creates a connected digital environment:
+
+- Documents link to 3D models  
+- Asset data aligns with maintenance systems  
+- Operational records tie back to physical systems  
+- Sensor data connects to structured components  
+
+This integration forms the foundation of a practical digital twin in energy infrastructure.
+
+Instead of siloed repositories, organizations gain lifecycle traceability — from design through decommissioning.
+
+The value compounds over decades of operation.
+
+---
+
+## Lifecycle Impact: From Construction to Decommissioning
+
+Organizations that treat information as a strategic asset achieve:
+
+- Faster project closeout  
+- Reduced offshore O&M incidents  
+- Improved compliance transparency  
+- Lower lifecycle operating costs  
+- Reduced operational risk  
+
+Information management is not documentation overhead.
+
+It is cost control, risk reduction, and asset intelligence.
+
+> "The best time to structure your information was at project start. The second-best time is now."
+
+---
+
+## Frequently Asked Questions (FAQ)
+
+### What is information management in offshore wind projects?
+
+Information management ensures structured control of asset data, documentation, and system designations so that information is searchable, traceable, and usable across the lifecycle.
+
+### How much does poor information management cost in offshore wind?
+
+A single offshore incident caused by missing or incorrect asset information can cost €8,000–€20,000, excluding production loss.
+
+### What is RDS (ISO 81346)?
+
+RDS is a structured designation system that links documentation, systems, and physical assets using standardized coding principles.
+
+### How does BIM (ISO 19650) relate to information management?
+
+BIM provides structured information frameworks for managing asset data digitally. When combined with RDS, it enables full lifecycle traceability and digital twin capability.
+
+---
+
+## Strengthen Your Asset Information Strategy
+
+Energy and infrastructure organizations that structure asset information from day one operate leaner, close projects faster, and reduce operational surprises.
+
+If your project is:
+
+- In early design  
+- Mid-construction  
+- Approaching handover  
+- Already operational with fragmented data  
+
+Structured information management can still deliver measurable value.
+
+Ready to reduce lifecycle risk and operational waste?
+
+`,
+date: '2026-02-26',
+readTime: '11 min read',
+category: 'RDS',
+author: 'Søren Christensen',
+color: 'from-blue-600 to-indigo-500',
+published: true,
   },
   {
     id: 'document-management-best-practices',
