@@ -15,82 +15,166 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    id: 'future-of-document-management-construction',
-    title: 'The Future of Document Management in Construction',
-    excerpt: 'Explore how digital transformation and automation are reshaping document management practices in the construction and energy sectors.',
-    image: 'https://i.imgur.com/Uu5dmAV.jpeg',
-    content: `The construction and energy industries are undergoing a significant digital transformation. Document management, once a manual and paper-heavy process, is now at the forefront of this change. This article explores the trends shaping the future of document management in these sectors.
+  id: 'why-bother-with-information-management',
+  title: 'Why Bother With Information Management?',
+  excerpt: 'How structured information anchored in RDS can save thousands per incident and transform your asset lifecycle from project execution to operations.',
+  image: 'https://i.imgur.com/vBWKKiV.jpeg',
+  content: `# Why Bother With Information Management?
 
-## The Digital Transformation Journey
+## How structured information can save you thousands per incident — and transform your asset lifecycle
 
-The shift from paper-based to digital document management has been gradual but accelerating. Today's leading organizations are moving beyond simple digitization to embrace intelligent document management systems that leverage:
+Can you afford to waste time during project execution, and face huge maintenance costs during operation?
 
-- **Cloud Computing**: Enabling anywhere, anytime access to critical documents
-- **Artificial Intelligence**: Automating document classification, extraction, and routing
-- **Machine Learning**: Improving search accuracy and suggesting related documents
-- **Mobile Technology**: Empowering field workers with instant access to drawings and specifications
+If the answer is no, then information management deserves your attention right now.
 
-## Key Trends Shaping the Future
+This article explains why information management anchored by Reference Designation Systems (RDS) is not a nice-to-have, but a strategic investment that pays dividends across the entire asset lifecycle.
 
-### 1. Intelligent Document Processing
+---
 
-AI-powered systems can now automatically:
-- Extract key information from unstructured documents
-- Classify documents based on content analysis
-- Identify relationships between documents
-- Flag potential compliance issues
+## The Elephant in the Room: Why Does Information Management Get Deprioritized?
 
-### 2. Real-Time Collaboration
+In years of working across energy and industrial projects, one pattern keeps emerging: information management is consistently pushed to the bottom of the priority list. The reason is understandable — the value is invisible at first.
 
-Modern document management enables teams to:
-- Work on documents simultaneously
-- Track changes in real-time
-- Communicate within the document context
-- Resolve issues faster through integrated workflows
+> "Information management will not make the weld go faster or the cable pull quicker. But on the day you need the right information and it isn't there, that's when the cost becomes very visible."
 
-### 3. Integration with BIM and Digital Twins
+Information management is the process of organising, structuring and maintaining data so that the right information is accessible to the right people at the right time.
 
-Documents are increasingly linked to:
-- 3D models and visualizations
-- Asset management systems
-- IoT sensor data
-- Maintenance and operations platforms
+During construction, the focus is rightly on building — especially for offshore assets with fixed sail-out dates. The assumption is that documentation and data structuring can be cleaned up later.
 
-### 4. Enhanced Security and Compliance
+But “later” comes with a price tag.
 
-Future systems will offer:
-- Blockchain-based audit trails
-- Advanced encryption and access controls
-- Automated compliance checking
-- Intelligent data retention policies
+By closeout, engineers who owned the information have demobilized. The remaining teams lack context. Information is lost. Structured handover turns into a scramble.
 
-## Preparing for the Future
+In well-functioning organizations, this delays project closure. In others, operations inherit the mess and either spend years untangling it — or hire someone to act as a human search engine.
 
-Organizations should:
+---
 
-1. **Assess Current Capabilities**: Understand where you are today and identify gaps
-2. **Define a Roadmap**: Plan your digital transformation journey in phases
-3. **Invest in Training**: Ensure your team can leverage new technologies
-4. **Choose Flexible Solutions**: Select systems that can evolve with your needs
-5. **Focus on Data Quality**: Clean, structured data is the foundation for AI and automation
+## The Business Case: What Does Poor Information Management Actually Cost?
 
-## The Role of Standards
+### During Operation
 
-Standards like IEC 81346 for reference designations become even more critical in a digital environment. Consistent naming and classification enable:
-- Better searchability
-- Automated document linking
-- Improved data exchange between systems
-- More accurate analytics and reporting
+In operational settings, the cost becomes measurable.
 
-## Conclusion
+A targeted assessment supported by AI examined a common scenario:
 
-The future of document management in construction and energy is intelligent, integrated, and increasingly automated. Organizations that embrace these trends will gain competitive advantages through improved efficiency, better compliance, and enhanced decision-making capabilities.`,
-    date: '2026-01-10',
-    readTime: '9 min read',
-    category: 'Document Management',
-    author: 'Sylvia Awoudu',
-    color: 'from-blue-500 to-blue-400',
-    published: false,
+Technicians travel offshore with the wrong equipment because the correct part information was not easily accessible.
+
+**Result: A single incident costs between €8,000 and €20,000 — excluding lost energy production.**
+
+![medium: Cost down, quality, Effesiency and time up](https://i.imgur.com/R7WwoQy.png)
+
+### Cost Breakdown Per Incident
+
+| Cost Component        | Assumption                                      | Estimated Cost |
+|-----------------------|------------------------------------------------|----------------|
+| Vessel Time (CTV)     | €7k/day — extra 0.5–1 day wasted               | €3,000–€7,000  |
+| Vessel Time (SOV)     | €100k/day — incremental hours                  | €8,000–€12,000 |
+| Technician Cost       | 3–4 techs @ €800/day, ~0.5–1 day lost          | €1,500–€3,000  |
+| Logistics & Rebooking | Miscellaneous buffer                           | €1,000–€2,000  |
+| Overhead & Admin      | ~15%                                           | Variable       |
+
+Across a wind farm with dozens of assets and multiple O&M campaigns per year, the numbers escalate rapidly.
+
+---
+
+### Cost Per Incident by Asset Type
+
+| Asset Type            | Estimated Cost / Incident |
+|-----------------------|--------------------------|
+| Offshore Substation   | €10,000                  |
+| Offshore WTG*         | €17,500                  |
+| Onshore Substation    | €2,400                   |
+| Onshore WTG           | €5,000                   |
+
+*Offshore WTG assumes a 10MW turbine losing 50% production capacity during the incident window.
+
+The question is no longer:
+
+**“Can we afford to invest in information management?”**
+
+It becomes:
+
+**“Can we afford not to?”**
+
+---
+
+## During Project Execution
+
+When information is tagged with the correct RDS designation — the system code tying a document to a specific asset — engineers can instantly filter all related documentation:
+
+- P&IDs  
+- Manuals  
+- Data sheets  
+- Electrical documentation  
+- Vendor files  
+
+Gaps become visible immediately.
+
+If a contractor has not delivered a required document, it appears as missing — not buried in someone's inbox.
+
+Projects with structured RDS-based systems operate fundamentally differently.
+
+Without structure → finding documents becomes daily friction.  
+With structure → the information finds you.
+
+Overdue document reviews are also surfaced proactively, reducing compliance risk.
+
+---
+
+## The Connected Asset: RDS, BIM, and the Power of Integration
+
+Structured information extends beyond documents — it enables the connected asset.
+
+When RDS designation is applied consistently, it becomes a universal connector between:
+
+- Documents  
+- 3D models  
+- Asset databases  
+- Maintenance records  
+- Operational requirements  
+
+This principle underpins Building Information Modelling (BIM), formalized in ISO 19650.
+
+While BIM (ISO 19650) and RDS (ISO 81346) are independent standards, combining them unlocks powerful coherence.
+
+Instead of siloed repositories, you create a living digital twin — where every document, sensor reading, and maintenance action is traceable back to the physical asset.
+
+This value compounds across the entire lifecycle — from design to decommissioning.
+
+---
+
+## Let’s Build Smarter Assets Together
+
+Information management is not bureaucratic overhead.
+
+It is a long-term investment that:
+
+- Reduces operational risk  
+- Accelerates project closeout  
+- Improves compliance  
+- Enables faster decision-making  
+
+The organizations that treat information as a strategic asset — structured from day one and traceable across the lifecycle — are the ones that:
+
+- Close projects on time  
+- Run leaner operations  
+- Avoid expensive surprises  
+
+> "The best time to structure your information was at the start of the project. The second-best time is now."
+
+At SøDera, we help energy and infrastructure organizations implement practical information management frameworks — from RDS designation strategies and BIM integration to handover readiness and operational governance.
+
+Whether you're early in a project, mid-construction, or managing inherited operational data, the path forward is clear.
+
+Ready to unlock the value of your information?
+
+`,
+  date: '2026-02-26',
+  readTime: '10 min read',
+  category: 'RDS',
+  author: 'Søren Christensen',
+  color: 'from-blue-600 to-indigo-500',
+  published: true,
   },
   {
     id: 'essential-guide-document-control-systems',
