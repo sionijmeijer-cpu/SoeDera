@@ -80,6 +80,7 @@ function ArticlePage() {
     <div className="min-h-screen bg-gray-100 pb-8">
       <SEOHead {...seoProps} />
 
+      {/* Hero */}
       <div className="relative bg-gray-200">
         <div className="h-[104px]" />
 
@@ -94,13 +95,20 @@ function ArticlePage() {
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-4 pb-6">
           <div className="rounded-xl overflow-hidden shadow-md">
-            <img src={article.image} alt={article.title} className="w-full h-48 sm:h-56 object-cover" />
+            <img
+              src={article.image}
+              alt={article.title}
+              className="w-full h-48 sm:h-56 object-cover"
+            />
           </div>
         </div>
       </div>
 
+      {/* Article Container */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-12">
         <article className="bg-white rounded-xl shadow-sm overflow-hidden -mt-4">
+
+          {/* Header */}
           <div className="p-5 sm:p-8 border-b border-gray-100">
             <div className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
               {article.category}
@@ -126,14 +134,19 @@ function ArticlePage() {
               </div>
             </div>
 
-            <p className="text-lg text-slate-600 leading-relaxed mt-6">{article.excerpt}</p>
+            <p className="text-lg text-slate-600 leading-relaxed mt-6">
+              {article.excerpt}
+            </p>
           </div>
 
+          {/* Body */}
           <div className="p-5 sm:p-8 bg-white">
             <div className="prose prose-slate max-w-none">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
+
+                  // ✅ Highlight box support
                   blockquote: ({ children }) => (
                     <HighlightBox title="Key Insight">
                       {children}
@@ -156,17 +169,90 @@ function ArticlePage() {
                       {children}
                     </h2>
                   ),
+
                   h3: ({ children }) => (
-                    <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mt-8 mb-3">{children}</h3>
+                    <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mt-8 mb-3">
+                      {children}
+                    </h3>
                   ),
-                  p: ({ children }) => <p className="text-slate-700 leading-relaxed text-base mb-4">{children}</p>,
+
+                  p: ({ children }) => (
+                    <p className="text-slate-700 leading-relaxed text-base mb-4">
+                      {children}
+                    </p>
+                  ),
 
                   ul: ({ children }) => <ul className="space-y-3 my-4">{children}</ul>,
+
                   li: ({ children }) => (
                     <li className="flex items-start gap-3 text-slate-700">
                       <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
                       <span>{children}</span>
                     </li>
+                  ),
+
+                  img: ({ alt, src }) => {
+                    const size =
+                      alt?.startsWith('small:')
+                        ? 'max-w-md'
+                        : alt?.startsWith('medium:')
+                        ? 'max-w-xl'
+                        : 'max-w-3xl'
+
+                    const cleanAlt = alt?.replace(/^(small|medium):\s*/i, '') || ''
+
+                    return (
+                      <figure className="my-6 flex justify-center">
+                        <img
+                          src={src}
+                          alt={cleanAlt}
+                          loading="lazy"
+                          decoding="async"
+                          className={`w-full ${size} mx-auto rounded-xl shadow-sm border border-gray-100 object-contain`}
+                        />
+                        {cleanAlt && (
+                          <figcaption className="text-center text-sm text-slate-500 mt-2">
+                            {cleanAlt}
+                          </figcaption>
+                        )}
+                      </figure>
+                    )
+                  },
+
+                  table: ({ children }) => (
+                    <div className="my-8 -mx-5 sm:mx-0 overflow-x-auto">
+                      <div className="flex justify-center px-5 sm:px-0">
+                        <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+                          <table className="w-max table-auto border-collapse">
+                            {children}
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+
+                  thead: ({ children }) => <thead className="bg-slate-50">{children}</thead>,
+
+                  tbody: ({ children }) => (
+                    <tbody className="[&>tr:nth-child(even)]:bg-slate-50/60">
+                      {children}
+                    </tbody>
+                  ),
+
+                  th: ({ children }) => (
+                    <th className="whitespace-nowrap text-left text-xs font-semibold uppercase tracking-wider text-slate-700 px-4 py-2.5 border-b border-slate-200">
+                      {children}
+                    </th>
+                  ),
+
+                  td: ({ children }) => (
+                    <td className="whitespace-nowrap text-sm text-slate-700 px-4 py-2.5 border-b border-slate-200 align-top">
+                      {children}
+                    </td>
+                  ),
+
+                  tr: ({ children }) => (
+                    <tr className="last:[&>td]:border-b-0">{children}</tr>
                   ),
                 }}
               >
@@ -178,8 +264,12 @@ function ArticlePage() {
               <div className="mt-10 p-5 bg-blue-50 rounded-xl border border-blue-100">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                   <div className="flex-1">
-                    <h3 className="text-base font-semibold text-slate-900 mb-1">Download Free PDF Guide</h3>
-                    <p className="text-slate-600 text-sm">Get the complete guide with checklists and templates</p>
+                    <h3 className="text-base font-semibold text-slate-900 mb-1">
+                      Download Free PDF Guide
+                    </h3>
+                    <p className="text-slate-600 text-sm">
+                      Get the complete guide with checklists and templates
+                    </p>
                   </div>
                   <a
                     href={article.pdfDownload}
