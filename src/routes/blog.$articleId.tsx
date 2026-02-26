@@ -99,7 +99,6 @@ function ArticlePage() {
       {/* ARTICLE */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <article className="bg-white rounded-2xl shadow-md -mt-6">
-
           {/* HEADER */}
           <div className="p-6 sm:p-10 border-b border-gray-100">
             <div className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-semibold uppercase tracking-wider mb-5">
@@ -124,12 +123,19 @@ function ArticlePage() {
 
           {/* BODY */}
           <div className="p-6 sm:p-10">
-            <div className="prose prose-slate max-w-none prose-p:my-4">
-
+            <div
+              className="
+                prose prose-slate max-w-none
+                prose-p:my-4
+                prose-figure:my-5
+                prose-img:my-0
+                prose-figcaption:mt-1
+                prose-figcaption:leading-snug
+              "
+            >
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
-
                   blockquote: ({ children }) => (
                     <HighlightBox title="Key Insight">
                       {children}
@@ -177,14 +183,14 @@ function ArticlePage() {
                     const cleanAlt = alt?.replace(/^(small|medium):\s*/i, '') || ''
 
                     return (
-                      <figure className="my-6 text-center">
+                      <figure className="text-center">
                         <img
                           src={src}
                           alt={cleanAlt}
                           className={`mx-auto w-full ${size} object-contain`}
                         />
                         {cleanAlt && (
-                          <figcaption className="mt-1 text-sm text-slate-500">
+                          <figcaption className="text-sm text-slate-500">
                             {cleanAlt}
                           </figcaption>
                         )}
@@ -236,7 +242,6 @@ function ArticlePage() {
               >
                 {article.content}
               </ReactMarkdown>
-
             </div>
           </div>
 
@@ -279,7 +284,6 @@ function ArticlePage() {
               </button>
             </div>
           </div>
-
         </article>
       </div>
     </div>
