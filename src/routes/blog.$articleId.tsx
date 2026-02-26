@@ -15,7 +15,6 @@ export const Route = createFileRoute('/blog/$articleId')({
 
 function ArticlePage() {
   const { articleId } = Route.useParams()
-
   const article = blogPosts.find((post) => post.id === articleId && post.published)
   const [copied, setCopied] = useState(false)
 
@@ -39,7 +38,6 @@ function ArticlePage() {
   const seoProps = {
     title: `${article.title} | SøDera Insights`,
     description: article.excerpt,
-    keywords: `${article.category}, energy documentation, SøDera`,
     canonicalUrl: `https://www.soedera.eu/blog/${articleId}`,
     ogImage: article.image || 'https://i.imgur.com/lCNBEPI.jpeg',
     ogType: 'article' as const,
@@ -70,16 +68,11 @@ function ArticlePage() {
     setTimeout(() => setCopied(false), 2000)
   }
 
-  const relatedArticles = blogPosts
-    .filter((post) => post.published)
-    .filter((post) => post.category === article.category && post.id !== article.id)
-    .slice(0, 3)
-
   return (
-    <div className="min-h-screen bg-gray-100 pb-8">
+    <div className="min-h-screen bg-gray-100 pb-12">
       <SEOHead {...seoProps} />
 
-      {/* Hero */}
+      {/* HERO */}
       <div className="relative bg-gray-200">
         <div className="h-[104px]" />
 
@@ -97,50 +90,41 @@ function ArticlePage() {
             <img
               src={article.image}
               alt={article.title}
-              className="w-full h-48 sm:h-56 object-cover"
+              className="w-full h-52 sm:h-60 object-cover"
             />
           </div>
         </div>
       </div>
 
-      {/* Article */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-12">
-        <article className="bg-white rounded-xl shadow-sm overflow-hidden -mt-4">
+      {/* ARTICLE */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <article className="bg-white rounded-2xl shadow-md -mt-6">
 
-          {/* Header */}
-          <div className="p-5 sm:p-8 border-b border-gray-100">
-            <div className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
+          {/* HEADER */}
+          <div className="p-6 sm:p-10 border-b border-gray-100">
+            <div className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-semibold uppercase tracking-wider mb-5">
               {article.category}
             </div>
 
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-5 leading-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight mb-6">
               {article.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-5 text-sm text-slate-500">
-              <div className="flex items-center gap-2">
-                <div className="w-9 h-9 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
-                  {article.author.charAt(0)}
-                </div>
-                <div>
-                  <p className="font-medium text-slate-900">{article.author}</p>
-                  <p className="text-xs">{article.date}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock size={15} className="text-slate-400" />
-                <span>{article.readTime}</span>
-              </div>
+            <div className="flex items-center gap-4 text-sm text-slate-500 mb-6">
+              <Clock size={15} />
+              <span>{article.readTime}</span>
+              <span>•</span>
+              <span>{article.date}</span>
             </div>
 
-            <p className="text-lg text-slate-600 leading-relaxed mt-6">
+            <p className="text-lg text-slate-600 leading-relaxed">
               {article.excerpt}
             </p>
           </div>
 
-          {/* Body */}
-          <div className="p-5 sm:p-8 bg-white">
-            <div className="prose prose-slate max-w-none prose-p:my-3 prose-hr:my-6">
+          {/* BODY */}
+          <div className="p-6 sm:p-10">
+            <div className="prose prose-slate max-w-none prose-p:my-4">
 
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
@@ -153,25 +137,25 @@ function ArticlePage() {
                   ),
 
                   h2: ({ children }) => (
-                    <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mt-8 mb-3 pb-2 border-b border-gray-200">
+                    <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mt-10 mb-4">
                       {children}
                     </h2>
                   ),
 
                   h3: ({ children }) => (
-                    <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mt-6 mb-2">
+                    <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mt-8 mb-3">
                       {children}
                     </h3>
                   ),
 
                   p: ({ children }) => (
-                    <p className="text-slate-700 leading-relaxed text-base mb-3">
+                    <p className="text-slate-700 leading-relaxed text-base">
                       {children}
                     </p>
                   ),
 
                   ul: ({ children }) => (
-                    <ul className="space-y-2 my-3">{children}</ul>
+                    <ul className="space-y-2 my-4">{children}</ul>
                   ),
 
                   li: ({ children }) => (
@@ -181,6 +165,7 @@ function ArticlePage() {
                     </li>
                   ),
 
+                  // CENTERED IMAGES — NO FRAME
                   img: ({ alt, src }) => {
                     const size =
                       alt?.startsWith('small:')
@@ -192,11 +177,11 @@ function ArticlePage() {
                     const cleanAlt = alt?.replace(/^(small|medium):\s*/i, '') || ''
 
                     return (
-                      <figure className="my-6 flex justify-center">
+                      <figure className="my-8 flex justify-center">
                         <img
                           src={src}
                           alt={cleanAlt}
-                          className={`w-full ${size} mx-auto rounded-xl shadow-sm border border-gray-100 object-contain`}
+                          className={`w-full ${size} mx-auto object-contain`}
                         />
                         {cleanAlt && (
                           <figcaption className="text-center text-sm text-slate-500 mt-2">
@@ -207,36 +192,39 @@ function ArticlePage() {
                     )
                   },
 
-                  // ✅ Corrected Table Logic
+                  // CENTERED TABLES — CONTENT WIDTH
                   table: ({ children }) => (
-                    <div className="my-6">
+                    <div className="my-8 flex justify-center">
                       <div className="overflow-x-auto">
                         <div className="inline-block min-w-max align-middle">
-                          <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+                          <div className="rounded-xl border border-slate-200 bg-white shadow-sm">
                             <table className="table-auto border-collapse">
                               {children}
                             </table>
                           </div>
                         </div>
                       </div>
-
-                      <p className="mt-2 text-center text-xs text-slate-400 sm:hidden">
-                        Swipe to view full table
-                      </p>
                     </div>
                   ),
 
-                  thead: ({ children }) => <thead className="bg-slate-50">{children}</thead>,
-                  tbody: ({ children }) => <tbody className="[&>tr:nth-child(even)]:bg-slate-50/60">{children}</tbody>,
+                  thead: ({ children }) => (
+                    <thead className="bg-slate-50">{children}</thead>
+                  ),
+
+                  tbody: ({ children }) => (
+                    <tbody className="[&>tr:nth-child(even)]:bg-slate-50/60">
+                      {children}
+                    </tbody>
+                  ),
 
                   th: ({ children }) => (
-                    <th className="text-left text-xs font-semibold uppercase tracking-wider text-slate-700 px-4 py-2 border-b border-slate-200 align-top">
+                    <th className="text-left text-xs font-semibold uppercase tracking-wider text-slate-700 px-4 py-3 border-b border-slate-200">
                       {children}
                     </th>
                   ),
 
                   td: ({ children }) => (
-                    <td className="text-sm text-slate-700 px-4 py-2 border-b border-slate-200 align-top">
+                    <td className="text-sm text-slate-700 px-4 py-3 border-b border-slate-200 align-top">
                       {children}
                     </td>
                   ),
@@ -251,6 +239,47 @@ function ArticlePage() {
 
             </div>
           </div>
+
+          {/* SHARE SECTION */}
+          <div className="px-6 sm:px-10 pb-8 pt-6 border-t border-gray-100 bg-gray-50 rounded-b-2xl">
+            <p className="text-sm font-semibold text-slate-900 mb-3 uppercase tracking-wider">
+              Share this insight
+            </p>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={shareOnLinkedIn}
+                className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-blue-50 transition shadow-sm"
+              >
+                <Linkedin size={18} className="text-blue-600" />
+              </button>
+
+              <button
+                onClick={shareOnTwitter}
+                className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-gray-100 transition shadow-sm"
+              >
+                <Twitter size={18} className="text-slate-600" />
+              </button>
+
+              <button
+                onClick={shareByEmail}
+                className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-gray-100 transition shadow-sm"
+              >
+                <Mail size={18} className="text-slate-600" />
+              </button>
+
+              <button
+                onClick={copyLink}
+                className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-gray-100 transition shadow-sm"
+              >
+                {copied ? (
+                  <Check size={18} className="text-green-500" />
+                ) : (
+                  <Link2 size={18} className="text-slate-600" />
+                )}
+              </button>
+            </div>
+          </div>
+
         </article>
       </div>
     </div>
