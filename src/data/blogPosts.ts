@@ -464,7 +464,7 @@ id: 'information-management-offshore-wind-rds-cost',
 title: 'Information Management in Offshore Wind: Why RDS and Structured Data Save €20,000 Per Incident',
 excerpt: 'Poor information management in offshore wind can cost €8,000–€20,000 per incident. Learn how RDS (ISO 81346) and structured asset data reduce O&M costs and lifecycle risk.',
 image: 'https://i.imgur.com/vBWKKiV.jpeg',
-content: `# Information Management in Offshore Wind: Why RDS and Structured Data Save €20,000 Per Incident
+content: `Information Management in Offshore Wind: Why RDS and Structured Data Save €20,000 Per Incident
 
 ## The Real Cost of Poor Information Management Across the Asset Lifecycle
 
