@@ -177,14 +177,14 @@ function ArticlePage() {
                     const cleanAlt = alt?.replace(/^(small|medium):\s*/i, '') || ''
 
                     return (
-                      <figure className="my-8 text-center">
+                      <figure className="my-6 text-center">
                         <img
                           src={src}
                           alt={cleanAlt}
                           className={`mx-auto w-full ${size} object-contain`}
                         />
                         {cleanAlt && (
-                          <figcaption className="mt-3 text-sm text-slate-500">
+                          <figcaption className="mt-1 text-sm text-slate-500">
                             {cleanAlt}
                           </figcaption>
                         )}
