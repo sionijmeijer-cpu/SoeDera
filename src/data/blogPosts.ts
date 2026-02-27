@@ -488,8 +488,8 @@ id: 'before-you-sign-dms-requirements',
   title: 'Before You Sign: 10 Critical Requirements to Demand from any DMS Vendor',
   excerpt:
     "A practitioner's non-negotiable checklist; what you need them to prove, show, and guarantee before you commit.",
-  image: 'https://i.imgur.com/XG0dpJR.png',
-  content: `# Before You Sign:
+  image: 'https://i.imgur.com/97SMLQB.png',
+  content: `Before You Sign:
 
 ## 10 Critical Requirements to Demand from any DMS Vendor
 
@@ -503,11 +503,10 @@ A DMS is not a commodity IT purchase. It is infrastructure. The wrong choice mea
 
 So, before you say yes, here are the 10 things you should demand that any vendor, tender company, or IT supplier prove to you. Not describe. Not promise. Prove.
 
-"These 10 demands apply whether you are evaluating a dedicated EDMS platform, a tender from an IT systems integrator, or an internal IT team proposing to build SharePoint or a similar general-purpose platform."
+> These 10 demands apply whether you are evaluating a dedicated EDMS platform, a tender from an IT systems integrator, or an internal IT team proposing to build SharePoint or a similar general-purpose platform.
 
-## Table of Contents
+## Article content
 
-- The 10 Non-Negotiable DMS Requirements
 - 01:  Native Asset Linking (RDS / ISO 81346 Compliance)
 - 02:  Prove the Contractor Submission Workflow End to End
 - 03:  Demonstrate a Configurable Review Workflow; Your Way, Not Their Template
@@ -518,9 +517,6 @@ So, before you say yes, here are the 10 things you should demand that any vendor
 - 08:  Verify Integration with Your Asset Register, CMMS, and GIS
 - 09:  Test Offline and Mobile Access; In the Field, Not the Boardroom
 - 10:  Demand a Reference, From a Project Like Yours
-- The Quick Verdict Table
-- The Uncomfortable Reality: Governance Is Not a Feature
-- The Final Word
 
 ## The 10 Non-Negotiable DMS Requirements
 
@@ -532,6 +528,7 @@ These apply whether you are evaluating:
 - A cloud document control solution
 - An asset information management system
 
+---
 ### 01:  Native Asset Linking (RDS / ISO 81346 Compliance)
 
 If your DMS cannot structurally link documents to physical assets, it is a filing cabinet.
@@ -654,6 +651,8 @@ Ask them to show you:
 
 🚩 Walk away if: The only references available are either confidential, from completely different industries, or will only speak with a vendor representative present.
 
+---
+
 ## The Quick Verdict Table
 
 Use this as your go/no-go filter before any final decision:
@@ -671,6 +670,8 @@ Use this as your go/no-go filter before any final decision:
 | Responsive local support | Medium | 24h response SLA minimum for critical systems |
 | Transparent, predictable pricing | Medium | Hidden costs appear at contract renewal |
 
+---
+
 ## The Uncomfortable Reality: Governance Is Not a Feature
 
 No Document Management System fixes poor governance. If you do not have:
@@ -684,6 +685,7 @@ Your EDMS will be bypassed within six months.
 
 The system is infrastructure. Governance is discipline. You need both.
 
+---
 ## The Final Word
 
 Most EDMS platforms look excellent in controlled demonstrations. You are not buying the demo.
