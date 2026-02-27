@@ -467,9 +467,9 @@ image: 'https://i.imgur.com/vBWKKiV.jpeg',
 content: `The Real Cost of Poor Information Management Across the Asset Lifecycle
 
 Information management in energy and offshore wind projects is often underestimated — until the costs become visible.
-
+<EMPTY LINE HERE>
 Can you afford project delays, offshore re-mobilisation, and operational inefficiencies caused by missing or unstructured asset information?
-
+<EMPTY LINE HERE>
 If not, structured information management anchored in **Reference Designation Systems (RDS)** and aligned with **ISO 81346** and **ISO 19650** should be treated as a strategic priority.
 
 This article explains how poor information management drives measurable operational losses — and how structured asset data transforms performance across the entire asset lifecycle.
