@@ -65,6 +65,7 @@ type TocItem = {
   id: string
   text: string
   level: 2 | 3
+  index: number
 }
 
 function slugify(input: string) {
@@ -77,7 +78,7 @@ function slugify(input: string) {
 }
 
 function extractToc(markdown: string): TocItem[] {
-  // Lightweight markdown heading extraction for ## and ###.
+  // Extract ## and ### only (keeps ToC clean and matches typical article UX).
   // Avoid headings inside fenced code blocks.
   const lines = (markdown || '').split(/\r?\n/)
   const items: TocItem[] = []
@@ -87,7 +88,6 @@ function extractToc(markdown: string): TocItem[] {
   for (const rawLine of lines) {
     const line = rawLine.trimEnd()
 
-    // Toggle on fenced code blocks (``` or ~~~)
     if (/^\s*(```|~~~)/.test(line)) {
       inFence = !inFence
       continue
@@ -101,7 +101,7 @@ function extractToc(markdown: string): TocItem[] {
     const level = hashes.length === 2 ? 2 : 3
     const text = m[2]
       .replace(/\s*#*\s*$/, '')
-      .replace(/\[(.*?)\]\(.*?\)/g, '$1') // strip inline links
+      .replace(/\[(.*?)\]\(.*?\)/g, '$1')
       .replace(/[*_`]/g, '')
       .trim()
     if (!text) continue
@@ -111,13 +111,95 @@ function extractToc(markdown: string): TocItem[] {
     counts.set(base, next)
     const id = next === 1 ? base : `${base}-${next}`
 
-    items.push({ id, text, level: level as 2 | 3 })
+    items.push({
+      id,
+      text,
+      level: level as 2 | 3,
+      index: items.length + 1,
+    })
   }
 
   return items
 }
 
-function Toc({ items, activeId }: { items: TocItem[]; activeId: string | null }) {
+function nodeToText(node: any): string {
+  if (node == null) return ''
+  if (typeof node === 'string' || typeof node === 'number') return String(node)
+  if (Array.isArray(node)) return node.map(nodeToText).join('')
+  if (typeof node === 'object' && 'props' in node) return nodeToText((node as any).props?.children)
+  return ''
+}
+
+function clamp01(v: number) {
+  if (v < 0) return 0
+  if (v > 1) return 1
+  return v
+}
+
+function TocProgressCircle({
+  value,
+  index,
+  isActive,
+}: {
+  value: number
+  index: number
+  isActive: boolean
+}) {
+  const size = 34
+  const stroke = 3
+  const r = (size - stroke) / 2
+  const c = 2 * Math.PI * r
+  const dash = c
+  const offset = c * (1 - clamp01(value))
+
+  return (
+    <div className="relative w-[34px] h-[34px] flex items-center justify-center shrink-0">
+      <svg width={size} height={size} className="absolute inset-0">
+        {/* track */}
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={r}
+          fill="none"
+          strokeWidth={stroke}
+          className="stroke-slate-200"
+        />
+        {/* progress */}
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={r}
+          fill="none"
+          strokeWidth={stroke}
+          strokeDasharray={dash}
+          strokeDashoffset={offset}
+          strokeLinecap="round"
+          className={isActive || value > 0 ? 'stroke-emerald-700' : 'stroke-slate-200'}
+          style={{ transform: 'rotate(-90deg)', transformOrigin: '50% 50%' }}
+        />
+      </svg>
+
+      <div
+        className={
+          'text-xs font-semibold ' +
+          (isActive ? 'text-emerald-800' : value >= 1 ? 'text-slate-700' : 'text-slate-500')
+        }
+      >
+        {index}
+      </div>
+    </div>
+  )
+}
+
+function Toc({
+  items,
+  activeId,
+  progressById,
+}: {
+  items: TocItem[]
+  activeId: string | null
+  progressById: Record<string, number>
+}) {
   if (!items.length) return null
 
   const scrollTo = (id: string) => {
@@ -129,48 +211,54 @@ function Toc({ items, activeId }: { items: TocItem[]; activeId: string | null })
 
   return (
     <nav aria-label="Table of contents" className="text-sm">
-      <div className="text-xs font-semibold uppercase tracking-wider text-slate-900 mb-3">
-        On this page
+      <div className="text-xs uppercase tracking-[0.18em] text-slate-600 mb-4">
+        Table of contents
       </div>
 
-      <ul className="space-y-1">
+      <ol className="space-y-3">
         {items.map((it) => {
           const isActive = activeId === it.id
+          const progress = progressById[it.id] ?? 0
+
           return (
-            <li key={it.id} className={it.level === 3 ? 'pl-4' : ''}>
+            <li key={it.id}>
               <button
                 type="button"
                 onClick={() => scrollTo(it.id)}
-                className={
-                  `w-full text-left rounded-lg px-2 py-1 transition ` +
-                  (isActive
-                    ? 'bg-blue-50 text-blue-700 font-semibold'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50')
-                }
+                className="w-full text-left flex items-start gap-3 group"
               >
-                {it.text}
+                <TocProgressCircle value={progress} index={it.index} isActive={isActive} />
+
+                <div className="pt-[2px]">
+                  <div
+                    className={
+                      (it.level === 3 ? 'text-[13px] ' : 'text-[13px] ') +
+                      (isActive
+                        ? 'font-semibold text-emerald-800'
+                        : 'font-medium text-slate-700 group-hover:text-slate-900')
+                    }
+                  >
+                    {it.text}
+                  </div>
+                </div>
               </button>
             </li>
           )
         })}
-      </ul>
+      </ol>
     </nav>
   )
-}
-
-function nodeToText(node: any): string {
-  if (node == null) return ''
-  if (typeof node === 'string' || typeof node === 'number') return String(node)
-  if (Array.isArray(node)) return node.map(nodeToText).join('')
-  if (typeof node === 'object' && 'props' in node) return nodeToText((node as any).props?.children)
-  return ''
 }
 
 function ArticlePage() {
   const { articleId } = Route.useParams()
   const article = blogPosts.find((post) => post.id === articleId && post.published)
+
   const [copied, setCopied] = useState(false)
+
   const [activeId, setActiveId] = useState<string | null>(null)
+  const [progressById, setProgressById] = useState<Record<string, number>>({})
+
   const contentRootRef = useRef<HTMLDivElement | null>(null)
 
   if (!article) {
@@ -200,6 +288,8 @@ function ArticlePage() {
     articleAuthor: article.author,
   }
 
+  const tocItems = useMemo(() => extractToc(article.content), [article.content])
+
   const shareOnLinkedIn = () => {
     const url = encodeURIComponent(window.location.href)
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'width=600,height=400')
@@ -223,41 +313,78 @@ function ArticlePage() {
     setTimeout(() => setCopied(false), 2000)
   }
 
-  const tocItems = useMemo(() => extractToc(article.content), [article.content])
-
   useEffect(() => {
-    // Highlight the currently visible section in the ToC.
+    // Robust ToC tracking:
+    // - active section is computed by scroll position (not flaky intersection settings)
+    // - progress ring shows how far you are within the current section
     const root = contentRootRef.current
-    if (!root) return
+    if (!root || tocItems.length === 0) return
 
-    const headingEls = Array.from(root.querySelectorAll<HTMLElement>('h2[id], h3[id]'))
-    if (!headingEls.length) return
+    const offsetPx = 140 // adjust for fixed header / visual comfort
+    let raf = 0
 
-    const obs = new IntersectionObserver(
-      (entries) => {
-        // Pick the top-most intersecting entry.
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => (a.boundingClientRect.top ?? 0) - (b.boundingClientRect.top ?? 0))
-        if (visible[0]?.target?.id) setActiveId(visible[0].target.id)
-      },
-      {
-        root: null,
-        // Activate a heading when it crosses the upper third of the viewport.
-        rootMargin: '0px 0px -70% 0px',
-        threshold: [0, 1],
-      },
-    )
+    const compute = () => {
+      const ids = tocItems.map((t) => t.id)
+      const els = ids
+        .map((id) => document.getElementById(id))
+        .filter(Boolean) as HTMLElement[]
+      if (els.length === 0) return
 
-    headingEls.forEach((el) => obs.observe(el))
-    return () => obs.disconnect()
-  }, [articleId])
+      const starts = els.map((el) => el.getBoundingClientRect().top + window.scrollY)
+      const docEnd = document.documentElement.scrollHeight
+      const ends = starts.map((s, i) => (i < starts.length - 1 ? starts[i + 1] - 1 : docEnd))
+
+      const y = window.scrollY + offsetPx
+
+      // active = last start <= y
+      let activeIdx = 0
+      for (let i = 0; i < starts.length; i++) {
+        if (y >= starts[i]) activeIdx = i
+      }
+
+      const nextActiveId = els[activeIdx]?.id ?? null
+      if (nextActiveId !== activeId) setActiveId(nextActiveId)
+
+      const nextProgress: Record<string, number> = {}
+      for (let i = 0; i < els.length; i++) {
+        const id = els[i].id
+        if (i < activeIdx) nextProgress[id] = 1
+        else if (i > activeIdx) nextProgress[id] = 0
+        else {
+          const span = Math.max(1, ends[i] - starts[i])
+          nextProgress[id] = clamp01((y - starts[i]) / span)
+        }
+      }
+      setProgressById(nextProgress)
+    }
+
+    const onScroll = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(compute)
+    }
+
+    const onResize = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(compute)
+    }
+
+    compute()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onResize)
+
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onResize)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [articleId, tocItems])
 
   return (
     <div className="min-h-screen bg-gray-100 pb-12">
       <SEOHead {...seoProps} />
 
-      {/* HERO */}
+      {/* HERO (B): title/meta/excerpt live here now */}
       <div className="relative bg-gray-200">
         <div className="h-[104px]" />
 
@@ -270,23 +397,10 @@ function ArticlePage() {
           </Link>
         </div>
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-4 pb-6">
-          <div className="rounded-xl overflow-hidden shadow-md">
-            <img
-              src={article.image}
-              alt={article.title}
-              className="w-full h-52 sm:h-60 object-cover"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* ARTICLE */}
-      <div className="max-w-[67rem] mx-auto px-4 sm:px-6">
-        <div className="-mt-6 lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-10">
-          <article className="bg-white rounded-2xl shadow-md">
-            {/* HEADER */}
-            <div className="p-6 sm:p-10 border-b border-gray-100">
+        {/* A: wider overall container (~40% wider than max-w-4xl) */}
+        <div className="max-w-[78rem] mx-auto px-4 sm:px-6 pt-6 pb-8">
+          <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-10">
+            <div className="bg-white rounded-2xl shadow-md border border-slate-100 p-6 sm:p-10">
               <div className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-semibold uppercase tracking-wider mb-5">
                 {article.category}
               </div>
@@ -314,16 +428,37 @@ function ArticlePage() {
               <p className="text-lg text-slate-600 leading-relaxed">
                 {article.excerpt}
               </p>
+            </div>
 
-              {/* MOBILE TOC (doesn't interfere with reading flow) */}
+            {/* keep right column empty in hero so grid aligns with ToC below */}
+            <div className="hidden lg:block" />
+          </div>
+        </div>
+      </div>
+
+      {/* ARTICLE + TOC */}
+      <div className="max-w-[78rem] mx-auto px-4 sm:px-6 mt-6">
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-10">
+          <article className="bg-white rounded-2xl shadow-md border border-slate-100">
+            {/* C: image moved inside the article (from hero -> here) */}
+            <div className="p-6 sm:p-10 pb-0">
+              <div className="rounded-xl overflow-hidden shadow-sm border border-slate-100">
+                <img
+                  src={article.image}
+                  alt={article.title}
+                  className="w-full h-56 sm:h-72 object-cover"
+                />
+              </div>
+
+              {/* MOBILE ToC: doesn't break reading flow */}
               {tocItems.length > 0 && (
-                <div className="mt-8 lg:hidden">
+                <div className="mt-6 lg:hidden">
                   <details className="rounded-xl border border-slate-200 bg-white shadow-sm">
                     <summary className="cursor-pointer select-none px-4 py-3 text-sm font-semibold text-slate-900">
-                      On this page
+                      Table of contents
                     </summary>
-                    <div className="px-3 pb-3">
-                      <Toc items={tocItems} activeId={activeId} />
+                    <div className="px-4 pb-4">
+                      <Toc items={tocItems} activeId={activeId} progressById={progressById} />
                     </div>
                   </details>
                 </div>
@@ -332,8 +467,8 @@ function ArticlePage() {
 
             {/* BODY */}
             <div className="p-6 sm:p-10">
-              {/** Keep ID generation consistent with extractToc() by reusing the same slug+counter scheme. */}
               {(() => {
+                // Keep IDs consistent with extractToc() via the same slug+counter scheme.
                 const headingCounts = new Map<string, number>()
 
                 const nextHeadingId = (text: string) => {
@@ -370,7 +505,7 @@ function ArticlePage() {
                           return (
                             <h2
                               id={id}
-                              className="text-xl sm:text-2xl font-bold text-slate-900 mt-10 mb-4 scroll-mt-24"
+                              className="text-xl sm:text-2xl font-bold text-slate-900 mt-10 mb-4 scroll-mt-28"
                             >
                               {children}
                             </h2>
@@ -383,7 +518,7 @@ function ArticlePage() {
                           return (
                             <h3
                               id={id}
-                              className="text-lg sm:text-xl font-semibold text-slate-800 mt-8 mb-3 scroll-mt-24"
+                              className="text-lg sm:text-xl font-semibold text-slate-800 mt-8 mb-3 scroll-mt-28"
                             >
                               {children}
                             </h3>
@@ -407,7 +542,6 @@ function ArticlePage() {
                           </li>
                         ),
 
-                        // CENTERED IMAGES — NO FRAME
                         img: ({ alt, src }) => {
                           const altText = alt || ''
                           const prefixMatch = altText.match(/^\s*(small|medium|large)\s*:\s*/i)
@@ -438,7 +572,6 @@ function ArticlePage() {
                           )
                         },
 
-                        // CENTERED TABLES — CONTENT WIDTH
                         table: ({ node, children }) => {
                           const caption = (node as any)?.data?.caption as string | undefined
 
@@ -557,12 +690,13 @@ function ArticlePage() {
             </div>
           </article>
 
-          {/* DESKTOP TOC (sticky, always visible while reading) */}
+          {/* D: Desktop ToC (sticky, aligned to article start, with progress rings) */}
           {tocItems.length > 0 && (
             <aside className="hidden lg:block">
-              <div className="sticky top-24">
-                <div className="rounded-2xl bg-white shadow-md border border-slate-100 p-5">
-                  <Toc items={tocItems} activeId={activeId} />
+              <div className="sticky top-28">
+                {/* move down a bit to match the article start visually */}
+                <div className="mt-2 rounded-2xl bg-white shadow-md border border-slate-100 p-6">
+                  <Toc items={tocItems} activeId={activeId} progressById={progressById} />
                 </div>
               </div>
             </aside>
