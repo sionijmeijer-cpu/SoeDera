@@ -78,7 +78,7 @@ function slugify(input: string) {
 }
 
 function extractToc(markdown: string): TocItem[] {
-  // Extract ## and ### only (keeps ToC clean and matches typical article UX).
+  // Extract ## and ### only.
   // Avoid headings inside fenced code blocks.
   const lines = (markdown || '').split(/\r?\n/)
   const items: TocItem[] = []
@@ -155,7 +155,6 @@ function TocProgressCircle({
   return (
     <div className="relative w-[34px] h-[34px] flex items-center justify-center shrink-0">
       <svg width={size} height={size} className="absolute inset-0">
-        {/* track */}
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -164,7 +163,6 @@ function TocProgressCircle({
           strokeWidth={stroke}
           className="stroke-slate-200"
         />
-        {/* progress */}
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -228,7 +226,6 @@ function Toc({
                 className="w-full text-left flex items-start gap-3 group"
               >
                 <TocProgressCircle value={progress} index={it.index} isActive={isActive} />
-
                 <div className="pt-[2px]">
                   <div
                     className={
@@ -250,12 +247,110 @@ function Toc({
   )
 }
 
+function SharePanel({
+  onLinkedIn,
+  onTwitter,
+  onEmail,
+  onCopy,
+  copied,
+}: {
+  onLinkedIn: () => void
+  onTwitter: () => void
+  onEmail: () => void
+  onCopy: () => void
+  copied: boolean
+}) {
+  return (
+    <div className="rounded-2xl bg-white shadow-md border border-slate-100 p-6">
+      <div className="text-xs uppercase tracking-[0.18em] text-slate-600 mb-4">
+        Share
+      </div>
+
+      <div className="flex items-center gap-3 flex-wrap">
+        <button
+          onClick={onLinkedIn}
+          className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-blue-50 transition shadow-sm border border-slate-100"
+          aria-label="Share on LinkedIn"
+        >
+          <Linkedin size={18} className="text-blue-600" />
+        </button>
+
+        <button
+          onClick={onTwitter}
+          className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm border border-slate-100"
+          aria-label="Share on X"
+        >
+          <Twitter size={18} className="text-slate-800" />
+        </button>
+
+        <button
+          onClick={onEmail}
+          className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm border border-slate-100"
+          aria-label="Share by email"
+        >
+          <Mail size={18} className="text-slate-800" />
+        </button>
+
+        <button
+          onClick={onCopy}
+          className="flex items-center gap-2 px-4 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm border border-slate-100 text-sm font-medium"
+        >
+          {copied ? (
+            <>
+              <Check size={16} className="text-green-600" />
+              Copied
+            </>
+          ) : (
+            <>
+              <Link2 size={16} className="text-slate-700" />
+              Copy
+            </>
+          )}
+        </button>
+      </div>
+    </div>
+  )
+}
+
+function RelatedPanel({
+  related,
+}: {
+  related: Array<{ id: string; title: string; category: string; date: string; readTime: string }>
+}) {
+  if (related.length === 0) return null
+
+  return (
+    <div className="rounded-2xl bg-white shadow-md border border-slate-100 p-6">
+      <div className="text-xs uppercase tracking-[0.18em] text-slate-600 mb-4">
+        Related articles
+      </div>
+
+      <div className="space-y-4">
+        {related.map((p) => (
+          <Link
+            key={p.id}
+            to="/blog/$articleId"
+            params={{ articleId: p.id }}
+            className="block group"
+          >
+            <div className="text-sm font-semibold text-slate-900 group-hover:text-emerald-800 transition">
+              {p.title}
+            </div>
+            <div className="text-xs text-slate-500 mt-1">
+              {p.category} • {p.date} • {p.readTime}
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function ArticlePage() {
   const { articleId } = Route.useParams()
   const article = blogPosts.find((post) => post.id === articleId && post.published)
 
   const [copied, setCopied] = useState(false)
-
   const [activeId, setActiveId] = useState<string | null>(null)
   const [progressById, setProgressById] = useState<Record<string, number>>({})
 
@@ -290,6 +385,20 @@ function ArticlePage() {
 
   const tocItems = useMemo(() => extractToc(article.content), [article.content])
 
+  const related = useMemo(() => {
+    // Keep it simple & deterministic: same category, published, exclude current, take 3.
+    return blogPosts
+      .filter((p) => p.published && p.id !== article.id && p.category === article.category)
+      .slice(0, 3)
+      .map((p) => ({
+        id: p.id,
+        title: p.title,
+        category: p.category,
+        date: p.date,
+        readTime: p.readTime,
+      }))
+  }, [article.id, article.category])
+
   const shareOnLinkedIn = () => {
     const url = encodeURIComponent(window.location.href)
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'width=600,height=400')
@@ -314,13 +423,11 @@ function ArticlePage() {
   }
 
   useEffect(() => {
-    // Robust ToC tracking:
-    // - active section is computed by scroll position (not flaky intersection settings)
-    // - progress ring shows how far you are within the current section
+    // Scroll-position based ToC tracking (stable) + progress ring.
     const root = contentRootRef.current
     if (!root || tocItems.length === 0) return
 
-    const offsetPx = 140 // adjust for fixed header / visual comfort
+    const offsetPx = 140
     let raf = 0
 
     const compute = () => {
@@ -336,14 +443,13 @@ function ArticlePage() {
 
       const y = window.scrollY + offsetPx
 
-      // active = last start <= y
       let activeIdx = 0
       for (let i = 0; i < starts.length; i++) {
         if (y >= starts[i]) activeIdx = i
       }
 
       const nextActiveId = els[activeIdx]?.id ?? null
-      if (nextActiveId !== activeId) setActiveId(nextActiveId)
+      setActiveId(nextActiveId)
 
       const nextProgress: Record<string, number> = {}
       for (let i = 0; i < els.length; i++) {
@@ -377,28 +483,41 @@ function ArticlePage() {
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onResize)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [articleId, tocItems])
+
+  // B: hero background idea without relying on external images:
+  // - subtle gradient
+  // - soft pattern via inline SVG data URI
+  const heroPatternSvg =
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%2394a3b8' stroke-opacity='0.18'%3E%3Cpath d='M0 70h140M70 0v140'/%3E%3Cpath d='M0 0l140 140M140 0L0 140' stroke-opacity='0.10'/%3E%3C/g%3E%3C/svg%3E"
 
   return (
     <div className="min-h-screen bg-gray-100 pb-12">
       <SEOHead {...seoProps} />
 
-      {/* HERO (B): title/meta/excerpt live here now */}
-      <div className="relative bg-gray-200">
-        <div className="h-[104px]" />
+      {/* HERO */}
+      <div
+        className="relative overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(226,232,240,0.95), rgba(241,245,249,1)), url("${heroPatternSvg}")`,
+          backgroundSize: 'cover, 240px 240px',
+          backgroundPosition: 'center, top left',
+        }}
+      >
+        {/* A: reduce wasted vertical space */}
+        <div className="h-[76px]" />
 
-        <div className="absolute top-6 left-4 sm:left-6 z-20">
+        <div className="absolute top-4 left-4 sm:left-6 z-20">
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white text-slate-900 rounded-lg hover:bg-gray-50 transition-all shadow-sm text-sm font-medium"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur text-slate-900 rounded-lg hover:bg-white transition-all shadow-sm text-sm font-medium"
           >
             <ArrowLeft size={16} /> Back to Insights
           </Link>
         </div>
 
-        {/* A: wider overall container (~40% wider than max-w-4xl) */}
-        <div className="max-w-[78rem] mx-auto px-4 sm:px-6 pt-6 pb-8">
+        {/* wider container (kept from your previous request) */}
+        <div className="max-w-[78rem] mx-auto px-4 sm:px-6 pt-4 pb-6">
           <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-10">
             <div className="bg-white rounded-2xl shadow-md border border-slate-100 p-6 sm:p-10">
               <div className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-semibold uppercase tracking-wider mb-5">
@@ -430,17 +549,16 @@ function ArticlePage() {
               </p>
             </div>
 
-            {/* keep right column empty in hero so grid aligns with ToC below */}
             <div className="hidden lg:block" />
           </div>
         </div>
       </div>
 
-      {/* ARTICLE + TOC */}
+      {/* ARTICLE + RIGHT RAIL */}
       <div className="max-w-[78rem] mx-auto px-4 sm:px-6 mt-6">
         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-10">
           <article className="bg-white rounded-2xl shadow-md border border-slate-100">
-            {/* C: image moved inside the article (from hero -> here) */}
+            {/* image moved into article */}
             <div className="p-6 sm:p-10 pb-0">
               <div className="rounded-xl overflow-hidden shadow-sm border border-slate-100">
                 <img
@@ -450,9 +568,9 @@ function ArticlePage() {
                 />
               </div>
 
-              {/* MOBILE ToC: doesn't break reading flow */}
-              {tocItems.length > 0 && (
-                <div className="mt-6 lg:hidden">
+              {/* Mobile: ToC + Share + Related live here (no right rail on mobile) */}
+              <div className="mt-6 lg:hidden space-y-4">
+                {tocItems.length > 0 && (
                   <details className="rounded-xl border border-slate-200 bg-white shadow-sm">
                     <summary className="cursor-pointer select-none px-4 py-3 text-sm font-semibold text-slate-900">
                       Table of contents
@@ -461,14 +579,23 @@ function ArticlePage() {
                       <Toc items={tocItems} activeId={activeId} progressById={progressById} />
                     </div>
                   </details>
-                </div>
-              )}
+                )}
+
+                <SharePanel
+                  onLinkedIn={shareOnLinkedIn}
+                  onTwitter={shareOnTwitter}
+                  onEmail={shareByEmail}
+                  onCopy={copyLink}
+                  copied={copied}
+                />
+
+                <RelatedPanel related={related} />
+              </div>
             </div>
 
             {/* BODY */}
             <div className="p-6 sm:p-10">
               {(() => {
-                // Keep IDs consistent with extractToc() via the same slug+counter scheme.
                 const headingCounts = new Map<string, number>()
 
                 const nextHeadingId = (text: string) => {
@@ -632,75 +759,41 @@ function ArticlePage() {
               })()}
             </div>
 
-            {/* SHARE SECTION */}
-            <div className="px-6 sm:px-10 pb-8 pt-6 border-t border-gray-100 bg-gray-50 rounded-b-2xl">
-              <p className="text-sm font-semibold text-slate-900 mb-3 uppercase tracking-wider">
-                Share this insight
-              </p>
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={shareOnLinkedIn}
-                  className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-blue-50 transition shadow-sm"
+            {/* Keep the PDF download if you want it still visible in-content */}
+            {article.pdfDownload && (
+              <div className="px-6 sm:px-10 pb-8">
+                <a
+                  href={article.pdfDownload}
+                  download
+                  className="inline-flex items-center gap-2 px-4 h-10 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-sm text-sm font-medium"
                 >
-                  <Linkedin size={18} className="text-blue-600" />
-                </button>
-
-                <button
-                  onClick={shareOnTwitter}
-                  className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm"
-                >
-                  <Twitter size={18} className="text-slate-800" />
-                </button>
-
-                <button
-                  onClick={shareByEmail}
-                  className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm"
-                >
-                  <Mail size={18} className="text-slate-800" />
-                </button>
-
-                <button
-                  onClick={copyLink}
-                  className="flex items-center gap-2 px-4 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm text-sm font-medium"
-                >
-                  {copied ? (
-                    <>
-                      <Check size={16} className="text-green-600" />
-                      Copied
-                    </>
-                  ) : (
-                    <>
-                      <Link2 size={16} className="text-slate-700" />
-                      Copy link
-                    </>
-                  )}
-                </button>
-
-                {article.pdfDownload && (
-                  <a
-                    href={article.pdfDownload}
-                    download
-                    className="flex items-center gap-2 px-4 h-10 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-sm text-sm font-medium ml-auto"
-                  >
-                    <Download size={16} />
-                    Download PDF
-                  </a>
-                )}
+                  <Download size={16} />
+                  Download PDF
+                </a>
               </div>
-            </div>
+            )}
           </article>
 
-          {/* D: Desktop ToC (sticky, aligned to article start, with progress rings) */}
-          {tocItems.length > 0 && (
-            <aside className="hidden lg:block">
-              <div className="sticky top-28">
-                {/* move down a bit to match the article start visually */}
-                <div className="mt-2 rounded-2xl bg-white shadow-md border border-slate-100 p-6">
+          {/* Right rail: ToC + Share + Related (sticky) */}
+          <aside className="hidden lg:block">
+            <div className="sticky top-28 space-y-4">
+              {tocItems.length > 0 && (
+                <div className="rounded-2xl bg-white shadow-md border border-slate-100 p-6">
                   <Toc items={tocItems} activeId={activeId} progressById={progressById} />
                 </div>
-              </div>
-            </aside>
-          )}
+              )}
+
+              <SharePanel
+                onLinkedIn={shareOnLinkedIn}
+                onTwitter={shareOnTwitter}
+                onEmail={shareByEmail}
+                onCopy={copyLink}
+                copied={copied}
+              />
+
+              <RelatedPanel related={related} />
+            </div>
+          </aside>
         </div>
       </div>
     </div>
