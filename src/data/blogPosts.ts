@@ -17,17 +17,17 @@ export const blogPosts: BlogPost[] = [
   {
 id: 'information-management-offshore-wind-rds-cost',
 title: 'Information Management in Offshore Wind: Why RDS and Structured Data Save €20,000 Per Incident',
-excerpt: 'Poor information management in offshore wind can cost €8,000–€20,000 per incident. Learn how RDS (ISO 81346) and structured asset data reduce O&M costs and lifecycle risk.',
+excerpt: 'Poor information management in offshore wind can cost €8,000 – €20,000 per incident. Learn how RDS (ISO 81346) and structured asset data reduce O&M costs and lifecycle risk.',
 image: 'https://i.imgur.com/vBWKKiV.jpeg',
 content: `The Real Cost of Poor Information Management Across the Asset Lifecycle
 
-Information management in energy and offshore wind projects is often underestimated — until the costs become visible.
+Information management in energy and offshore wind projects is often underestimated, until the costs become visible.
 
 Can you afford project delays, offshore re-mobilisation, and operational inefficiencies caused by missing or unstructured asset information?
 
 If not, structured information management anchored in **Reference Designation Systems (RDS)** and aligned with **ISO 81346** and **ISO 19650** should be treated as a strategic priority.
 
-This article explains how poor information management drives measurable operational losses — and how structured asset data transforms performance across the entire asset lifecycle.
+This article explains how poor information management drives measurable operational losses, and how structured asset data transforms performance across the entire asset lifecycle.
 
 ---
 
@@ -40,9 +40,9 @@ During construction, focus is rightly placed on engineering, fabrication, and in
 
 But when documentation is missing, inconsistent, or incorrectly tagged, the consequences surface quickly, especially offshore.
 
-> "Information management will not make the weld go faster or the cable pull quicker. But on the day you need the right information and it isn't there, the cost becomes very visible."
+> "Information management will not make the weld go faster or the cable pull quicker. But on the day you need the right information and it isn't there, the cost becomes visible."
 
-Information management is the process of organising, structuring and maintaining data so that the right information is accessible to the right people at the right time. The assumption is that documentation and data structuring can be cleaned up later.
+Information management is the process of organising, structuring and maintaining data so that the right information is accessible to the right people at the right time. The assumption is that documentation and data structuring can be cleaned up "later".
 
 But “later” comes with a price tag.
 
@@ -71,7 +71,7 @@ A targeted assessment supported by AI examined a common scenario:
 
 Technicians travel offshore with the wrong spare parts because equipment documentation was not structured or easily searchable.
 
-**Result: €8,000–€20,000 per incident — excluding lost production.**
+**Result: €8,000–€20,000 per incident, excluding lost production.**
 
 ![Small: Cost impact of poor information management in offshore wind](https://i.imgur.com/R7WwoQy.png)
 
