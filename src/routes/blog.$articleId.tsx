@@ -9,6 +9,44 @@ import remarkGfm from 'remark-gfm'
 
 import HighlightBox from '@/components/HighlightBox'
 
+// Extract an italic paragraph immediately following a table and render it as a table caption.
+// Usage in markdown:
+//   | ...table... |
+//   *This becomes the table caption.*
+function remarkTableCaptions() {
+  return (tree: any) => {
+    const children = tree?.children
+    if (!Array.isArray(children)) return
+
+    const stringify = (n: any): string => {
+      if (!n) return ''
+      if (typeof n.value === 'string') return n.value
+      if (Array.isArray(n.children)) return n.children.map(stringify).join('')
+      return ''
+    }
+
+    for (let i = 0; i < children.length - 1; i++) {
+      const node = children[i]
+      const next = children[i + 1]
+
+      if (node?.type !== 'table' || next?.type !== 'paragraph') continue
+      if (!Array.isArray(next.children) || next.children.length !== 1) continue
+
+      const only = next.children[0]
+      if (only?.type !== 'emphasis') continue
+
+      const caption = stringify(only).trim()
+      if (!caption) continue
+
+      node.data = node.data || {}
+      node.data.caption = caption
+
+      // Remove the caption paragraph so it doesn't render as normal text.
+      children.splice(i + 1, 1)
+    }
+  }
+}
+
 export const Route = createFileRoute('/blog/$articleId')({
   component: ArticlePage,
 })
@@ -134,7 +172,7 @@ function ArticlePage() {
               "
             >
               <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
+                remarkPlugins={[remarkGfm, remarkTableCaptions]}
                 components={{
                   blockquote: ({ children }) => (
                     <HighlightBox title="Key Insight">
@@ -155,7 +193,7 @@ function ArticlePage() {
                   ),
 
                   p: ({ children }) => (
-                    <p className="text-slate-700 leading-relaxed text-base">
+                    <p className="text-slate-700 leading-relaxed text-base my-4">
                       {children}
                     </p>
                   ),
@@ -173,14 +211,18 @@ function ArticlePage() {
 
                   // CENTERED IMAGES — NO FRAME
                   img: ({ alt, src }) => {
+                    const altText = alt || ''
+                    const prefixMatch = altText.match(/^\s*(small|medium|large)\s*:\s*/i)
+                    const prefix = (prefixMatch?.[1] || '').toLowerCase()
+
                     const size =
-                      alt?.startsWith('small:')
+                      prefix === 'small'
                         ? 'max-w-md'
-                        : alt?.startsWith('medium:')
+                        : prefix === 'medium'
                           ? 'max-w-xl'
                           : 'max-w-3xl'
 
-                    const cleanAlt = alt?.replace(/^(small|medium):\s*/i, '') || ''
+                    const cleanAlt = altText.replace(/^\s*(small|medium|large)\s*:\s*/i, '').trim()
 
                     return (
                       <figure className="text-center">
@@ -199,19 +241,31 @@ function ArticlePage() {
                   },
 
                   // CENTERED TABLES — CONTENT WIDTH
-                  table: ({ children }) => (
-                    <div className="my-8 flex justify-center">
-                      <div className="overflow-x-auto">
-                        <div className="inline-block min-w-max align-middle">
-                          <div className="rounded-xl border border-slate-200 bg-white shadow-sm">
-                            <table className="table-auto border-collapse">
-                              {children}
-                            </table>
+                  table: ({ node, children }) => {
+                    const caption = (node as any)?.data?.caption as string | undefined
+
+                    return (
+                      <figure className="my-8 flex flex-col items-center">
+                        <div className="w-full flex justify-center">
+                          <div className="overflow-x-auto">
+                            <div className="inline-block min-w-max align-middle">
+                              <div className="rounded-xl border border-slate-200 bg-white shadow-sm">
+                                <table className="table-auto border-collapse">
+                                  {children}
+                                </table>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  ),
+
+                        {caption && (
+                          <figcaption className="mt-2 text-sm text-slate-500 italic text-center max-w-2xl">
+                            {caption}
+                          </figcaption>
+                        )}
+                      </figure>
+                    )
+                  },
 
                   thead: ({ children }) => (
                     <thead className="bg-slate-50">{children}</thead>
@@ -260,28 +314,45 @@ function ArticlePage() {
 
               <button
                 onClick={shareOnTwitter}
-                className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-gray-100 transition shadow-sm"
+                className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm"
               >
-                <Twitter size={18} className="text-slate-600" />
+                <Twitter size={18} className="text-slate-800" />
               </button>
 
               <button
                 onClick={shareByEmail}
-                className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-gray-100 transition shadow-sm"
+                className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm"
               >
-                <Mail size={18} className="text-slate-600" />
+                <Mail size={18} className="text-slate-800" />
               </button>
 
               <button
                 onClick={copyLink}
-                className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-gray-100 transition shadow-sm"
+                className="flex items-center gap-2 px-4 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm text-sm font-medium"
               >
                 {copied ? (
-                  <Check size={18} className="text-green-500" />
+                  <>
+                    <Check size={16} className="text-green-600" />
+                    Copied
+                  </>
                 ) : (
-                  <Link2 size={18} className="text-slate-600" />
+                  <>
+                    <Link2 size={16} className="text-slate-700" />
+                    Copy link
+                  </>
                 )}
               </button>
+
+              {article.pdfDownload && (
+                <a
+                  href={article.pdfDownload}
+                  download
+                  className="flex items-center gap-2 px-4 h-10 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-sm text-sm font-medium ml-auto"
+                >
+                  <Download size={16} />
+                  Download PDF
+                </a>
+              )}
             </div>
           </div>
         </article>
