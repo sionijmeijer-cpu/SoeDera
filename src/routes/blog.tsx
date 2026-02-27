@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { SEOHead } from '@/components/SEOHead'
 import { blogPosts } from '../data/blogPosts'
-import { ArrowRight, Clock } from 'lucide-react'
+import { ArrowRight, Clock, User } from 'lucide-react'
 import { useState } from 'react'
 
 export const Route = createFileRoute('/blog')({
@@ -128,13 +128,22 @@ function InsightsPage() {
                   </p>
 
                   <div className="flex items-center justify-between mt-auto">
-                    <div className="flex items-center gap-4 text-sm text-slate-500">
+                    <div className="flex items-center gap-4 text-sm text-slate-500 flex-wrap">
                       <span>{featuredPost.date}</span>
+
+                      {featuredPost.author && (
+                        <span className="flex items-center gap-1">
+                          <User size={14} />
+                          {featuredPost.author}
+                        </span>
+                      )}
+
                       <span className="flex items-center gap-1">
                         <Clock size={14} />
                         {featuredPost.readTime}
                       </span>
                     </div>
+
                     <span className="inline-flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all">
                       Read Article
                       <ArrowRight size={18} />
@@ -180,13 +189,22 @@ function InsightsPage() {
                   </p>
 
                   <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-                    <div className="flex items-center gap-3 text-xs text-slate-500">
+                    <div className="flex items-center gap-3 text-xs text-slate-500 flex-wrap">
                       <span>{post.date}</span>
+
+                      {post.author && (
+                        <span className="flex items-center gap-1">
+                          <User size={12} />
+                          {post.author}
+                        </span>
+                      )}
+
                       <span className="flex items-center gap-1">
                         <Clock size={12} />
                         {post.readTime}
                       </span>
                     </div>
+
                     <ArrowRight
                       size={16}
                       className="text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"
