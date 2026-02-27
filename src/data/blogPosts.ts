@@ -15,53 +15,65 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-  id: 'why-bother-with-information-management',
-  title: 'Why Bother With Information Management?',
-  excerpt: 'How structured information anchored in RDS can save thousands per incident and transform your asset lifecycle from project execution to operations.',
-  image: 'https://i.imgur.com/vBWKKiV.jpeg',
-  content: `# Why Bother With Information Management?
+id: 'information-management-offshore-wind-rds-cost',
+title: 'Information Management in Offshore Wind: Why RDS and Structured Data Save €20,000 Per Incident',
+excerpt: 'Poor information management in offshore wind can cost €8,000–€20,000 per incident. Learn how RDS (ISO 81346) and structured asset data reduce O&M costs and lifecycle risk.',
+image: 'https://i.imgur.com/vBWKKiV.jpeg',
+content: `The Real Cost of Poor Information Management Across the Asset Lifecycle
 
-## How structured information can save you thousands per incident — and transform your asset lifecycle
+Information management in energy and offshore wind projects is often underestimated — until the costs become visible.
 
-Can you afford to waste time during project execution, and face huge maintenance costs during operation?
+Can you afford project delays, offshore re-mobilisation, and operational inefficiencies caused by missing or unstructured asset information?
 
-If the answer is no, then information management deserves your attention right now.
+If not, structured information management anchored in **Reference Designation Systems (RDS)** and aligned with **ISO 81346** and **ISO 19650** should be treated as a strategic priority.
 
-This article explains why information management anchored by Reference Designation Systems (RDS) is not a nice-to-have, but a strategic investment that pays dividends across the entire asset lifecycle.
+This article explains how poor information management drives measurable operational losses — and how structured asset data transforms performance across the entire asset lifecycle.
 
 ---
 
-## The Elephant in the Room: Why Does Information Management Get Deprioritized?
+## Why Information Management Gets Deprioritized in Energy Projects
 
-In years of working across energy and industrial projects, one pattern keeps emerging: information management is consistently pushed to the bottom of the priority list. The reason is understandable — the value is invisible at first.
+In years of working across energy and industrial projects, one pattern keeps emerging: information management is consistently pushed to the bottom of the priority list. The reason is understandable, the value is invisible at first.
 
-> "Information management will not make the weld go faster or the cable pull quicker. But on the day you need the right information and it isn't there, that's when the cost becomes very visible."
+During construction, focus is rightly placed on engineering, fabrication, and installation, especially for offshore assets with fixed sail-out dates. Information management rarely accelerates a weld or cable pull.
 
-Information management is the process of organising, structuring and maintaining data so that the right information is accessible to the right people at the right time.
 
-During construction, the focus is rightly on building — especially for offshore assets with fixed sail-out dates. The assumption is that documentation and data structuring can be cleaned up later.
+But when documentation is missing, inconsistent, or incorrectly tagged, the consequences surface quickly, especially offshore.
+
+> "Information management will not make the weld go faster or the cable pull quicker. But on the day you need the right information and it isn't there, the cost becomes very visible."
+
+Information management is the process of organising, structuring and maintaining data so that the right information is accessible to the right people at the right time. The assumption is that documentation and data structuring can be cleaned up later.
 
 But “later” comes with a price tag.
 
 By closeout, engineers who owned the information have demobilized. The remaining teams lack context. Information is lost. Structured handover turns into a scramble.
 
-In well-functioning organizations, this delays project closure. In others, operations inherit the mess and either spend years untangling it — or hire someone to act as a human search engine.
+In well-functioning organizations, this delays project closure. In others, operations inherit the mess and either spend years untangling it, or hire someone to act as a human search engine.
+
+Project closeout becomes chaotic:
+
+- Engineers demobilize with undocumented knowledge  
+- Asset data loses context  
+- Handover becomes reactive instead of structured  
+- Operations inherit incomplete documentation  
+
+The result: lifecycle inefficiency from day one.
 
 ---
 
-## The Business Case: What Does Poor Information Management Actually Cost?
+## The Cost of Poor Information Management in Offshore Wind Operations
 
-### During Operation
+### During Operation - A €20,000 Problem Per Incident
 
-In operational settings, the cost becomes measurable.
+In offshore wind O&M environments, information gaps translate directly into financial loss.
 
 A targeted assessment supported by AI examined a common scenario:
 
-Technicians travel offshore with the wrong equipment because the correct part information was not easily accessible.
+Technicians travel offshore with the wrong spare parts because equipment documentation was not structured or easily searchable.
 
-**Result: A single incident costs between €8,000 and €20,000 — excluding lost energy production.**
+**Result: €8,000–€20,000 per incident — excluding lost production.**
 
-![medium: Cost down, quality, Effesiency and time up](https://i.imgur.com/R7WwoQy.png)
+![Small: Cost impact of poor information management in offshore wind](https://i.imgur.com/R7WwoQy.png)
 
 ### Cost Breakdown Per Incident
 
@@ -73,11 +85,11 @@ Technicians travel offshore with the wrong equipment because the correct part in
 | Logistics & Rebooking | Miscellaneous buffer                           | €1,000–€2,000  |
 | Overhead & Admin      | ~15%                                           | Variable       |
 
-Across a wind farm with dozens of assets and multiple O&M campaigns per year, the numbers escalate rapidly.
+Across a wind farm with dozens of turbines and multiple annual O&M campaigns, this compounds into significant operational expenditure.
 
 ---
 
-### Cost Per Incident by Asset Type
+### Estimated Cost per Incident by Asset Type
 
 | Asset Type            | Estimated Cost / Incident |
 |-----------------------|--------------------------|
@@ -86,95 +98,107 @@ Across a wind farm with dozens of assets and multiple O&M campaigns per year, th
 | Onshore Substation    | €2,400                   |
 | Onshore WTG           | €5,000                   |
 
-*Offshore WTG assumes a 10MW turbine losing 50% production capacity during the incident window.
+**Offshore WTG assumes a 10MW turbine operating at 50% capacity factor.*
 
-The question is no longer:
 
-**“Can we afford to invest in information management?”**
+The strategic question becomes:
 
-It becomes:
-
-**“Can we afford not to?”**
+**Can you afford not to invest in structured information management?**
 
 ---
 
-## During Project Execution
+## How RDS (ISO 81346) Improves Asset Traceability During Project Execution
 
-When information is tagged with the correct RDS designation — the system code tying a document to a specific asset — engineers can instantly filter all related documentation:
+Reference Designation Systems (RDS), defined under ISO 81346, provide structured system codes that connect documentation directly to physical assets.
 
-- P&IDs  
-- Manuals  
-- Data sheets  
-- Electrical documentation  
-- Vendor files  
+When correctly implemented:
 
-Gaps become visible immediately.
+- P&IDs, manuals, and datasheets are linked to exact systems  
+- Missing contractor documentation becomes visible immediately  
+- Engineers can filter all documents tied to a specific subsystem  
+- Review deadlines are surfaced before becoming compliance risks  
 
-If a contractor has not delivered a required document, it appears as missing — not buried in someone's inbox.
+Instead of searching manually, teams navigate by system structure.
 
-Projects with structured RDS-based systems operate fundamentally differently.
+**Without RDS** → information is fragmented.  
+**With RDS** → information is system-driven and traceable.
 
-Without structure → finding documents becomes daily friction.  
-With structure → the information finds you.
+  
+Structured information management accelerates:
 
-Overdue document reviews are also surfaced proactively, reducing compliance risk.
+- Project closeout  
+- Handover readiness  
+- Contractor document verification  
+- Compliance tracking  
+- Asset registration  
 
----
+When RDS tagging is implemented from design phase onward, document gaps become visible in real time, not during final handover.
 
-## The Connected Asset: RDS, BIM, and the Power of Integration
-
-Structured information extends beyond documents — it enables the connected asset.
-
-When RDS designation is applied consistently, it becomes a universal connector between:
-
-- Documents  
-- 3D models  
-- Asset databases  
-- Maintenance records  
-- Operational requirements  
-
-This principle underpins Building Information Modelling (BIM), formalized in ISO 19650.
-
-While BIM (ISO 19650) and RDS (ISO 81346) are independent standards, combining them unlocks powerful coherence.
-
-Instead of siloed repositories, you create a living digital twin — where every document, sensor reading, and maintenance action is traceable back to the physical asset.
-
-This value compounds across the entire lifecycle — from design to decommissioning.
+This reduces rework, accelerates acceptance, and improves operational readiness.
 
 ---
 
-## Let’s Build Smarter Assets Together
+## Integrating RDS, BIM (ISO 19650), and the Digital Twin
+
+Structured asset information extends beyond documentation.
+
+When RDS (ISO 81346) aligns with BIM principles under ISO 19650, it creates a connected digital environment:
+
+- Documents link to 3D models  
+- Asset data aligns with maintenance systems  
+- Operational records tie back to physical systems  
+- Sensor data connects to structured components  
+
+This integration forms the foundation of a practical digital twin in energy infrastructure.
+
+Instead of siloed repositories, organizations gain lifecycle traceability, from design through decommissioning.
+
+The value compounds over decades of operation.
+
+---
+
+## Lifecycle Impact: From Construction to Decommissioning
+
+Organizations that treat information as a strategic asset achieve:
+
+- Faster project closeout  
+- Reduced offshore O&M incidents  
+- Improved compliance transparency  
+- Lower lifecycle operating costs  
+- Reduced operational risk  
 
 Information management is not bureaucratic overhead.
 
-It is a long-term investment that:
+**It is cost control, risk reduction, and asset intelligence.**
 
-- Reduces operational risk  
-- Accelerates project closeout  
-- Improves compliance  
-- Enables faster decision-making  
+> "The best time to structure your information was at project start. The second-best time is now."
 
-The organizations that treat information as a strategic asset — structured from day one and traceable across the lifecycle — are the ones that:
+---
 
-- Close projects on time  
-- Run leaner operations  
-- Avoid expensive surprises  
+## Strengthen Your Asset Information Strategy
 
-> "The best time to structure your information was at the start of the project. The second-best time is now."
+Energy and infrastructure organizations that structure asset information from day one operate leaner, close projects faster, and reduce operational surprises.
 
-At SøDera, we help energy and infrastructure organizations implement practical information management frameworks — from RDS designation strategies and BIM integration to handover readiness and operational governance.
+If your project is:
 
-Whether you're early in a project, mid-construction, or managing inherited operational data, the path forward is clear.
+- In early design  
+- Mid-construction  
+- Approaching handover  
+- Already operational with fragmented data  
 
-Ready to unlock the value of your information?
+Structured information management can still deliver measurable value.
+  
+At SøDera, we help energy and infrastructure organizations implement practical information management frameworks, from RDS designation strategies and BIM integration to handover readiness and operational governance.
+
+**Ready to reduce lifecycle risk and operational waste?**
 
 `,
-  date: '2026-02-26',
-  readTime: '10 min read',
-  category: 'RDS',
-  author: 'Søren Christensen',
-  color: 'from-blue-600 to-indigo-500',
-  published: true,
+date: '2026-02-26',
+readTime: '11 min read',
+category: 'RDS',
+author: 'Søren Christensen & Sylvia Awoudu',
+color: 'from-blue-600 to-indigo-500',
+published: true,
   },
   {
     id: 'essential-guide-document-control-systems',
@@ -643,7 +667,7 @@ readTime: '11 min read',
 category: 'RDS',
 author: 'Søren Christensen',
 color: 'from-blue-600 to-indigo-500',
-published: true,
+published: false,
   },
   {
     id: 'document-management-best-practices',
