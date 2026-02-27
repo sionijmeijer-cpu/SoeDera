@@ -505,19 +505,6 @@ So, before you say yes, here are the 10 things you should demand that any vendor
 
 > These 10 demands apply whether you are evaluating a dedicated EDMS platform, a tender from an IT systems integrator, or an internal IT team proposing to build SharePoint or a similar general-purpose platform.
 
-## Article content
-
-- 01:  Native Asset Linking (RDS / ISO 81346 Compliance)
-- 02:  Prove the Contractor Submission Workflow End to End
-- 03:  Demonstrate a Configurable Review Workflow; Your Way, Not Their Template
-- 04: Show Me the Metadata Model; and That I Can Change It
-- 05:  Open Data Export (Prove I Can Leave)
-- 06:  Test the Search and Filtering; Under Real Conditions
-- 07:  Require a Handover and Operations Mode; Not Just a Project Mode
-- 08:  Verify Integration with Your Asset Register, CMMS, and GIS
-- 09:  Test Offline and Mobile Access; In the Field, Not the Boardroom
-- 10:  Demand a Reference, From a Project Like Yours
-
 ## The 10 Non-Negotiable DMS Requirements
 
 These apply whether you are evaluating:
