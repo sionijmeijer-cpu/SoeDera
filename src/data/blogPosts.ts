@@ -543,7 +543,7 @@ Across a wind farm with dozens of turbines and multiple annual O&M campaigns, th
 | Onshore Substation    | €2,400                   |
 | Onshore WTG           | €5,000                   |
 
-*Offshore WTG assumes a 10MW turbine losing 50% production.*
+**Offshore WTG assumes a 10MW turbine losing 50% production.*
 
 
 The strategic question becomes:
