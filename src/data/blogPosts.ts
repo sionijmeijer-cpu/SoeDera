@@ -484,190 +484,227 @@ Contact SøDera for expert guidance on implementing the right RDS for your organ
     published: true,
   },
   {
-id: 'information-management-offshore-wind-rds-cost',
-title: 'Information Management in Offshore Wind: Why RDS and Structured Data Save €20,000 Per Incident',
-excerpt: 'Poor information management in offshore wind can cost €8,000–€20,000 per incident. Learn how RDS (ISO 81346) and structured asset data reduce O&M costs and lifecycle risk.',
-image: 'https://i.imgur.com/vBWKKiV.jpeg',
-content: `The Real Cost of Poor Information Management Across the Asset Lifecycle
+id: 'before-you-sign-dms-requirements',
+  title: 'Before You Sign: 10 Critical Requirements to Demand from any DMS Vendor',
+  excerpt:
+    "A practitioner's non-negotiable checklist; what you need them to prove, show, and guarantee before you commit.",
+  image: 'https://i.imgur.com/XG0dpJR.png',
+  content: `# Before You Sign:
 
-Information management in energy and offshore wind projects is often underestimated — until the costs become visible.
+## 10 Critical Requirements to Demand from any DMS Vendor
 
-Can you afford project delays, offshore re-mobilisation, and operational inefficiencies caused by missing or unstructured asset information?
+A practitioner's non-negotiable checklist; what you need them to prove, show, and guarantee before you commit.
 
-If not, structured information management anchored in **Reference Designation Systems (RDS)** and aligned with **ISO 81346** and **ISO 19650** should be treated as a strategic priority.
+You have sat through the demo. The sales team was charming. The platform looked clean. The case studies featured names you recognise. And now you are being asked to sign a multi-year contract for an Electronic Document Management System (EDMS) that will sit at the heart of your project and operational information for the next decade or more.
 
-This article explains how poor information management drives measurable operational losses — and how structured asset data transforms performance across the entire asset lifecycle.
+This is exactly the moment where organisations get it wrong.
 
----
+A DMS is not a commodity IT purchase. It is infrastructure. The wrong choice means years of workarounds, a shadow filing system in SharePoint, and an operations team that can't find what it needs when it matters most. The right choice, implemented well, with the right governance, becomes invisible in the best possible way: information is simply where it should be, when you need it.
 
-## Why Information Management Gets Deprioritized in Energy Projects
+So, before you say yes, here are the 10 things you should demand that any vendor, tender company, or IT supplier prove to you. Not describe. Not promise. Prove.
 
-In years of working across energy and industrial projects, one pattern keeps emerging: information management is consistently pushed to the bottom of the priority list. The reason is understandable, the value is invisible at first.
+"These 10 demands apply whether you are evaluating a dedicated EDMS platform, a tender from an IT systems integrator, or an internal IT team proposing to build SharePoint or a similar general-purpose platform."
 
-During construction, focus is rightly placed on engineering, fabrication, and installation, especially for offshore assets with fixed sail-out dates. Information management rarely accelerates a weld or cable pull.
+## Table of Contents
 
+- The 10 Non-Negotiable DMS Requirements
+- 01:  Native Asset Linking (RDS / ISO 81346 Compliance)
+- 02:  Prove the Contractor Submission Workflow End to End
+- 03:  Demonstrate a Configurable Review Workflow; Your Way, Not Their Template
+- 04: Show Me the Metadata Model; and That I Can Change It
+- 05:  Open Data Export (Prove I Can Leave)
+- 06:  Test the Search and Filtering; Under Real Conditions
+- 07:  Require a Handover and Operations Mode; Not Just a Project Mode
+- 08:  Verify Integration with Your Asset Register, CMMS, and GIS
+- 09:  Test Offline and Mobile Access; In the Field, Not the Boardroom
+- 10:  Demand a Reference, From a Project Like Yours
+- The Quick Verdict Table
+- The Uncomfortable Reality: Governance Is Not a Feature
+- The Final Word
 
-But when documentation is missing, inconsistent, or incorrectly tagged, the consequences surface quickly, especially offshore.
+## The 10 Non-Negotiable DMS Requirements
 
-> "Information management will not make the weld go faster or the cable pull quicker. But on the day you need the right information and it isn't there, the cost becomes very visible."
+These apply whether you are evaluating:
 
-Information management is the process of organising, structuring and maintaining data so that the right information is accessible to the right people at the right time. The assumption is that documentation and data structuring can be cleaned up later.
+- A dedicated engineering EDMS platform
+- An IT systems integrator
+- A SharePoint-based build
+- A cloud document control solution
+- An asset information management system
 
-But “later” comes with a price tag.
+### 01:  Native Asset Linking (RDS / ISO 81346 Compliance)
 
-By closeout, engineers who owned the information have demobilized. The remaining teams lack context. Information is lost. Structured handover turns into a scramble.
+If your DMS cannot structurally link documents to physical assets, it is a filing cabinet.
 
-In well-functioning organizations, this delays project closure. In others, operations inherit the mess and either spend years untangling it, or hire someone to act as a human search engine.
+In engineering and energy environments, documents must connect to systems, equipment, and tags using structured metadata, ideally aligned with ISO 81346 Reference Designation System (RDS) standards.
 
-Project closeout becomes chaotic:
+Ask them to show you:
 
-- Engineers demobilize with undocumented knowledge  
-- Asset data loses context  
-- Handover becomes reactive instead of structured  
-- Operations inherit incomplete documentation  
+- "Filter all documents for system code =X= and show me every drawing, manual, and datasheet associated with it."
+- "If I change the RDS code for an asset, what happens to the documents linked to it?"
+- "Can a single document be linked to multiple RDS codes — for example, one document mentioning multiple systems or assets?"
 
-The result: lifecycle inefficiency from day one.
+🚩 Walk away if: They show you how to type the RDS code into a comments field and call it 'tagged'. That is not tagging. That is a notes field with extra steps.
 
----
+### 02:  Prove the Contractor Submission Workflow End to End
 
-## The Cost of Poor Information Management in Offshore Wind Operations
+Most of your document volume will come from contractors and subcontractors. They should not need a full platform licence to submit documents, receive review comments, and respond to transmittals. If they do, they will use email. You will lose control of the process immediately.
 
-### During Operation - A €20,000 Problem Per Incident
+Ask them to show you:
 
-In offshore wind O&M environments, information gaps translate directly into financial loss.
+- "Create a test contractor account and show me the submission workflow from their side, with no admin privileges."
+- "What happens when a contractor submits a document with non-compliant naming, does the system reject it automatically?"
+- "Can I configure different submission requirements for different contractors or discipline packages?"
 
-A targeted assessment supported by AI examined a common scenario:
+🚩 Walk away if: Contractor access requires purchasing additional user licences. Your submissions will happen in email within a month.
 
-Technicians travel offshore with the wrong spare parts because equipment documentation was not structured or easily searchable.
+### 03:  Demonstrate a Configurable Review Workflow; Your Way, Not Their Template
 
-**Result: €8,000–€20,000 per incident — excluding lost production.**
+Review control failure destroys project schedules. A serious DMS gives you a fully configurable review engine: different workflows for different document types, escalation paths when deadlines are missed, automatic reminders, and a complete audit trail of every comment, response, and status change.
 
-![Small: Cost impact of poor information management in offshore wind](https://i.imgur.com/R7WwoQy.png)
+Ask them to show you:
 
-### Cost Breakdown Per Incident
+- "Set up a two-stage review workflow for a Vendor Data Item — first engineering, then document control — with automatic escalation after 5 days."
+- "Show me what a reviewer sees when they have 40 documents in their queue, and how they manage priorities."
+- "If a review deadline expires without action, what happens? Show me the escalation path."
 
-| Cost Component        | Assumption                                      | Estimated Cost |
-|-----------------------|------------------------------------------------|----------------|
-| Vessel Time (CTV)     | €7k/day — extra 0.5–1 day wasted               | €3,000–€7,000  |
-| Vessel Time (SOV)     | €100k/day — incremental hours                  | €8,000–€12,000 |
-| Technician Cost       | 3–4 techs @ €800/day, ~0.5–1 day lost          | €1,500–€3,000  |
-| Logistics & Rebooking | Miscellaneous buffer                           | €1,000–€2,000  |
-| Overhead & Admin      | ~15%                                           | Variable       |
+🚩 Walk away if: The review workflow is fixed and cannot be modified without a paid customisation project. You will be adapting your process to fit their template.
 
-Across a wind farm with dozens of turbines and multiple annual O&M campaigns, this compounds into significant operational expenditure.
+### 04: Show Me the Metadata Model; and That I Can Change It
 
----
+Your documents will have attributes that no out-of-the-box system anticipates: RDS codes, discipline codes, system tags, area classifications, safety criticality ratings, commissioning status. A rigid metadata model forces you to store project-critical information outside the system, usually in a spreadsheet which immediately creates a parallel information universe that nobody maintains properly.
 
-### Estimated Cost per Incident by Asset Type
+Ask them to show you:
 
-| Asset Type            | Estimated Cost / Incident |
-|-----------------------|--------------------------|
-| Offshore Substation   | €10,000                  |
-| Offshore WTG*         | €17,500                  |
-| Onshore Substation    | €2,400                   |
-| Onshore WTG           | €5,000                   |
+- "Add a custom metadata field for 'Commissioning Package Number' to all Mechanical document types, show me how long that takes."
+- "Can metadata fields be mandatory for certain document categories?"
+- "Can I run a report showing all documents where a specific metadata field is blank?"
 
-**Offshore WTG assumes a 10MW turbine losing 50% production.*
+🚩 Walk away if: Metadata schema changes require a service request and a 2-week lead time. You are not in control of your own data structure.
 
+### 05:  Open Data Export (Prove I Can Leave)
 
-The strategic question becomes:
+This is the most important question in DMS procurement. Your documents will outlive your vendor relationship.
 
-**Can you afford not to invest in structured information management?**
+Ask them to show you:
 
----
+- "Export everything; documents, metadata, transmittal history, revision log, to a clean folder structure right now. Show me what I get."
+- "What format does the export use? Is it a proprietary format or open XML/CSV?"
+- "If I wanted to migrate to a different system tomorrow, what would that process look like and what would it cost?"
 
-## How RDS (ISO 81346) Improves Asset Traceability During Project Execution
+🚩 Walk away if: Data export is available 'on request' or requires a professional services engagement. Your data is effectively held hostage.
 
-Reference Designation Systems (RDS), defined under ISO 81346, provide structured system codes that connect documentation directly to physical assets.
+### 06:  Test the Search and Filtering; Under Real Conditions
 
-When correctly implemented:
+Search is the entire point of a Document Management System. Most demos use 200 clean files. You will have 50,000–250,000.
 
-- P&IDs, manuals, and datasheets are linked to exact systems  
-- Missing contractor documentation becomes visible immediately  
-- Engineers can filter all documents tied to a specific subsystem  
-- Review deadlines are surfaced before becoming compliance risks  
+Ask them to show you:
 
-Instead of searching manually, teams navigate by system structure.
+- "Load a sample dataset of 10,000 documents and find every current-revision drawing for a specific RDS system code, filtered by discipline and status."
+- "What is the typical search response time with 100,000 documents in the system?"
+- "Can I build and save custom filter sets for frequent searches?"
 
-**Without RDS** → information is fragmented.  
-**With RDS** → information is system-driven and traceable.
+🚩 Walk away if: The demo uses a clean, minimal dataset. Ask to see it under production-scale data before you commit.
 
-  
-Structured information management accelerates:
+### 07:  Require a Handover and Operations Mode; Not Just a Project Mode
 
-- Project closeout  
-- Handover readiness  
-- Contractor document verification  
-- Compliance tracking  
-- Asset registration  
+Many EDMS platforms are built for project document control. Few are built for 20-year operations and maintenance. These are not the same use cases.
 
-When RDS tagging is implemented from design phase onward, document gaps become visible in real time, not during final handover.
+Ask them to show you:
 
-This reduces rework, accelerates acceptance, and improves operational readiness.
+- "Show me how this system looks to a maintenance technician searching for the correct wiring diagram for a specific relay, using only the equipment tag."
+- "How does the system handle the project-to-operations transition; is there a formal handover workflow?"
+- "Can documents be tagged with maintenance-relevant attributes like 'Safety Critical' or 'Regulatory Required' for O&M filtering?"
 
----
+🚩 Walk away if: The vendor's entire demo is built around the project use case. Operations are mentioned as a feature, not demonstrated as one.
 
-## Integrating RDS, BIM (ISO 19650), and the Digital Twin
+### 08:  Verify Integration with Your Asset Register, CMMS, and GIS
 
-Structured asset information extends beyond documentation.
+A DMS that lives in isolation is a filing system. A DMS connected to your asset register, Computerised Maintenance Management System (CMMS), and Geographic Information System (GIS) is an information model. Documents, assets, maintenance records, and spatial data should all reference the same master objects. If a document is updated, the CMMS should know. If an asset is decommissioned, its documents should be flagged. This level of integration does not happen by accident; it requires a real API and real connectors.
 
-When RDS (ISO 81346) aligns with BIM principles under ISO 19650, it creates a connected digital environment:
+Ask them to show you:
 
-- Documents link to 3D models  
-- Asset data aligns with maintenance systems  
-- Operational records tie back to physical systems  
-- Sensor data connects to structured components  
+- "Show me the existing integration with (your specific CMMS or asset register platform). How does document status sync to the asset record?"
+- "What does the API look like; REST? GraphQL? What is the documentation standard?"
+- "If I update an RDS code in the asset register, how does that change propagate to the documents linked to it?"
 
-This integration forms the foundation of a practical digital twin in energy infrastructure.
+🚩 Walk away if: Integration is described as 'possible via API' with no existing connectors built. That means your team builds and maintains it at your cost.
 
-Instead of siloed repositories, organizations gain lifecycle traceability, from design through decommissioning.
+### 09:  Test Offline and Mobile Access; In the Field, Not the Boardroom
 
-The value compounds over decades of operation.
+Offshore platforms. Substations. Remote wind farms. Connectivity is not guaranteed.
 
----
+Ask them to show you:
 
-## Lifecycle Impact: From Construction to Decommissioning
+- "How a field technician marks up and syncs a document when offline. What happens to the markup when connectivity is restored?"
+- "Can an operations team pre-download a defined document package for a planned maintenance job?"
+- "What is the minimum connectivity requirement for core read-access functions?"
 
-Organizations that treat information as a strategic asset achieve:
+🚩 Walk away if: Mobile access is a web browser view that requires full connectivity. There is no offline mode.
 
-- Faster project closeout  
-- Reduced offshore O&M incidents  
-- Improved compliance transparency  
-- Lower lifecycle operating costs  
-- Reduced operational risk  
+### 10:  Demand a Reference, From a Project Like Yours
 
-Information management is not bureaucratic overhead.
+Brand logos are irrelevant. What you need is a reference from an organisation running a similar project, similar document volumes, similar contractor complexity, similar asset type, similar handover requirements. And not just a name: a real conversation with a real user, without the vendor in the room.
 
-**It is cost control, risk reduction, and asset intelligence.**
+Ask them to show you:
 
-> "The best time to structure your information was at project start. The second-best time is now."
+- "Provide two references from organisations using this system for offshore energy projects with more than 20,000 documents and multi-contractor environments."
+- "Can we speak to those references without a vendor representative present?"
+- "Ask the reference: What would you do differently if you were implementing this system again?"
 
----
+🚩 Walk away if: The only references available are either confidential, from completely different industries, or will only speak with a vendor representative present.
 
-## Strengthen Your Asset Information Strategy
+## The Quick Verdict Table
 
-Energy and infrastructure organizations that structure asset information from day one operate leaner, close projects faster, and reduce operational surprises.
+Use this as your go/no-go filter before any final decision:
 
-If your project is:
+| Requirement | Priority | Why It Matters |
+|---|---|---|
+| Native RDS / asset tagging | Non-negotiable | Deal-breaker if missing |
+| Configurable review workflows | Non-negotiable | Deal-breaker if missing |
+| Contractor portal (no full licence) | Non-negotiable | Real submissions happen in email otherwise |
+| Full metadata flexibility | High priority | You will need it within 6 months |
+| Open data export / API | High priority | Your data should be yours, always |
+| Offline / mobile field access | High priority | Offshore teams can't always rely on connectivity |
+| CMMS / asset register integration | High priority | Maintenance and document worlds must speak the same language |
+| Sandbox / trial environment | High priority | If they won't let you test it, that tells you something |
+| Responsive local support | Medium | 24h response SLA minimum for critical systems |
+| Transparent, predictable pricing | Medium | Hidden costs appear at contract renewal |
 
-- In early design  
-- Mid-construction  
-- Approaching handover  
-- Already operational with fragmented data  
+## The Uncomfortable Reality: Governance Is Not a Feature
 
-Structured information management can still deliver measurable value.
-  
-At SøDera, we help energy and infrastructure organizations implement practical information management frameworks, from RDS designation strategies and BIM integration to handover readiness and operational governance.
+No Document Management System fixes poor governance. If you do not have:
 
-**Ready to reduce lifecycle risk and operational waste?**
+- Enforced naming conventions
+- Contractual submission standards
+- Defined review timelines
+- Executive accountability for information quality
 
+Your EDMS will be bypassed within six months.
+
+The system is infrastructure. Governance is discipline. You need both.
+
+## The Final Word
+
+Most EDMS platforms look excellent in controlled demonstrations. You are not buying the demo.
+
+You are buying:
+
+- 15 contractors submitting simultaneously
+- A review backlog under pressure
+- 100,000 documents in the system if not more
+- Offshore engineers searching during an outage
+
+If a vendor cannot demonstrate live capability against these realities, the answer is already clear.
+
+At SøDera we help organisations define DMS requirements, run structured vendor evaluations, and implement information management frameworks that hold up under real project and operational conditions. If you are about to make a DMS decision or have already made one and it is not working, then get in touch.
 `,
-date: '2026-02-26',
-readTime: '11 min read',
-category: 'RDS',
-author: 'Søren Christensen',
-color: 'from-blue-600 to-indigo-500',
-published: false,
+  date: '2026-02-27',
+  readTime: '10 min read',
+  category: 'Document Management',
+  author: 'Sylvia Awoudu',
+  color: 'from-blue-500 to-blue-400',
+  published: true,
   },
   {
     id: 'document-management-best-practices',
