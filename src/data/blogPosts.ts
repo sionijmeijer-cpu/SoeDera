@@ -543,7 +543,7 @@ Across a wind farm with dozens of turbines and multiple annual O&M campaigns, th
 | Onshore Substation    | €2,400                   |
 | Onshore WTG           | €5,000                   |
 
-<small><em>*Offshore WTG assumes a 10MW turbine losing 50% production.</em></small>
+*Offshore WTG assumes a 10MW turbine losing 50% production.
 
 
 The strategic question becomes:
@@ -565,8 +565,8 @@ When correctly implemented:
 
 Instead of searching manually, teams navigate by system structure.
 
-> **Without RDS** → information is fragmented.  
-> **With RDS** → information is system-driven and traceable.
+**Without RDS** → information is fragmented.  
+**With RDS** → information is system-driven and traceable.
 
   
 Structured information management accelerates:
@@ -577,7 +577,7 @@ Structured information management accelerates:
 - Compliance tracking  
 - Asset registration  
 
-When RDS tagging is implemented from design phase onward, document gaps become visible in real time — not during final handover.
+When RDS tagging is implemented from design phase onward, document gaps become visible in real time, not during final handover.
 
 This reduces rework, accelerates acceptance, and improves operational readiness.
 
@@ -614,7 +614,7 @@ Organizations that treat information as a strategic asset achieve:
 
 Information management is not bureaucratic overhead.
 
-> **It is cost control, risk reduction, and asset intelligence.**
+**It is cost control, risk reduction, and asset intelligence.**
 
 > "The best time to structure your information was at project start. The second-best time is now."
 
@@ -633,9 +633,9 @@ If your project is:
 
 Structured information management can still deliver measurable value.
   
-At SøDera, we help energy and infrastructure organizations implement practical information management frameworks — from RDS designation strategies and BIM integration to handover readiness and operational governance.
+At SøDera, we help energy and infrastructure organizations implement practical information management frameworks, from RDS designation strategies and BIM integration to handover readiness and operational governance.
 
->  **Ready to reduce lifecycle risk and operational waste?**
+**Ready to reduce lifecycle risk and operational waste?**
 
 `,
 date: '2026-02-26',
