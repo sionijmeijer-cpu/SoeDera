@@ -1,6 +1,16 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { SEOHead } from '@/components/SEOHead'
-import { Clock, ArrowLeft, Linkedin, Twitter, Mail, Link2, Check, Download } from 'lucide-react'
+import {
+  Clock,
+  ArrowLeft,
+  Linkedin,
+  Twitter,
+  Mail,
+  Link2,
+  Check,
+  Download,
+  User,
+} from 'lucide-react'
 import { useState } from 'react'
 import { blogPosts } from '../data/blogPosts'
 
@@ -147,11 +157,20 @@ function ArticlePage() {
               {article.title}
             </h1>
 
-            <div className="flex items-center gap-4 text-sm text-slate-500 mb-6">
-              <Clock size={15} />
-              <span>{article.readTime}</span>
-              <span>•</span>
+            <div className="flex items-center gap-4 text-sm text-slate-500 mb-6 flex-wrap">
               <span>{article.date}</span>
+
+              {article.author && (
+                <span className="flex items-center gap-1">
+                  <User size={15} />
+                  <span>{article.author}</span>
+                </span>
+              )}
+
+              <span className="flex items-center gap-1">
+                <Clock size={15} />
+                <span>{article.readTime}</span>
+              </span>
             </div>
 
             <p className="text-lg text-slate-600 leading-relaxed">
