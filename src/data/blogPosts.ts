@@ -518,7 +518,7 @@ Technicians travel offshore with the wrong spare parts because equipment documen
 
 **Result: €8,000–€20,000 per incident — excluding lost production.**
 
-![Small:Cost impact of poor information management in offshore wind](https://i.imgur.com/R7WwoQy.png)
+![Small: Cost impact of poor information management in offshore wind](https://i.imgur.com/R7WwoQy.png)
 
 ### Cost Breakdown Per Incident
 
