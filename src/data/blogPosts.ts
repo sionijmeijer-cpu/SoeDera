@@ -251,7 +251,8 @@ With it, **every system speaks the same language**.
 
 A single structured tag may seem like a small detail.
 
-But when that tag connects **documents, systems, engineers, and operators**, it becomes one of the most powerful tools for managing complex assets.`,
+But when that tag connects **documents, systems, engineers, and operators**, it becomes one of the most powerful tools for managing complex assets.
+`,
   date: '2026-03-11',
   readTime: '8 min read',
   category: 'RDS',
