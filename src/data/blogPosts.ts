@@ -85,7 +85,7 @@ The product designation, in this case, mirrors the same tree structure, using th
 
 ![small: *Figure 2 - Product designation tree for the HPU skid*](https://i.imgur.com/uPOX24I.png)
 
-*Figure 2 - Product designation tree for the HPU skid*
+
 
 | Pump assembly | Product designation | Meaning |
 | --- | --- | --- |
