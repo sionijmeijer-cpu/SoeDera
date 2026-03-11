@@ -260,7 +260,7 @@ But when that tag connects **documents, systems, engineers, and operators**, it 
   color: 'blue',
   image: 'INSERT_COVER_IMAGE_URL_HERE',
   published: true,
-}
+  },
   {
 id: 'information-management-offshore-wind-rds-cost',
 title: 'Information Management in Offshore Wind: Why RDS and Structured Data Save €20,000 Per Incident',
