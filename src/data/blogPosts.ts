@@ -258,7 +258,7 @@ But when that tag connects **documents, systems, engineers, and operators**, it 
   author: 'Your Name',
   color: 'blue',
   image: 'INSERT_COVER_IMAGE_URL_HERE',
-  published: true
+  published: true,
 }
   {
 id: 'information-management-offshore-wind-rds-cost',
