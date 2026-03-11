@@ -17,8 +17,8 @@ export const blogPosts: BlogPost[] = [
 {
   id: 'rds-ps-explained-plant-asset-tagging',
   title: 'RDS-PS Explained: How One Tag Connects Your Entire Plant',
-  image: 'https://i.imgur.com/3gGzZ4k.jpeg',
   excerpt: 'RDS-PS provides a structured way to identify every asset in a plant. Learn how ISO 81346 creates a shared language across operations, engineering and maintenance.',
+  image: 'https://i.imgur.com/3gGzZ4k.jpeg',
   content: `## RDS-PS Explained: How One Tag Connects Your Entire Plant
 
 If you've ever struggled to track down the right document for a piece of equipment, or had maintenance, engineering, and the control room all using different names for the same pump, you're not alone.
@@ -251,14 +251,12 @@ With it, **every system speaks the same language**.
 
 A single structured tag may seem like a small detail.
 
-But when that tag connects **documents, systems, engineers, and operators**, it becomes one of the most powerful tools for managing complex assets.
-`,
+But when that tag connects **documents, systems, engineers, and operators**, it becomes one of the most powerful tools for managing complex assets.`,
   date: '2026-03-11',
   readTime: '8 min read',
   category: 'RDS',
-  author: 'Your Name',
-  color: 'blue',
-  image: 'INSERT_COVER_IMAGE_URL_HERE',
+  author: 'Søren Christensen',
+  color: 'from-blue-600 to-indigo-500',
   published: true,
   },
   {
