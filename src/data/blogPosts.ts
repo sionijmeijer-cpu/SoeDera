@@ -27,38 +27,15 @@ RDS — more specifically **RDS-PS** — is the international standard designed 
 
 In a previous article I discussed **why structured information management matters**. This article focuses on something different: **what RDS-PS actually is, how it works, and why it matters from a technical perspective.**
 
-![Insert header/supporting image here](INSERT_IMAGE_URL_HERE)
-
 ---
 
 ## What Is RDS-PS?
 
 **RDS-PS stands for Reference Designation System for Power Supply.**
 
-It is defined in the **ISO/IEC 81346 standard series** and provides a structured way to assign **unique identifiers to every asset in a plant**.
-
-Think of it as a **postcode system for industrial equipment**:
-
-- short
-- systematic
-- meaningful to engineers who understand the structure
-
-Whether you operate:
-
-- a power station
-- a water treatment facility
-- an offshore installation
-- a wind turbine
-
-RDS-PS provides a **shared language**.
-
-Everyone refers to the same equipment in the same way across:
-
-- engineering drawings
-- documentation
-- maintenance systems
-- databases
-- work orders
+RDS-PS stands for Reference Designation System for Power Supply. It is an internationally recognised method, defined under the ISO/IEC 81346 standard series. It is for giving every piece of equipment in a plant a unique, structured identifier. Think of it as a post code for your assets: short, systematic, and to some extent immediately meaningful to anyone who knows how to read it.
+Whether you are running a power station, a water treatment facility, or an offshore platform, RDS-PS gives your entire operation a shared language. Engineers, operators, maintenance teams, and suppliers can all refer to the same item in the same way, across every document, every database, and every work order.
+>The core idea - One designation. Used consistently. Across every document, system, and team in your plant. That is RDS-PS in a sentence.
 
 ---
 
