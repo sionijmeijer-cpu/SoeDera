@@ -21,214 +21,194 @@ export const blogPosts: BlogPost[] = [
   image: 'https://i.imgur.com/3gGzZ4k.jpeg',
   content: `## RDS-PS Explained: How One Tag Connects Your Entire Plant
 
-If you've ever struggled to track down the right document for a piece of equipment, or had maintenance, engineering, and the control room all using different names for the same pump, you're not alone.
+If you've ever struggled to track down the right document for a piece of equipment, or had maintenance, engineering, and the control room all using different names for the same pump, you're not alone. RDS or more specifically RDS-PS is the international standard that solves exactly this problem. Previously, I shared thoughts on why RDS or information management matters, see that article under the “related articles” in the right. This article focusses more on what it is, how it works, and why it matters for your plant from a more technical perspective.
 
-RDS — more specifically **RDS-PS** — is the international standard designed to solve exactly this problem.
-
-In a previous article I discussed **why structured information management matters**. This article focuses on something different: **what RDS-PS actually is, how it works, and why it matters from a technical perspective.**
-
----
-
-## What Is RDS-PS?
-
-**RDS-PS stands for Reference Designation System for Power Supply.**
+## What Is RDS-PS, and Why Should You Care?
 
 RDS-PS stands for Reference Designation System for Power Supply. It is an internationally recognised method, defined under the ISO/IEC 81346 standard series. It is for giving every piece of equipment in a plant a unique, structured identifier. Think of it as a post code for your assets: short, systematic, and to some extent immediately meaningful to anyone who knows how to read it.
-Whether you are running a power station, a water treatment facility, or an offshore platform, RDS-PS gives your entire operation a shared language. Engineers, operators, maintenance teams, and suppliers can all refer to the same item in the same way, across every document, every database, and every work order.
->The core idea - One designation. Used consistently. Across every document, system, and team in your plant. That is RDS-PS in a sentence.
 
----
+Whether you are running a power station, a water treatment facility, or an offshore platform, RDS-PS gives your entire operation a shared language. Engineers, operators, maintenance teams, and suppliers can all refer to the same item in the same way, across every document, every database, and every work order.
+
+> *The core idea* - One designation. Used consistently. Across every document, system, and team in your plant. That is RDS-PS in a sentence.
 
 ## Two Perspectives on the Same Asset
 
-RDS-PS is intentionally flexible.
+RDS-PS is generic and flexible in how to designate your asset. It is not providing you with a strict guide or rule of how to apply it. It is more up to the user to justify how to apply it. This was also the point in the article focusing on RDS-PP vs RDS-PS. Thus, must the user define how to apply for example the different aspects. Even with ISO 81346-101 it is recommended but not decided or strictly stated how to apply them. This recognises a fundamental truth that engineers deal with every day: a piece of equipment can be looked at from two very different angles, and both are valid.
 
-It does **not enforce a single rigid structure** for how assets must be designated. Instead, it allows organisations to define how different aspects should be applied.
+Take a hydraulic pump. To the operator or the service engineer, what matters is what that pump does, it pressurises the hydraulic system, keeps the actuators moving, and is essential to the process. To the designer, the manufacturer, or the procurement team, what matters is what that pump is, a specific product, with a model number, a datasheet, and a physical location on the skid.
 
-This reflects a fundamental engineering reality:
+At SøDera, we believe the best practise with RDS-PS is to let the functional aspect be owned by the operator / Service department and the product aspect be owned by the Designer / Manufacturer. Illustrated below in a table:
 
-> The same piece of equipment can be viewed from different perspectives.
-
-Consider a **hydraulic pump**.
-
-### Operator Perspective (Function)
-
-The operator cares about **what the pump does**:
-
-- pressurises the hydraulic system
-- enables actuator movement
-- supports safety-critical operations
-
-### Designer Perspective (Product)
-
-The designer or manufacturer cares about **what the pump is**:
-
-- a specific product
-- with a manufacturer
-- a model number
-- a datasheet
-- a physical installation location
-
-Both perspectives are valid.
-
----
-
-## Best Practice: Separating Functional and Product Aspects
-
-A practical way to implement RDS-PS is:
-
-| Aspect | Owned by |
+| Functional Aspect | Product Aspect |
 | --- | --- |
-| Functional designation | Operations / Service |
-| Product designation | Designer / Manufacturer |
+| Answers: What does this item do? | Answers: What is this item? |
+| Owner: Operator / Service Department | Owner: Designer / Manufacturer |
+| Defines the role in the process | Defines the physical product identity |
+| Used in: P&IDs, operating procedures, alarm lists, maintenance job cards | Used in: datasheets, procurement, spare parts, installation drawings |
+| Prefix: = | Prefix: - |
 
-This separation ensures that **every relevant question about an asset can be answered**.
+*Table 1 — The two key RDS-PS aspects for plant equipment*
 
-- What does it do?
-- Where is it in the system?
-- What product is installed?
-- Who supplied it?
+This split is deliberate and important. Together, they cover every question you will ever have about an asset, especially if we include the type aspect, %.
 
-Together these perspectives create a **complete digital identity for the asset**.
+> *Why this separation matters in practice* - When a pump is replaced with a different model, the product designation may change, the physical product is different. But the functional designation stays exactly the same, it is still performing the same role in the process. Your operating procedures, alarm setpoints, and maintenance routines do not need to change, unless of course it has different maintenance schedules. Only the procurement and installation records are updated.
 
----
+## A Worked Example: The Hydraulic Pump
 
-## Worked Example: A Hydraulic Pump System
+Let us make this concrete. A modern wind turbine relies on a hydraulic supply system to operate the blade pitch mechanism, the rotor brake, and other safety-critical functions. That system includes two pump assemblies, a duty pump and a standby pump.
 
-Consider a **modern wind turbine**.
+Here is how RDS-PS designates those pump assemblies, from both the operator's perspective and the designer's perspective.
 
-The turbine contains a **hydraulic supply system** responsible for:
+## The Hierarchy as a Tree
 
-- blade pitch control
-- rotor braking
-- safety functions
+RDS-PS is a hierarchical system. Every code is built by stepping down through the plant structure, level by level. The tree below shows how the designation for each pump assembly is constructed, from the top-level turbine down to each individual unit:
 
-This system contains two pumps:
+![small: Functional tree structure](https://i.imgur.com/CYg3h4w.png)
 
-- **Duty pump**
-- **Standby pump**
+*Figure 1 - RDS-PS functional designation tree for Wind Turbine Generator A1*
 
-Both pumps perform the same function but operate in different roles.
+Notice that =GPC1 and =GPC2 sit at the same level, both are direct children of the hydraulic supply system =HB2. They are parallel assemblies, not one nested inside the other. Duty and standby roles are expressed by giving each pump assembly its own distinct code. I'm forced to state this is how it could be done as RDS-PS would also “allow” if you wanted one pump assembly with the two pumps underneath, or a third option.
 
-![Insert system overview image here](INSERT_SYSTEM_OVERVIEW_IMAGE_URL_HERE)
+## The Functional Designation -- the operator's view
 
----
+The functional designation is read directly from the tree. Each pump assembly already has a unique, complete designation. The code itself carries the full context, turbine, system, and role:
 
-## The Hierarchical Structure
+| Pump assembly | Functional designation | Meaning |
+| --- | --- | --- |
+| Duty pump assembly | =A1=HB2=GPC1 | Duty pump unit in the hydraulic system of WTG A1 |
+| Standby pump assembly | =A1=HB2=GPC2 | Standby pump unit in the same hydraulic system |
 
-RDS-PS designations are built **hierarchically**.
+*Table 2 - Functional designations for both pump assemblies*
 
-Each identifier is created by moving through the **plant structure level by level**.
+## The Product Designation -- the designer's view
 
-Because plain tree structures are not ideal in your current article setup, add the hierarchy as an image here:
+The product designation, in this case, mirrors the same tree structure, using the hyphen (-) prefix instead. It is assigned by the designer or manufacturer to identify each pump as a physical product, independently of what operational role it plays:
 
-![Insert hierarchy/tree structure image here](INSERT_TREE_STRUCTURE_IMAGE_URL_HERE)
+![small: Product tree structure](https://i.imgur.com/uPOX24I.png)
 
-Example hierarchy shown in that image:
+*Figure 2 - Product designation tree for the HPU skid*
 
-- Wind Turbine
-- Hydraulic Supply System
-- Pump Assembly 1
-- Pump Assembly 2
+| Pump assembly | Product designation | Meaning |
+| --- | --- | --- |
+| Duty pump assembly | -HB1-GPC1 | Duty pump unit on HPU skid HB1 |
+| Standby pump assembly | -HB1-GPC2 | Standby pump unit on the same HPU skid |
 
-Each step adds context to the final identifier.
+*Table 3 - Product designations for both pump assemblies*
 
-This structure allows engineers to instantly understand **where an asset belongs in the overall system**.
+The product aspect could look completely different than what is reflected above. It is not an aspect which is suggest getting deeper standardized but instead left open for the designers.
 
----
+## Combining Both, the complete asset tag
 
-## Functional Designation – Operator View
+In day-to-day use, both designations appear together as a compound tag. This is what could go on the physical nameplate, into the CMMS, and onto every document that refers to that pump:
 
-The **functional designation** describes what the equipment does in the system.
+| Complete tag | Designation | Meaning |
+| --- | --- | --- |
+| Complete tag -- duty pump | =A1=HB2=GPC1 / -HB1-GPC1 | Functional role in WTG A1 hydraulic system + physical identity on HPU skid |
+| Complete tag -- standby pump | =A1=HB2=GPC2 / -HB1-GPC2 | Standby role in WTG A1 hydraulic system + physical identity on HPU skid |
 
-For example:
+It is important to state it may be combined as it may also be managed via mapping links in databases or similar. The exact approach if the physical label shall include both aspects or not shall be determined internally in the company and must be well documented in the “RDS implementation specification”.
 
-\`\`\`
-=HB2 = Hydraulic supply system
-=GPC1 = Pump assembly 1
-=GPC2 = Pump assembly 2
-\`\`\`
+## The Bigger Picture: RDS-PS as Your Central Connection Point
 
-Both pumps are **parallel components**, meaning:
+Here is where RDS-PS really starts to earn its place. The tag is not just a label. It becomes the single reference point that ties together every piece of information about an asset, from design to operation to decommissioning.
 
-- neither is subordinate to the other
-- each performs the same function in the system
+Think about all the different types of information that exist for that hydraulic pump:
 
-The duty and standby role is defined through **separate functional codes**.
+- The engineering datasheet and equipment specification
+- The P&ID showing how it connects to the rest of the system
+- The installation drawing showing its physical location on the skid
+- The electrical schematic for its motor starter and control circuit
+- The maintenance schedule and inspection records
+- The alarm and trip setpoints in the control system
+- The signal list, every sensor, transmitter, and feedback from the pump
+- The spare parts list and procurement history
 
-![Insert functional designation illustration here](INSERT_FUNCTIONAL_DESIGNATION_IMAGE_URL_HERE)
+![small: RDS-PS in the center](https://i.imgur.com/TTJcOWQ.jpeg)
 
----
+Without a consistent designation system, all of this information lives in different places, using different names for the same item. With RDS-PS, every single one of these documents and records carries the same tag, and that tag becomes the search key that connects them all.
 
-## Product Designation – Designer View
+> *RDS-PS as your information backbone* - The RDS-PS code is not just a name, it is the linking key across your engineering database, document management system, CMMS, and control system. Search for =A1.HB2.GPC1 in any of those systems and you find everything related to that pump, instantly.
 
-The **product designation** identifies the physical product itself.
+## Systems Engineering Requirements and RDS-PS
 
-This designation:
+If you are building your plant using a systems engineering approach, defining requirements at each level of the hierarchy and tracing them down to individual components, RDS-PS fits naturally into that process.
 
-- is assigned by the **designer or manufacturer**
-- identifies the actual installed equipment
-- uses the **hyphen (-) prefix**
+Each requirement in your systems engineering model can be linked to the RDS-PS designation of the asset it applies to. A performance requirement ("the hydraulic supply system shall maintain 250 bar at all times") traces down to the functional designation of the pump responsible for meeting it. A physical installation requirement ("the pump unit shall be installed in Module A, Zone 2") links to both the product designation and the location designation.
 
-This allows the product to be tracked **independently of its operational function**.
+This matters because the correct level of the RDS-PS hierarchy to attach a requirement to depends entirely on the nature of that requirement:
 
-![Insert product designation illustration here](INSERT_PRODUCT_DESIGNATION_IMAGE_URL_HERE)
+| Type of requirement | Attach to | Example |
+| --- | --- | --- |
+| Process performance requirement | = Functional aspect | Flow rate, pressure, availability |
+| Physical product requirement | - Product aspect | Dimensions, material spec, ATEX rating |
+| Physical location requirement | + Location aspect | Module, zone, floor level, access route |
+| Signal / interface requirement | = or - (depending on context) | Control signal, feedback, alarm threshold |
 
----
+*Table 4 — Matching requirement types to RDS-PS aspects*
 
-## Why This Matters
+Getting this right from the start, during FEED or early design, means your requirements traceability matrix, your verification records, and your as-built documentation all use the same designations consistently. Retrofitting this structure later is significantly harder and more expensive.
 
-When RDS-PS is implemented correctly, several problems disappear.
+## Signals, Instruments, and the RDS-PS Tag
 
-### Documentation becomes traceable
+This is where RDS-PS moves from being a useful labelling system to being something genuinely powerful -- and it is an area the industry has been slow to take full advantage of.
 
-Every drawing, manual and work order references the same identifier.
+Every piece of equipment in a hydraulic system has signals attached to it. The duty pump assembly alone will have a pressure transmitter on its outlet, a temperature sensor on the motor or bearing housing, a run/stop status signal from the drive, a filter differential pressure switch, and probably one or more alarm and trip setpoints. Each of these signals lives somewhere -- in the control system, in the SCADA database, in the alarm list, in the cause-and-effect matrix.
 
-### Maintenance becomes faster
+The question is: how do those signals connect back to the asset they belong to? In most plants, the answer is: not very well. Signal tags follow instrument conventions, equipment tags follow one system, and the SCADA uses something else entirely. Tracing a live alarm back to the right datasheet or maintenance record can take hours.
 
-Technicians immediately know **exactly which asset is involved**.
+For the duty pump assembly on turbine A1, the instruments and their RDS-PS designations look like this:
 
-### Engineering changes become manageable
+| Instrument | RDS-PS tag | What it measures |
+| --- | --- | --- |
+| Pressure transmitter | =A1=HB2=GPC1=BPA1 | Outlet pressure, duty pump |
+| Temperature transmitter | =A1=HB2=GPC1=BTA1 | Motor / bearing temperature |
+| Differential pressure switch | =A1=HB2=GPC1=BPD1 | Filter differential pressure |
+| Pressure switch (high alarm) | =A1=HB2=GPC1=BPB1 | High-pressure alarm, pump outlet |
 
-Design updates propagate through the system without ambiguity.
+*Table 5 - Instrument tags for the duty pump assembly, built from the RDS-PS functional designation*
 
-### Digital systems integrate more easily
+### Connecting RDS-PS to IEC 61400-25
 
-Structured identifiers connect data across:
+IEC 61400-25 is the international standard for data communication between wind turbines and SCADA systems. It defines a structured data model where each turbine exposes signals through named Logical Nodes, standardised function groups that describe what part of the turbine a signal belongs to. For hydraulic systems, the relevant logical node is WHYD (Wind turbine HYDraulic system), with data objects such as HydPres for hydraulic pressure, HydTmp for temperature, FilDif for filter differential pressure, and PmpSt for pump status.
 
-- CMMS
-- engineering systems
-- document management
-- digital twins
+On its own, IEC 61400-25 tells your SCADA what a signal means, but not which physical asset it comes from. When a turbine has two pump assemblies, both will expose a WHYD logical node. Without an additional reference, there is no way to know from the data model alone which node belongs to the duty pump and which to the standby.
 
----
+Linking each IEC 61400-25 data object to its RDS-PS functional designation solves this directly:
 
-## The Real Value of RDS-PS
+| RDS-PS tag | IEC 61400-25 reference | Signal |
+| --- | --- | --- |
+| =A1=HB2=GPC1=BPA1 | A1/WHYD1.HydPres | Outlet pressure -- duty pump |
+| =A1=HB2=GPC1=BTA1 | A1/WHYD1.HydTmp | Temperature -- duty pump |
+| =A1=HB2=GPC1=BPD1 | A1/WHYD1.FilDif | Filter differential pressure -- duty pump |
+| =A1=HB2=GPC2=BPA1 | A1/WHYD2.HydPres | Outlet pressure -- standby pump |
 
-RDS-PS is not just a naming convention.
+*Table 6 - RDS-PS tags linked to IEC 61400-25 data objects for the hydraulic pump assemblies*
 
-It is the **foundation of structured asset information**.
+The standby pump maps to WHYD2, a second instance of the same logical node. With the RDS-PS link in place, an operator seeing an alarm from A1/WHYD2.HydPres can trace it directly to =A1=HB2=GPC2, find the right P&ID, the right maintenance record, and the right spare parts list, all from the same tag. For substation engineers, IEC 61850 works on the same principle, linking protection relay and switchgear signals to their RDS-PS designations in exactly the same way.
 
-When implemented properly it enables:
+> *RDS-PS + IEC 61400-25, why this matters* - IEC 61400-25 tells you what the signal means. RDS-PS tells you exactly where it comes from. Most wind farms have one or the other. Very few have both working together. Those that do spend less time chasing alarms and more time understanding what their assets are actually telling them.
 
-- consistent documentation
-- improved maintenance efficiency
-- clearer communication across disciplines
-- stronger lifecycle data management
+## What This Means for Your Operation
 
-For complex assets such as **offshore wind turbines, power plants, and industrial facilities**, this structure becomes essential.
+When RDS-PS is implemented consistently across your plant, several things happen that directly improve how your operation runs:
 
-Without it, information fragments across departments.
+- Operators understand alarms faster. Because the tag tells them where and what, not just a number.
+- Maintenance is more efficient. Technicians can find every document for a piece of equipment using a single search term.
+- Engineering changes are safer. Because the functional designation stays stable, changes to physical equipment do not cascade unpredictably through documentation.
+- Data quality improves. One tag across all systems means fewer duplicate records, fewer mismatches, and fewer errors caused by different teams using different names for the same asset.
+- Handover is cleaner. When you hand a project over from EPC to operator, or when you bring in a new contractor for maintenance, RDS-PS gives them an immediately usable reference system.
+- Maintenance strategy. By having a clean record along with requirements of the asset, you are equipped with all the information you need to optimize your maintenance strategy.
 
-With it, **every system speaks the same language**.
+## Getting Started with RDS-PS
 
----
+The best time to implement RDS-PS is at the start of a project, during concept design or FEED, when the plant hierarchy is being defined and document structures are being set up. But it is never too late to adopt the standard on an existing plant. A structured roll-out, starting with the systems and assets that cause the most operational pain, can deliver real benefits within months.
 
-## Final Thought
+## Need help deciding?
 
-A single structured tag may seem like a small detail.
+We help engineering teams set up structured designation systems — from initial code allocation registers through to full implementation across P&IDs, CMMS, and control systems.
 
-But when that tag connects **documents, systems, engineers, and operators**, it becomes one of the most powerful tools for managing complex assets.`,
+Contact SøDera for expert guidance on implementing the right RDS-PS for your organization.
+`,
   date: '2026-03-11',
   readTime: '8 min read',
   category: 'RDS',
