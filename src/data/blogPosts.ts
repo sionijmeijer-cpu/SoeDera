@@ -14,6 +14,252 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+{
+  id: 'rds-ps-explained-plant-asset-tagging',
+  title: 'RDS-PS Explained: How One Tag Connects Your Entire Plant',
+  image: 'https://i.imgur.com/3gGzZ4k.jpeg',
+  excerpt: 'RDS-PS provides a structured way to identify every asset in a plant. Learn how ISO 81346 creates a shared language across operations, engineering and maintenance.',
+  content: `## RDS-PS Explained: How One Tag Connects Your Entire Plant
+
+If you've ever struggled to track down the right document for a piece of equipment, or had maintenance, engineering, and the control room all using different names for the same pump, you're not alone.
+
+RDS — more specifically **RDS-PS** — is the international standard designed to solve exactly this problem.
+
+In a previous article I discussed **why structured information management matters**. This article focuses on something different: **what RDS-PS actually is, how it works, and why it matters from a technical perspective.**
+
+![Insert header/supporting image here](INSERT_IMAGE_URL_HERE)
+
+---
+
+## What Is RDS-PS?
+
+**RDS-PS stands for Reference Designation System for Power Supply.**
+
+It is defined in the **ISO/IEC 81346 standard series** and provides a structured way to assign **unique identifiers to every asset in a plant**.
+
+Think of it as a **postcode system for industrial equipment**:
+
+- short
+- systematic
+- meaningful to engineers who understand the structure
+
+Whether you operate:
+
+- a power station
+- a water treatment facility
+- an offshore installation
+- a wind turbine
+
+RDS-PS provides a **shared language**.
+
+Everyone refers to the same equipment in the same way across:
+
+- engineering drawings
+- documentation
+- maintenance systems
+- databases
+- work orders
+
+---
+
+## Two Perspectives on the Same Asset
+
+RDS-PS is intentionally flexible.
+
+It does **not enforce a single rigid structure** for how assets must be designated. Instead, it allows organisations to define how different aspects should be applied.
+
+This reflects a fundamental engineering reality:
+
+> The same piece of equipment can be viewed from different perspectives.
+
+Consider a **hydraulic pump**.
+
+### Operator Perspective (Function)
+
+The operator cares about **what the pump does**:
+
+- pressurises the hydraulic system
+- enables actuator movement
+- supports safety-critical operations
+
+### Designer Perspective (Product)
+
+The designer or manufacturer cares about **what the pump is**:
+
+- a specific product
+- with a manufacturer
+- a model number
+- a datasheet
+- a physical installation location
+
+Both perspectives are valid.
+
+---
+
+## Best Practice: Separating Functional and Product Aspects
+
+A practical way to implement RDS-PS is:
+
+| Aspect | Owned by |
+| --- | --- |
+| Functional designation | Operations / Service |
+| Product designation | Designer / Manufacturer |
+
+This separation ensures that **every relevant question about an asset can be answered**.
+
+- What does it do?
+- Where is it in the system?
+- What product is installed?
+- Who supplied it?
+
+Together these perspectives create a **complete digital identity for the asset**.
+
+---
+
+## Worked Example: A Hydraulic Pump System
+
+Consider a **modern wind turbine**.
+
+The turbine contains a **hydraulic supply system** responsible for:
+
+- blade pitch control
+- rotor braking
+- safety functions
+
+This system contains two pumps:
+
+- **Duty pump**
+- **Standby pump**
+
+Both pumps perform the same function but operate in different roles.
+
+![Insert system overview image here](INSERT_SYSTEM_OVERVIEW_IMAGE_URL_HERE)
+
+---
+
+## The Hierarchical Structure
+
+RDS-PS designations are built **hierarchically**.
+
+Each identifier is created by moving through the **plant structure level by level**.
+
+Because plain tree structures are not ideal in your current article setup, add the hierarchy as an image here:
+
+![Insert hierarchy/tree structure image here](INSERT_TREE_STRUCTURE_IMAGE_URL_HERE)
+
+Example hierarchy shown in that image:
+
+- Wind Turbine
+- Hydraulic Supply System
+- Pump Assembly 1
+- Pump Assembly 2
+
+Each step adds context to the final identifier.
+
+This structure allows engineers to instantly understand **where an asset belongs in the overall system**.
+
+---
+
+## Functional Designation – Operator View
+
+The **functional designation** describes what the equipment does in the system.
+
+For example:
+
+\`\`\`
+=HB2 = Hydraulic supply system
+=GPC1 = Pump assembly 1
+=GPC2 = Pump assembly 2
+\`\`\`
+
+Both pumps are **parallel components**, meaning:
+
+- neither is subordinate to the other
+- each performs the same function in the system
+
+The duty and standby role is defined through **separate functional codes**.
+
+![Insert functional designation illustration here](INSERT_FUNCTIONAL_DESIGNATION_IMAGE_URL_HERE)
+
+---
+
+## Product Designation – Designer View
+
+The **product designation** identifies the physical product itself.
+
+This designation:
+
+- is assigned by the **designer or manufacturer**
+- identifies the actual installed equipment
+- uses the **hyphen (-) prefix**
+
+This allows the product to be tracked **independently of its operational function**.
+
+![Insert product designation illustration here](INSERT_PRODUCT_DESIGNATION_IMAGE_URL_HERE)
+
+---
+
+## Why This Matters
+
+When RDS-PS is implemented correctly, several problems disappear.
+
+### Documentation becomes traceable
+
+Every drawing, manual and work order references the same identifier.
+
+### Maintenance becomes faster
+
+Technicians immediately know **exactly which asset is involved**.
+
+### Engineering changes become manageable
+
+Design updates propagate through the system without ambiguity.
+
+### Digital systems integrate more easily
+
+Structured identifiers connect data across:
+
+- CMMS
+- engineering systems
+- document management
+- digital twins
+
+---
+
+## The Real Value of RDS-PS
+
+RDS-PS is not just a naming convention.
+
+It is the **foundation of structured asset information**.
+
+When implemented properly it enables:
+
+- consistent documentation
+- improved maintenance efficiency
+- clearer communication across disciplines
+- stronger lifecycle data management
+
+For complex assets such as **offshore wind turbines, power plants, and industrial facilities**, this structure becomes essential.
+
+Without it, information fragments across departments.
+
+With it, **every system speaks the same language**.
+
+---
+
+## Final Thought
+
+A single structured tag may seem like a small detail.
+
+But when that tag connects **documents, systems, engineers, and operators**, it becomes one of the most powerful tools for managing complex assets.`,
+  date: '2026-03-11',
+  readTime: '8 min read',
+  category: 'RDS',
+  author: 'Your Name',
+  color: 'blue',
+  image: 'INSERT_COVER_IMAGE_URL_HERE',
+  published: true
+}
   {
 id: 'information-management-offshore-wind-rds-cost',
 title: 'Information Management in Offshore Wind: Why RDS and Structured Data Save €20,000 Per Incident',
