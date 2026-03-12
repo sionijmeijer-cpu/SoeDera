@@ -64,16 +64,9 @@ export const Route = createFileRoute('/blog/$articleId')({
 type TocItem = {
   id: string
   text: string
-  level: 2
+  level: 2 | 3
   index: number
 }
-
-// Easy controls you can edit yourself later
-const PAGE_MAX_WIDTH = 'max-w-[94rem]'
-const RIGHT_RAIL_WIDTH = '320px'
-const HERO_TOP_SPACE_CLASS = 'h-[36px] sm:h-[44px]'
-const TABLE_CELL_MAX_WIDTH = '14rem'
-const TABLE_CELL_LINE_CLAMP = 2
 
 function slugify(input: string) {
   return input
@@ -85,7 +78,7 @@ function slugify(input: string) {
 }
 
 function extractToc(markdown: string): TocItem[] {
-  // Extract ## only.
+  // Extract ## and ### only.
   // Avoid headings inside fenced code blocks.
   const lines = (markdown || '').split(/\r?\n/)
   const items: TocItem[] = []
@@ -101,10 +94,11 @@ function extractToc(markdown: string): TocItem[] {
     }
     if (inFence) continue
 
-    const m = line.match(/^\s*(##)\s+(.+?)\s*$/)
+    const m = line.match(/^\s*(#{2,3})\s+(.+?)\s*$/)
     if (!m) continue
 
-    const level = 2
+    const hashes = m[1]
+    const level = hashes.length === 2 ? 2 : 3
     const text = m[2]
       .replace(/\s*#*\s*$/, '')
       .replace(/\[(.*?)\]\(.*?\)/g, '$1')
@@ -120,7 +114,7 @@ function extractToc(markdown: string): TocItem[] {
     items.push({
       id,
       text,
-      level,
+      level: level as 2 | 3,
       index: items.length + 1,
     })
   }
@@ -235,7 +229,7 @@ function Toc({
                 <div className="pt-[2px]">
                   <div
                     className={
-                      'text-[13px] ' +
+                      (it.level === 3 ? 'text-[13px] ' : 'text-[13px] ') +
                       (isActive
                         ? 'font-semibold text-emerald-800'
                         : 'font-medium text-slate-700 group-hover:text-slate-900')
@@ -392,6 +386,7 @@ function ArticlePage() {
   const tocItems = useMemo(() => extractToc(article.content), [article.content])
 
   const related = useMemo(() => {
+    // Keep it simple & deterministic: same category, published, exclude current, take 3.
     return blogPosts
       .filter((p) => p.published && p.id !== article.id && p.category === article.category)
       .slice(0, 3)
@@ -428,6 +423,7 @@ function ArticlePage() {
   }
 
   useEffect(() => {
+    // Scroll-position based ToC tracking (stable) + progress ring.
     const root = contentRootRef.current
     if (!root || tocItems.length === 0) return
 
@@ -489,23 +485,17 @@ function ArticlePage() {
     }
   }, [articleId, tocItems])
 
+  // B: hero background idea without relying on external images:
+  // - subtle gradient
+  // - soft pattern via inline SVG data URI
   const heroPatternSvg =
     "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%2394a3b8' stroke-opacity='0.18'%3E%3Cpath d='M0 70h140M70 0v140'/%3E%3Cpath d='M0 0l140 140M140 0L0 140' stroke-opacity='0.10'/%3E%3C/g%3E%3C/svg%3E"
-
-  const tableCellClampStyle =
-    TABLE_CELL_LINE_CLAMP > 0
-      ? {
-          display: '-webkit-box',
-          WebkitLineClamp: TABLE_CELL_LINE_CLAMP,
-          WebkitBoxOrient: 'vertical' as const,
-          overflow: 'hidden',
-        }
-      : undefined
 
   return (
     <div className="min-h-screen bg-gray-100 pb-12">
       <SEOHead {...seoProps} />
 
+      {/* HERO */}
       <div
         className="relative overflow-hidden"
         style={{
@@ -514,7 +504,8 @@ function ArticlePage() {
           backgroundPosition: 'center, top left',
         }}
       >
-        <div className={HERO_TOP_SPACE_CLASS} />
+        {/* A: reduce wasted vertical space */}
+        <div className="h-[76px]" />
 
         <div className="absolute top-4 left-4 sm:left-6 z-20">
           <Link
@@ -525,8 +516,9 @@ function ArticlePage() {
           </Link>
         </div>
 
-        <div className={`${PAGE_MAX_WIDTH} mx-auto px-4 sm:px-6 pt-2 pb-4`}>
-          <div className={`lg:grid lg:grid-cols-[minmax(0,1fr)_${RIGHT_RAIL_WIDTH}] lg:gap-10`}>
+        {/* wider container (kept from your previous request) */}
+        <div className="max-w-[78rem] mx-auto px-4 sm:px-6 pt-4 pb-6">
+          <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-10">
             <div className="bg-white rounded-2xl shadow-md border border-slate-100 p-6 sm:p-10">
               <div className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-semibold uppercase tracking-wider mb-5">
                 {article.category}
@@ -562,9 +554,11 @@ function ArticlePage() {
         </div>
       </div>
 
-      <div className={`${PAGE_MAX_WIDTH} mx-auto px-4 sm:px-6 mt-4`}>
-        <div className={`lg:grid lg:grid-cols-[minmax(0,1fr)_${RIGHT_RAIL_WIDTH}] lg:gap-10`}>
+      {/* ARTICLE + RIGHT RAIL */}
+      <div className="max-w-[78rem] mx-auto px-4 sm:px-6 mt-6">
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-10">
           <article className="bg-white rounded-2xl shadow-md border border-slate-100">
+            {/* image moved into article */}
             <div className="p-6 sm:p-10 pb-0">
               <div className="rounded-xl overflow-hidden shadow-sm border border-slate-100">
                 <img
@@ -574,6 +568,7 @@ function ArticlePage() {
                 />
               </div>
 
+              {/* Mobile: ToC + Share + Related live here (no right rail on mobile) */}
               <div className="mt-6 lg:hidden space-y-4">
                 {tocItems.length > 0 && (
                   <details className="rounded-xl border border-slate-200 bg-white shadow-sm">
@@ -598,6 +593,7 @@ function ArticlePage() {
               </div>
             </div>
 
+            {/* BODY */}
             <div className="p-6 sm:p-10">
               {(() => {
                 const headingCounts = new Map<string, number>()
@@ -709,10 +705,10 @@ function ArticlePage() {
                           return (
                             <figure className="my-8 flex flex-col items-center">
                               <div className="w-full flex justify-center">
-                                <div className="w-full overflow-x-auto">
-                                  <div className="w-full align-middle">
+                                <div className="overflow-x-auto">
+                                  <div className="inline-block min-w-max align-middle">
                                     <div className="rounded-xl border border-slate-200 bg-white shadow-sm">
-                                      <table className="w-full table-fixed border-collapse">
+                                      <table className="table-auto border-collapse">
                                         {children}
                                       </table>
                                     </div>
@@ -740,24 +736,14 @@ function ArticlePage() {
                         ),
 
                         th: ({ children }) => (
-                          <th className="px-4 py-3 border-b border-slate-200 text-left text-xs font-semibold uppercase tracking-wider text-slate-700 align-top">
-                            <div
-                              className="whitespace-normal break-words"
-                              style={{ maxWidth: TABLE_CELL_MAX_WIDTH, ...tableCellClampStyle }}
-                            >
-                              {children}
-                            </div>
+                          <th className="text-left text-xs font-semibold uppercase tracking-wider text-slate-700 px-4 py-3 border-b border-slate-200">
+                            {children}
                           </th>
                         ),
 
                         td: ({ children }) => (
-                          <td className="px-4 py-3 border-b border-slate-200 align-top text-sm text-slate-700">
-                            <div
-                              className="whitespace-normal break-words"
-                              style={{ maxWidth: TABLE_CELL_MAX_WIDTH, ...tableCellClampStyle }}
-                            >
-                              {children}
-                            </div>
+                          <td className="text-sm text-slate-700 px-4 py-3 border-b border-slate-200 align-top">
+                            {children}
                           </td>
                         ),
 
@@ -773,6 +759,7 @@ function ArticlePage() {
               })()}
             </div>
 
+            {/* Keep the PDF download if you want it still visible in-content */}
             {article.pdfDownload && (
               <div className="px-6 sm:px-10 pb-8">
                 <a
@@ -787,6 +774,7 @@ function ArticlePage() {
             )}
           </article>
 
+          {/* Right rail: ToC + Share + Related (sticky) */}
           <aside className="hidden lg:block">
             <div className="sticky top-28 space-y-4">
               {tocItems.length > 0 && (
