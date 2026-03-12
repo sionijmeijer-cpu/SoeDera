@@ -35,7 +35,7 @@ Whether you are running a power station, a water treatment facility, or an offsh
 
 RDS-PS is generic and flexible in how to designate your asset. It is not providing you with a strict guide or rule of how to apply it. It is more up to the user to justify how to apply it. This was also the point in the article focusing on RDS-PP vs RDS-PS. Thus, must the user define how to apply for example the different aspects. Even with ISO 81346-101 it is recommended but not decided or strictly stated how to apply them. This recognises a fundamental truth that engineers deal with every day: **a piece of equipment can be looked at from two very different angles, and both are valid.**
 
-Take a hydraulic pump. To the operator or the service engineer, what matters is **what that pump does** — it pressurises the hydraulic system, keeps the actuators moving, and is essential to the process. To the designer, the manufacturer, or the procurement team, what matters is **what that pump is** — a specific product, with a model number, a datasheet, and a physical location on the skid.
+Take a hydraulic pump. To the operator or the service engineer, what matters is **what that pump does**, it pressurises the hydraulic system, keeps the actuators moving, and is essential to the process. To the designer, the manufacturer, or the procurement team, what matters is **what that pump is** — a specific product, with a model number, a datasheet, and a physical location on the skid.
 
 At SøDera, we believe the best practise with RDS-PS is to let the **functional aspect be owned by the operator / Service department** and the **product aspect be owned by the Designer / Manufacturer**. Illustrated below in a table:
 
@@ -53,6 +53,7 @@ This split is deliberate and important. Together, they cover every question you 
 
 > **Why this separation matters in practice** - When a pump is replaced with a different model, the product designation may change, the physical product is different. But the functional designation stays exactly the same, it is still performing the same role in the process. Your operating procedures, alarm setpoints, and maintenance routines do not need to change, unless of course it has different maintenance schedules. Only the procurement and installation records are updated.
 
+
 ## A Worked Example: The Hydraulic Pump
 
 Let us make this concrete. A modern wind turbine relies on a hydraulic supply system to operate the blade pitch mechanism, the rotor brake, and other safety-critical functions. That system includes **two pump assemblies, a duty pump and a standby pump.**
@@ -63,13 +64,15 @@ Here is how RDS-PS designates those pump assemblies, from both the operator's pe
 
 **RDS-PS is a hierarchical system.** Every code is built by stepping down through the plant structure, level by level. The tree below shows how the designation for each pump assembly is constructed, from the top-level turbine down to each individual unit:
 
+
 ![small: *Figure 1 - RDS-PS functional designation tree for Wind Turbine Generator A1*](https://i.imgur.com/CYg3h4w.png)
+
 
 Notice that =GPC1 and =GPC2 sit at the same level, both are direct children of the hydraulic supply system =HB2. **Duty and standby roles are expressed by giving each pump assembly its own distinct code.** I'm forced to state this is how it could be done as RDS-PS would also "allow" if you wanted one pump assembly with the two pumps underneath, or a third option.
 
-### The Functional Designation -- the operator's view
+### The Functional Designation - the operator's view
 
-The functional designation is read directly from the tree. Each pump assembly already has a unique, complete designation. **The code itself carries the full context** — turbine, system, and role:
+The functional designation is read directly from the tree. Each pump assembly already has a unique, complete designation. **The code itself carries the full context**, turbine, system, and role:
 
 | Pump assembly | Functional designation | Meaning |
 | --- | --- | --- |
@@ -78,11 +81,14 @@ The functional designation is read directly from the tree. Each pump assembly al
 
 *Table 2 - Functional designations for both pump assemblies*
 
-### The Product Designation -- the designer's view
+
+### The Product Designation - the designer's view
 
 The product designation, in this case, mirrors the same tree structure, using the **hyphen (-) prefix** instead. It is assigned by the designer or manufacturer to identify each pump as a physical product, independently of what operational role it plays:
 
+
 ![small: *Figure 2 - Product designation tree for the HPU skid*](https://i.imgur.com/uPOX24I.png)
+
 
 | Pump assembly | Product designation | Meaning |
 | --- | --- | --- |
@@ -92,6 +98,7 @@ The product designation, in this case, mirrors the same tree structure, using th
 *Table 3 - Product designations for both pump assemblies*
 
 The product aspect could look completely different than what is reflected above. It is not an aspect which is suggest getting deeper standardized but instead left open for the designers.
+
 
 ### Combining Both, the complete asset tag
 
@@ -119,7 +126,9 @@ Think about all the different types of information that exist for that hydraulic
 - The signal list, every sensor, transmitter, and feedback from the pump
 - The spare parts list and procurement history
 
+
 ![small: *Figure 3 - RDS-PS in the center*](https://i.imgur.com/TTJcOWQ.jpeg)
+
 
 Without a consistent designation system, all of this information lives in different places, using different names for the same item. **With RDS-PS, every single one of these documents and records carries the same tag** — and that tag becomes the search key that connects them all.
 
@@ -127,7 +136,7 @@ Without a consistent designation system, all of this information lives in differ
 
 ## Systems Engineering Requirements and RDS-PS
 
-If you are building your plant using a systems engineering approach — defining requirements at each level of the hierarchy and tracing them down to individual components — **RDS-PS fits naturally into that process.**
+If you are building your plant using a systems engineering approach, defining requirements at each level of the hierarchy and tracing them down to individual components, **RDS-PS fits naturally into that process.**
 
 Each requirement in your systems engineering model can be linked to the RDS-PS designation of the asset it applies to. A performance requirement ("the hydraulic supply system shall maintain 250 bar at all times") traces down to the functional designation of the pump responsible for meeting it. A physical installation requirement ("the pump unit shall be installed in Module A, Zone 2") links to both the product designation and the location designation.
 
@@ -142,13 +151,13 @@ This matters because **the correct level of the RDS-PS hierarchy to attach a req
 
 *Table 4 — Matching requirement types to RDS-PS aspects*
 
-**Getting this right from the start** — during FEED or early design — means your requirements traceability matrix, your verification records, and your as-built documentation all use the same designations consistently. **Retrofitting this structure later is significantly harder and more expensive.**
+**Getting this right from the start**, during FEED or early design, means your requirements traceability matrix, your verification records, and your as-built documentation all use the same designations consistently. **Retrofitting this structure later is significantly harder and more expensive.**
 
 ## Signals, Instruments, and the RDS-PS Tag
 
-This is where RDS-PS moves from being a useful labelling system to being **something genuinely powerful** — and it is an area the industry has been slow to take full advantage of.
+This is where RDS-PS moves from being a useful labelling system to being **something genuinely powerful**, and it is an area the industry has been slow to take full advantage of.
 
-Every piece of equipment in a hydraulic system has signals attached to it. The duty pump assembly alone will have a pressure transmitter on its outlet, a temperature sensor on the motor or bearing housing, a run/stop status signal from the drive, a filter differential pressure switch, and probably one or more alarm and trip setpoints. Each of these signals lives somewhere — in the control system, in the SCADA database, in the alarm list, in the cause-and-effect matrix.
+Every piece of equipment in a hydraulic system has signals attached to it. The duty pump assembly alone will have a pressure transmitter on its outlet, a temperature sensor on the motor or bearing housing, a run/stop status signal from the drive, a filter differential pressure switch, and probably one or more alarm and trip setpoints. Each of these signals lives somewhere, in the control system, in the SCADA database, in the alarm list, in the cause-and-effect matrix.
 
 The question is: **how do those signals connect back to the asset they belong to?** In most plants, the answer is: not very well. Signal tags follow instrument conventions, equipment tags follow one system, and the SCADA uses something else entirely. **Tracing a live alarm back to the right datasheet or maintenance record can take hours.**
 
@@ -165,9 +174,9 @@ For the duty pump assembly on turbine A1, the instruments and their RDS-PS desig
 
 ### Connecting RDS-PS to IEC 61400-25
 
-**IEC 61400-25 is the international standard for data communication between wind turbines and SCADA systems.** It defines a structured data model where each turbine exposes signals through named Logical Nodes — standardised function groups that describe what part of the turbine a signal belongs to. For hydraulic systems, the relevant logical node is WHYD (Wind turbine HYDraulic system), with data objects such as HydPres for hydraulic pressure, HydTmp for temperature, FilDif for filter differential pressure, and PmpSt for pump status.
+**IEC 61400-25 is the international standard for data communication between wind turbines and SCADA systems.** It defines a structured data model where each turbine exposes signals through named Logical Nodes, standardised function groups that describe what part of the turbine a signal belongs to. For hydraulic systems, the relevant logical node is WHYD (Wind turbine HYDraulic system), with data objects such as HydPres for hydraulic pressure, HydTmp for temperature, FilDif for filter differential pressure, and PmpSt for pump status.
 
-On its own, IEC 61400-25 tells your SCADA **what a signal means — but not which physical asset it comes from.** When a turbine has two pump assemblies, both will expose a WHYD logical node. Without an additional reference, there is no way to know from the data model alone which node belongs to the duty pump and which to the standby.
+On its own, IEC 61400-25 tells your SCADA **what a signal means, but not which physical asset it comes from.** When a turbine has two pump assemblies, both will expose a WHYD logical node. Without an additional reference, there is no way to know from the data model alone which node belongs to the duty pump and which to the standby.
 
 **Linking each IEC 61400-25 data object to its RDS-PS functional designation solves this directly:**
 
@@ -197,11 +206,11 @@ When RDS-PS is implemented consistently across your plant, several things happen
 
 ## Getting Started with RDS-PS
 
-**The best time to implement RDS-PS is at the start of a project** — during concept design or FEED, when the plant hierarchy is being defined and document structures are being set up. But it is never too late to adopt the standard on an existing plant. A structured roll-out, starting with the systems and assets that cause the most operational pain, **can deliver real benefits within months.**
+**The best time to implement RDS-PS is at the start of a project**, during concept design or FEED, when the plant hierarchy is being defined and document structures are being set up. But it is never too late to adopt the standard on an existing plant. A structured roll-out, starting with the systems and assets that cause the most operational pain, **can deliver real benefits within months.**
 
 ## Need help deciding?
 
-We help engineering teams set up structured designation systems — from initial code allocation registers through to full implementation across P&IDs, CMMS, and control systems.
+We help engineering teams set up structured designation systems, from initial code allocation registers through to full implementation across P&IDs, CMMS, and control systems.
 
 Contact SøDera for expert guidance on implementing the right RDS-PS for your organization.
 `,
