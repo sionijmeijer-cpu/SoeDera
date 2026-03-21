@@ -23,7 +23,7 @@ if (typeof window !== 'undefined' && !document.getElementById('flash-animations'
 }
 import { useTheme } from '@/components/theme-provider'
 import { ScrollHandler } from '@/components/ScrollHandler'
-import { Mail, Linkedin, ChevronDown, Menu, X, FileText, Network, Building2, Package, FolderKanban } from 'lucide-react'
+import { Mail, Linkedin, ChevronDown, Menu, X, FileText, Network, Building2, Package, FolderKanban, ClipboardCheck } from 'lucide-react'
 
 export const Route = createRootRoute({
   component: RootLayout,
@@ -58,6 +58,7 @@ function RootLayout() {
   const services = [
     { name: 'Document Management', href: '/service-document-management', icon: FileText },
     { name: 'Reference Designation (RDS)', href: '/service-rds', icon: Network },
+    { name: 'RDS Audit', href: '/service-rds-audit', icon: ClipboardCheck },
     { name: 'BIM Services', href: '/service-bim', icon: Building2 },
     { name: 'Product Development', href: '/service-product-development', icon: Package },
     { name: 'Project Management', href: '/service-project-management', icon: FolderKanban },
@@ -274,6 +275,7 @@ function RootLayout() {
               <ul className="space-y-3">
                 <li><Link to="/service-document-management" className="text-gray-400 hover:text-sky-400 text-sm transition-colors">Document Management</Link></li>
                 <li><Link to="/service-rds" className="text-gray-400 hover:text-sky-400 text-sm transition-colors">Reference Designation (RDS)</Link></li>
+                <li><Link to="/service-rds-audit" className="text-gray-400 hover:text-sky-400 text-sm transition-colors">RDS Audit</Link></li>
                 <li><Link to="/service-bim" className="text-gray-400 hover:text-sky-400 text-sm transition-colors">BIM Services</Link></li>
                 <li><Link to="/service-product-development" className="text-gray-400 hover:text-sky-400 text-sm transition-colors">Product Development</Link></li>
                 <li><Link to="/service-project-management" className="text-gray-400 hover:text-sky-400 text-sm transition-colors">Project Management</Link></li>
@@ -308,7 +310,6 @@ function RootLayout() {
           <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
               <p>© 2025 SøDera. All rights reserved.</p>
-
             </div>
           </div>
         </div>
