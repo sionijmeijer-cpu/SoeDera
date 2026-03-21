@@ -20,6 +20,7 @@ import { Route as BookAssessmentImport } from './routes/book-assessment'
 import { Route as BlogArticleIdImport } from './routes/blog.$articleId'
 import { Route as ServiceBimImport } from './routes/service-bim'
 import { Route as ServiceRdsImport } from './routes/service-rds'
+import { Route as ServiceRdsAuditImport } from './routes/service-rds-audit'
 import { Route as ServiceProjectManagementImport } from './routes/service-project-management'
 import { Route as ServiceDocumentManagementImport } from './routes/service-document-management'
 import { Route as ServiceProductDevelopmentImport } from './routes/service-product-development'
@@ -77,6 +78,12 @@ const ServiceBimRoute = ServiceBimImport.update({
 const ServiceRdsRoute = ServiceRdsImport.update({
   id: '/service-rds',
   path: '/service-rds',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ServiceRdsAuditRoute = ServiceRdsAuditImport.update({
+  id: '/service-rds-audit',
+  path: '/service-rds-audit',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -165,6 +172,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiceRdsImport
       parentRoute: typeof rootRoute
     }
+    '/service-rds-audit': {
+      id: '/service-rds-audit'
+      path: '/service-rds-audit'
+      fullPath: '/service-rds-audit'
+      preLoaderRoute: typeof ServiceRdsAuditImport
+      parentRoute: typeof rootRoute
+    }
     '/service-project-management': {
       id: '/service-project-management'
       path: '/service-project-management'
@@ -201,6 +215,7 @@ export interface FileRoutesByFullPath {
   '/blog/$articleId': typeof BlogArticleIdRoute
   '/service-bim': typeof ServiceBimRoute
   '/service-rds': typeof ServiceRdsRoute
+  '/service-rds-audit': typeof ServiceRdsAuditRoute
   '/service-project-management': typeof ServiceProjectManagementRoute
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
@@ -216,6 +231,7 @@ export interface FileRoutesByTo {
   '/blog/$articleId': typeof BlogArticleIdRoute
   '/service-bim': typeof ServiceBimRoute
   '/service-rds': typeof ServiceRdsRoute
+  '/service-rds-audit': typeof ServiceRdsAuditRoute
   '/service-project-management': typeof ServiceProjectManagementRoute
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
@@ -232,6 +248,7 @@ export interface FileRoutesById {
   '/blog/$articleId': typeof BlogArticleIdRoute
   '/service-bim': typeof ServiceBimRoute
   '/service-rds': typeof ServiceRdsRoute
+  '/service-rds-audit': typeof ServiceRdsAuditRoute
   '/service-project-management': typeof ServiceProjectManagementRoute
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
@@ -249,6 +266,7 @@ export interface FileRouteTypes {
     | '/blog/$articleId'
     | '/service-bim'
     | '/service-rds'
+    | '/service-rds-audit'
     | '/service-project-management'
     | '/service-document-management'
     | '/service-product-development'
@@ -263,6 +281,7 @@ export interface FileRouteTypes {
     | '/blog/$articleId'
     | '/service-bim'
     | '/service-rds'
+    | '/service-rds-audit'
     | '/service-project-management'
     | '/service-document-management'
     | '/service-product-development'
@@ -277,6 +296,7 @@ export interface FileRouteTypes {
     | '/blog/$articleId'
     | '/service-bim'
     | '/service-rds'
+    | '/service-rds-audit'
     | '/service-project-management'
     | '/service-document-management'
     | '/service-product-development'
@@ -293,6 +313,7 @@ export interface RootRouteChildren {
   BlogArticleIdRoute: typeof BlogArticleIdRoute
   ServiceBimRoute: typeof ServiceBimRoute
   ServiceRdsRoute: typeof ServiceRdsRoute
+  ServiceRdsAuditRoute: typeof ServiceRdsAuditRoute
   ServiceProjectManagementRoute: typeof ServiceProjectManagementRoute
   ServiceDocumentManagementRoute: typeof ServiceDocumentManagementRoute
   ServiceProductDevelopmentRoute: typeof ServiceProductDevelopmentRoute
@@ -308,6 +329,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogArticleIdRoute: BlogArticleIdRoute,
   ServiceBimRoute: ServiceBimRoute,
   ServiceRdsRoute: ServiceRdsRoute,
+  ServiceRdsAuditRoute: ServiceRdsAuditRoute,
   ServiceProjectManagementRoute: ServiceProjectManagementRoute,
   ServiceDocumentManagementRoute: ServiceDocumentManagementRoute,
   ServiceProductDevelopmentRoute: ServiceProductDevelopmentRoute,
