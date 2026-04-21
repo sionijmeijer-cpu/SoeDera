@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { SEOHead } from '@/components/SEOHead'
 import { blogPosts } from '../data/blogPosts'
-import { ArrowRight, Clock, User } from 'lucide-react'
+import { Clock, User, ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 
 export const Route = createFileRoute('/blog')({
@@ -30,205 +30,308 @@ function InsightsPage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const navigate = useNavigate()
 
-  // ✅ Only show published posts
   const visiblePosts = blogPosts.filter((post) => post.published)
 
-  // ✅ Keep your existing category filtering logic, but apply it to visible posts
   const filteredPosts =
     selectedCategory === 'all'
       ? visiblePosts
       : visiblePosts.filter((post) => post.category === selectedCategory)
 
-  // Get featured post (first one) and rest
   const featuredPost = filteredPosts[0]
-  const otherPosts = filteredPosts.slice(1)
+  const secondPost = filteredPosts[1]
+  const thirdPost = filteredPosts[2]
+  const remainingPosts = filteredPosts.slice(3)
 
   const handleCardClick = (articleId: string) => {
     navigate({ to: '/blog/$articleId', params: { articleId } })
   }
 
-  return (
-    <div className="min-h-screen bg-gray-100">
-      {/* Spacer for fixed header */}
-      <div className="h-[104px]" />
+  const today = new Date().toLocaleDateString('en-GB', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
 
-      {/* Hero Section - Light gray */}
-      <section className="bg-gray-200 pt-8 pb-10 sm:pt-12 sm:pb-12">
+  return (
+    <>
+      <style>{`
+        .nyt-serif {
+          font-family: Georgia, 'Times New Roman', serif;
+        }
+        .nyt-sans {
+          font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .nyt-rule {
+          border-top: 3px double #1a1a1a;
+        }
+        .nyt-rule-thin {
+          border-top: 1px solid #d1d5db;
+        }
+        .nyt-card:hover .nyt-headline {
+          text-decoration: underline;
+          text-decoration-color: #374151;
+        }
+        .category-pill-active {
+          background: #1e3a5f;
+          color: white;
+        }
+        .category-pill {
+          background: white;
+          color: #374151;
+          border: 1px solid #d1d5db;
+        }
+        .category-pill:hover {
+          border-color: #1e3a5f;
+          color: #1e3a5f;
+        }
+      `}</style>
+
+      <div className="min-h-screen bg-[#f7f4ef]">
+        {/* Spacer for fixed header */}
+        <div className="h-[104px]" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="inline-block text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">
-              Knowledge Hub
-            </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 leading-tight">
-              Insights & Expertise
+
+          {/* ── Masthead ── */}
+          <div className="pt-8 pb-4 text-center border-b-4 border-double border-gray-900 mb-1">
+            <p className="nyt-sans text-xs uppercase tracking-[0.25em] text-gray-500 mb-2">
+              SøDera · Energy Documentation & RDS Expertise
+            </p>
+            <h1 className="nyt-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-none mb-3">
+              Insights
             </h1>
-            <p className="text-lg text-slate-600 leading-relaxed">
-              Deep dives into RDS, BIM, document management, and best practices
-              for the energy and infrastructure sectors.
+            <p className="nyt-sans text-xs text-gray-500 uppercase tracking-widest">
+              {today}
             </p>
           </div>
-        </div>
-      </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        {/* Category Filter */}
-        <div className="bg-white rounded-xl shadow-sm p-2 mb-6 overflow-x-auto">
-          <div className="inline-flex flex-nowrap sm:flex-wrap gap-1 min-w-max sm:min-w-0">
+          {/* ── Thin rule ── */}
+          <div className="border-t border-gray-400 mb-6" />
+
+          {/* ── Category filter ── */}
+          <div className="flex flex-wrap gap-2 justify-center mb-8">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`
-                  px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
-                  ${
-                    selectedCategory === cat.id
-                      ? 'bg-blue-600 text-white shadow-sm'
-                      : 'text-slate-600 hover:bg-gray-100'
-                  }
+                  nyt-sans text-xs font-semibold uppercase tracking-wider px-4 py-2 rounded-full transition-all duration-200
+                  ${selectedCategory === cat.id ? 'category-pill-active' : 'category-pill'}
                 `}
               >
                 {cat.label}
               </button>
             ))}
           </div>
-        </div>
 
-        {/* Featured Article */}
-        {featuredPost && (
-          <article
-            onClick={() => handleCardClick(featuredPost.id)}
-            className="cursor-pointer group mb-6"
-          >
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="grid lg:grid-cols-2 gap-0">
-                {/* Image Side */}
-                <div className="relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:min-h-[380px] overflow-hidden">
-                  <img
-                    src={featuredPost.image}
-                    alt={featuredPost.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
+          {filteredPosts.length === 0 && (
+            <div className="text-center py-24">
+              <p className="nyt-serif text-2xl text-gray-500 italic">
+                No articles in this category yet.
+              </p>
+            </div>
+          )}
 
-                {/* Content Side */}
-                <div className="p-5 sm:p-6 lg:p-10 flex flex-col justify-center bg-white">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full uppercase tracking-wide">
-                      {featuredPost.category}
-                    </span>
-                    <span className="text-slate-400 text-sm">Featured</span>
+          {filteredPosts.length > 0 && (
+            <>
+              {/* ── TOP SECTION: Featured + Two secondary ── */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 mb-0">
+
+                {/* Secondary left (if exists) */}
+                {secondPost && (
+                  <div
+                    className="nyt-card lg:col-span-3 lg:border-r border-gray-300 lg:pr-6 pb-6 lg:pb-0 border-b lg:border-b-0 mb-6 lg:mb-0 cursor-pointer"
+                    onClick={() => handleCardClick(secondPost.id)}
+                  >
+                    <div className="nyt-sans text-[10px] font-bold uppercase tracking-[0.2em] text-blue-700 mb-3 pb-2 border-b border-gray-300">
+                      {secondPost.category}
+                    </div>
+                    <div className="aspect-[4/3] overflow-hidden rounded mb-3">
+                      <img
+                        src={secondPost.image}
+                        alt={secondPost.title}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <h3 className="nyt-serif nyt-headline text-lg font-bold text-gray-900 leading-snug mb-2">
+                      {secondPost.title}
+                    </h3>
+                    <p className="nyt-sans text-sm text-gray-600 leading-relaxed line-clamp-3 mb-3">
+                      {secondPost.excerpt}
+                    </p>
+                    <div className="nyt-sans text-xs text-gray-400 flex items-center gap-2 flex-wrap">
+                      {secondPost.author && (
+                        <span className="flex items-center gap-1">
+                          <User size={11} /> {secondPost.author}
+                        </span>
+                      )}
+                      <span>·</span>
+                      <span className="flex items-center gap-1">
+                        <Clock size={11} /> {secondPost.readTime}
+                      </span>
+                    </div>
                   </div>
+                )}
 
-                  <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-blue-600 transition-colors">
-                    {featuredPost.title}
-                  </h2>
-
-                  <p className="text-slate-600 text-base leading-relaxed mb-6 line-clamp-3">
-                    {featuredPost.excerpt}
-                  </p>
-
-                  <div className="flex items-center justify-between mt-auto">
-                    <div className="flex items-center gap-4 text-sm text-slate-500 flex-wrap">
-                      <span>{featuredPost.date}</span>
-
+                {/* Featured centre */}
+                {featuredPost && (
+                  <div
+                    className="nyt-card lg:col-span-6 lg:px-8 pb-6 lg:pb-0 border-b lg:border-b-0 mb-6 lg:mb-0 cursor-pointer lg:border-r border-gray-300"
+                    onClick={() => handleCardClick(featuredPost.id)}
+                  >
+                    <div className="nyt-sans text-[10px] font-bold uppercase tracking-[0.2em] text-blue-700 mb-3 pb-2 border-b border-gray-300">
+                      {featuredPost.category} · <span className="text-orange-600">Featured</span>
+                    </div>
+                    <h2 className="nyt-serif nyt-headline text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4">
+                      {featuredPost.title}
+                    </h2>
+                    <p className="nyt-serif text-base text-gray-600 italic leading-relaxed mb-4 border-l-4 border-orange-400 pl-4">
+                      {featuredPost.excerpt}
+                    </p>
+                    <div className="aspect-[16/9] overflow-hidden rounded mb-4">
+                      <img
+                        src={featuredPost.image}
+                        alt={featuredPost.title}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="nyt-sans text-xs text-gray-400 flex items-center gap-3 flex-wrap">
                       {featuredPost.author && (
-                        <span className="flex items-center gap-1">
-                          <User size={14} />
-                          {featuredPost.author}
+                        <span className="flex items-center gap-1 font-semibold text-gray-600">
+                          <User size={11} /> {featuredPost.author}
                         </span>
                       )}
-
+                      <span>·</span>
+                      <span>{featuredPost.date}</span>
+                      <span>·</span>
                       <span className="flex items-center gap-1">
-                        <Clock size={14} />
-                        {featuredPost.readTime}
+                        <Clock size={11} /> {featuredPost.readTime}
                       </span>
                     </div>
-
-                    <span className="inline-flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all">
-                      Read Article
-                      <ArrowRight size={18} />
-                    </span>
                   </div>
-                </div>
-              </div>
-            </div>
-          </article>
-        )}
+                )}
 
-        {/* Other Articles Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 pb-8">
-          {otherPosts.map((post) => (
-            <article
-              key={post.id}
-              onClick={() => handleCardClick(post.id)}
-              className="cursor-pointer group"
-            >
-              <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 h-full flex flex-col">
-                {/* Image */}
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-3 left-3">
-                    <span className="px-2.5 py-1 bg-white/95 text-slate-700 text-xs font-semibold rounded-full">
-                      {post.category}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-5 flex flex-col flex-grow bg-white">
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 leading-snug group-hover:text-blue-600 transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-
-                  <p className="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-2 flex-grow">
-                    {post.excerpt}
-                  </p>
-
-                  <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-                    <div className="flex items-center gap-3 text-xs text-slate-500 flex-wrap">
-                      <span>{post.date}</span>
-
-                      {post.author && (
+                {/* Secondary right (if exists) */}
+                {thirdPost && (
+                  <div
+                    className="nyt-card lg:col-span-3 lg:pl-6 pb-6 lg:pb-0 border-b lg:border-b-0 mb-6 lg:mb-0 cursor-pointer"
+                    onClick={() => handleCardClick(thirdPost.id)}
+                  >
+                    <div className="nyt-sans text-[10px] font-bold uppercase tracking-[0.2em] text-blue-700 mb-3 pb-2 border-b border-gray-300">
+                      {thirdPost.category}
+                    </div>
+                    <div className="aspect-[4/3] overflow-hidden rounded mb-3">
+                      <img
+                        src={thirdPost.image}
+                        alt={thirdPost.title}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <h3 className="nyt-serif nyt-headline text-lg font-bold text-gray-900 leading-snug mb-2">
+                      {thirdPost.title}
+                    </h3>
+                    <p className="nyt-sans text-sm text-gray-600 leading-relaxed line-clamp-3 mb-3">
+                      {thirdPost.excerpt}
+                    </p>
+                    <div className="nyt-sans text-xs text-gray-400 flex items-center gap-2 flex-wrap">
+                      {thirdPost.author && (
                         <span className="flex items-center gap-1">
-                          <User size={12} />
-                          {post.author}
+                          <User size={11} /> {thirdPost.author}
                         </span>
                       )}
-
+                      <span>·</span>
                       <span className="flex items-center gap-1">
-                        <Clock size={12} />
-                        {post.readTime}
+                        <Clock size={11} /> {thirdPost.readTime}
                       </span>
                     </div>
-
-                    <ArrowRight
-                      size={16}
-                      className="text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"
-                    />
                   </div>
-                </div>
+                )}
               </div>
-            </article>
-          ))}
+
+              {/* ── Section divider ── */}
+              {remainingPosts.length > 0 && (
+                <div className="nyt-rule mt-8 mb-8 flex items-center gap-4">
+                  <span className="nyt-sans text-[10px] font-bold uppercase tracking-[0.25em] text-gray-500 whitespace-nowrap pr-4">
+                    More from SøDera
+                  </span>
+                </div>
+              )}
+
+              {/* ── Remaining articles grid ── */}
+              {remainingPosts.length > 0 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 mb-12">
+                  {remainingPosts.map((post, index) => (
+                    <div
+                      key={post.id}
+                      className={`
+                        nyt-card cursor-pointer pb-6 mb-6
+                        ${index < remainingPosts.length - 1 ? 'sm:border-r border-gray-300 sm:pr-6 sm:mr-0' : ''}
+                        ${index > 0 ? 'sm:pl-6' : ''}
+                        border-b border-gray-200
+                      `}
+                      onClick={() => handleCardClick(post.id)}
+                    >
+                      <div className="nyt-sans text-[10px] font-bold uppercase tracking-[0.2em] text-blue-700 mb-3 pb-2 border-b border-gray-300">
+                        {post.category}
+                      </div>
+                      <div className="aspect-[3/2] overflow-hidden rounded mb-3">
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <h3 className="nyt-serif nyt-headline text-base font-bold text-gray-900 leading-snug mb-2">
+                        {post.title}
+                      </h3>
+                      <p className="nyt-sans text-xs text-gray-600 leading-relaxed line-clamp-3 mb-3">
+                        {post.excerpt}
+                      </p>
+                      <div className="nyt-sans text-xs text-gray-400 flex items-center gap-2 flex-wrap">
+                        {post.author && (
+                          <span className="flex items-center gap-1">
+                            <User size={10} /> {post.author}
+                          </span>
+                        )}
+                        <span>·</span>
+                        <span className="flex items-center gap-1">
+                          <Clock size={10} /> {post.readTime}
+                        </span>
+                      </div>
+                      <button
+                        className="nyt-sans mt-3 text-xs font-semibold text-blue-700 flex items-center gap-1 hover:gap-2 transition-all"
+                        onClick={(e) => { e.stopPropagation(); handleCardClick(post.id) }}
+                      >
+                        Read Article <ArrowRight size={12} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* ── Newsletter strip ── */}
+              <div className="border-t-4 border-double border-gray-900 mt-4 pt-8 pb-12 text-center">
+                <p className="nyt-sans text-[10px] uppercase tracking-[0.25em] text-gray-500 mb-2">
+                  Stay Informed
+                </p>
+                <h3 className="nyt-serif text-3xl font-bold text-gray-900 mb-3">
+                  The SøDera Briefing
+                </h3>
+                <p className="nyt-sans text-sm text-gray-600 max-w-md mx-auto mb-6">
+                  Expert analysis on RDS, document management, and asset data strategy — delivered to your inbox.
+                </p>
+                <a
+                  href="/contact"
+                  className="nyt-sans inline-flex items-center gap-2 px-8 py-3 bg-gray-900 text-white text-sm font-semibold uppercase tracking-wider hover:bg-gray-700 transition-colors"
+                >
+                  Get in Touch <ArrowRight size={14} />
+                </a>
+              </div>
+            </>
+          )}
         </div>
-
-        {/* Empty State */}
-        {filteredPosts.length === 0 && (
-          <div className="text-center py-16 bg-white rounded-xl shadow-sm">
-            <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
-              <Clock size={24} className="text-slate-400" />
-            </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-2">
-              No articles found
-            </h3>
-            <p className="text-slate-600">Try selecting a different category</p>
-          </div>
-        )}
       </div>
-    </div>
+    </>
   )
 }
