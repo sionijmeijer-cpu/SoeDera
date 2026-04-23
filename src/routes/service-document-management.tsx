@@ -6,12 +6,12 @@ import {
   ArrowRight,
   ArrowLeft,
   AlertTriangle,
-  BookOpen,
   ExternalLink,
   Shield,
   Search,
   GitBranch,
   Monitor,
+  Newspaper,
 } from 'lucide-react'
 
 export const Route = createFileRoute('/service-document-management')({
@@ -84,11 +84,15 @@ function DocumentManagementPage() {
             </h1>
 
             <p className="text-xl text-slate-200 mb-4 leading-relaxed">
-              In energy and industrial operations, effective document management is not an administrative task — it is the operational backbone that ensures safety, compliance, and long-term asset value.
+              In energy and industrial operations, effective document management is not an
+              administrative task — it is the operational backbone that ensures safety, compliance,
+              and long-term asset value.
             </p>
 
             <p className="text-base text-slate-400 mb-10">
-              SøDera transforms fragmented, chaotic documentation into organised, accessible, and fully compliant systems. Built on over a decade of hands-on experience in oil & gas and energy sectors.
+              SøDera transforms fragmented, chaotic documentation into organised, accessible, and
+              fully compliant systems. Built on over a decade of hands-on experience in oil & gas
+              and energy sectors.
             </p>
 
             {/* Standards badges */}
@@ -104,18 +108,21 @@ function DocumentManagementPage() {
             </div>
 
             <div className="flex flex-wrap gap-4">
+              {/* Primary CTA — paid assessment */}
               <Link
-                to="/contact"
+                to="/book-assessment"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 text-white rounded-lg font-semibold hover:bg-sky-400 transition-all hover:scale-105 shadow-lg shadow-sky-500/30"
               >
-                Book a Document Audit <ArrowRight size={18} />
+                Get Your Documentation Assessment <ArrowRight size={18} />
               </Link>
+
+              {/* Secondary CTA — article link with newspaper icon */}
               <Link
                 to="/blog/$articleId"
                 params={{ articleId: 'before-you-sign-dms-requirements' }}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/20 text-white rounded-lg font-semibold hover:bg-white/20 transition-all"
               >
-                <BookOpen size={15} /> DMS Vendor Checklist
+                <Newspaper size={15} /> DMS Vendor Checklist
               </Link>
             </div>
           </div>
@@ -137,7 +144,9 @@ function DocumentManagementPage() {
                 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
                 className="text-xl text-slate-800 italic leading-relaxed mb-3"
               >
-                "Over a decade in Oil & gas and energy sectors, I've realized that structured data is not just an administrative requirement; it is the operational backbone that ensures safety, compliance, and long-term asset value."
+                "Over a decade in Oil & gas and energy sectors, I've realized that structured data
+                is not just an administrative requirement; it is the operational backbone that
+                ensures safety, compliance, and long-term asset value."
               </blockquote>
               <p className="text-sm font-semibold text-slate-600">
                 Sylvia Awoudu
@@ -398,6 +407,7 @@ function DocumentManagementPage() {
               </div>
             </div>
 
+            {/* Warning signs card */}
             <div className="bg-slate-50 rounded-2xl border border-slate-200 p-8">
               <h3
                 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
@@ -428,10 +438,10 @@ function DocumentManagementPage() {
                   If any of these sound familiar, we should talk.
                 </p>
                 <Link
-                  to="/contact"
+                  to="/book-assessment"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-sky-600 text-white text-sm rounded-lg font-semibold hover:bg-sky-700 transition-colors"
                 >
-                  Book a Document Audit <ArrowRight size={15} />
+                  Get Your Documentation Assessment <ArrowRight size={15} />
                 </Link>
               </div>
             </div>
@@ -494,40 +504,6 @@ function DocumentManagementPage() {
                 <span className="text-xs text-slate-400">{article.readTime}</span>
               </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA ── */}
-      <section className="py-20 bg-slate-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-sky-400 mb-4">
-            Ready to transform your documentation?
-          </p>
-          <h2
-            style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
-            className="text-3xl sm:text-4xl font-bold text-white mb-4"
-          >
-            Don't let disorganised documentation hinder your operations
-          </h2>
-          <p className="text-lg text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Partner with SøDera to implement a robust document management system that brings
-            clarity, compliance, and efficiency to your technical information — whether you are
-            starting a new project or untangling years of accumulated documentation debt.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-sky-500 text-white rounded-lg font-bold hover:bg-sky-400 transition-all hover:scale-105 shadow-xl shadow-sky-500/20"
-            >
-              Book Your Document Management Assessment <ArrowRight size={20} />
-            </Link>
-            <Link
-              to="/book-assessment"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 border border-white/20 text-white rounded-lg font-bold hover:bg-white/20 transition-all"
-            >
-              Book Free Assessment
-            </Link>
           </div>
         </div>
       </section>
