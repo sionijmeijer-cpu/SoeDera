@@ -71,10 +71,10 @@ function RootLayout() {
         <ScrollHandler />
 
         {/* ── Navigation ── */}
-        <nav className={`sticky top-0 z-50 transition-all duration-300 ${
+        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-blue-950/95 backdrop-blur-md shadow-lg border-b border-blue-900'
-            : 'bg-blue-950 border-b border-blue-900'
+            ? 'bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-slate-800'
+            : 'bg-transparent border-b border-white/10'
         }`}>
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
@@ -88,8 +88,8 @@ function RootLayout() {
               <div className="hidden md:flex items-center gap-1">
                 <Link
                   to="/"
-                  className="px-4 py-2 text-sm font-medium text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-all"
-                  activeProps={{ className: 'px-4 py-2 text-sm font-medium text-sky-400 bg-blue-900/50 rounded-lg' }}
+                  className="px-4 py-2 text-sm font-medium text-gray-200 hover:text-sky-400 hover:bg-white/10 rounded-lg transition-all"
+                  activeProps={{ className: 'px-4 py-2 text-sm font-medium text-sky-400 bg-white/10 rounded-lg' }}
                 >
                   Home
                 </Link>
@@ -99,21 +99,21 @@ function RootLayout() {
                   <button
                     onClick={() => setIsServicesOpen(!isServicesOpen)}
                     onBlur={() => setTimeout(() => setIsServicesOpen(false), 150)}
-                    className="px-4 py-2 text-sm font-medium text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-all flex items-center gap-1"
+                    className="px-4 py-2 text-sm font-medium text-gray-200 hover:text-sky-400 hover:bg-white/10 rounded-lg transition-all flex items-center gap-1"
                   >
                     Services
                     <ChevronDown size={14} className={`transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {isServicesOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-64 bg-blue-950 border border-blue-900 rounded-xl shadow-xl py-2 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="absolute top-full left-0 mt-2 w-64 bg-slate-900 border border-slate-700 rounded-xl shadow-xl py-2 animate-in fade-in slide-in-from-top-2 duration-200">
                       {services.map((service) => (
                         <Link
                           key={service.name}
                           to={service.href}
                           className={`flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${
                             service.name === 'Training & SME'
-                              ? 'text-amber-300 hover:text-amber-200 hover:bg-blue-900/50 border-t border-blue-900/50 mt-1 pt-3'
-                              : 'text-gray-300 hover:text-sky-400 hover:bg-blue-900/50'
+                              ? 'text-amber-300 hover:text-amber-200 hover:bg-white/10 border-t border-blue-900/50 mt-1 pt-3'
+                              : 'text-gray-300 hover:text-sky-400 hover:bg-white/10'
                           }`}
                         >
                           <service.icon size={16} className={service.name === 'Training & SME' ? 'text-amber-400' : 'text-sky-500'} />
@@ -126,22 +126,22 @@ function RootLayout() {
 
                 <Link
                   to="/blog"
-                  className="px-4 py-2 text-sm font-medium text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-all"
-                  activeProps={{ className: 'px-4 py-2 text-sm font-medium text-sky-400 bg-blue-900/50 rounded-lg' }}
+                  className="px-4 py-2 text-sm font-medium text-gray-200 hover:text-sky-400 hover:bg-white/10 rounded-lg transition-all"
+                  activeProps={{ className: 'px-4 py-2 text-sm font-medium text-sky-400 bg-white/10 rounded-lg' }}
                 >
                   Insights
                 </Link>
                 <Link
                   to="/about"
-                  className="px-4 py-2 text-sm font-medium text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-all"
-                  activeProps={{ className: 'px-4 py-2 text-sm font-medium text-sky-400 bg-blue-900/50 rounded-lg' }}
+                  className="px-4 py-2 text-sm font-medium text-gray-200 hover:text-sky-400 hover:bg-white/10 rounded-lg transition-all"
+                  activeProps={{ className: 'px-4 py-2 text-sm font-medium text-sky-400 bg-white/10 rounded-lg' }}
                 >
                   About
                 </Link>
                 <Link
                   to="/contact"
-                  className="px-4 py-2 text-sm font-medium text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-all"
-                  activeProps={{ className: 'px-4 py-2 text-sm font-medium text-sky-400 bg-blue-900/50 rounded-lg' }}
+                  className="px-4 py-2 text-sm font-medium text-gray-200 hover:text-sky-400 hover:bg-white/10 rounded-lg transition-all"
+                  activeProps={{ className: 'px-4 py-2 text-sm font-medium text-sky-400 bg-white/10 rounded-lg' }}
                 >
                   Contact
                 </Link>
@@ -190,15 +190,15 @@ function RootLayout() {
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden bg-blue-950 border-t border-blue-900 animate-in slide-in-from-top duration-200">
+            <div className="md:hidden bg-slate-900 border-t border-slate-800 animate-in slide-in-from-top duration-200">
               <div className="px-4 py-4 space-y-1">
-                <Link to="/" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-colors">
+                <Link to="/" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-white/10 rounded-lg transition-colors">
                   Home
                 </Link>
                 <div>
                   <button
                     onClick={() => setIsServicesOpen(!isServicesOpen)}
-                    className="w-full flex items-center justify-between px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-colors"
+                    className="w-full flex items-center justify-between px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-white/10 rounded-lg transition-colors"
                   >
                     Services
                     <ChevronDown size={16} className={`transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
@@ -222,13 +222,13 @@ function RootLayout() {
                     </div>
                   )}
                 </div>
-                <Link to="/blog" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-colors">
+                <Link to="/blog" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-white/10 rounded-lg transition-colors">
                   Insights
                 </Link>
-                <Link to="/about" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-colors">
+                <Link to="/about" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-white/10 rounded-lg transition-colors">
                   About
                 </Link>
-                <Link to="/contact" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-colors">
+                <Link to="/contact" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-white/10 rounded-lg transition-colors">
                   Contact
                 </Link>
                 <div className="pt-4 flex flex-col gap-2">
