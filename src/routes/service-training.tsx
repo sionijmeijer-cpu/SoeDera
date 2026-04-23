@@ -14,7 +14,7 @@ import {
   Package,
 } from 'lucide-react'
 
-export const Route = createFileRoute('/service-training')({
+export const Route = createFileRoute('/service-training' as any)({
   component: TrainingPage,
 })
 
