@@ -3,9 +3,6 @@ import { SEOHead } from '@/components/SEOHead'
 import {
   FileText,
   Network,
-  Building2,
-  Package,
-  FolderKanban,
   CheckCircle2,
   Clock,
   ArrowRight,
@@ -14,6 +11,7 @@ import {
   Flame,
   Factory,
   Zap,
+  Building2,
 } from 'lucide-react'
 import { blogPosts } from '../data/blogPosts'
 
@@ -31,13 +29,17 @@ function HomePage() {
     canonicalUrl: 'https://www.soedera.eu/',
   })
 
-  // Latest 3 published articles for the insights strip
   const latestArticles = blogPosts.filter((p) => p.published).slice(0, 3)
+
+  const scrollToAssessments = () => {
+    const el = document.getElementById('assessments')
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <div className="bg-white">
 
-      {/* ── HERO ── */}
+      {/* ── 1. HERO ── */}
       <section
         className="relative min-h-[580px] sm:min-h-[640px] flex items-center justify-center overflow-hidden"
         style={{
@@ -46,10 +48,8 @@ function HomePage() {
           backgroundPosition: 'center',
         }}
       >
-        {/* Lighter overlay — was black/60, now black/45 so photo shows better */}
+        {/* Lighter overlay */}
         <div className="absolute inset-0 bg-slate-900/45" />
-
-        {/* Subtle brightness boost via a white gradient at top */}
         <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-slate-900/30" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full py-20">
@@ -72,17 +72,20 @@ function HomePage() {
             className="text-lg sm:text-xl text-slate-200 max-w-3xl mx-auto mb-10 leading-relaxed"
             style={{ textShadow: '0 1px 10px rgba(0,0,0,0.5)' }}
           >
-            SøDera helps energy operators fix documentation, implement Reference Designation Systems (IEC 81346), and bring structure to asset data — built on 20+ years of hands-on industry experience.
+            SøDera helps energy operators fix documentation, implement Reference Designation
+            Systems (IEC 81346), and bring structure to asset data. Built on 20+ years of
+            hands-on industry experience.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/book-assessment"
-              className="w-full sm:w-auto px-8 py-4 bg-sky-500 text-white font-semibold rounded-xl shadow-lg shadow-sky-500/30 hover:bg-sky-400 hover:shadow-sky-500/50 transition-all flex items-center justify-center gap-2 group"
+            {/* Scrolls to assessments section on same page */}
+            <button
+              onClick={scrollToAssessments}
+              className="w-full sm:w-auto px-8 py-4 bg-sky-500 text-white font-semibold rounded-xl shadow-lg shadow-sky-500/30 hover:bg-sky-400 transition-all flex items-center justify-center gap-2 group"
             >
               Book an Assessment
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </button>
             <Link
               to="/services"
               className="w-full sm:w-auto px-8 py-4 bg-white/10 border border-white/25 text-white font-semibold rounded-xl hover:bg-white/20 transition-all flex items-center justify-center gap-2"
@@ -117,9 +120,9 @@ function HomePage() {
       </section>
 
       {/* ── INDUSTRIES STRIP ── */}
-      <section className="bg-slate-900 py-8 border-b border-slate-800">
+      <section className="bg-slate-900 py-6 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-16">
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-14">
             <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">
               Industries we serve
             </p>
@@ -131,7 +134,7 @@ function HomePage() {
               { icon: Building2, label: 'Substations' },
             ].map((item) => (
               <div key={item.label} className="flex items-center gap-2 text-slate-300">
-                <item.icon size={16} className="text-sky-400" />
+                <item.icon size={15} className="text-sky-400" />
                 <span className="text-sm font-medium">{item.label}</span>
               </div>
             ))}
@@ -139,7 +142,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ── QUICK ASSESSMENTS ── */}
+      {/* ── 2. QUICK ASSESSMENTS ── */}
       <section className="py-16 sm:py-20 bg-white" id="assessments">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -154,7 +157,7 @@ function HomePage() {
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto leading-relaxed">
               Short, paid engagements designed to review your current setup and give you clear,
-              practical recommendations — not to lock you into a larger project.
+              practical recommendations. Not to lock you into a larger project.
             </p>
           </div>
 
@@ -228,7 +231,7 @@ function HomePage() {
               </h3>
               <p className="text-slate-600 text-sm mb-5 leading-relaxed">
                 A practical review of how documents are created, stored, controlled, and used
-                across teams and systems — with clear recommendations for improvement.
+                across teams and systems, with clear recommendations for improvement.
               </p>
               <ul className="space-y-2.5 mb-8">
                 {[
@@ -264,182 +267,97 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ── SERVICES — clickable cards ── */}
-      <section className="py-16 sm:py-20 bg-slate-50">
+      {/* ── 3. BUILT BY PRACTITIONERS ── */}
+      <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="text-sky-600 font-bold text-xs uppercase tracking-widest">
-              What We Do
+
+          {/* Text */}
+          <div className="max-w-3xl mb-12">
+            <span className="text-sky-600 font-bold text-xs uppercase tracking-widest mb-3 block">
+              Why SøDera
             </span>
             <h2
               style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
-              className="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 mb-4"
+              className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 leading-tight"
             >
-              Our Services
+              Built by practitioners who got tired of seeing the same problems go unsolved
             </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              Focused solutions designed for energy sector organisations looking to take control
-              of their documentation and asset data.
+            <p className="text-lg text-slate-600 mb-5 leading-relaxed">
+              After two decades working across energy projects in oil & gas, offshore wind, and
+              power infrastructure, we kept encountering the same issues: documentation scattered
+              across systems nobody trusted, RDS implementations that drifted from the standard,
+              and handovers that left operations teams starting from scratch.
+            </p>
+            <p className="text-slate-600 mb-8 leading-relaxed">
+              We started SøDera because we wanted to build something of our own, and because we
+              knew from experience exactly what these problems cost operators, and exactly how to
+              fix them. Not from a textbook. From the field.
+            </p>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-8 border-t border-b border-slate-200 mb-8">
+              {[
+                { value: '20+', label: 'Combined years in energy' },
+                { value: 'IEC 81346', label: 'Core standard expertise' },
+                { value: 'ISO 19650', label: 'Document management' },
+                { value: 'Europe', label: 'Primary market' },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <p
+                    style={{ fontFamily: 'Georgia, serif' }}
+                    className="text-2xl font-bold text-sky-600 mb-1"
+                  >
+                    {stat.value}
+                  </p>
+                  <p className="text-xs text-slate-500">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-sky-600 hover:text-sky-800 transition-colors"
+            >
+              Meet the team <ArrowRight size={14} />
+            </Link>
+          </div>
+
+          {/* Søren's Wind Europe video — full width, centered */}
+          <div className="max-w-3xl">
+            <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-black">
+              <video
+                src="https://i.imgur.com/KOR2yvC.mp4"
+                controls
+                playsInline
+                preload="metadata"
+                className="w-full"
+                poster="https://i.imgur.com/lCNBEPI.jpeg"
+              />
+            </div>
+            <div className="mt-4 flex items-center gap-3">
+              <div
+                className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
+                style={{ background: '#1a3a5c' }}
+              >
+                SC
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-slate-900">Søren Christensen</p>
+                <p className="text-xs text-slate-500">
+                  Co-founder & CEO, SøDera · Speaking at Wind Europe
+                </p>
+              </div>
+            </div>
+            <p className="mt-3 text-xs text-slate-400 italic">
+              Video of Søren speaking with the CEO representative from Jera Nex BP at Wind Europe Exhibition, SøDera.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-            {[
-              {
-                icon: FileText,
-                title: 'Document Management',
-                description:
-                  'Structure, control, and manage technical documentation across teams and systems. Aligned with ISO 19650 and IEC 81346.',
-                href: '/service-document-management',
-              },
-              {
-                icon: Network,
-                title: 'Reference Designation (RDS)',
-                description:
-                  'Implement IEC 81346-compliant designation systems for clear and consistent asset identification across your operation.',
-                href: '/service-rds',
-              },
-              {
-                icon: Building2,
-                title: 'BIM Services',
-                description:
-                  'Integrate Building Information Modeling into your asset lifecycle for enhanced collaboration and data continuity.',
-                href: '/service-bim',
-              },
-              {
-                icon: Package,
-                title: 'Product Development',
-                description:
-                  'Custom data products for energy infrastructure — from RDS management tools to asset registers and integration layers.',
-                href: '/service-product-development',
-              },
-              {
-                icon: FolderKanban,
-                title: 'Project Management',
-                description:
-                  'Structured project management for documentation and data initiatives in complex energy environments.',
-                href: '/service-project-management',
-              },
-              {
-                icon: Shield,
-                title: 'RDS Audit',
-                description:
-                  'Independent audit of your existing Reference Designation System against IEC 81346 with a clear remediation roadmap.',
-                href: '/service-rds-audit',
-              },
-            ].map((service) => (
-              <Link
-                key={service.title}
-                to={service.href}
-                className="group bg-white border border-slate-200 hover:border-sky-300 hover:shadow-lg rounded-2xl p-7 transition-all hover:-translate-y-1 block"
-              >
-                <div className="w-11 h-11 bg-sky-50 rounded-xl flex items-center justify-center mb-5">
-                  <service.icon size={22} className="text-sky-600" />
-                </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-sky-700 transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-4">
-                  {service.description}
-                </p>
-                <span className="inline-flex items-center gap-1 text-xs font-semibold text-sky-600 group-hover:gap-2 transition-all">
-                  Learn more <ArrowRight size={12} />
-                </span>
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* ── WHY SØDERA — founder story ── */}
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="text-sky-600 font-bold text-xs uppercase tracking-widest mb-3 block">
-                Why SøDera
-              </span>
-              <h2
-                style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
-                className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 leading-tight"
-              >
-                Built by practitioners who got tired of seeing the same problems go unsolved
-              </h2>
-              <p className="text-lg text-slate-600 mb-5 leading-relaxed">
-                After two decades working across energy projects in oil & gas, offshore wind, and
-                power infrastructure, we kept encountering the same issues: documentation scattered
-                across systems nobody trusted, RDS implementations that drifted from the standard,
-                and handovers that left operations teams starting from scratch.
-              </p>
-              <p className="text-slate-600 mb-8 leading-relaxed">
-                We started SøDera because we wanted to build something of our own — and because we
-                knew from experience exactly what these problems cost operators, and exactly how to
-                fix them. Not from a textbook. From the field.
-              </p>
-
-              <div className="grid grid-cols-2 gap-6 py-8 border-t border-b border-slate-100 mb-8">
-                {[
-                  { value: '20+', label: 'Combined years in energy' },
-                  { value: 'IEC 81346', label: 'Core standard expertise' },
-                  { value: 'ISO 19650', label: 'Document management alignment' },
-                  { value: 'Europe', label: 'Primary market served' },
-                ].map((stat) => (
-                  <div key={stat.label}>
-                    <p
-                      style={{ fontFamily: 'Georgia, serif' }}
-                      className="text-2xl font-bold text-sky-600 mb-1"
-                    >
-                      {stat.value}
-                    </p>
-                    <p className="text-xs text-slate-500">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-sky-600 hover:text-sky-800 transition-colors"
-              >
-                Meet the team <ArrowRight size={14} />
-              </Link>
-            </div>
-
-            {/* Sylvia quote card */}
-            <div className="bg-slate-50 rounded-2xl border border-slate-200 p-10">
-              <div
-                style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
-                className="text-4xl text-sky-200 font-bold mb-4 leading-none"
-              >
-                "
-              </div>
-              <blockquote
-                style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
-                className="text-xl text-slate-800 italic leading-relaxed mb-8"
-              >
-                Over a decade in Oil & gas and energy sectors, I've realized that structured data
-                is not just an administrative requirement; it is the operational backbone that
-                ensures safety, compliance, and long-term asset value.
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-base flex-shrink-0"
-                  style={{ background: '#1a3a5c' }}
-                >
-                  SA
-                </div>
-                <div>
-                  <p className="font-semibold text-slate-900 text-sm">Sylvia Awoudu</p>
-                  <p className="text-slate-500 text-xs">Co-founder & COO, SøDera</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── LATEST INSIGHTS ── */}
+      {/* ── 4. LATEST INSIGHTS ── */}
       {latestArticles.length > 0 && (
-        <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-200">
+        <section className="py-16 sm:py-20 bg-white border-t border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-end justify-between mb-10">
               <div>
@@ -506,7 +424,7 @@ function HomePage() {
         </section>
       )}
 
-      {/* ── FINAL CTA ── */}
+      {/* ── 5. FINAL CTA ── */}
       <section className="py-16 sm:py-20 bg-slate-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="text-sky-400 font-bold text-xs uppercase tracking-widest mb-4 block">
@@ -519,9 +437,9 @@ function HomePage() {
             Not sure where to start?
           </h2>
           <p className="text-lg text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-            A 30-minute conversation is usually enough to identify the highest-impact area for your
-            organisation. No commitment, no sales pitch — just a direct discussion about your
-            documentation or RDS challenge.
+            A 30-minute conversation is usually enough to identify the highest-impact area for
+            your organisation. No commitment, no sales pitch. Just a direct discussion about
+            your documentation or RDS challenge.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
@@ -530,15 +448,21 @@ function HomePage() {
             >
               Get in Touch <ArrowRight size={18} />
             </Link>
-            <Link
-              to="/book-assessment"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 border border-white/20 text-white rounded-xl font-bold hover:bg-white/20 transition-all"
+            <button
+              onClick={scrollToAssessments}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 border border-white/20 text-white rounded-xl font-bold hover:bg-white/20 transition-all cursor-pointer"
             >
               Book an Assessment
-            </Link>
+            </button>
           </div>
         </div>
       </section>
+
     </div>
   )
+
+  function scrollToAssessments() {
+    const el = document.getElementById('assessments')
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  }
 }
