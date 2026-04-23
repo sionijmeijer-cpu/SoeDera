@@ -151,7 +151,7 @@ function RootLayout() {
               <div className="hidden md:flex items-center gap-2">
                 {/* Explore Training — amber */}
                 <Link
-                  to="/service-training"
+                  to={"/service-training" as any}
                   className="inline-block px-4 py-2.5 bg-amber-500 text-white text-sm font-semibold rounded-lg shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:bg-amber-400 transition-all hover:scale-105 relative overflow-hidden"
                 >
                   <div
@@ -233,7 +233,7 @@ function RootLayout() {
                 </Link>
                 <div className="pt-4 flex flex-col gap-2">
                   <Link
-                    to="/service-training"
+                    to={"/service-training" as any}
                     className="block w-full px-5 py-3 bg-amber-500 text-white text-center font-semibold rounded-lg hover:bg-amber-400 transition-colors"
                   >
                     Explore Training
@@ -314,7 +314,7 @@ function RootLayout() {
                       { label: 'Training & SME', to: '/service-training' },
                     ].map((link) => (
                       <li key={link.label}>
-                        <Link to={link.to} className={`text-sm transition-colors ${link.label === 'Training & SME' ? 'text-amber-400 hover:text-amber-300' : 'text-slate-400 hover:text-sky-400'}`}>
+                        <Link to={link.to as any} className={`text-sm transition-colors ${link.label === 'Training & SME' ? 'text-amber-400 hover:text-amber-300' : 'text-slate-400 hover:text-sky-400'}`}>
                           {link.label}
                         </Link>
                       </li>
