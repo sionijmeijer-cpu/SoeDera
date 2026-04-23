@@ -24,6 +24,7 @@ import { Route as ServiceRdsAuditImport } from './routes/service-rds-audit'
 import { Route as ServiceProjectManagementImport } from './routes/service-project-management'
 import { Route as ServiceDocumentManagementImport } from './routes/service-document-management'
 import { Route as ServiceProductDevelopmentImport } from './routes/service-product-development'
+import { Route as ServiceTrainingImport } from './routes/service-training'
 
 // Create/Update Routes
 
@@ -102,6 +103,12 @@ const ServiceDocumentManagementRoute = ServiceDocumentManagementImport.update({
 const ServiceProductDevelopmentRoute = ServiceProductDevelopmentImport.update({
   id: '/service-product-development',
   path: '/service-product-development',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ServiceTrainingRoute = ServiceTrainingImport.update({
+  id: '/service-training',
+  path: '/service-training',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -200,6 +207,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiceProductDevelopmentImport
       parentRoute: typeof rootRoute
     }
+    '/service-training': {
+      id: '/service-training'
+      path: '/service-training'
+      fullPath: '/service-training'
+      preLoaderRoute: typeof ServiceTrainingImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -219,6 +233,7 @@ export interface FileRoutesByFullPath {
   '/service-project-management': typeof ServiceProjectManagementRoute
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
+  '/service-training': typeof ServiceTrainingRoute
 }
 
 export interface FileRoutesByTo {
@@ -235,6 +250,7 @@ export interface FileRoutesByTo {
   '/service-project-management': typeof ServiceProjectManagementRoute
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
+  '/service-training': typeof ServiceTrainingRoute
 }
 
 export interface FileRoutesById {
@@ -252,6 +268,7 @@ export interface FileRoutesById {
   '/service-project-management': typeof ServiceProjectManagementRoute
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
+  '/service-training': typeof ServiceTrainingRoute
 }
 
 export interface FileRouteTypes {
@@ -270,6 +287,7 @@ export interface FileRouteTypes {
     | '/service-project-management'
     | '/service-document-management'
     | '/service-product-development'
+    | '/service-training'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -285,6 +303,7 @@ export interface FileRouteTypes {
     | '/service-project-management'
     | '/service-document-management'
     | '/service-product-development'
+    | '/service-training'
   id:
     | '__root__'
     | '/'
@@ -300,6 +319,7 @@ export interface FileRouteTypes {
     | '/service-project-management'
     | '/service-document-management'
     | '/service-product-development'
+    | '/service-training'
   fileRoutesById: FileRoutesById
 }
 
@@ -317,6 +337,7 @@ export interface RootRouteChildren {
   ServiceProjectManagementRoute: typeof ServiceProjectManagementRoute
   ServiceDocumentManagementRoute: typeof ServiceDocumentManagementRoute
   ServiceProductDevelopmentRoute: typeof ServiceProductDevelopmentRoute
+  ServiceTrainingRoute: typeof ServiceTrainingRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -333,6 +354,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServiceProjectManagementRoute: ServiceProjectManagementRoute,
   ServiceDocumentManagementRoute: ServiceDocumentManagementRoute,
   ServiceProductDevelopmentRoute: ServiceProductDevelopmentRoute,
+  ServiceTrainingRoute: ServiceTrainingRoute,
 }
 
 export const routeTree = rootRoute
