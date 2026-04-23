@@ -31,8 +31,8 @@ function HomePage() {
 
   const latestArticles = blogPosts.filter((p) => p.published).slice(0, 3)
 
-  const scrollToAssessments = () => {
-    const el = document.getElementById('assessments')
+  const scrollToServices = () => {
+    const el = document.getElementById('services-section')
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 
@@ -48,7 +48,6 @@ function HomePage() {
           backgroundPosition: 'center',
         }}
       >
-        {/* Lighter overlay */}
         <div className="absolute inset-0 bg-slate-900/45" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-slate-900/30" />
 
@@ -78,9 +77,8 @@ function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            {/* Scrolls to assessments section on same page */}
             <button
-              onClick={scrollToAssessments}
+              onClick={scrollToServices}
               className="w-full sm:w-auto px-8 py-4 bg-sky-500 text-white font-semibold rounded-xl shadow-lg shadow-sky-500/30 hover:bg-sky-400 transition-all flex items-center justify-center gap-2 group"
             >
               Book an Assessment
@@ -94,7 +92,6 @@ function HomePage() {
             </Link>
           </div>
 
-          {/* Trust strip */}
           <div className="mt-12 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-slate-300 text-sm">
             <div className="flex items-center gap-2">
               <Shield size={16} className="text-sky-400" />
@@ -111,7 +108,6 @@ function HomePage() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce hidden sm:block">
           <div className="w-5 h-8 border-2 border-slate-300/60 rounded-full flex items-start justify-center p-1.5">
             <div className="w-1 h-2 bg-sky-400 rounded-full animate-pulse" />
@@ -143,7 +139,7 @@ function HomePage() {
       </section>
 
       {/* ── 2. QUICK ASSESSMENTS ── */}
-      <section className="py-16 sm:py-20 bg-white" id="assessments">
+      <section className="py-16 sm:py-20 bg-white" id="services-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-sky-600 font-bold text-xs uppercase tracking-widest">
@@ -270,88 +266,73 @@ function HomePage() {
       {/* ── 3. BUILT BY PRACTITIONERS ── */}
       <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-          {/* Text */}
-          <div className="max-w-3xl mb-12">
-            <span className="text-sky-600 font-bold text-xs uppercase tracking-widest mb-3 block">
-              Why SøDera
-            </span>
-            <h2
-              style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
-              className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 leading-tight"
-            >
-              Built by practitioners who got tired of seeing the same problems go unsolved
-            </h2>
-            <p className="text-lg text-slate-600 mb-5 leading-relaxed">
-              After two decades working across energy projects in oil & gas, offshore wind, and
-              power infrastructure, we kept encountering the same issues: documentation scattered
-              across systems nobody trusted, RDS implementations that drifted from the standard,
-              and handovers that left operations teams starting from scratch.
-            </p>
-            <p className="text-slate-600 mb-8 leading-relaxed">
-              We started SøDera because we wanted to build something of our own, and because we
-              knew from experience exactly what these problems cost operators, and exactly how to
-              fix them. Not from a textbook. From the field.
-            </p>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-8 border-t border-b border-slate-200 mb-8">
-              {[
-                { value: '20+', label: 'Combined years in energy' },
-                { value: 'IEC 81346', label: 'Core standard expertise' },
-                { value: 'ISO 19650', label: 'Document management' },
-                { value: 'Europe', label: 'Primary market' },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <p
-                    style={{ fontFamily: 'Georgia, serif' }}
-                    className="text-2xl font-bold text-sky-600 mb-1"
-                  >
-                    {stat.value}
-                  </p>
-                  <p className="text-xs text-slate-500">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-sky-600 hover:text-sky-800 transition-colors"
-            >
-              Meet the team <ArrowRight size={14} />
-            </Link>
-          </div>
-
-          {/* Søren's Wind Europe video — full width, centered */}
-          <div className="max-w-3xl">
-            <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-black">
-              <video
-                src="https://i.imgur.com/KOR2yvC.mp4"
-                controls
-                playsInline
-                preload="metadata"
-                className="w-full"
-                poster="https://i.imgur.com/lCNBEPI.jpeg"
-              />
-            </div>
-            <div className="mt-4 flex items-center gap-3">
-              <div
-                className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-                style={{ background: '#1a3a5c' }}
+            {/* Text */}
+            <div>
+              <span className="text-sky-600 font-bold text-xs uppercase tracking-widest mb-3 block">
+                Why SøDera
+              </span>
+              <h2
+                style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 leading-tight"
               >
-                SC
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-slate-900">Søren Christensen</p>
-                <p className="text-xs text-slate-500">
-                  Co-founder & CEO, SøDera · Speaking at Wind Europe
-                </p>
-              </div>
-            </div>
-            <p className="mt-3 text-xs text-slate-400 italic">
-              Video of Søren speaking with the CEO representative from Jera Nex BP at Wind Europe Exhibition, SøDera.
-            </p>
-          </div>
+                Built by practitioners who got tired of seeing the same problems go unsolved
+              </h2>
+              <p className="text-lg text-slate-600 mb-5 leading-relaxed">
+                After two decades working across energy projects in oil & gas, offshore wind, and
+                power infrastructure, we kept encountering the same issues: documentation scattered
+                across systems nobody trusted, RDS implementations that drifted from the standard,
+                and handovers that left operations teams starting from scratch.
+              </p>
+              <p className="text-slate-600 mb-8 leading-relaxed">
+                We started SøDera because we wanted to build something of our own, and because we
+                knew from experience exactly what these problems cost operators, and exactly how to
+                fix them. Not from a textbook. From the field.
+              </p>
 
+              <div className="grid grid-cols-2 gap-6 py-8 border-t border-b border-slate-200 mb-8">
+                {[
+                  { value: '20+', label: 'Combined years in energy' },
+                  { value: 'IEC 81346', label: 'Core standard expertise' },
+                  { value: 'ISO 19650', label: 'Document management' },
+                  { value: 'Europe', label: 'Primary market' },
+                ].map((stat) => (
+                  <div key={stat.label}>
+                    <p
+                      style={{ fontFamily: 'Georgia, serif' }}
+                      className="text-2xl font-bold text-sky-600 mb-1"
+                    >
+                      {stat.value}
+                    </p>
+                    <p className="text-xs text-slate-500">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-sky-600 hover:text-sky-800 transition-colors"
+              >
+                Meet the team <ArrowRight size={14} />
+              </Link>
+            </div>
+
+            {/* Photo */}
+            <div>
+              <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200">
+                <img
+                  src="https://i.imgur.com/Po60bGu.png"
+                  alt="Søren Christensen and Sylvia Awoudu at Wind Europe Exhibition Madrid 2026 SøDera"
+                  className="w-full h-[400px] object-cover object-top"
+                />
+              </div>
+              <p className="mt-3 text-xs text-slate-400 italic text-center">
+                Søren Christensen and Sylvia Awoudu at Wind Europe Exhibition, Madrid 2026.
+              </p>
+            </div>
+
+          </div>
         </div>
       </section>
 
@@ -449,7 +430,7 @@ function HomePage() {
               Get in Touch <ArrowRight size={18} />
             </Link>
             <button
-              onClick={scrollToAssessments}
+              onClick={scrollToServices}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 border border-white/20 text-white rounded-xl font-bold hover:bg-white/20 transition-all cursor-pointer"
             >
               Book an Assessment
@@ -460,5 +441,4 @@ function HomePage() {
 
     </div>
   )
-
 }
