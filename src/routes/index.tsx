@@ -41,16 +41,18 @@ function HomePage() {
     <div className="bg-white">
 
       {/* ── 1. HERO ── */}
-      <section
-        className="relative min-h-[580px] sm:min-h-[640px] flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: 'url(https://i.imgur.com/lCNBEPI.jpeg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="absolute inset-0 bg-slate-900/45" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-slate-900/30" />
+      <section className="relative min-h-[580px] sm:min-h-[640px] flex items-center justify-center overflow-hidden">
+        {/* Background video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/energy-infrastructure-soedera-hero.mp4"
+        />
+        <div className="absolute inset-0 bg-slate-900/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/40" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full py-20 pt-24">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-500/15 border border-sky-400/30 rounded-full text-sky-200 text-sm font-semibold mb-6 uppercase tracking-wider">
