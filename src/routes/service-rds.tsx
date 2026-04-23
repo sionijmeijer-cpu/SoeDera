@@ -1,6 +1,14 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { SEOHead } from '@/components/SEOHead'
-import { Network, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react'
+import {
+  ArrowLeft,
+  CheckCircle,
+  AlertTriangle,
+  Network,
+  Layers,
+  GitMerge,
+  Database,
+} from 'lucide-react'
 
 export const Route = createFileRoute('/service-rds')({
   component: RDSPage,
@@ -8,144 +16,243 @@ export const Route = createFileRoute('/service-rds')({
 
 function RDSPage() {
   SEOHead({
-    title: 'Reference Designation System (RDS) Services - IEC 81346 Experts',
-    description: 'Expert RDS implementation and IEC 81346 compliance services for energy companies. Clear asset identification, reduced complexity, improved documentation.',
-    keywords: 'RDS services, Reference Designation System, IEC 81346 compliance, asset identification, energy sector RDS',
-    canonicalUrl: 'https://www.soedera.eu/service-rds'
+    title: 'Reference Designation System (RDS) Consulting | IEC 81346 | SøDera',
+    description:
+      'SøDera helps energy operators implement IEC 81346 compliant Reference Designation Systems. Unify engineering, operations, and maintenance under a single asset language. RDS-PP, RDS-PS, and RDS-CW specialists.',
+    keywords:
+      'Reference Designation System, RDS, IEC 81346, RDS-PS, RDS-PP, asset tagging energy, IEC 81346 consulting, industrial asset designation, energy sector RDS',
+    canonicalUrl: 'https://www.soedera.eu/service-rds',
   })
+
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Reference Designation System Consulting',
+    description:
+      'SøDera designs and implements IEC 81346 compliant Reference Designation Systems for energy operators across offshore wind, power plants, and industrial infrastructure.',
+    provider: {
+      '@type': 'Organization',
+      name: 'SøDera',
+      url: 'https://www.soedera.eu',
+    },
+    areaServed: { '@type': 'Place', name: 'Europe' },
+    serviceType: 'Reference Designation System Consulting',
+    url: 'https://www.soedera.eu/service-rds',
+  }
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-sky-50 to-sky-100 py-20 sm:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema, null, 2) }}
+      />
+
+      {/* ── Hero — placeholder photo ── */}
+      <section
+        className="relative min-h-[600px] flex items-center py-32 overflow-hidden"
+        style={{
+          backgroundImage: 'url(https://i.imgur.com/lCNBEPI.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-slate-900/70" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+          <Link
             to="/services"
-            className="inline-flex items-center gap-2 text-sky-600 hover:text-sky-700 mb-8 group"
+            className="inline-flex items-center gap-2 text-blue-300 hover:text-white mb-10 group text-sm"
           >
-            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform" />
             Back to Services
           </Link>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-500/10 text-sky-600 rounded-full text-sm font-medium mb-6">
-                <Network size={16} />
-                Reference Designation Systems
-              </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-                IEC 81346 RDS Implementation
-              </h1>
-              <p className="text-xl text-slate-600 mb-8">
-                Implement industry-proven Reference Designation Systems that provide clear, consistent identification of your assets across all systems and documentation.
-              </p>
-              <Link 
-                to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 text-white rounded-lg font-semibold hover:bg-sky-600 transition-all hover:scale-105 shadow-lg shadow-sky-500/25"
+
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-sky-500/20 border border-sky-400/30 text-sky-300 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
+              Reference Designation Systems
+            </div>
+
+            <h1
+              style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+            >
+              Unify Your Assets with IEC 81346
+            </h1>
+
+            <p className="text-xl text-slate-200 mb-6 leading-relaxed">
+              Implement a clear, consistent, and industry-standard designation system to bridge
+              the gap between engineering, operations, and maintenance across your entire asset
+              portfolio.
+            </p>
+
+            <div className="flex flex-wrap gap-3 mb-10">
+              {['IEC 81346', 'ISO 81346', 'RDS-PS', 'RDS-PP', 'RDS-CW'].map((badge) => (
+                <span key={badge} className="px-3 py-1 bg-white/10 border border-white/20 text-white text-xs font-semibold rounded-full">
+                  {badge}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-4">
+              <Link
+                to="/book-assessment"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 text-white rounded-lg font-semibold hover:bg-sky-400 transition-all hover:scale-105 shadow-lg"
               >
-                Get Started <ArrowRight size={18} />
+                Get Your RDS Assessment
+              </Link>
+              <Link
+                to="/blog/$articleId"
+                params={{ articleId: 'rds-ps-explained-plant-asset-tagging' }}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/20 text-white rounded-lg font-semibold hover:bg-white/20 transition-all"
+              >
+                Read: RDS-PS Explained
               </Link>
             </div>
-            <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-sky-400 to-blue-600 rounded-2xl shadow-2xl flex items-center justify-center">
-                <Network className="text-white/30" size={180} />
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* What is RDS */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
-              What is Reference Designation?
-            </h2>
-            <p className="text-lg text-slate-600">
-              Reference Designation Systems (RDS) based on IEC 81346 provide a standardized way to identify and locate objects within complex systems like power plants and industrial facilities.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Consistent Identification</h3>
-              <p className="text-slate-600">
-                Every component gets a unique, meaningful identifier that remains consistent across all documentation and systems.
-              </p>
+      {/* ── Expert quote ── */}
+      <section className="bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex items-start gap-6 max-w-4xl">
+            <div
+              className="w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0 shadow-md"
+              style={{ background: '#1a3a5c' }}
+            >
+              SC
             </div>
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Cross-System Integration</h3>
-              <p className="text-slate-600">
-                RDS enables seamless data exchange between CMMS, GIS, SCADA, and document management systems.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Lifecycle Support</h3>
-              <p className="text-slate-600">
-                From design through operations to decommissioning, RDS ensures asset traceability throughout the entire lifecycle.
+            <div>
+              <blockquote
+                style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                className="text-xl text-slate-800 italic leading-relaxed mb-3"
+              >
+                "Implementing a robust Reference Designation System is about more than just
+                tagging assets. It is about creating a universal language that unifies engineering,
+                operations, and maintenance. It is the foundational layer for true information
+                mastery in any complex energy environment."
+              </blockquote>
+              <p className="text-sm font-semibold text-slate-600">
+                Søren Christensen
+                <span className="font-normal text-slate-400"> · Co-founder & CEO, SøDera</span>
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Our Approach */}
+      {/* ── What is RDS ── */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
-              Our RDS Implementation Approach
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center">
-                  <CheckCircle className="text-sky-600" size={24} />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Assessment & Planning</h3>
-                <p className="text-slate-600">
-                  Analyze existing designation practices and develop a tailored RDS strategy aligned with IEC 81346.
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">
+                Understanding the standard
+              </p>
+              <h2
+                style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6"
+              >
+                What is a Reference Designation System?
+              </h2>
+              <div className="space-y-5 text-slate-600 leading-relaxed">
+                <p>
+                  A Reference Designation System, as defined by the IEC 81346 standard series,
+                  is a structured method for identifying objects within a system. Unlike traditional
+                  flat tagging systems that often rely on arbitrary numbering, RDS is built on an
+                  object-oriented philosophy. It recognises that any physical or functional entity
+                  in a plant can be viewed from multiple aspects simultaneously.
+                </p>
+                <p>
+                  The standard defines three primary aspects. The Function aspect (=) describes
+                  what the object does within the system — for example, a pumping function. The
+                  Product aspect (-) describes how the object is constructed or what it physically
+                  is — for example, a specific centrifugal pump. The Location aspect (+) describes
+                  where the object is situated — for example, in Pump Room A.
+                </p>
+                <p>
+                  By combining these aspects into a single structured string, RDS creates a unique,
+                  machine-readable address for every asset. This hierarchy enables Digital
+                  Continuity across the entire asset lifecycle. During the design phase, an engineer
+                  defines a functional requirement. A procurement specialist later assigns a
+                  specific product. The installation team places it in a physical location. Because
+                  the RDS tag remains the constant link, data from every phase is automatically
+                  aggregated, forming the basis for a true Digital Twin.
+                </p>
+                <p>
+                  Standardised designation systems have been shown to reduce engineering
+                  coordination errors by up to 20 percent and are essential for the
+                  interoperability required in modern BIM and Industry 4.0 environments.
                 </p>
               </div>
             </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center">
-                  <CheckCircle className="text-sky-600" size={24} />
+
+            {/* Aspects breakdown + cost callout */}
+            <div className="space-y-6">
+              {/* Three aspects */}
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8">
+                <h3
+                  style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                  className="text-lg font-bold text-slate-900 mb-6"
+                >
+                  The three aspects of IEC 81346
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    {
+                      prefix: '=',
+                      label: 'Function',
+                      color: 'bg-sky-600',
+                      description: 'What the object does within the system. Owned by the operator and service department. Used in P&IDs, alarm lists, and maintenance job cards.',
+                    },
+                    {
+                      prefix: '-',
+                      label: 'Product',
+                      color: 'bg-indigo-600',
+                      description: 'What the object physically is. Owned by the designer or manufacturer. Used in datasheets, procurement, spare parts, and installation drawings.',
+                    },
+                    {
+                      prefix: '+',
+                      label: 'Location',
+                      color: 'bg-emerald-600',
+                      description: 'Where the object is situated. Used in installation drawings, access routes, module and zone references.',
+                    },
+                  ].map((item) => (
+                    <div key={item.label} className="flex items-start gap-4">
+                      <div className={`w-9 h-9 ${item.color} rounded-lg flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}>
+                        {item.prefix}
+                      </div>
+                      <div>
+                        <p className="font-bold text-slate-900 text-sm mb-1">{item.label}</p>
+                        <p className="text-slate-500 text-sm leading-relaxed">{item.description}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Framework Design</h3>
-                <p className="text-slate-600">
-                  Create comprehensive designation rules, aspect hierarchies, and coding structures specific to your assets.
+
+              {/* Cost callout */}
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-8">
+                <div className="flex items-start gap-4 mb-4">
+                  <AlertTriangle className="text-amber-600 flex-shrink-0 mt-1" size={20} />
+                  <h3
+                    style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                    className="text-lg font-bold text-amber-900"
+                  >
+                    The cost of tag duplication
+                  </h3>
+                </div>
+                <p className="text-amber-800 text-sm leading-relaxed mb-3">
+                  In large-scale energy projects involving multiple contractors, the absence of a
+                  unified RDS leads to Tag Drift. Each contractor uses their own internal numbering
+                  logic, resulting in duplicate or ambiguous tags for the same physical equipment.
                 </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center">
-                  <CheckCircle className="text-sky-600" size={24} />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Migration Support</h3>
-                <p className="text-slate-600">
-                  Systematic migration of legacy designations to the new RDS framework with full traceability.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center">
-                  <CheckCircle className="text-sky-600" size={24} />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Training & Governance</h3>
-                <p className="text-slate-600">
-                  Comprehensive training programs and governance procedures to ensure long-term compliance.
+                <p className="text-amber-800 text-sm leading-relaxed">
+                  In a power plant commissioning phase, a safety-critical sensor identified by two
+                  different tags in the SCADA system and the physical wiring diagrams can cause
+                  technicians to spend days tracing wires. A two-day delay caused by tag ambiguity
+                  in a high-pressure commissioning environment can cost an operator upwards of
+                  <strong> €50,000</strong> in specialised labour and delayed startup revenue.
+                  RDS eliminates this ambiguity entirely.
                 </p>
               </div>
             </div>
@@ -153,29 +260,322 @@ function RDSPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 relative overflow-hidden" style={{
-        backgroundImage: 'url(https://i.imgur.com/BrTo5LL.jpeg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}>
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-            How can we assist you?
-          </h2>
-          <p className="text-xl text-sky-100 mb-8">
-            If you would like to discuss further on how we can support refining your business processes for a productive operation, please contact us.
-          </p>
-          <Link 
-            to="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-sky-600 rounded-lg font-bold hover:bg-sky-50 transition-all hover:scale-105 shadow-xl"
-          >
-            Get in Touch <ArrowRight size={20} />
-          </Link>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr className="border-t border-slate-200" /></div>
+
+      {/* ── Methodology ── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mb-14">
+            <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">
+              Our methodology
+            </p>
+            <h2
+              style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+              className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4"
+            >
+              The SøDera RDS framework
+            </h2>
+            <p className="text-lg text-slate-600">
+              We partner with your team to design and embed an RDS that works for your specific
+              operational context. Not a generic template applied from the outside, but a framework
+              built around your assets, your systems, and your people.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                number: '01',
+                title: 'Assessment and Planning',
+                description:
+                  'Reviewing current designation practices and information architecture to identify inconsistencies, gaps, and risks. We document what exists before recommending what should change.',
+              },
+              {
+                number: '02',
+                title: 'Framework Design',
+                description:
+                  'Defining comprehensive designation rules and aspect hierarchies specific to your assets and operational needs. The framework is designed to be both standards-compliant and practical for the engineers who will use it daily.',
+              },
+              {
+                number: '03',
+                title: 'Standard Alignment',
+                description:
+                  'Ensuring all designation rules strictly adhere to IEC 81346 principles for international compliance. We support RDS-PP for power plants, RDS-PS for power supply systems, and RDS-CW for construction works.',
+              },
+              {
+                number: '04',
+                title: 'Migration Support',
+                description:
+                  'Systematically mapping legacy tags to the new RDS framework with full traceability. Every existing identifier is accounted for. Nothing is lost. Every change is documented.',
+              },
+              {
+                number: '05',
+                title: 'Tool Integration',
+                description:
+                  'Embedding the RDS into your engineering tools, CMMS, and asset management platforms via API or structured data export. The tag becomes the linking key across every system in your information landscape.',
+              },
+              {
+                number: '06',
+                title: 'Training and Governance',
+                description:
+                  'Providing hands-on training and establishing procedures for long-term system maintenance. An RDS only delivers value if the people applying it understand why and how. We make sure they do.',
+              },
+            ].map((item) => (
+              <div
+                key={item.number}
+                className="flex gap-5 p-6 rounded-xl border border-slate-200 hover:border-sky-200 hover:shadow-sm transition-all"
+              >
+                <div className="flex-shrink-0 w-10">
+                  <span
+                    className="text-3xl font-bold text-slate-100"
+                    style={{ fontFamily: 'Georgia, serif' }}
+                  >
+                    {item.number}
+                  </span>
+                </div>
+                <div>
+                  <h3
+                    style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                    className="text-lg font-bold text-slate-900 mb-2"
+                  >
+                    {item.title}
+                  </h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr className="border-t border-slate-200" /></div>
+
+      {/* ── Case Study ── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">
+              In practice
+            </p>
+            <h2
+              style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+              className="text-3xl sm:text-4xl font-bold text-slate-900 mb-10"
+            >
+              Harmonising a multi-vendor power substation
+            </h2>
+
+            <div className="space-y-8">
+              <div className="border-l-4 border-amber-400 pl-6">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Challenge</h3>
+                <p className="text-slate-700 leading-relaxed">
+                  A regional power utility faced significant maintenance delays at a newly
+                  commissioned substation. Three different EPC contractors had used their own
+                  internal tagging systems during construction, resulting in over 15 percent of
+                  the equipment carrying conflicting identifiers across the SCADA system, the asset
+                  register, and the physical labels on site.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-sky-400 pl-6">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Solution</h3>
+                <p className="text-slate-700 leading-relaxed">
+                  SøDera was brought in to harmonise the facility under a unified IEC 81346 RDS.
+                  We mapped all legacy tags to a new multi-aspect hierarchy covering functional,
+                  product, and location designations. The digital asset register and physical
+                  labels were updated systematically, and the new framework was embedded into
+                  the operator's CMMS to ensure ongoing compliance.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-emerald-400 pl-6">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Result</h3>
+                <p className="text-slate-700 leading-relaxed">
+                  The utility achieved a 100 percent unique identification rate across the entire
+                  facility. Maintenance search and verify time was reduced by 40 percent. The
+                  facility's digital twin became fully operational for the first time, enabling
+                  real-time data visualisation and laying the groundwork for predictive maintenance
+                  across the operator's wider portfolio.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr className="border-t border-slate-200" /></div>
+
+      {/* ── Expertise ── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">
+                Why partner with us
+              </p>
+              <h2
+                style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6"
+              >
+                Expertise you can measure. Trust you can verify.
+              </h2>
+              <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+                SøDera's RDS practice is built on years of hands-on implementation across offshore
+                wind, power plants, substations, and industrial infrastructure. We do not consult
+                on IEC 81346 from a standards document. We apply it in the field, on real projects,
+                with real engineering teams.
+              </p>
+              <p className="text-slate-600 mb-8 leading-relaxed">
+                Our work is grounded in the standard and shaped by the operational reality of the
+                people who use the designations every day. The result is an RDS that is compliant,
+                practical, and built to last.
+              </p>
+
+              <div className="grid grid-cols-2 gap-6 py-8 border-t border-b border-slate-100 mb-8">
+                {[
+                  { value: 'IEC 81346', label: 'Core standard expertise' },
+                  { value: '20+', label: 'Years in energy asset tagging' },
+                  { value: 'Zero', label: 'Ambiguity goal for all frameworks' },
+                  { value: 'Digital Twin', label: 'Ready data interoperability' },
+                ].map((stat) => (
+                  <div key={stat.label}>
+                    <p
+                      style={{ fontFamily: 'Georgia, serif' }}
+                      className="text-2xl font-bold text-sky-600 mb-1"
+                    >
+                      {stat.value}
+                    </p>
+                    <p className="text-xs text-slate-500">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="space-y-3">
+                {[
+                  'Offshore wind developers and operators',
+                  'Power plant and substation asset owners',
+                  'EPC contractors building multi-discipline assets',
+                  'Operations teams managing large asset portfolios',
+                  'Organisations building or upgrading digital twins',
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-3 text-slate-700 text-sm">
+                    <CheckCircle size={15} className="text-sky-500 flex-shrink-0" />
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* What RDS enables */}
+            <div className="space-y-5">
+              <h3
+                style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                className="text-xl font-bold text-slate-900"
+              >
+                What a well-implemented RDS enables
+              </h3>
+              {[
+                {
+                  icon: Network,
+                  title: 'A single asset language across all disciplines',
+                  description:
+                    'Engineering, procurement, construction, operations, and maintenance all refer to the same asset using the same identifier. No translation layer, no ambiguity.',
+                },
+                {
+                  icon: Layers,
+                  title: 'Multi-dimensional asset discovery',
+                  description:
+                    'Search by function, product, or location independently. Find every document, signal, maintenance record, and spare parts list linked to a single tag instantly.',
+                },
+                {
+                  icon: GitMerge,
+                  title: 'Lifecycle data continuity',
+                  description:
+                    'Data created during design is automatically linked to data created during commissioning and operations. Nothing is lost at handover because the tag is the constant thread.',
+                },
+                {
+                  icon: Database,
+                  title: 'Digital twin foundation',
+                  description:
+                    'A compliant RDS is the prerequisite for any meaningful digital twin. Without consistent asset identification, sensor data, maintenance records, and engineering documents cannot be reliably connected.',
+                },
+              ].map((item) => (
+                <div key={item.title} className="flex gap-4 p-5 rounded-xl border border-slate-200 hover:border-sky-200 transition-all">
+                  <div className="w-10 h-10 bg-sky-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <item.icon size={18} className="text-sky-600" />
+                  </div>
+                  <div>
+                    <h4
+                      style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                      className="font-bold text-slate-900 mb-1"
+                    >
+                      {item.title}
+                    </h4>
+                    <p className="text-slate-500 text-sm leading-relaxed">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr className="border-t border-slate-200" /></div>
+
+      {/* ── Related Insights ── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">
+            From our team
+          </p>
+          <h2
+            style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+            className="text-2xl font-bold text-slate-900 mb-8"
+          >
+            Related insights
+          </h2>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {[
+              {
+                id: 'rds-ps-explained-plant-asset-tagging',
+                title: 'RDS-PS Explained: How One Tag Connects Your Entire Plant',
+                category: 'RDS',
+                readTime: '8 min read',
+              },
+              {
+                id: 'rdspp-vs-rdsps',
+                title: 'RDS-PP vs RDS-PS: Understanding Standardisation, Flexibility, and the Choices Asset Owners Must Make',
+                category: 'RDS',
+                readTime: '5 min read',
+              },
+              {
+                id: 'information-management-offshore-wind-rds-cost',
+                title: 'Information Management in Offshore Wind: Why RDS and Structured Data Save €20,000 Per Incident',
+                category: 'RDS',
+                readTime: '11 min read',
+              },
+            ].map((article) => (
+              <Link
+                key={article.id}
+                to="/blog/$articleId"
+                params={{ articleId: article.id }}
+                className="block p-5 rounded-xl border border-slate-200 hover:border-sky-300 hover:shadow-sm transition-all group"
+              >
+                <span className="text-xs font-semibold uppercase tracking-wider text-sky-600">
+                  {article.category}
+                </span>
+                <h3
+                  style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                  className="text-sm font-bold text-slate-900 mt-2 mb-2 leading-snug group-hover:text-sky-700 transition-colors"
+                >
+                  {article.title}
+                </h3>
+                <span className="text-xs text-slate-400">{article.readTime}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </div>
   )
 }
