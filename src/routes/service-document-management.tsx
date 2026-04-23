@@ -22,7 +22,7 @@ function DocumentManagementPage() {
   SEOHead({
     title: 'Document Management Services for Energy Infrastructure | SøDera',
     description:
-      'SøDera brings clarity to complex energy documentation — structured filing systems, rigorous version control, ISO 19650 alignment, and EDMS implementation for offshore wind, power plants, and industrial infrastructure.',
+      'SøDera brings clarity to complex energy documentation with structured filing systems, rigorous version control, ISO 19650 alignment, and EDMS implementation for offshore wind, oil & gas, power plants, and industrial infrastructure.',
     keywords:
       'document management energy sector, EDMS energy, technical documentation control, ISO 19650, document control offshore wind, asset documentation, engineering document management, IEC 81346 document management',
     canonicalUrl: 'https://www.soedera.eu/service-document-management',
@@ -33,7 +33,7 @@ function DocumentManagementPage() {
     '@type': 'Service',
     name: 'Document Management Services for Energy Infrastructure',
     description:
-      'SøDera provides document management consulting for energy operators — structured filing systems, EDMS implementation, ISO 19650 alignment, metadata design, and handover readiness.',
+      'SøDera provides document management consulting for energy operators with structured filing systems, EDMS implementation, ISO 19650 alignment, metadata design, and handover readiness.',
     provider: {
       '@type': 'Organization',
       name: 'SøDera',
@@ -85,7 +85,7 @@ function DocumentManagementPage() {
 
             <p className="text-xl text-slate-200 mb-4 leading-relaxed">
               In energy and industrial operations, effective document management is not an
-              administrative task — it is the operational backbone that ensures safety, compliance,
+              administrative task, it is the operational backbone that ensures safety, compliance,
               and long-term asset value.
             </p>
 
@@ -169,7 +169,7 @@ function DocumentManagementPage() {
               <p className="text-amber-800 text-sm leading-relaxed">
                 When offshore technicians travel with the wrong spare parts because equipment
                 documentation is unstructured or unsearchable, the cost per incident ranges from{' '}
-                <strong>€8,000 to €20,000</strong> — excluding lost production. Structured document
+                <strong>€8,000 to €20,000</strong> excluding lost production. Structured document
                 management typically pays for itself within months.
               </p>
               <Link
@@ -195,11 +195,11 @@ function DocumentManagementPage() {
               style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
               className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4"
             >
-              Documentation challenges we understand — because we've lived them
+              Documentation challenges we understand because we've lived them
             </h2>
             <p className="text-lg text-slate-600">
               Energy companies grapple with unique documentation challenges that stem from the sheer
-              volume, complexity, and dynamic nature of technical information — directly impacting
+              volume, complexity, and dynamic nature of technical information, directly impacting
               operations, compliance, and efficiency.
             </p>
           </div>
@@ -228,7 +228,7 @@ function DocumentManagementPage() {
                 icon: Monitor,
                 title: 'Legacy Systems Without Integration',
                 description:
-                  'Ageing document systems that cannot connect to CMMS, asset registers, or engineering tools create information silos. Maintenance teams cannot find documents by equipment tag. Integration is not a luxury — it is the difference between a document system and an operational information system.',
+                  'Ageing document systems that cannot connect to CMMS, asset registers, or engineering tools create information silos. Maintenance teams cannot find documents by equipment tag. Integration is not a luxury, it is the difference between a document system and an operational information system.',
               },
             ].map((item) => (
               <div
@@ -272,7 +272,7 @@ function DocumentManagementPage() {
             </h2>
             <p className="text-lg text-slate-600">
               Our methodology is built on decades of practical experience within the energy sector.
-              We don't just implement systems — we partner with your teams to embed a culture of
+              We don't just implement systems, we partner with your teams to embed a culture of
               structured information management that delivers lasting value.
             </p>
           </div>
@@ -307,13 +307,13 @@ function DocumentManagementPage() {
                 number: '05',
                 title: 'ISO 19650 & IEC 81346 Alignment',
                 description:
-                  'We align your document management practice with ISO 19650 principles and connect documentation to your asset structure via IEC 81346 Reference Designation Systems — enabling teams to navigate from an equipment tag directly to every related drawing, manual, and procedure.',
+                  'We align your document management practice with ISO 19650 principles and connect documentation to your asset structure via IEC 81346 Reference Designation Systems, enabling teams to navigate from an equipment tag directly to every related drawing, manual, and procedure.',
               },
               {
                 number: '06',
                 title: 'Handover Readiness',
                 description:
-                  'The project-to-operations handover is where documentation quality is truly tested. We structure handover packages so that maintenance teams inherit a usable, verified document set from day one — not a scramble. Includes completeness verification and O&M information packs.',
+                  'The project-to-operations handover is where documentation quality is truly tested. We structure handover packages so that maintenance teams inherit a usable, verified document set from day one and not a scramble. Includes completeness verification and O&M information packs.',
               },
             ].map((item) => (
               <div
@@ -363,8 +363,8 @@ function DocumentManagementPage() {
               </h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
                 Choosing SøDera means partnering with experts who bring unparalleled experience in
-                energy sector documentation. Our work is grounded in international standards — IEC
-                81346, ISO 19650, ISO 9001 — applied through hands-on project delivery across
+                energy sector documentation. Our work is grounded in international standards, IEC
+                81346, ISO 19650, ISO 9001, applied through hands-on project delivery across
                 offshore wind, power plants, and industrial infrastructure in Northern Europe.
               </p>
               <p className="text-slate-600 mb-8 leading-relaxed">
