@@ -1,15 +1,13 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { SEOHead } from '@/components/SEOHead'
 import {
-  FileText,
-  CheckCircle,
-  ArrowRight,
   ArrowLeft,
+  CheckCircle,
   AlertTriangle,
   ExternalLink,
-  Shield,
   Search,
   GitBranch,
+  Shield,
   Monitor,
   Newspaper,
 } from 'lucide-react'
@@ -20,11 +18,11 @@ export const Route = createFileRoute('/service-document-management')({
 
 function DocumentManagementPage() {
   SEOHead({
-    title: 'Document Management Services for Energy Infrastructure | SøDera',
+    title: 'Document Management for Energy Infrastructure | SøDera',
     description:
-      'SøDera brings clarity to complex energy documentation with structured filing systems, rigorous version control, ISO 19650 alignment, and EDMS implementation for offshore wind, oil & gas, power plants, and industrial infrastructure.',
+      'SøDera provides industrial document management consulting for energy operators. ISO 19650 aligned, IEC 81346 connected, built on 20+ years of hands-on energy sector experience.',
     keywords:
-      'document management energy sector, EDMS energy, technical documentation control, ISO 19650, document control offshore wind, asset documentation, engineering document management, IEC 81346 document management',
+      'document management energy sector, industrial document management, ISO 19650, IEC 81346 document control, offshore wind document management, EDMS energy, technical documentation energy',
     canonicalUrl: 'https://www.soedera.eu/service-document-management',
   })
 
@@ -33,7 +31,7 @@ function DocumentManagementPage() {
     '@type': 'Service',
     name: 'Document Management Services for Energy Infrastructure',
     description:
-      'SøDera provides document management consulting for energy operators with structured filing systems, EDMS implementation, ISO 19650 alignment, metadata design, and handover readiness.',
+      'SøDera provides industrial document management consulting for energy operators including ISO 19650 alignment, metadata architecture, EDMS implementation, and handover readiness.',
     provider: {
       '@type': 'Organization',
       name: 'SøDera',
@@ -51,9 +49,9 @@ function DocumentManagementPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema, null, 2) }}
       />
 
-      {/* ── Hero with real photo ── */}
+      {/* ── Hero ── */}
       <section
-        className="relative min-h-[600px] flex items-center py-24 sm:py-32 overflow-hidden"
+        className="relative min-h-[600px] flex items-center py-32 overflow-hidden"
         style={{
           backgroundImage: 'url(https://i.imgur.com/M0wtSyY.png)',
           backgroundSize: 'cover',
@@ -72,7 +70,6 @@ function DocumentManagementPage() {
 
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-sky-500/20 border border-sky-400/30 text-sky-300 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
-              <FileText size={13} />
               Document Management
             </div>
 
@@ -80,43 +77,29 @@ function DocumentManagementPage() {
               style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
             >
-              Bringing Clarity to Complex Energy Documentation
+              Bring Structure to Chaotic Documentation
             </h1>
 
-            <p className="text-xl text-slate-200 mb-4 leading-relaxed">
-              In energy and industrial operations, effective document management is not an
-              administrative task, it is the operational backbone that ensures safety, compliance,
-              and long-term asset value.
+            <p className="text-xl text-slate-200 mb-6 leading-relaxed">
+              Organised, accessible, and compliant systems that save time and reduce operational
+              risks for energy assets. Aligned with ISO 19650, ISO 9001, and IEC 81346.
             </p>
 
-            <p className="text-base text-slate-400 mb-10">
-              SøDera transforms fragmented, chaotic documentation into organised, accessible, and
-              fully compliant systems. Built on over a decade of hands-on experience in oil & gas
-              and energy sectors.
-            </p>
-
-            {/* Standards badges */}
             <div className="flex flex-wrap gap-3 mb-10">
-              {['ISO 9001', 'IEC 81346', 'ISO 19650', 'ISO 15926'].map((badge) => (
-                <span
-                  key={badge}
-                  className="px-3 py-1 bg-white/10 border border-white/20 text-white text-xs font-semibold rounded-full"
-                >
+              {['ISO 19650', 'ISO 9001', 'IEC 81346'].map((badge) => (
+                <span key={badge} className="px-3 py-1 bg-white/10 border border-white/20 text-white text-xs font-semibold rounded-full">
                   {badge}
                 </span>
               ))}
             </div>
 
             <div className="flex flex-wrap gap-4">
-              {/* Primary CTA — paid assessment */}
               <Link
                 to="/book-assessment"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 text-white rounded-lg font-semibold hover:bg-sky-400 transition-all hover:scale-105 shadow-lg shadow-sky-500/30"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 text-white rounded-lg font-semibold hover:bg-sky-400 transition-all hover:scale-105 shadow-lg"
               >
-                Get Your Documentation Assessment <ArrowRight size={18} />
+                Get Your Documentation Assessment
               </Link>
-
-              {/* Secondary CTA — article link with newspaper icon */}
               <Link
                 to="/blog/$articleId"
                 params={{ articleId: 'before-you-sign-dms-requirements' }}
@@ -130,7 +113,7 @@ function DocumentManagementPage() {
       </section>
 
       {/* ── Expert quote ── */}
-      <section className="border-b border-slate-200 bg-slate-50">
+      <section className="bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-start gap-6 max-w-4xl">
             <div
@@ -144,9 +127,10 @@ function DocumentManagementPage() {
                 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
                 className="text-xl text-slate-800 italic leading-relaxed mb-3"
               >
-                "Over a decade in Oil & gas and energy sectors, I've realized that structured data
-                is not just an administrative requirement; it is the operational backbone that
-                ensures safety, compliance, and long-term asset value."
+                "In the energy sector, structured data is not just an administrative requirement.
+                It is the operational backbone that ensures safety, compliance, and long-term asset
+                value. Our goal is to turn chaotic information into a strategic asset that empowers
+                teams to work with absolute confidence."
               </blockquote>
               <p className="text-sm font-semibold text-slate-600">
                 Sylvia Awoudu
@@ -157,107 +141,117 @@ function DocumentManagementPage() {
         </div>
       </section>
 
-      {/* ── Cost callout ── */}
-      <section className="py-12 bg-amber-50 border-b border-amber-200">
+      {/* ── What is Industrial Document Management ── */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-4 max-w-4xl">
-            <AlertTriangle className="text-amber-600 flex-shrink-0 mt-1" size={22} />
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
-              <h2 className="text-base font-bold text-amber-900 mb-1">
-                The hidden cost of poor documentation in energy operations
-              </h2>
-              <p className="text-amber-800 text-sm leading-relaxed">
-                When offshore technicians travel with the wrong spare parts because equipment
-                documentation is unstructured or unsearchable, the cost per incident ranges from{' '}
-                <strong>€8,000 to €20,000</strong> excluding lost production. Structured document
-                management typically pays for itself within months.
+              <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">
+                Understanding the discipline
               </p>
-              <Link
-                to="/blog/$articleId"
-                params={{ articleId: 'information-management-offshore-wind-rds-cost' }}
-                className="inline-flex items-center gap-1.5 text-xs text-amber-700 font-semibold mt-2 hover:text-amber-900"
+              <h2
+                style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6"
               >
-                Read the full cost analysis <ExternalLink size={12} />
-              </Link>
+                What is Industrial Document Management?
+              </h2>
+              <div className="space-y-5 text-slate-600 leading-relaxed">
+                <p>
+                  Industrial Document Management (IDM) is the systematic control of technical
+                  information throughout the lifecycle of a built asset. Unlike general office
+                  filing, IDM in the energy sector is governed by the principle of Digital
+                  Continuity. According to ISO 19650, information must be managed as a structured
+                  asset, ensuring that the right person has the right information at the right time.
+                </p>
+                <p>
+                  The core of this discipline is the Single Source of Truth. In a complex facility,
+                  a single piece of equipment such as a high-pressure pump may be referenced in
+                  hundreds of documents: P&IDs, electrical schematics, maintenance manuals, and
+                  safety procedures. Without a centralised management system, these documents often
+                  exist in multiple versions across disparate silos — legacy archives, email
+                  threads, and local drives. This fragmentation leads to Information Decay, where
+                  the accuracy of the documentation set degrades by an estimated 10 to 15 percent
+                  annually due to unrecorded field changes.
+                </p>
+                <p>
+                  Effective IDM uses metadata-driven architectures rather than simple folder
+                  structures. By tagging documents with attributes such as equipment tag numbers
+                  aligned with IEC 81346, document types, and revision status, the system enables
+                  multi-dimensional discovery. This transforms a passive archive into an active
+                  operational tool. IDM also establishes a Common Data Environment, a rigorous
+                  process for managing information exchange between project participants, ensuring
+                  that as-built data is captured incrementally rather than scrambled for at project
+                  closeout.
+                </p>
+              </div>
+            </div>
+
+            {/* Cost callout */}
+            <div className="space-y-6">
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-8">
+                <div className="flex items-start gap-4 mb-4">
+                  <AlertTriangle className="text-amber-600 flex-shrink-0 mt-1" size={22} />
+                  <h3
+                    style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                    className="text-lg font-bold text-amber-900"
+                  >
+                    The cost of getting it wrong
+                  </h3>
+                </div>
+                <p className="text-amber-800 text-sm leading-relaxed mb-4">
+                  In safety-critical environments, poor documentation is a direct liability.
+                  Research into offshore wind incidents shows that indirect costs — including lost
+                  productivity, investigations, and legal liabilities — are often several times
+                  larger than direct repair costs.
+                </p>
+                <p className="text-amber-800 text-sm leading-relaxed mb-4">
+                  Consider a maintenance team dispatched to an offshore platform to repair a faulty
+                  valve. If they rely on a superseded P&ID, they may arrive with the wrong tools or
+                  spare parts. The cost of the dry run — including vessel charter, technician hours,
+                  and lost production — can easily exceed <strong>€20,000 for a single day</strong>.
+                  Beyond the financial impact, working with outdated safety procedures or electrical
+                  diagrams poses a severe risk to personnel.
+                </p>
+                <Link
+                  to="/blog/$articleId"
+                  params={{ articleId: 'information-management-offshore-wind-rds-cost' }}
+                  className="inline-flex items-center gap-1.5 text-xs text-amber-700 font-semibold hover:text-amber-900"
+                >
+                  Read the full cost analysis <ExternalLink size={12} />
+                </Link>
+              </div>
+
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8">
+                <h3
+                  style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                  className="text-lg font-bold text-slate-900 mb-4"
+                >
+                  Signs your documentation needs attention
+                </h3>
+                <div className="space-y-3">
+                  {[
+                    'Engineers spend more than 20 minutes finding a specific document',
+                    'Multiple versions of the same drawing exist across different systems',
+                    'Contractors submit documents via email instead of your DMS',
+                    'Handover packages are assembled manually at project closeout',
+                    'Maintenance teams cannot find documents by equipment tag',
+                    'Audit preparation requires manual document gathering across systems',
+                  ].map((item) => (
+                    <div key={item} className="flex items-start gap-3 text-sm text-slate-600 pb-3 border-b border-slate-200 last:border-0 last:pb-0">
+                      <AlertTriangle size={13} className="text-amber-500 flex-shrink-0 mt-0.5" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Challenges ── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-14">
-            <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">
-              The problems we solve
-            </p>
-            <h2
-              style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
-              className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4"
-            >
-              Documentation challenges we understand because we've lived them
-            </h2>
-            <p className="text-lg text-slate-600">
-              Energy companies grapple with unique documentation challenges that stem from the sheer
-              volume, complexity, and dynamic nature of technical information, directly impacting
-              operations, compliance, and efficiency.
-            </p>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr className="border-t border-slate-200" /></div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                icon: Search,
-                title: 'Scattered Information',
-                description:
-                  'Critical documents dispersed across legacy archives, email threads, shared drives, and physical locations. Engineers waste hours searching for the right drawing or procedure — time that should be spent on the work itself. A unified, structured approach is the only sustainable solution.',
-              },
-              {
-                icon: GitBranch,
-                title: 'Version Control Failures',
-                description:
-                  'Multiple unsynchronised document versions are a recipe for costly errors and compliance risks. When teams work with outdated specifications or superseded drawings, the consequences range from rework to safety incidents. Rigorous version control is not optional in safety-critical environments.',
-              },
-              {
-                icon: Shield,
-                title: 'Compliance Gaps',
-                description:
-                  'In a heavily regulated industry, missing or incomplete documentation creates substantial audit risks. Adhering to ISO 9001, IEC 81346, and applicable safety regulations demands meticulous record-keeping. Our deep understanding of these regulatory frameworks allows us to build systems that stand up to scrutiny.',
-              },
-              {
-                icon: Monitor,
-                title: 'Legacy Systems Without Integration',
-                description:
-                  'Ageing document systems that cannot connect to CMMS, asset registers, or engineering tools create information silos. Maintenance teams cannot find documents by equipment tag. Integration is not a luxury, it is the difference between a document system and an operational information system.',
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="flex gap-5 p-6 rounded-xl border border-slate-200 hover:border-sky-200 hover:shadow-sm transition-all"
-              >
-                <div className="w-11 h-11 bg-sky-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <item.icon size={20} className="text-sky-600" />
-                </div>
-                <div>
-                  <h3
-                    style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
-                    className="text-lg font-bold text-slate-900 mb-2"
-                  >
-                    {item.title}
-                  </h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <hr className="border-t border-slate-200" />
-      </div>
-
-      {/* ── Our approach ── */}
+      {/* ── Our Methodology ── */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-14">
@@ -268,11 +262,11 @@ function DocumentManagementPage() {
               style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
               className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4"
             >
-              SøDera's proven document management approach
+              The SøDera approach to document management
             </h2>
             <p className="text-lg text-slate-600">
               Our methodology is built on decades of practical experience within the energy sector.
-              We don't just implement systems, we partner with your teams to embed a culture of
+              We do not just implement systems. We partner with your teams to embed a culture of
               structured information management that delivers lasting value.
             </p>
           </div>
@@ -281,39 +275,39 @@ function DocumentManagementPage() {
             {[
               {
                 number: '01',
-                title: 'Document Audit & Assessment',
+                title: 'Audit and Assessment',
                 description:
-                  'Every successful transformation begins with understanding the current state. We conduct a structured review of your existing documentation landscape, identifying critical gaps, inefficiencies, and opportunities for improvement. This assessment forms the blueprint for a customised strategy aligned with your operational needs and compliance obligations.',
+                  'A structured review of your existing documentation to identify gaps, redundancies, and compliance risks. This assessment forms the blueprint for a customised strategy aligned with your operational needs and regulatory obligations.',
               },
               {
                 number: '02',
-                title: 'Structured Filing Systems',
+                title: 'Strategy Development',
                 description:
-                  'Chaos gives way to clarity with the implementation of logical folder structures, intuitive naming conventions, and robust metadata standards. Documents are not just stored — they are intelligently categorised, making them easily discoverable and accessible to authorised personnel.',
+                  'Designing a customised information architecture aligned with ISO 19650 and your operational goals. We define information requirements, metadata schemas, and governance frameworks before touching a single system.',
               },
               {
                 number: '03',
-                title: 'Rigorous Version Control',
+                title: 'Structured Filing and Metadata',
                 description:
-                  'We establish clear and unambiguous versioning protocols, ensuring that every document revision is tracked, approved, and readily identifiable. This eliminates ambiguity, prevents the use of outdated information, and provides a complete audit trail for compliance.',
+                  'Implementing logical hierarchies and robust tagging standards for instant discoverability. Documents are tagged with equipment identifiers aligned with IEC 81346, enabling teams to navigate from an asset tag directly to every related document.',
               },
               {
                 number: '04',
-                title: 'Digital Transformation',
+                title: 'Rigorous Version Control',
                 description:
-                  'Transitioning from paper-based records to modern, searchable document management platforms is a cornerstone of operational efficiency. We guide you through digitisation, implementing solutions that centralise your documentation and integrate seamlessly with your existing operational systems.',
+                  'Establishing unambiguous protocols to ensure teams always work with the latest, verified information. Every revision is tracked, attributed, and auditable. Superseded documents are flagged or archived, never silently left in place.',
               },
               {
                 number: '05',
-                title: 'ISO 19650 & IEC 81346 Alignment',
+                title: 'Digital Transformation',
                 description:
-                  'We align your document management practice with ISO 19650 principles and connect documentation to your asset structure via IEC 81346 Reference Designation Systems, enabling teams to navigate from an equipment tag directly to every related drawing, manual, and procedure.',
+                  'Guiding the migration from legacy paper or fragmented digital files to a centralised, searchable Document Management System. We support vendor evaluation, configuration, and contractor onboarding so the system is actually used.',
               },
               {
                 number: '06',
                 title: 'Handover Readiness',
                 description:
-                  'The project-to-operations handover is where documentation quality is truly tested. We structure handover packages so that maintenance teams inherit a usable, verified document set from day one and not a scramble. Includes completeness verification and O&M information packs.',
+                  'Structuring project-to-operations handover packages so maintenance teams inherit a usable, verified document set from day one. Includes completeness verification, O&M information packs, and alignment to the asset register.',
               },
             ].map((item) => (
               <div
@@ -343,11 +337,63 @@ function DocumentManagementPage() {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <hr className="border-t border-slate-200" />
-      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr className="border-t border-slate-200" /></div>
 
-      {/* ── Why SøDera ── */}
+      {/* ── Case Study ── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">
+              In practice
+            </p>
+            <h2
+              style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+              className="text-3xl sm:text-4xl font-bold text-slate-900 mb-10"
+            >
+              Restoring order to a North Sea wind asset
+            </h2>
+
+            <div className="space-y-8">
+              <div className="border-l-4 border-amber-400 pl-6">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Challenge</h3>
+                <p className="text-slate-700 leading-relaxed">
+                  A major offshore wind operator struggled with a legacy archive where over 40,000
+                  drawings were scattered across three different systems. Maintenance teams were
+                  frequently using superseded versions of electrical diagrams, leading to significant
+                  rework during a planned outage and raising serious safety concerns during
+                  live-line operations.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-sky-400 pl-6">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Solution</h3>
+                <p className="text-slate-700 leading-relaxed">
+                  SøDera performed a comprehensive documentation audit and implemented a new
+                  metadata-driven structure aligned with IEC 81346. Every drawing was linked to its
+                  corresponding turbine component in a centralised Common Data Environment. Version
+                  control protocols were established and contractor submission workflows were
+                  restructured to prevent superseded documents from entering the active set.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-emerald-400 pl-6">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Result</h3>
+                <p className="text-slate-700 leading-relaxed">
+                  Search times for critical drawings were reduced from 15 minutes to under 45
+                  seconds. The operator achieved 100 percent version accuracy during the subsequent
+                  maintenance cycle, eliminating rework costs and significantly enhancing site
+                  safety. The structured handover package delivered at the end of the engagement
+                  became the template for all subsequent projects within the operator's portfolio.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr className="border-t border-slate-200" /></div>
+
+      {/* ── Expertise section ── */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -363,30 +409,32 @@ function DocumentManagementPage() {
               </h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
                 Choosing SøDera means partnering with experts who bring unparalleled experience in
-                energy sector documentation. Our work is grounded in international standards, IEC
-                81346, ISO 19650, ISO 9001, applied through hands-on project delivery across
-                offshore wind, power plants, and industrial infrastructure in Northern Europe.
+                energy sector documentation. Our work is grounded in international standards applied
+                through hands-on project delivery across offshore wind, power plants, and industrial
+                infrastructure in Northern Europe.
               </p>
               <p className="text-slate-600 mb-8 leading-relaxed">
-                We don't offer generic solutions. We provide tailored strategies that deliver
+                We do not offer generic solutions. We provide tailored strategies that deliver
                 tangible improvements to your operational resilience, compliance posture, and bottom
-                line.
+                line. Our clients do not just get a document system. They get a team that understands
+                why structured information management matters at every stage of an asset's lifecycle.
               </p>
 
-              <div className="grid grid-cols-3 gap-6 mb-8 py-8 border-t border-b border-slate-100">
+              <div className="grid grid-cols-2 gap-6 py-8 border-t border-b border-slate-100 mb-8">
                 {[
-                  { value: '10+', label: 'Years in energy sector' },
-                  { value: 'IEC', label: '81346 certified practice' },
-                  { value: 'ISO', label: '19650 aligned' },
+                  { value: '20+', label: 'Years in energy sector' },
+                  { value: 'IEC 81346', label: 'Asset tagging standard' },
+                  { value: 'ISO 19650', label: 'Information management' },
+                  { value: '100%', label: 'Target version accuracy' },
                 ].map((stat) => (
-                  <div key={stat.label} className="text-center">
+                  <div key={stat.label}>
                     <p
                       style={{ fontFamily: 'Georgia, serif' }}
-                      className="text-3xl font-bold text-sky-600 mb-1"
+                      className="text-2xl font-bold text-sky-600 mb-1"
                     >
                       {stat.value}
                     </p>
-                    <p className="text-xs text-slate-500 leading-snug">{stat.label}</p>
+                    <p className="text-xs text-slate-500">{stat.label}</p>
                   </div>
                 ))}
               </div>
@@ -407,53 +455,65 @@ function DocumentManagementPage() {
               </div>
             </div>
 
-            {/* Warning signs card */}
-            <div className="bg-slate-50 rounded-2xl border border-slate-200 p-8">
+            {/* Challenges */}
+            <div className="space-y-6">
               <h3
                 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
-                className="font-bold text-slate-900 text-xl mb-6"
+                className="text-xl font-bold text-slate-900"
               >
-                Signs your documentation needs attention
+                Documentation challenges we solve
               </h3>
-              <div className="space-y-4">
+              <div className="grid gap-5">
                 {[
-                  'Engineers spend more than 20 minutes finding a specific document',
-                  'Multiple versions of the same drawing exist across different systems',
-                  'Contractors submit documents via email instead of your DMS',
-                  'Handover packages are assembled manually at project closeout',
-                  'Maintenance teams cannot find documents by equipment tag',
-                  'Audit preparation requires manual document gathering across systems',
+                  {
+                    icon: Search,
+                    title: 'Scattered Information',
+                    description:
+                      'Critical documents dispersed across legacy archives, email threads, and shared drives. Engineers waste hours searching for the right drawing. A unified, structured approach is the only sustainable solution.',
+                  },
+                  {
+                    icon: GitBranch,
+                    title: 'Version Control Failures',
+                    description:
+                      'Multiple unsynchronised document versions leading to costly errors and compliance risks. When teams work with outdated specifications, the consequences range from rework to safety incidents.',
+                  },
+                  {
+                    icon: Shield,
+                    title: 'Compliance Gaps',
+                    description:
+                      'Missing or incomplete documentation creating substantial audit risks. Adhering to ISO 9001, IEC 81346, and applicable safety regulations demands meticulous record-keeping.',
+                  },
+                  {
+                    icon: Monitor,
+                    title: 'Legacy Systems Without Integration',
+                    description:
+                      'Ageing document systems that cannot connect to CMMS, asset registers, or engineering tools. Maintenance teams cannot find documents by equipment tag.',
+                  },
                 ].map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-start gap-3 text-sm text-slate-600 pb-4 border-b border-slate-200 last:border-0 last:pb-0"
-                  >
-                    <AlertTriangle size={14} className="text-amber-500 flex-shrink-0 mt-0.5" />
-                    {item}
+                  <div key={item.title} className="flex gap-4 p-5 rounded-xl border border-slate-200 hover:border-sky-200 transition-all">
+                    <div className="w-10 h-10 bg-sky-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <item.icon size={18} className="text-sky-600" />
+                    </div>
+                    <div>
+                      <h4
+                        style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                        className="font-bold text-slate-900 mb-1"
+                      >
+                        {item.title}
+                      </h4>
+                      <p className="text-slate-500 text-sm leading-relaxed">{item.description}</p>
+                    </div>
                   </div>
                 ))}
-              </div>
-              <div className="mt-8 pt-6 border-t border-slate-200">
-                <p className="text-sm text-slate-600 mb-4">
-                  If any of these sound familiar, we should talk.
-                </p>
-                <Link
-                  to="/book-assessment"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-sky-600 text-white text-sm rounded-lg font-semibold hover:bg-sky-700 transition-colors"
-                >
-                  Get Your Documentation Assessment <ArrowRight size={15} />
-                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <hr className="border-t border-slate-200" />
-      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr className="border-t border-slate-200" /></div>
 
-      {/* ── Related insights ── */}
+      {/* ── Related Insights ── */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">
@@ -507,6 +567,7 @@ function DocumentManagementPage() {
           </div>
         </div>
       </section>
+
     </div>
   )
 }
