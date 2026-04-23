@@ -322,7 +322,7 @@ function HomePage() {
             <div className="flex flex-col">
               <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200">
                 <img
-                  src="https://i.imgur.com/Po60bGu.png"
+                  src="/soeren-christensen-sylvia-awoudu-wind-europe-soedera.png"
                   alt="Søren Christensen and Sylvia Awoudu at Wind Europe Exhibition Madrid 2026 SøDera"
                   className="w-full h-auto"
                 />
