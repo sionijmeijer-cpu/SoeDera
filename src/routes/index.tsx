@@ -322,7 +322,7 @@ function HomePage() {
               </div>
             </div>
             <Link
-              to="/service-training"
+              to={"/service-training" as any}
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-white text-sm font-semibold rounded-xl hover:bg-amber-400 transition-all whitespace-nowrap flex-shrink-0"
             >
               Explore Training <ArrowRight size={14} />
