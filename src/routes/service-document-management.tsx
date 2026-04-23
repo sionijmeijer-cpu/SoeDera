@@ -111,7 +111,8 @@ function DocumentManagementPage() {
                 Book a Document Audit <ArrowRight size={18} />
               </Link>
               <Link
-                to="/blog/before-you-sign-dms-requirements"
+                to="/blog/$articleId"
+                params={{ articleId: 'before-you-sign-dms-requirements' }}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/20 text-white rounded-lg font-semibold hover:bg-white/20 transition-all"
               >
                 <BookOpen size={15} /> DMS Vendor Checklist
@@ -157,11 +158,14 @@ function DocumentManagementPage() {
                 The hidden cost of poor documentation in energy operations
               </h2>
               <p className="text-amber-800 text-sm leading-relaxed">
-                When offshore technicians travel with the wrong spare parts because equipment documentation is unstructured or unsearchable, the cost per incident ranges from{' '}
-                <strong>€8,000 to €20,000</strong> — excluding lost production. Structured document management typically pays for itself within months.
+                When offshore technicians travel with the wrong spare parts because equipment
+                documentation is unstructured or unsearchable, the cost per incident ranges from{' '}
+                <strong>€8,000 to €20,000</strong> — excluding lost production. Structured document
+                management typically pays for itself within months.
               </p>
               <Link
-                to="/blog/information-management-offshore-wind-rds-cost"
+                to="/blog/$articleId"
+                params={{ articleId: 'information-management-offshore-wind-rds-cost' }}
                 className="inline-flex items-center gap-1.5 text-xs text-amber-700 font-semibold mt-2 hover:text-amber-900"
               >
                 Read the full cost analysis <ExternalLink size={12} />
@@ -185,7 +189,9 @@ function DocumentManagementPage() {
               Documentation challenges we understand — because we've lived them
             </h2>
             <p className="text-lg text-slate-600">
-              Energy companies grapple with unique documentation challenges that stem from the sheer volume, complexity, and dynamic nature of technical information — directly impacting operations, compliance, and efficiency.
+              Energy companies grapple with unique documentation challenges that stem from the sheer
+              volume, complexity, and dynamic nature of technical information — directly impacting
+              operations, compliance, and efficiency.
             </p>
           </div>
 
@@ -256,7 +262,9 @@ function DocumentManagementPage() {
               SøDera's proven document management approach
             </h2>
             <p className="text-lg text-slate-600">
-              Our methodology is built on decades of practical experience within the energy sector. We don't just implement systems — we partner with your teams to embed a culture of structured information management that delivers lasting value.
+              Our methodology is built on decades of practical experience within the energy sector.
+              We don't just implement systems — we partner with your teams to embed a culture of
+              structured information management that delivers lasting value.
             </p>
           </div>
 
@@ -345,10 +353,15 @@ function DocumentManagementPage() {
                 Expertise you can measure. Trust you can verify.
               </h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                Choosing SøDera means partnering with experts who bring unparalleled experience in energy sector documentation. Our work is grounded in international standards — IEC 81346, ISO 19650, ISO 9001 — applied through hands-on project delivery across offshore wind, power plants, and industrial infrastructure in Northern Europe.
+                Choosing SøDera means partnering with experts who bring unparalleled experience in
+                energy sector documentation. Our work is grounded in international standards — IEC
+                81346, ISO 19650, ISO 9001 — applied through hands-on project delivery across
+                offshore wind, power plants, and industrial infrastructure in Northern Europe.
               </p>
               <p className="text-slate-600 mb-8 leading-relaxed">
-                We don't offer generic solutions. We provide tailored strategies that deliver tangible improvements to your operational resilience, compliance posture, and bottom line.
+                We don't offer generic solutions. We provide tailored strategies that deliver
+                tangible improvements to your operational resilience, compliance posture, and bottom
+                line.
               </p>
 
               <div className="grid grid-cols-3 gap-6 mb-8 py-8 border-t border-b border-slate-100">
@@ -498,7 +511,9 @@ function DocumentManagementPage() {
             Don't let disorganised documentation hinder your operations
           </h2>
           <p className="text-lg text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Partner with SøDera to implement a robust document management system that brings clarity, compliance, and efficiency to your technical information — whether you are starting a new project or untangling years of accumulated documentation debt.
+            Partner with SøDera to implement a robust document management system that brings
+            clarity, compliance, and efficiency to your technical information — whether you are
+            starting a new project or untangling years of accumulated documentation debt.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
