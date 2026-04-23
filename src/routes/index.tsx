@@ -266,7 +266,7 @@ function HomePage() {
       {/* ── 3. BUILT BY PRACTITIONERS ── */}
       <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-stretch">
 
             {/* Text */}
             <div>
@@ -319,12 +319,12 @@ function HomePage() {
             </div>
 
             {/* Photo */}
-            <div>
-              <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200">
+            <div className="flex flex-col h-full">
+              <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200 flex-1 min-h-[400px]">
                 <img
                   src="https://i.imgur.com/Po60bGu.png"
                   alt="Søren Christensen and Sylvia Awoudu at Wind Europe Exhibition Madrid 2026 SøDera"
-                  className="w-full h-[400px] object-cover object-top"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
               <p className="mt-3 text-xs text-slate-400 italic text-center">
