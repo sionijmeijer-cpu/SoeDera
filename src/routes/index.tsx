@@ -420,7 +420,7 @@ function HomePage() {
           <p className="text-lg text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
             A 30-minute conversation is usually enough to identify the highest-impact area for
             your organisation. No commitment, no sales pitch. Just a direct discussion about
-            your documentation or RDS challenge.
+            your Information or RDS challenge.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
