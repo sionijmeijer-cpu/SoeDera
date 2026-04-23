@@ -461,8 +461,4 @@ function HomePage() {
     </div>
   )
 
-  function scrollToAssessments() {
-    const el = document.getElementById('assessments')
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
-  }
 }
