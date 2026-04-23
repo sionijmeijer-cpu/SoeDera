@@ -303,7 +303,7 @@ function HomePage() {
 
           </div>
 
-          <p className="mt-8 text-slate-400 text-sm italic">
+          <p className="mt-8 text-slate-400 text-sm italic text-center max-w-5xl mx-auto">
             Both assessments are short, paid engagements designed to provide clarity. Not to lock you into a larger project.
           </p>
 
