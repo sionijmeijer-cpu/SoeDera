@@ -52,7 +52,7 @@ function HomePage() {
         <div className="absolute inset-0 bg-slate-900/45" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-slate-900/30" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full py-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full py-20 pt-24">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-500/15 border border-sky-400/30 rounded-full text-sky-200 text-sm font-semibold mb-6 uppercase tracking-wider">
             <Zap size={14} />
             Energy Sector Specialists
