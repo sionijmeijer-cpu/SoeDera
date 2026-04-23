@@ -19,7 +19,7 @@ import { ScrollHandler } from '@/components/ScrollHandler'
 import {
   Linkedin, ChevronDown, Menu, X, ArrowRight,
   GraduationCap, ClipboardCheck, Network, FileText,
-  BookOpen, Zap, Package, FolderKanban,
+  BookOpen, Zap,
 } from 'lucide-react'
 
 export const Route = createRootRoute({
@@ -33,7 +33,7 @@ function RootLayout() {
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
   const location = useLocation()
   const [mounted, setMounted] = useState(false)
-  const megaMenuTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => { setMounted(true) }, [])
 
@@ -49,16 +49,20 @@ function RootLayout() {
     setIsMobileServicesOpen(false)
   }, [location.pathname])
 
-  const openMegaMenu = () => {
-    if (megaMenuTimerRef.current) clearTimeout(megaMenuTimerRef.current)
+  const openMenu = () => {
+    if (timerRef.current) clearTimeout(timerRef.current)
     setIsMegaMenuOpen(true)
   }
 
-  const closeMegaMenuDelayed = () => {
-    megaMenuTimerRef.current = setTimeout(() => setIsMegaMenuOpen(false), 150)
+  const closeMenu = () => {
+    timerRef.current = setTimeout(() => setIsMegaMenuOpen(false), 180)
   }
 
   if (!mounted) return null
+
+  // Transparent on homepage hero, white on all other pages
+  const isHomePage = location.pathname === '/'
+  const navTransparent = isHomePage && !isScrolled
 
   const col1 = [
     { label: 'RDS-PP', href: '/service-rds' },
@@ -85,7 +89,7 @@ function RootLayout() {
     {
       label: 'RDS Audit',
       href: '/service-rds-audit',
-      desc: 'IEC 81346 compliance review with remediation roadmap.',
+      desc: 'IEC 81346 compliance review.',
       icon: ClipboardCheck,
       color: 'text-sky-600',
       bg: 'bg-sky-50',
@@ -93,7 +97,7 @@ function RootLayout() {
     {
       label: 'Document Audit',
       href: '/service-document-management',
-      desc: 'Review of your document system, structure and workflows.',
+      desc: 'Document system gap analysis.',
       icon: FileText,
       color: 'text-blue-600',
       bg: 'bg-blue-50',
@@ -101,7 +105,7 @@ function RootLayout() {
     {
       label: 'RDS Training',
       href: '/service-training',
-      desc: 'Hands-on IEC 81346 training for your engineering team.',
+      desc: 'Hands-on IEC 81346 training.',
       icon: Network,
       color: 'text-amber-600',
       bg: 'bg-amber-50',
@@ -109,15 +113,15 @@ function RootLayout() {
     {
       label: 'Document Training',
       href: '/service-training',
-      desc: 'ISO 19650 and document management training on-site or remote.',
+      desc: 'ISO 19650 and document management.',
       icon: BookOpen,
       color: 'text-amber-600',
       bg: 'bg-amber-50',
     },
     {
-      label: 'SAM — RDS Tool',
+      label: 'SAM',
       href: '/service-product-development',
-      desc: 'Cloud-native RDS management platform built on Azure.',
+      desc: 'Cloud-native RDS platform on Azure.',
       icon: Zap,
       color: 'text-indigo-600',
       bg: 'bg-indigo-50',
@@ -126,7 +130,7 @@ function RootLayout() {
     {
       label: 'Book Assessment',
       href: '/book-assessment',
-      desc: 'Paid engagement to review your RDS or document setup.',
+      desc: 'Review your RDS or document setup.',
       icon: ClipboardCheck,
       color: 'text-sky-600',
       bg: 'bg-sky-50',
@@ -134,15 +138,12 @@ function RootLayout() {
     {
       label: 'Explore Training',
       href: '/service-training',
-      desc: 'Practical training on RDS and document management.',
+      desc: 'Practical energy sector training.',
       icon: GraduationCap,
       color: 'text-amber-600',
       bg: 'bg-amber-50',
     },
   ]
-
-  // Is the current page a non-hero page? Use dark nav on these
-  const isHeroPage = location.pathname === '/'
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="soedera-theme">
@@ -151,183 +152,65 @@ function RootLayout() {
 
         {/* ── Navigation ── */}
         <nav className={`sticky top-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200'
-            : 'bg-white border-b border-slate-200'
+          navTransparent
+            ? 'bg-transparent border-b border-white/10'
+            : isScrolled
+              ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200'
+              : 'bg-white border-b border-slate-200'
         }`}>
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
 
-              {/* Logo — dark version for light nav */}
-              <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
+              {/* Logo */}
+              <Link to="/" className="flex items-center flex-shrink-0">
                 <img
                   src="https://i.imgur.com/yAobb2F.png"
                   alt="SøDera"
-                  className="h-20 w-auto"
-                  style={{ filter: 'brightness(0) saturate(100%) invert(15%) sepia(50%) saturate(500%) hue-rotate(190deg)' }}
+                  className="h-20 w-auto transition-all duration-300"
+                  style={navTransparent ? { filter: 'brightness(0) invert(1)' } : { filter: 'brightness(0) saturate(100%) invert(15%) sepia(50%) saturate(500%) hue-rotate(190deg)' }}
                 />
               </Link>
 
-              {/* Desktop Navigation */}
+              {/* Desktop Nav */}
               <div className="hidden md:flex items-center gap-1">
                 <Link
                   to="/"
-                  className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-all"
-                  activeProps={{ className: 'px-4 py-2 text-sm font-medium text-sky-600 bg-slate-50 rounded-lg' }}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${navTransparent ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-slate-600 hover:text-sky-600 hover:bg-slate-50'}`}
+                  activeProps={{ className: `px-4 py-2 text-sm font-medium rounded-lg ${navTransparent ? 'text-white bg-white/10' : 'text-sky-600 bg-slate-50'}` }}
                 >
                   Home
                 </Link>
 
-                {/* Mega Menu Trigger — hover */}
+                {/* Mega menu trigger */}
                 <div
                   className="relative"
-                  onMouseEnter={openMegaMenu}
-                  onMouseLeave={closeMegaMenuDelayed}
+                  onMouseEnter={openMenu}
+                  onMouseLeave={closeMenu}
                 >
-                  <button
-                    className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-all flex items-center gap-1"
-                  >
+                  <button className={`px-4 py-2 text-sm font-medium rounded-lg transition-all flex items-center gap-1 ${navTransparent ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-slate-600 hover:text-sky-600 hover:bg-slate-50'}`}>
                     Information Management
                     <ChevronDown size={14} className={`transition-transform duration-200 ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
                   </button>
-
-                  {/* Mega Menu Panel */}
-                  {isMegaMenuOpen && (
-                    <div
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-[900px] bg-white border border-slate-200 rounded-2xl shadow-2xl z-50 animate-in fade-in slide-in-from-top-2 duration-150"
-                      onMouseEnter={openMegaMenu}
-                      onMouseLeave={closeMegaMenuDelayed}
-                    >
-                      <div className="grid grid-cols-4 gap-0 p-6">
-
-                        {/* Column 1 */}
-                        <div className="pr-6 border-r border-slate-100">
-                          <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-4 pb-2 border-b border-slate-100">
-                            Reference Designation
-                          </p>
-                          <ul className="space-y-0.5">
-                            {col1.map((item) => (
-                              <li key={item.label}>
-                                <Link
-                                  to={item.href as any}
-                                  className="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-slate-50 group transition-colors"
-                                  onClick={() => setIsMegaMenuOpen(false)}
-                                >
-                                  <ArrowRight size={12} className="text-slate-300 group-hover:text-sky-500 flex-shrink-0 transition-colors" />
-                                  <span className="text-sm text-slate-700 group-hover:text-sky-600 transition-colors">
-                                    {item.label}
-                                  </span>
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* Column 2 */}
-                        <div className="px-6 border-r border-slate-100">
-                          <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-4 pb-2 border-b border-slate-100">
-                            Information Management
-                          </p>
-                          <ul className="space-y-0.5">
-                            {col2.map((item) => (
-                              <li key={item.label}>
-                                <Link
-                                  to={item.href as any}
-                                  className="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-slate-50 group transition-colors"
-                                  onClick={() => setIsMegaMenuOpen(false)}
-                                >
-                                  <ArrowRight size={12} className="text-slate-300 group-hover:text-sky-500 flex-shrink-0 transition-colors" />
-                                  <span className="text-sm text-slate-700 group-hover:text-sky-600 transition-colors">
-                                    {item.label}
-                                  </span>
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* Column 3 */}
-                        <div className="px-6 border-r border-slate-100">
-                          <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-4 pb-2 border-b border-slate-100">
-                            Tools and Management
-                          </p>
-                          <ul className="space-y-0.5">
-                            {col3.map((item) => (
-                              <li key={item.label}>
-                                <Link
-                                  to={item.href as any}
-                                  className="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-slate-50 group transition-colors"
-                                  onClick={() => setIsMegaMenuOpen(false)}
-                                >
-                                  <ArrowRight size={12} className="text-slate-300 group-hover:text-sky-500 flex-shrink-0 transition-colors" />
-                                  <span className="text-sm text-slate-700 group-hover:text-sky-600 transition-colors">
-                                    {item.label}
-                                  </span>
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* Featured Panel */}
-                        <div className="pl-6 bg-slate-50 rounded-xl -mr-2 -my-2 p-5">
-                          <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4 pb-2 border-b border-slate-200">
-                            Featured
-                          </p>
-                          <div className="space-y-2">
-                            {featured.map((item) => (
-                              <Link
-                                key={item.label}
-                                to={item.href as any}
-                                className="flex items-start gap-3 p-2.5 rounded-xl bg-white hover:bg-sky-50 border border-transparent hover:border-sky-100 group transition-all"
-                                onClick={() => setIsMegaMenuOpen(false)}
-                              >
-                                <div className={`w-7 h-7 ${item.bg} rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5`}>
-                                  <item.icon size={13} className={item.color} />
-                                </div>
-                                <div className="min-w-0">
-                                  <div className="flex items-center gap-1.5">
-                                    <p className="text-xs font-bold text-slate-800 group-hover:text-sky-600 transition-colors leading-snug">
-                                      {item.label}
-                                    </p>
-                                    {item.badge && (
-                                      <span className="px-1.5 py-0.5 bg-indigo-100 text-indigo-600 text-[9px] font-bold rounded-full whitespace-nowrap">
-                                        {item.badge}
-                                      </span>
-                                    )}
-                                  </div>
-                                  <p className="text-[11px] text-slate-400 leading-snug mt-0.5 line-clamp-2">
-                                    {item.desc}
-                                  </p>
-                                </div>
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-                  )}
                 </div>
 
                 <Link
                   to="/blog"
-                  className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-all"
-                  activeProps={{ className: 'px-4 py-2 text-sm font-medium text-sky-600 bg-slate-50 rounded-lg' }}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${navTransparent ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-slate-600 hover:text-sky-600 hover:bg-slate-50'}`}
+                  activeProps={{ className: `px-4 py-2 text-sm font-medium rounded-lg ${navTransparent ? 'text-white bg-white/10' : 'text-sky-600 bg-slate-50'}` }}
                 >
                   Insights
                 </Link>
                 <Link
                   to="/about"
-                  className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-all"
-                  activeProps={{ className: 'px-4 py-2 text-sm font-medium text-sky-600 bg-slate-50 rounded-lg' }}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${navTransparent ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-slate-600 hover:text-sky-600 hover:bg-slate-50'}`}
+                  activeProps={{ className: `px-4 py-2 text-sm font-medium rounded-lg ${navTransparent ? 'text-white bg-white/10' : 'text-sky-600 bg-slate-50'}` }}
                 >
                   About
                 </Link>
                 <Link
                   to="/contact"
-                  className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-all"
-                  activeProps={{ className: 'px-4 py-2 text-sm font-medium text-sky-600 bg-slate-50 rounded-lg' }}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${navTransparent ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-slate-600 hover:text-sky-600 hover:bg-slate-50'}`}
+                  activeProps={{ className: `px-4 py-2 text-sm font-medium rounded-lg ${navTransparent ? 'text-white bg-white/10' : 'text-sky-600 bg-slate-50'}` }}
                 >
                   Contact
                 </Link>
@@ -337,7 +220,7 @@ function RootLayout() {
               <div className="hidden md:flex items-center gap-2 flex-shrink-0">
                 <Link
                   to={'/service-training' as any}
-                  className="inline-block px-4 py-2.5 bg-amber-500 text-white text-sm font-semibold rounded-lg shadow-md shadow-amber-500/20 hover:bg-amber-400 transition-all hover:scale-105 relative overflow-hidden"
+                  className="inline-block px-4 py-2.5 bg-amber-500 text-white text-sm font-semibold rounded-lg shadow-md hover:bg-amber-400 transition-all hover:scale-105 relative overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30" style={{ animation: 'shimmer 3s ease-in-out infinite' }} />
                   <span className="relative z-10 flex items-center gap-1.5">
@@ -346,23 +229,141 @@ function RootLayout() {
                 </Link>
                 <Link
                   to="/book-assessment"
-                  className="inline-block px-5 py-2.5 bg-sky-500 text-white text-sm font-semibold rounded-lg shadow-md shadow-sky-500/20 hover:bg-sky-600 transition-all hover:scale-105 relative overflow-hidden"
+                  className="inline-block px-5 py-2.5 bg-sky-500 text-white text-sm font-semibold rounded-lg shadow-md hover:bg-sky-600 transition-all hover:scale-105 relative overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-40" style={{ animation: 'shimmer 2.5s ease-in-out infinite' }} />
                   <span className="relative z-10">Book Assessment</span>
                 </Link>
               </div>
 
-              {/* Mobile Menu Button */}
+              {/* Mobile button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 text-slate-600 hover:text-sky-600 transition-colors"
+                className={`md:hidden p-2 transition-colors ${navTransparent ? 'text-white hover:text-white/70' : 'text-slate-600 hover:text-sky-600'}`}
                 aria-label="Toggle menu"
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </div>
           </div>
+
+          {/* ── Full-width Mega Menu ── */}
+          {isMegaMenuOpen && (
+            <div
+              className="absolute top-full left-0 right-0 w-full bg-white border-t border-slate-200 shadow-2xl z-50"
+              onMouseEnter={openMenu}
+              onMouseLeave={closeMenu}
+            >
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div className="grid grid-cols-4 gap-8">
+
+                  {/* Col 1 — Reference Designation */}
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-5 pb-3 border-b-2 border-sky-100">
+                      Reference Designation
+                    </p>
+                    <ul className="space-y-1">
+                      {col1.map((item) => (
+                        <li key={item.label}>
+                          <Link
+                            to={item.href as any}
+                            className="flex items-center gap-2.5 px-2 py-2.5 rounded-lg hover:bg-slate-50 group transition-colors"
+                            onClick={() => setIsMegaMenuOpen(false)}
+                          >
+                            <ArrowRight size={13} className="text-slate-300 group-hover:text-sky-500 flex-shrink-0 transition-colors" />
+                            <span className="text-sm text-slate-700 group-hover:text-sky-600 transition-colors font-medium">
+                              {item.label}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Col 2 — Information Management */}
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-5 pb-3 border-b-2 border-sky-100">
+                      Information Management
+                    </p>
+                    <ul className="space-y-1">
+                      {col2.map((item) => (
+                        <li key={item.label}>
+                          <Link
+                            to={item.href as any}
+                            className="flex items-center gap-2.5 px-2 py-2.5 rounded-lg hover:bg-slate-50 group transition-colors"
+                            onClick={() => setIsMegaMenuOpen(false)}
+                          >
+                            <ArrowRight size={13} className="text-slate-300 group-hover:text-sky-500 flex-shrink-0 transition-colors" />
+                            <span className="text-sm text-slate-700 group-hover:text-sky-600 transition-colors font-medium">
+                              {item.label}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Col 3 — Tools and Management */}
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-5 pb-3 border-b-2 border-sky-100">
+                      Tools and Management
+                    </p>
+                    <ul className="space-y-1">
+                      {col3.map((item) => (
+                        <li key={item.label}>
+                          <Link
+                            to={item.href as any}
+                            className="flex items-center gap-2.5 px-2 py-2.5 rounded-lg hover:bg-slate-50 group transition-colors"
+                            onClick={() => setIsMegaMenuOpen(false)}
+                          >
+                            <ArrowRight size={13} className="text-slate-300 group-hover:text-sky-500 flex-shrink-0 transition-colors" />
+                            <span className="text-sm text-slate-700 group-hover:text-sky-600 transition-colors font-medium">
+                              {item.label}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Featured Panel */}
+                  <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
+                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4 pb-3 border-b border-slate-200">
+                      Featured
+                    </p>
+                    <div className="grid grid-cols-2 gap-2">
+                      {featured.map((item) => (
+                        <Link
+                          key={item.label}
+                          to={item.href as any}
+                          className="flex flex-col gap-1.5 p-3 rounded-xl bg-white hover:bg-sky-50 border border-transparent hover:border-sky-100 group transition-all"
+                          onClick={() => setIsMegaMenuOpen(false)}
+                        >
+                          <div className="flex items-center gap-2">
+                            <div className={`w-6 h-6 ${item.bg} rounded-md flex items-center justify-center flex-shrink-0`}>
+                              <item.icon size={12} className={item.color} />
+                            </div>
+                            <p className="text-xs font-bold text-slate-800 group-hover:text-sky-600 transition-colors leading-tight">
+                              {item.label}
+                            </p>
+                            {item.badge && (
+                              <span className="px-1 py-0.5 bg-indigo-100 text-indigo-600 text-[9px] font-bold rounded-full whitespace-nowrap">
+                                {item.badge}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-[11px] text-slate-400 leading-snug pl-8">
+                            {item.desc}
+                          </p>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
@@ -402,26 +403,14 @@ function RootLayout() {
                     </div>
                   )}
                 </div>
-                <Link to="/blog" className="block px-4 py-3 text-slate-700 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-colors">
-                  Insights
-                </Link>
-                <Link to="/about" className="block px-4 py-3 text-slate-700 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-colors">
-                  About
-                </Link>
-                <Link to="/contact" className="block px-4 py-3 text-slate-700 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-colors">
-                  Contact
-                </Link>
+                <Link to="/blog" className="block px-4 py-3 text-slate-700 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-colors">Insights</Link>
+                <Link to="/about" className="block px-4 py-3 text-slate-700 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-colors">About</Link>
+                <Link to="/contact" className="block px-4 py-3 text-slate-700 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-colors">Contact</Link>
                 <div className="pt-4 flex flex-col gap-2">
-                  <Link
-                    to={'/service-training' as any}
-                    className="block w-full px-5 py-3 bg-amber-500 text-white text-center font-semibold rounded-lg hover:bg-amber-400 transition-colors"
-                  >
+                  <Link to={'/service-training' as any} className="block w-full px-5 py-3 bg-amber-500 text-white text-center font-semibold rounded-lg hover:bg-amber-400 transition-colors">
                     Explore Training
                   </Link>
-                  <Link
-                    to="/book-assessment"
-                    className="block w-full px-5 py-3 bg-sky-500 text-white text-center font-semibold rounded-lg hover:bg-sky-600 transition-colors"
-                  >
+                  <Link to="/book-assessment" className="block w-full px-5 py-3 bg-sky-500 text-white text-center font-semibold rounded-lg hover:bg-sky-600 transition-colors">
                     Book Assessment
                   </Link>
                 </div>
@@ -431,30 +420,22 @@ function RootLayout() {
         </nav>
 
         {/* ── Main Content ── */}
-        <main>
-          <Outlet />
-        </main>
+        <main><Outlet /></main>
 
         {/* ── Footer ── */}
         <footer className="bg-slate-900 border-t border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-
               <div>
                 <Link to="/" className="inline-block mb-4">
                   <img src="https://i.imgur.com/yAobb2F.png" alt="SøDera" className="h-16 w-auto" />
                 </Link>
                 <p className="text-slate-400 text-sm leading-relaxed max-w-xs mb-5">
-                  Helping energy companies fix documentation, implement Reference Designation
-                  Systems (IEC 81346), and optimise asset data management.
+                  Helping energy companies fix documentation, implement Reference Designation Systems (IEC 81346), and optimise asset data management.
                 </p>
-                <a
-                  href="https://www.linkedin.com/company/s%C3%B8dera"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <a href="https://www.linkedin.com/company/s%C3%B8dera" target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center justify-center w-9 h-9 bg-white/5 hover:bg-blue-500/20 rounded-lg text-slate-400 hover:text-blue-400 transition-all"
-                  aria-label="SøDera on LinkedIn"
-                >
+                  aria-label="SøDera on LinkedIn">
                   <Linkedin size={18} />
                 </a>
               </div>
@@ -472,9 +453,7 @@ function RootLayout() {
                       { label: 'Terms of Service', to: '/terms-of-service' },
                     ].map((link) => (
                       <li key={link.label}>
-                        <Link to={link.to as any} className="text-slate-400 hover:text-sky-400 text-sm transition-colors">
-                          {link.label}
-                        </Link>
+                        <Link to={link.to as any} className="text-slate-400 hover:text-sky-400 text-sm transition-colors">{link.label}</Link>
                       </li>
                     ))}
                   </ul>
@@ -492,10 +471,8 @@ function RootLayout() {
                       { label: 'Training & SME', to: '/service-training' },
                     ].map((link) => (
                       <li key={link.label}>
-                        <Link
-                          to={link.to as any}
-                          className={`text-sm transition-colors ${link.label === 'Training & SME' ? 'text-amber-400 hover:text-amber-300' : 'text-slate-400 hover:text-sky-400'}`}
-                        >
+                        <Link to={link.to as any}
+                          className={`text-sm transition-colors ${link.label === 'Training & SME' ? 'text-amber-400 hover:text-amber-300' : 'text-slate-400 hover:text-sky-400'}`}>
                           {link.label}
                         </Link>
                       </li>
@@ -512,7 +489,6 @@ function RootLayout() {
                   <li className="pt-2 text-slate-500">Mon – Fri: 09:00 – 17:00 CET</li>
                 </ul>
               </div>
-
             </div>
           </div>
 
