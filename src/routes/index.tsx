@@ -141,7 +141,7 @@ function HomePage() {
       {/* ── 2. QUICK ASSESSMENTS ── */}
       <section className="py-16 sm:py-24 bg-white" id="services-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-14">
+          <div className="text-center mb-14">
             <span className="text-sky-600 font-bold text-xs uppercase tracking-widest mb-3 block">
               Start Here
             </span>
@@ -151,8 +151,8 @@ function HomePage() {
             >
               Quick Assessments
             </h2>
-            <p className="text-slate-500 leading-relaxed">
-              A focused, paid engagement — typically two weeks — designed to give you a clear,
+            <p className="text-slate-500 leading-relaxed max-w-2xl mx-auto">
+              A focused, paid engagement typically two weeks designed to give you a clear,
               honest picture of where you stand and exactly what to do next. No long contracts,
               no vague recommendations.
             </p>
@@ -187,7 +187,7 @@ function HomePage() {
                 <p className="text-slate-600 leading-relaxed mb-8 pb-8 border-b border-slate-100">
                   A structured review of your current Reference Designation System against IEC 81346.
                   We identify exactly where your designations are inconsistent, non-compliant, or
-                  creating operational risk — and give you a prioritised roadmap to fix them.
+                  creating operational risk and give you a prioritised roadmap to fix them.
                 </p>
 
                 {/* Deliverables */}
@@ -257,7 +257,7 @@ function HomePage() {
                 <p className="text-slate-600 leading-relaxed mb-8 pb-8 border-b border-slate-100">
                   A practical review of how technical documents are created, controlled, stored,
                   and used across your teams and systems. We identify the gaps that cause delays,
-                  errors, and compliance risks — and tell you exactly how to close them.
+                  errors, and compliance risks and tell you exactly how to close them.
                 </p>
 
                 {/* Deliverables */}
