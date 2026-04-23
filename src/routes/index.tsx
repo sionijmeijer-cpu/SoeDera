@@ -12,6 +12,7 @@ import {
   Factory,
   Zap,
   Building2,
+  GraduationCap,
 } from 'lucide-react'
 import { blogPosts } from '../data/blogPosts'
 
@@ -305,6 +306,28 @@ function HomePage() {
           <p className="mt-8 text-slate-400 text-sm italic">
             Both assessments are short, paid engagements designed to provide clarity. Not to lock you into a larger project.
           </p>
+
+          {/* Training signpost */}
+          <div className="mt-10 p-6 bg-amber-50 border border-amber-200 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 max-w-5xl">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <GraduationCap size={20} className="text-amber-600" />
+              </div>
+              <div>
+                <p className="font-bold text-slate-900 text-sm mb-1">Need to train your team instead?</p>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  We offer practical training on RDS, IEC 81346, and document management for energy sector teams.
+                  On-site or remote, half-day to multi-day.
+                </p>
+              </div>
+            </div>
+            <Link
+              to="/service-training"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-white text-sm font-semibold rounded-xl hover:bg-amber-400 transition-all whitespace-nowrap flex-shrink-0"
+            >
+              Explore Training <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
       </section>
 
