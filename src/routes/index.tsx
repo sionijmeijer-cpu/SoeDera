@@ -139,127 +139,172 @@ function HomePage() {
       </section>
 
       {/* ── 2. QUICK ASSESSMENTS ── */}
-      <section className="py-16 sm:py-20 bg-white" id="services-section">
+      <section className="py-16 sm:py-24 bg-white" id="services-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="text-sky-600 font-bold text-xs uppercase tracking-widest">
+          <div className="max-w-2xl mb-14">
+            <span className="text-sky-600 font-bold text-xs uppercase tracking-widest mb-3 block">
               Start Here
             </span>
             <h2
               style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
-              className="text-3xl sm:text-4xl font-bold text-slate-900 mt-3 mb-4"
+              className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4"
             >
               Quick Assessments
             </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto leading-relaxed">
-              Short, paid engagements designed to review your current setup and give you clear,
-              practical recommendations. Not to lock you into a larger project.
+            <p className="text-slate-500 leading-relaxed">
+              A focused, paid engagement — typically two weeks — designed to give you a clear,
+              honest picture of where you stand and exactly what to do next. No long contracts,
+              no vague recommendations.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl">
+
             {/* RDS Assessment */}
-            <div className="relative bg-gradient-to-br from-sky-50 to-white border-2 border-sky-100 rounded-2xl p-8 hover:border-sky-300 hover:shadow-xl transition-all shadow-md">
-              <div className="absolute top-6 right-6">
-                <span className="px-3 py-1 bg-sky-500 text-white text-xs font-semibold rounded-full">
-                  IEC 81346
-                </span>
-              </div>
-              <div className="w-12 h-12 bg-sky-500/10 rounded-xl flex items-center justify-center mb-5">
-                <Network className="text-sky-500" size={24} />
-              </div>
-              <h3
-                style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
-                className="text-xl font-bold text-slate-900 mb-3"
-              >
-                RDS Assessment
-              </h3>
-              <p className="text-slate-600 text-sm mb-5 leading-relaxed">
-                A focused review of your current Reference Designation System to identify gaps,
-                inconsistencies, and risks across documentation, systems, and assets.
-              </p>
-              <ul className="space-y-2.5 mb-8">
-                {[
-                  'Review of current RDS structure and usage',
-                  'Alignment check against IEC 81346',
-                  'Identification of risks, inconsistencies, and quick wins',
-                  'Clear recommendations, roadmap and next steps',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-slate-700">
-                    <CheckCircle2 size={16} className="text-sky-500 shrink-0 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className="pt-6 border-t border-sky-100">
-                <div className="flex items-center justify-center gap-4 text-sm text-slate-500 mb-4">
-                  <span className="flex items-center gap-1.5">
-                    <Clock size={13} /> ~2 weeks
+            <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-sky-200 transition-all duration-300 group">
+              {/* Top accent bar */}
+              <div className="h-1 bg-gradient-to-r from-sky-400 to-blue-600" />
+              <div className="p-8">
+                {/* Header */}
+                <div className="flex items-start justify-between mb-6">
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-2 block">
+                      Reference Designation
+                    </span>
+                    <h3
+                      style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                      className="text-2xl font-bold text-slate-900"
+                    >
+                      RDS Assessment
+                    </h3>
+                  </div>
+                  <span className="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full shrink-0 ml-4">
+                    IEC 81346
                   </span>
-                  <span className="font-semibold text-slate-900">From €1,800</span>
                 </div>
-                <a
-                  href="https://outlook.office.com/book/AssessmentBooking1@soedera.eu/s/GDHl_HOriUOW0kXs3yLfJA2?ismsaljsauthenabled"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full px-5 py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl transition-all text-sm text-center"
-                >
-                  Discuss RDS Assessment
-                </a>
+
+                {/* Value proposition */}
+                <p className="text-slate-600 leading-relaxed mb-8 pb-8 border-b border-slate-100">
+                  A structured review of your current Reference Designation System against IEC 81346.
+                  We identify exactly where your designations are inconsistent, non-compliant, or
+                  creating operational risk — and give you a prioritised roadmap to fix them.
+                </p>
+
+                {/* Deliverables */}
+                <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">
+                  What you receive
+                </p>
+                <ul className="space-y-3 mb-8">
+                  {[
+                    'Review of current RDS structure and usage across systems',
+                    'IEC 81346 compliance gap analysis with specific findings',
+                    'Identification of risks, inconsistencies, and quick wins',
+                    'Prioritised recommendations and implementation roadmap',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm text-slate-600">
+                      <CheckCircle2 size={15} className="text-sky-500 shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Footer */}
+                <div className="flex items-center justify-between pt-6 border-t border-slate-100">
+                  <div>
+                    <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-1">
+                      <Clock size={12} /> ~2 weeks
+                    </div>
+                    <p className="text-xl font-bold text-slate-900">
+                      From €3,300
+                    </p>
+                  </div>
+                  <a
+                    href="https://outlook.office.com/book/AssessmentBooking1@soedera.eu/s/GDHl_HOriUOW0kXs3yLfJA2?ismsaljsauthenabled"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl transition-all text-sm group-hover:shadow-lg group-hover:shadow-sky-500/20"
+                  >
+                    Discuss <ArrowRight size={15} />
+                  </a>
+                </div>
               </div>
             </div>
 
             {/* Document Management Assessment */}
-            <div className="relative bg-gradient-to-br from-sky-50 to-white border-2 border-sky-100 rounded-2xl p-8 hover:border-sky-300 hover:shadow-xl transition-all shadow-md">
-              <div className="absolute top-6 right-6">
-                <span className="px-3 py-1 bg-sky-500 text-white text-xs font-semibold rounded-full">
-                  ISO 9001
-                </span>
-              </div>
-              <div className="w-12 h-12 bg-sky-500/10 rounded-xl flex items-center justify-center mb-5">
-                <FileText className="text-sky-500" size={24} />
-              </div>
-              <h3
-                style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
-                className="text-xl font-bold text-slate-900 mb-3"
-              >
-                Document Management Assessment
-              </h3>
-              <p className="text-slate-600 text-sm mb-5 leading-relaxed">
-                A practical review of how documents are created, stored, controlled, and used
-                across teams and systems, with clear recommendations for improvement.
-              </p>
-              <ul className="space-y-2.5 mb-8">
-                {[
-                  'Review of document system, structure, workflows, and ownership',
-                  'Revision/Version control and compliance gap check',
-                  'Identification of inefficiencies, workflow and risks',
-                  'Practical improvement recommendations and data flow mapping',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-slate-700">
-                    <CheckCircle2 size={16} className="text-sky-500 shrink-0 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className="pt-6 border-t border-sky-100">
-                <div className="flex items-center justify-center gap-4 text-sm text-slate-500 mb-4">
-                  <span className="flex items-center gap-1.5">
-                    <Clock size={13} /> ~2 weeks
+            <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-sky-200 transition-all duration-300 group">
+              {/* Top accent bar */}
+              <div className="h-1 bg-gradient-to-r from-blue-500 to-indigo-600" />
+              <div className="p-8">
+                {/* Header */}
+                <div className="flex items-start justify-between mb-6">
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-2 block">
+                      Document Management
+                    </span>
+                    <h3
+                      style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                      className="text-2xl font-bold text-slate-900"
+                    >
+                      Document Assessment
+                    </h3>
+                  </div>
+                  <span className="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full shrink-0 ml-4">
+                    ISO 9001
                   </span>
-                  <span className="font-semibold text-slate-900">From €1,800</span>
                 </div>
-                <a
-                  href="https://outlook.office.com/book/AssessmentBooking1@soedera.eu/s/GDHl_HOriUOW0kXs3yLfJA2?ismsaljsauthenabled"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full px-5 py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl transition-all text-sm text-center"
-                >
-                  Discuss Document Assessment
-                </a>
+
+                {/* Value proposition */}
+                <p className="text-slate-600 leading-relaxed mb-8 pb-8 border-b border-slate-100">
+                  A practical review of how technical documents are created, controlled, stored,
+                  and used across your teams and systems. We identify the gaps that cause delays,
+                  errors, and compliance risks — and tell you exactly how to close them.
+                </p>
+
+                {/* Deliverables */}
+                <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">
+                  What you receive
+                </p>
+                <ul className="space-y-3 mb-8">
+                  {[
+                    'Review of document system, structure, workflows, and ownership',
+                    'Version control and compliance gap analysis',
+                    'Identification of inefficiencies, risks, and data flow issues',
+                    'Practical improvement recommendations and data flow mapping',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm text-slate-600">
+                      <CheckCircle2 size={15} className="text-sky-500 shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Footer */}
+                <div className="flex items-center justify-between pt-6 border-t border-slate-100">
+                  <div>
+                    <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-1">
+                      <Clock size={12} /> ~2 weeks
+                    </div>
+                    <p className="text-xl font-bold text-slate-900">
+                      From €3,300
+                    </p>
+                  </div>
+                  <a
+                    href="https://outlook.office.com/book/AssessmentBooking1@soedera.eu/s/GDHl_HOriUOW0kXs3yLfJA2?ismsaljsauthenabled"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl transition-all text-sm group-hover:shadow-lg group-hover:shadow-sky-500/20"
+                  >
+                    Discuss <ArrowRight size={15} />
+                  </a>
+                </div>
               </div>
             </div>
+
           </div>
+
+          <p className="mt-8 text-slate-400 text-sm italic">
+            Both assessments are short, paid engagements designed to provide clarity. Not to lock you into a larger project.
+          </p>
         </div>
       </section>
 
@@ -420,7 +465,7 @@ function HomePage() {
           <p className="text-lg text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
             A 30-minute conversation is usually enough to identify the highest-impact area for
             your organisation. No commitment, no sales pitch. Just a direct discussion about
-            your Information or RDS challenge.
+            your information or RDS challenge.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
