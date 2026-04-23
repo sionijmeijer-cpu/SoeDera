@@ -38,7 +38,7 @@ function RootLayout() {
   useEffect(() => { setMounted(true) }, [])
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 40)
+    const handleScroll = () => setIsScrolled(window.scrollY > 60)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -55,14 +55,18 @@ function RootLayout() {
   }
 
   const closeMenu = () => {
-    timerRef.current = setTimeout(() => setIsMegaMenuOpen(false), 180)
+    timerRef.current = setTimeout(() => setIsMegaMenuOpen(false), 200)
   }
 
   if (!mounted) return null
 
-  // Transparent on homepage hero, white on all other pages
-  const isHomePage = location.pathname === '/'
-  const navTransparent = isHomePage && !isScrolled
+  // Always transparent until scrolled — on all pages
+  const navBg = isScrolled
+    ? 'bg-slate-900/95 backdrop-blur-md shadow-lg'
+    : 'bg-transparent'
+
+  const linkColor = 'text-white/90 hover:text-white'
+  const activeLinkColor = 'text-white font-semibold'
 
   const col1 = [
     { label: 'RDS-PP', href: '/service-rds' },
@@ -89,7 +93,7 @@ function RootLayout() {
     {
       label: 'RDS Audit',
       href: '/service-rds-audit',
-      desc: 'IEC 81346 compliance review.',
+      desc: 'IEC 81346 compliance review with remediation roadmap.',
       icon: ClipboardCheck,
       color: 'text-sky-600',
       bg: 'bg-sky-50',
@@ -97,7 +101,7 @@ function RootLayout() {
     {
       label: 'Document Audit',
       href: '/service-document-management',
-      desc: 'Document system gap analysis.',
+      desc: 'Review of your document system, structure and workflows.',
       icon: FileText,
       color: 'text-blue-600',
       bg: 'bg-blue-50',
@@ -105,7 +109,7 @@ function RootLayout() {
     {
       label: 'RDS Training',
       href: '/service-training',
-      desc: 'Hands-on IEC 81346 training.',
+      desc: 'Hands-on IEC 81346 training for your team.',
       icon: Network,
       color: 'text-amber-600',
       bg: 'bg-amber-50',
@@ -113,7 +117,7 @@ function RootLayout() {
     {
       label: 'Document Training',
       href: '/service-training',
-      desc: 'ISO 19650 and document management.',
+      desc: 'ISO 19650 and document management training.',
       icon: BookOpen,
       color: 'text-amber-600',
       bg: 'bg-amber-50',
@@ -121,7 +125,7 @@ function RootLayout() {
     {
       label: 'SAM',
       href: '/service-product-development',
-      desc: 'Cloud-native RDS platform on Azure.',
+      desc: 'Cloud-native RDS management platform on Azure.',
       icon: Zap,
       color: 'text-indigo-600',
       bg: 'bg-indigo-50',
@@ -130,7 +134,7 @@ function RootLayout() {
     {
       label: 'Book Assessment',
       href: '/book-assessment',
-      desc: 'Review your RDS or document setup.',
+      desc: 'Review your RDS or document setup in ~2 weeks.',
       icon: ClipboardCheck,
       color: 'text-sky-600',
       bg: 'bg-sky-50',
@@ -138,7 +142,7 @@ function RootLayout() {
     {
       label: 'Explore Training',
       href: '/service-training',
-      desc: 'Practical energy sector training.',
+      desc: 'Practical energy sector training on-site or remote.',
       icon: GraduationCap,
       color: 'text-amber-600',
       bg: 'bg-amber-50',
@@ -147,36 +151,30 @@ function RootLayout() {
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="soedera-theme">
-      <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors">
+      <div className="min-h-screen bg-white text-slate-900 transition-colors">
         <ScrollHandler />
 
-        {/* ── Navigation ── */}
-        <nav className={`sticky top-0 z-50 transition-all duration-300 ${
-          navTransparent
-            ? 'bg-transparent border-b border-white/10'
-            : isScrolled
-              ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200'
-              : 'bg-white border-b border-slate-200'
-        }`}>
+        {/* ── Navigation — always transparent until scroll ── */}
+        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${navBg}`}>
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
 
-              {/* Logo */}
+              {/* Logo — always white */}
               <Link to="/" className="flex items-center flex-shrink-0">
                 <img
                   src="https://i.imgur.com/yAobb2F.png"
                   alt="SøDera"
-                  className="h-20 w-auto transition-all duration-300"
-                  style={navTransparent ? { filter: 'brightness(0) invert(1)' } : { filter: 'brightness(0) saturate(100%) invert(15%) sepia(50%) saturate(500%) hue-rotate(190deg)' }}
+                  className="h-20 w-auto"
+                  style={{ filter: 'brightness(0) invert(1)' }}
                 />
               </Link>
 
-              {/* Desktop Nav */}
+              {/* Desktop Nav Links */}
               <div className="hidden md:flex items-center gap-1">
                 <Link
                   to="/"
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${navTransparent ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-slate-600 hover:text-sky-600 hover:bg-slate-50'}`}
-                  activeProps={{ className: `px-4 py-2 text-sm font-medium rounded-lg ${navTransparent ? 'text-white bg-white/10' : 'text-sky-600 bg-slate-50'}` }}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${linkColor}`}
+                  activeProps={{ className: `px-4 py-2 text-sm font-medium rounded-lg ${activeLinkColor}` }}
                 >
                   Home
                 </Link>
@@ -187,7 +185,7 @@ function RootLayout() {
                   onMouseEnter={openMenu}
                   onMouseLeave={closeMenu}
                 >
-                  <button className={`px-4 py-2 text-sm font-medium rounded-lg transition-all flex items-center gap-1 ${navTransparent ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-slate-600 hover:text-sky-600 hover:bg-slate-50'}`}>
+                  <button className={`px-4 py-2 text-sm font-medium rounded-lg transition-all flex items-center gap-1 ${linkColor} ${isMegaMenuOpen ? 'text-white' : ''}`}>
                     Information Management
                     <ChevronDown size={14} className={`transition-transform duration-200 ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
                   </button>
@@ -195,22 +193,22 @@ function RootLayout() {
 
                 <Link
                   to="/blog"
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${navTransparent ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-slate-600 hover:text-sky-600 hover:bg-slate-50'}`}
-                  activeProps={{ className: `px-4 py-2 text-sm font-medium rounded-lg ${navTransparent ? 'text-white bg-white/10' : 'text-sky-600 bg-slate-50'}` }}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${linkColor}`}
+                  activeProps={{ className: `px-4 py-2 text-sm font-medium rounded-lg ${activeLinkColor}` }}
                 >
                   Insights
                 </Link>
                 <Link
                   to="/about"
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${navTransparent ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-slate-600 hover:text-sky-600 hover:bg-slate-50'}`}
-                  activeProps={{ className: `px-4 py-2 text-sm font-medium rounded-lg ${navTransparent ? 'text-white bg-white/10' : 'text-sky-600 bg-slate-50'}` }}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${linkColor}`}
+                  activeProps={{ className: `px-4 py-2 text-sm font-medium rounded-lg ${activeLinkColor}` }}
                 >
                   About
                 </Link>
                 <Link
                   to="/contact"
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${navTransparent ? 'text-white/90 hover:text-white hover:bg-white/10' : 'text-slate-600 hover:text-sky-600 hover:bg-slate-50'}`}
-                  activeProps={{ className: `px-4 py-2 text-sm font-medium rounded-lg ${navTransparent ? 'text-white bg-white/10' : 'text-sky-600 bg-slate-50'}` }}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${linkColor}`}
+                  activeProps={{ className: `px-4 py-2 text-sm font-medium rounded-lg ${activeLinkColor}` }}
                 >
                   Contact
                 </Link>
@@ -239,7 +237,7 @@ function RootLayout() {
               {/* Mobile button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`md:hidden p-2 transition-colors ${navTransparent ? 'text-white hover:text-white/70' : 'text-slate-600 hover:text-sky-600'}`}
+                className="md:hidden p-2 text-white hover:text-white/70 transition-colors"
                 aria-label="Toggle menu"
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -250,28 +248,29 @@ function RootLayout() {
           {/* ── Full-width Mega Menu ── */}
           {isMegaMenuOpen && (
             <div
-              className="absolute top-full left-0 right-0 w-full bg-white border-t border-slate-200 shadow-2xl z-50"
+              className="absolute top-full left-0 right-0 w-full bg-slate-100 border-t border-slate-200 shadow-2xl z-50"
               onMouseEnter={openMenu}
               onMouseLeave={closeMenu}
             >
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <div className="grid grid-cols-4 gap-8">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div className="grid grid-cols-4 gap-10">
 
-                  {/* Col 1 — Reference Designation */}
+                  {/* Col 1 */}
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-5 pb-3 border-b-2 border-sky-100">
+                    <p className="text-xs font-bold uppercase tracking-widest text-sky-700 mb-1">
                       Reference Designation
                     </p>
-                    <ul className="space-y-1">
+                    <div className="h-0.5 bg-sky-200 mb-5" />
+                    <ul className="space-y-0.5">
                       {col1.map((item) => (
                         <li key={item.label}>
                           <Link
                             to={item.href as any}
-                            className="flex items-center gap-2.5 px-2 py-2.5 rounded-lg hover:bg-slate-50 group transition-colors"
+                            className="flex items-center gap-2.5 px-2 py-2 rounded-lg hover:bg-white group transition-colors"
                             onClick={() => setIsMegaMenuOpen(false)}
                           >
-                            <ArrowRight size={13} className="text-slate-300 group-hover:text-sky-500 flex-shrink-0 transition-colors" />
-                            <span className="text-sm text-slate-700 group-hover:text-sky-600 transition-colors font-medium">
+                            <ArrowRight size={12} className="text-slate-400 group-hover:text-sky-500 flex-shrink-0 transition-colors" />
+                            <span className="text-sm text-slate-700 group-hover:text-sky-600 transition-colors">
                               {item.label}
                             </span>
                           </Link>
@@ -280,21 +279,22 @@ function RootLayout() {
                     </ul>
                   </div>
 
-                  {/* Col 2 — Information Management */}
+                  {/* Col 2 */}
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-5 pb-3 border-b-2 border-sky-100">
+                    <p className="text-xs font-bold uppercase tracking-widest text-sky-700 mb-1">
                       Information Management
                     </p>
-                    <ul className="space-y-1">
+                    <div className="h-0.5 bg-sky-200 mb-5" />
+                    <ul className="space-y-0.5">
                       {col2.map((item) => (
                         <li key={item.label}>
                           <Link
                             to={item.href as any}
-                            className="flex items-center gap-2.5 px-2 py-2.5 rounded-lg hover:bg-slate-50 group transition-colors"
+                            className="flex items-center gap-2.5 px-2 py-2 rounded-lg hover:bg-white group transition-colors"
                             onClick={() => setIsMegaMenuOpen(false)}
                           >
-                            <ArrowRight size={13} className="text-slate-300 group-hover:text-sky-500 flex-shrink-0 transition-colors" />
-                            <span className="text-sm text-slate-700 group-hover:text-sky-600 transition-colors font-medium">
+                            <ArrowRight size={12} className="text-slate-400 group-hover:text-sky-500 flex-shrink-0 transition-colors" />
+                            <span className="text-sm text-slate-700 group-hover:text-sky-600 transition-colors">
                               {item.label}
                             </span>
                           </Link>
@@ -303,21 +303,22 @@ function RootLayout() {
                     </ul>
                   </div>
 
-                  {/* Col 3 — Tools and Management */}
+                  {/* Col 3 */}
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-5 pb-3 border-b-2 border-sky-100">
+                    <p className="text-xs font-bold uppercase tracking-widest text-sky-700 mb-1">
                       Tools and Management
                     </p>
-                    <ul className="space-y-1">
+                    <div className="h-0.5 bg-sky-200 mb-5" />
+                    <ul className="space-y-0.5">
                       {col3.map((item) => (
                         <li key={item.label}>
                           <Link
                             to={item.href as any}
-                            className="flex items-center gap-2.5 px-2 py-2.5 rounded-lg hover:bg-slate-50 group transition-colors"
+                            className="flex items-center gap-2.5 px-2 py-2 rounded-lg hover:bg-white group transition-colors"
                             onClick={() => setIsMegaMenuOpen(false)}
                           >
-                            <ArrowRight size={13} className="text-slate-300 group-hover:text-sky-500 flex-shrink-0 transition-colors" />
-                            <span className="text-sm text-slate-700 group-hover:text-sky-600 transition-colors font-medium">
+                            <ArrowRight size={12} className="text-slate-400 group-hover:text-sky-500 flex-shrink-0 transition-colors" />
+                            <span className="text-sm text-slate-700 group-hover:text-sky-600 transition-colors">
                               {item.label}
                             </span>
                           </Link>
@@ -326,35 +327,38 @@ function RootLayout() {
                     </ul>
                   </div>
 
-                  {/* Featured Panel */}
-                  <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
-                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4 pb-3 border-b border-slate-200">
-                      Featured
+                  {/* Featured — stacked white cards like competitor */}
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-1">
+                      Solutions
                     </p>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="h-0.5 bg-slate-300 mb-5" />
+                    <div className="space-y-2">
                       {featured.map((item) => (
                         <Link
                           key={item.label}
                           to={item.href as any}
-                          className="flex flex-col gap-1.5 p-3 rounded-xl bg-white hover:bg-sky-50 border border-transparent hover:border-sky-100 group transition-all"
+                          className="flex items-start gap-3 p-3 rounded-xl bg-white hover:bg-sky-50 border border-slate-200 hover:border-sky-200 group transition-all shadow-sm"
                           onClick={() => setIsMegaMenuOpen(false)}
                         >
-                          <div className="flex items-center gap-2">
-                            <div className={`w-6 h-6 ${item.bg} rounded-md flex items-center justify-center flex-shrink-0`}>
-                              <item.icon size={12} className={item.color} />
-                            </div>
-                            <p className="text-xs font-bold text-slate-800 group-hover:text-sky-600 transition-colors leading-tight">
-                              {item.label}
-                            </p>
-                            {item.badge && (
-                              <span className="px-1 py-0.5 bg-indigo-100 text-indigo-600 text-[9px] font-bold rounded-full whitespace-nowrap">
-                                {item.badge}
-                              </span>
-                            )}
+                          <div className={`w-7 h-7 ${item.bg} rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                            <item.icon size={13} className={item.color} />
                           </div>
-                          <p className="text-[11px] text-slate-400 leading-snug pl-8">
-                            {item.desc}
-                          </p>
+                          <div>
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <p className="text-sm font-semibold text-slate-800 group-hover:text-sky-600 transition-colors leading-tight">
+                                {item.label}
+                              </p>
+                              {item.badge && (
+                                <span className="px-1.5 py-0.5 bg-indigo-100 text-indigo-600 text-[9px] font-bold rounded-full">
+                                  {item.badge}
+                                </span>
+                              )}
+                            </div>
+                            <p className="text-xs text-slate-400 leading-snug mt-0.5">
+                              {item.desc}
+                            </p>
+                          </div>
                         </Link>
                       ))}
                     </div>
@@ -367,15 +371,13 @@ function RootLayout() {
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden bg-white border-t border-slate-200 animate-in slide-in-from-top duration-200">
+            <div className="md:hidden bg-slate-900 border-t border-slate-800 animate-in slide-in-from-top duration-200">
               <div className="px-4 py-4 space-y-1">
-                <Link to="/" className="block px-4 py-3 text-slate-700 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-colors">
-                  Home
-                </Link>
+                <Link to="/" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-white/10 rounded-lg transition-colors">Home</Link>
                 <div>
                   <button
                     onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                    className="w-full flex items-center justify-between px-4 py-3 text-slate-700 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-colors"
+                    className="w-full flex items-center justify-between px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-white/10 rounded-lg transition-colors"
                   >
                     Information Management
                     <ChevronDown size={16} className={`transition-transform ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
@@ -384,35 +386,25 @@ function RootLayout() {
                     <div className="ml-4 mt-1 space-y-1">
                       <p className="px-4 py-1 text-xs font-bold uppercase tracking-wider text-sky-500">Reference Designation</p>
                       {col1.map((item) => (
-                        <Link key={item.label} to={item.href as any} className="block px-4 py-2 text-sm text-slate-600 hover:text-sky-600 transition-colors">
-                          {item.label}
-                        </Link>
+                        <Link key={item.label} to={item.href as any} className="block px-4 py-2 text-sm text-gray-300 hover:text-sky-400 transition-colors">{item.label}</Link>
                       ))}
                       <p className="px-4 py-1 text-xs font-bold uppercase tracking-wider text-sky-500 mt-2">Information Management</p>
                       {col2.map((item) => (
-                        <Link key={item.label} to={item.href as any} className="block px-4 py-2 text-sm text-slate-600 hover:text-sky-600 transition-colors">
-                          {item.label}
-                        </Link>
+                        <Link key={item.label} to={item.href as any} className="block px-4 py-2 text-sm text-gray-300 hover:text-sky-400 transition-colors">{item.label}</Link>
                       ))}
                       <p className="px-4 py-1 text-xs font-bold uppercase tracking-wider text-sky-500 mt-2">Tools and Management</p>
                       {col3.map((item) => (
-                        <Link key={item.label} to={item.href as any} className="block px-4 py-2 text-sm text-slate-600 hover:text-sky-600 transition-colors">
-                          {item.label}
-                        </Link>
+                        <Link key={item.label} to={item.href as any} className="block px-4 py-2 text-sm text-gray-300 hover:text-sky-400 transition-colors">{item.label}</Link>
                       ))}
                     </div>
                   )}
                 </div>
-                <Link to="/blog" className="block px-4 py-3 text-slate-700 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-colors">Insights</Link>
-                <Link to="/about" className="block px-4 py-3 text-slate-700 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-colors">About</Link>
-                <Link to="/contact" className="block px-4 py-3 text-slate-700 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-colors">Contact</Link>
+                <Link to="/blog" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-white/10 rounded-lg transition-colors">Insights</Link>
+                <Link to="/about" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-white/10 rounded-lg transition-colors">About</Link>
+                <Link to="/contact" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-white/10 rounded-lg transition-colors">Contact</Link>
                 <div className="pt-4 flex flex-col gap-2">
-                  <Link to={'/service-training' as any} className="block w-full px-5 py-3 bg-amber-500 text-white text-center font-semibold rounded-lg hover:bg-amber-400 transition-colors">
-                    Explore Training
-                  </Link>
-                  <Link to="/book-assessment" className="block w-full px-5 py-3 bg-sky-500 text-white text-center font-semibold rounded-lg hover:bg-sky-600 transition-colors">
-                    Book Assessment
-                  </Link>
+                  <Link to={'/service-training' as any} className="block w-full px-5 py-3 bg-amber-500 text-white text-center font-semibold rounded-lg hover:bg-amber-400 transition-colors">Explore Training</Link>
+                  <Link to="/book-assessment" className="block w-full px-5 py-3 bg-sky-500 text-white text-center font-semibold rounded-lg hover:bg-sky-600 transition-colors">Book Assessment</Link>
                 </div>
               </div>
             </div>
@@ -420,7 +412,8 @@ function RootLayout() {
         </nav>
 
         {/* ── Main Content ── */}
-        <main><Outlet /></main>
+        {/* pt-16 pushes content below the fixed nav on pages without a full-height hero */}
+        <main className="pt-16"><Outlet /></main>
 
         {/* ── Footer ── */}
         <footer className="bg-slate-900 border-t border-slate-800">
