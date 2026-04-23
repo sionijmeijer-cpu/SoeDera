@@ -2,7 +2,6 @@ import { createRootRoute, Link, Outlet, useLocation } from '@tanstack/react-rout
 import { useState, useEffect } from 'react'
 import { ThemeProvider } from '@/components/theme-provider'
 
-// Add flash and shimmer animations
 if (typeof window !== 'undefined' && !document.getElementById('flash-animations')) {
   const style = document.createElement('style')
   style.id = 'flash-animations'
@@ -18,12 +17,17 @@ if (typeof window !== 'undefined' && !document.getElementById('flash-animations'
     .animate-shimmer {
       animation: shimmer 1.5s infinite;
     }
+    @keyframes shimmer-amber {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
   `
   document.head.appendChild(style)
 }
-import { useTheme } from '@/components/theme-provider'
+
 import { ScrollHandler } from '@/components/ScrollHandler'
-import { Linkedin, ChevronDown, Menu, X, FileText, Network, Building2, Package, FolderKanban, ClipboardCheck } from 'lucide-react'
+import { Linkedin, ChevronDown, Menu, X, FileText, Network, Building2, Package, FolderKanban, ClipboardCheck, GraduationCap } from 'lucide-react'
+import { ThemeProvider as _TP } from '@/components/theme-provider'
 
 export const Route = createRootRoute({
   component: RootLayout,
@@ -36,14 +40,10 @@ function RootLayout() {
   const location = useLocation()
   const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  useEffect(() => { setMounted(true) }, [])
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 40)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -62,6 +62,7 @@ function RootLayout() {
     { name: 'BIM Services', href: '/service-bim', icon: Building2 },
     { name: 'Product Development', href: '/service-product-development', icon: Package },
     { name: 'Project Management', href: '/service-project-management', icon: FolderKanban },
+    { name: 'Training & SME', href: '/service-training', icon: GraduationCap },
   ]
 
   return (
@@ -109,9 +110,13 @@ function RootLayout() {
                         <Link
                           key={service.name}
                           to={service.href}
-                          className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-300 hover:text-sky-400 hover:bg-blue-900/50 transition-colors"
+                          className={`flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${
+                            service.name === 'Training & SME'
+                              ? 'text-amber-300 hover:text-amber-200 hover:bg-blue-900/50 border-t border-blue-900/50 mt-1 pt-3'
+                              : 'text-gray-300 hover:text-sky-400 hover:bg-blue-900/50'
+                          }`}
                         >
-                          <service.icon size={16} className="text-sky-500" />
+                          <service.icon size={16} className={service.name === 'Training & SME' ? 'text-amber-400' : 'text-sky-500'} />
                           {service.name}
                         </Link>
                       ))}
@@ -142,14 +147,30 @@ function RootLayout() {
                 </Link>
               </div>
 
-              {/* CTA Button */}
-              <div className="hidden md:block">
+              {/* CTA Buttons */}
+              <div className="hidden md:flex items-center gap-2">
+                {/* Explore Training — amber */}
                 <Link
-                  to="/book-assessment"
-                  className="inline-block px-5 py-2.5 bg-sky-500 text-white text-sm font-semibold rounded-lg shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:bg-sky-600 transition-all hover:scale-105 relative overflow-hidden group"
+                  to="/service-training"
+                  className="inline-block px-4 py-2.5 bg-amber-500 text-white text-sm font-semibold rounded-lg shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:bg-amber-400 transition-all hover:scale-105 relative overflow-hidden"
                 >
                   <div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-40 animate-shimmer"
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30"
+                    style={{ animation: 'shimmer 3s ease-in-out infinite' }}
+                  />
+                  <span className="relative z-10 flex items-center gap-1.5">
+                    <GraduationCap size={14} />
+                    Explore Training
+                  </span>
+                </Link>
+
+                {/* Book Assessment — sky blue */}
+                <Link
+                  to="/book-assessment"
+                  className="inline-block px-5 py-2.5 bg-sky-500 text-white text-sm font-semibold rounded-lg shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:bg-sky-600 transition-all hover:scale-105 relative overflow-hidden"
+                >
+                  <div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-40"
                     style={{ animation: 'shimmer 2.5s ease-in-out infinite' }}
                   />
                   <span className="relative z-10">Book Assessment</span>
@@ -171,10 +192,7 @@ function RootLayout() {
           {isMobileMenuOpen && (
             <div className="md:hidden bg-blue-950 border-t border-blue-900 animate-in slide-in-from-top duration-200">
               <div className="px-4 py-4 space-y-1">
-                <Link
-                  to="/"
-                  className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-colors"
-                >
+                <Link to="/" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-colors">
                   Home
                 </Link>
                 <div>
@@ -191,34 +209,35 @@ function RootLayout() {
                         <Link
                           key={service.name}
                           to={service.href}
-                          className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-300 hover:text-sky-400 transition-colors"
+                          className={`flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${
+                            service.name === 'Training & SME'
+                              ? 'text-amber-300 hover:text-amber-200'
+                              : 'text-gray-300 hover:text-sky-400'
+                          }`}
                         >
-                          <service.icon size={14} className="text-sky-500" />
+                          <service.icon size={14} className={service.name === 'Training & SME' ? 'text-amber-400' : 'text-sky-500'} />
                           {service.name}
                         </Link>
                       ))}
                     </div>
                   )}
                 </div>
-                <Link
-                  to="/blog"
-                  className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-colors"
-                >
+                <Link to="/blog" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-colors">
                   Insights
                 </Link>
-                <Link
-                  to="/about"
-                  className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-colors"
-                >
+                <Link to="/about" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-colors">
                   About
                 </Link>
-                <Link
-                  to="/contact"
-                  className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-colors"
-                >
+                <Link to="/contact" className="block px-4 py-3 text-gray-200 hover:text-sky-400 hover:bg-blue-900/50 rounded-lg transition-colors">
                   Contact
                 </Link>
-                <div className="pt-4">
+                <div className="pt-4 flex flex-col gap-2">
+                  <Link
+                    to="/service-training"
+                    className="block w-full px-5 py-3 bg-amber-500 text-white text-center font-semibold rounded-lg hover:bg-amber-400 transition-colors"
+                  >
+                    Explore Training
+                  </Link>
                   <Link
                     to="/book-assessment"
                     className="block w-full px-5 py-3 bg-sky-500 text-white text-center font-semibold rounded-lg hover:bg-sky-600 transition-colors"
@@ -264,9 +283,7 @@ function RootLayout() {
               {/* Links */}
               <div className="grid grid-cols-2 gap-8">
                 <div>
-                  <h4 className="text-white text-sm font-semibold mb-4 uppercase tracking-wider">
-                    Company
-                  </h4>
+                  <h4 className="text-white text-sm font-semibold mb-4 uppercase tracking-wider">Company</h4>
                   <ul className="space-y-3">
                     {[
                       { label: 'Home', to: '/' },
@@ -277,21 +294,15 @@ function RootLayout() {
                       { label: 'Terms of Service', to: '/terms-of-service' },
                     ].map((link) => (
                       <li key={link.label}>
-                        <Link
-                          to={link.to}
-                          className="text-slate-400 hover:text-sky-400 text-sm transition-colors"
-                        >
+                        <Link to={link.to} className="text-slate-400 hover:text-sky-400 text-sm transition-colors">
                           {link.label}
                         </Link>
                       </li>
                     ))}
                   </ul>
                 </div>
-
                 <div>
-                  <h4 className="text-white text-sm font-semibold mb-4 uppercase tracking-wider">
-                    Services
-                  </h4>
+                  <h4 className="text-white text-sm font-semibold mb-4 uppercase tracking-wider">Services</h4>
                   <ul className="space-y-3">
                     {[
                       { label: 'Document Management', to: '/service-document-management' },
@@ -300,12 +311,10 @@ function RootLayout() {
                       { label: 'BIM Services', to: '/service-bim' },
                       { label: 'Product Development', to: '/service-product-development' },
                       { label: 'Project Management', to: '/service-project-management' },
+                      { label: 'Training & SME', to: '/service-training' },
                     ].map((link) => (
                       <li key={link.label}>
-                        <Link
-                          to={link.to}
-                          className="text-slate-400 hover:text-sky-400 text-sm transition-colors"
-                        >
+                        <Link to={link.to} className={`text-sm transition-colors ${link.label === 'Training & SME' ? 'text-amber-400 hover:text-amber-300' : 'text-slate-400 hover:text-sky-400'}`}>
                           {link.label}
                         </Link>
                       </li>
@@ -316,36 +325,25 @@ function RootLayout() {
 
               {/* Contact */}
               <div>
-                <h4 className="text-white text-sm font-semibold mb-4 uppercase tracking-wider">
-                  Contact
-                </h4>
+                <h4 className="text-white text-sm font-semibold mb-4 uppercase tracking-wider">Contact</h4>
                 <ul className="space-y-3 text-sm text-slate-400">
                   <li>
-                    <a
-                      href="mailto:info@soedera.eu"
-                      className="hover:text-sky-400 transition-colors"
-                    >
+                    <a href="mailto:info@soedera.eu" className="hover:text-sky-400 transition-colors">
                       info@soedera.eu
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="https://www.soedera.eu"
-                      className="hover:text-sky-400 transition-colors"
-                    >
+                    <a href="https://www.soedera.eu" className="hover:text-sky-400 transition-colors">
                       www.soedera.eu
                     </a>
                   </li>
-                  <li className="pt-2 text-slate-500">
-                    Mon – Fri: 09:00 – 17:00 CET
-                  </li>
+                  <li className="pt-2 text-slate-500">Mon – Fri: 09:00 – 17:00 CET</li>
                 </ul>
               </div>
 
             </div>
           </div>
 
-          {/* Bottom bar */}
           <div className="border-t border-slate-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
               <p>© 2026 SøDera. All rights reserved.</p>
