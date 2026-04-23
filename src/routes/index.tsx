@@ -159,7 +159,7 @@ function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
 
             {/* RDS Assessment */}
             <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-sky-200 transition-all duration-300 group">
@@ -308,7 +308,7 @@ function HomePage() {
           </p>
 
           {/* Training signpost */}
-          <div className="mt-10 p-6 bg-amber-50 border border-amber-200 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 max-w-5xl">
+          <div className="mt-10 p-6 bg-amber-50 border border-amber-200 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 max-w-5xl mx-auto">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
                 <GraduationCap size={20} className="text-amber-600" />
