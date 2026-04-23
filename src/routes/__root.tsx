@@ -412,8 +412,7 @@ function RootLayout() {
         </nav>
 
         {/* ── Main Content ── */}
-        {/* pt-16 pushes content below the fixed nav on pages without a full-height hero */}
-        <main className="pt-16"><Outlet /></main>
+        <main><Outlet /></main>
 
         {/* ── Footer ── */}
         <footer className="bg-slate-900 border-t border-slate-800">
