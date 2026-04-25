@@ -1,6 +1,15 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { SEOHead } from '@/components/SEOHead'
-import { ClipboardCheck, CheckCircle, ArrowRight, ArrowLeft, ShieldCheck, TrendingUp, BookOpen, Users, Award } from 'lucide-react'
+import {
+  ArrowLeft,
+  ArrowRight,
+  CheckCircle,
+  AlertTriangle,
+  ClipboardCheck,
+  Users,
+  Settings,
+  GitMerge,
+} from 'lucide-react'
 
 export const Route = createFileRoute('/service-rds-audit')({
   component: RDSAuditPage,
@@ -8,368 +17,429 @@ export const Route = createFileRoute('/service-rds-audit')({
 
 function RDSAuditPage() {
   SEOHead({
-    title: 'IEC 81346 RDS Audit — Independent Third-Party Review | SøDera',
-    description: 'Independent third-party audit of your Reference Designation System against IEC 81346. Assess RDS compliance, maturity, TAG governance, and fitness for purpose across ten structured focus areas.',
-    keywords: 'IEC 81346 audit, RDS audit, reference designation system review, RDS compliance, asset designation audit, TAG numbering audit, third-party RDS assessment, IEC 81346 compliance',
-    canonicalUrl: 'https://www.soedera.eu/service-rds-audit'
+    title: 'IEC 81346 RDS Audit | Independent Third-Party Review | SøDera',
+    description:
+      'SøDera provides independent RDS audits against IEC 81346 for energy operators. Assess compliance, maturity, and operational value of your Reference Designation System across ten structured focus areas.',
+    keywords:
+      'RDS audit, IEC 81346 audit, reference designation audit, asset tagging compliance, IEC 81346 compliance, RDS review energy sector, offshore wind RDS audit',
+    canonicalUrl: 'https://www.soedera.eu/service-rds-audit',
   })
 
-  const focusAreas = [
-    { id: '01', title: 'Conformance to IEC 81346', description: 'Alignment with the standard\'s structural and syntactical requirements for reference designations.' },
-    { id: '02', title: 'Organisational Consistency', description: 'Uniform asset designation practices applied across projects, disciplines, and teams.' },
-    { id: '03', title: 'Completeness of Coverage', description: 'Whether all relevant assets and objects within scope carry valid reference designations.' },
-    { id: '04', title: 'Governance & Ownership', description: 'Clear ownership, designation rules, and processes to maintain the RDS over time.' },
-    { id: '05', title: 'Tool & System Implementation', description: 'How well the RDS is embedded in engineering tools and asset management systems.' },
-    { id: '06', title: 'Change Management', description: 'How changes to assets or the designation framework are controlled and communicated.' },
-    { id: '07', title: 'Lifecycle Traceability', description: 'Reference designation traceability from design through construction to operations and decommissioning.' },
-    { id: '08', title: 'Staff Competency', description: 'Whether people applying and working with the RDS have the necessary IEC 81346 knowledge.' },
-    { id: '09', title: 'Documentation Quality', description: 'Supporting RDS documentation — rules, guidelines, examples — assessed for clarity and completeness.' },
-    { id: '10', title: 'Fitness for Purpose', description: 'Overall evaluation of whether the reference designation system delivers its intended operational value.' },
-  ]
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'IEC 81346 RDS Audit',
+    description:
+      'Independent third-party audit of Reference Designation Systems against IEC 81346 for energy operators. Covers compliance, maturity, and operational value across ten structured focus areas.',
+    provider: { '@type': 'Organization', name: 'SøDera', url: 'https://www.soedera.eu' },
+    areaServed: { '@type': 'Place', name: 'Europe' },
+    serviceType: 'RDS Audit and Compliance Review',
+    url: 'https://www.soedera.eu/service-rds-audit',
+  }
 
-  const audiences = [
-    {
-      icon: ShieldCheck,
-      title: 'Asset Owners',
-      description: 'Gain independent assurance that your RDS and asset designation system are fit for operations and maintainable across the full asset lifecycle — before problems surface at handover or in maintenance.',
-    },
-    {
-      icon: Users,
-      title: 'EPCs & Contractors',
-      description: 'Demonstrate IEC 81346 compliance and TAG numbering quality to clients. Use third-party audit findings to strengthen your delivery process and reduce documentation risk at handover.',
-    },
-    {
-      icon: Award,
-      title: 'Engineering Consultancies & PMCs',
-      description: 'Support your clients with independent RDS compliance verification. Add a structured IEC 81346 audit capability to your asset information and engineering advisory offering.',
-    },
+  const sidebarLinks = [
+    { label: 'Reference Designation (RDS)', href: '/service-rds' },
+    { label: 'Document Management', href: '/service-document-management' },
+    { label: 'Building Information Modelling', href: '/service-bim' },
+    { label: 'Project Management', href: '/service-project-management' },
+    { label: 'Training & SME', href: '/service-training' },
   ]
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema, null, 2) }}
+      />
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-sky-50 to-sky-100 py-20 sm:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            to="/service-rds"
-            className="inline-flex items-center gap-2 text-sky-600 hover:text-sky-700 mb-8 group"
-          >
-            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-            Back to RDS Services
+      {/* ── Hero ── */}
+      <section
+        className="relative min-h-[580px] flex items-center py-32 overflow-hidden"
+        style={{ backgroundImage: 'url(https://i.imgur.com/lCNBEPI.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}
+      >
+        <div className="absolute inset-0 bg-slate-900/72" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+          <Link to="/services" className="inline-flex items-center gap-2 text-blue-300 hover:text-white mb-10 group text-sm">
+            <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform" />
+            Back to Services
           </Link>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-sky-500/20 border border-sky-400/30 text-sky-300 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
+              RDS Audit
+            </div>
+            <h1 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Independent Third-Party RDS Audit
+            </h1>
+            <p className="text-xl text-slate-200 mb-6 leading-relaxed">
+              Ensure your asset designation system is compliant, mature, and delivering practical operational value. Independent verification built on IEC 81346 and two decades of energy sector experience.
+            </p>
+            <div className="flex flex-wrap gap-3 mb-10">
+              {['IEC 81346', 'ISO 81346', 'Third-Party Independent', 'Compliance Verified'].map((b) => (
+                <span key={b} className="px-3 py-1 bg-white/10 border border-white/20 text-white text-xs font-semibold rounded-full">{b}</span>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-4">
+              <Link to="/book-assessment" className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 text-white rounded-lg font-semibold hover:bg-sky-400 transition-all hover:scale-105 shadow-lg">
+                Request an RDS Audit
+              </Link>
+              <Link to="/service-rds" className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/20 text-white rounded-lg font-semibold hover:bg-white/20 transition-all">
+                About RDS and IEC 81346
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Expert quote ── */}
+      <section className="bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex items-start gap-6 max-w-4xl">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0 shadow-md" style={{ background: '#1a3a5c' }}>SC</div>
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-500/10 text-sky-600 rounded-full text-sm font-medium mb-6">
-                <ClipboardCheck size={16} />
-                Independent third-party RDS audit
-              </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-3">
-                IEC 81346 RDS Audit
-              </h1>
-              <p className="text-base font-semibold text-sky-600 mb-5">
-                Independent compliance, maturity, and value review for asset designation systems
-              </p>
-              <p className="text-xl text-slate-600 mb-4">
-                A structured, third-party review of your Reference Designation System against IEC 81346 — examining whether your asset designations are correct, consistent, governed, and delivering practical value.
-              </p>
-              <p className="text-lg text-slate-500 mb-8">
-                Whether you are an asset owner, EPC, or engineering consultancy, the SøDera RDS audit gives you an objective picture of where your TAG numbering and designation governance stand — and what to do about it.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 text-white rounded-lg font-semibold hover:bg-sky-600 transition-all hover:scale-105 shadow-lg shadow-sky-500/25"
-                >
-                  Request an Audit <ArrowRight size={18} />
-                </Link>
-                <Link
-                  to="/book-assessment"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-sky-600 border border-sky-200 rounded-lg font-semibold hover:bg-sky-50 transition-all"
-                >
-                  Start with a Quick Assessment
-                </Link>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-sky-400 to-blue-600 rounded-2xl shadow-2xl flex items-center justify-center">
-                <ClipboardCheck className="text-white/30" size={180} />
-              </div>
+              <blockquote style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-xl text-slate-800 italic leading-relaxed mb-3">
+                "An independent RDS audit is not just a compliance check. It is a strategic investment in the integrity of your asset information. It provides clarity on where you stand and a clear roadmap to ensure your designation system truly supports operational excellence and long-term asset value."
+              </blockquote>
+              <p className="text-sm font-semibold text-slate-600">Søren Christensen <span className="font-normal text-slate-400">· Co-founder & CEO, SøDera</span></p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Three Dimensions */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
-              IEC 81346 compliance, maturity, and value — assessed together
-            </h2>
-            <p className="text-lg text-slate-600">
-              Most RDS reviews focus only on conformance to the standard. Our audit goes further, evaluating three dimensions that together determine whether your reference designation system is truly working.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-sky-50 border border-sky-100 p-8 rounded-xl">
-              <div className="w-12 h-12 bg-sky-500 rounded-lg flex items-center justify-center mb-6">
-                <CheckCircle className="text-white" size={24} />
+      {/* ── Page body: main content + sidebar ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="flex gap-16 items-start">
+
+          {/* ── Main content ── */}
+          <div className="flex-1 min-w-0">
+
+            {/* What is an RDS Audit */}
+            <div className="mb-16">
+              <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">Understanding the discipline</p>
+              <h2 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
+                What is an RDS Audit?
+              </h2>
+              <div className="space-y-5 text-slate-600 leading-relaxed text-lg">
+                <p>
+                  An RDS Audit is a structured, independent review of a facility's Reference Designation System against the IEC 81346 standard series. In industrial information management, an audit serves as a critical quality gate. It ensures that the Digital Thread — the consistent identification of assets from design through to operations — remains intact and has not suffered from Standard Drift.
+                </p>
+                <p>
+                  Standard Drift is the gradual divergence of a designation system from its original intent. It happens quietly over years as different teams, contractors, and software tools each apply the standard slightly differently. By the time the problem is visible, thousands of assets may carry designations that are technically non-compliant, ambiguous, or disconnected from the rest of the information landscape.
+                </p>
+                <p>
+                  The audit process evaluates three critical dimensions. The first is Compliance: does the system adhere to the structural and syntactical rules of IEC 81346, including the correct use of Function, Product, and Location aspects and their prefixes? The second is Maturity: how well is the system embedded in the organisation, including governance frameworks, staff competency, and change management procedures? A mature system is one that can survive a 30-year asset lifecycle without degrading. The third is Value: is the system actually useful in practice? We evaluate whether the RDS is supporting operational goals such as linking equipment tags directly to maintenance manuals in a CMMS.
+                </p>
+                <p>
+                  Research in industrial data governance shows that facilities with audited and governed designation systems experience significantly fewer data integration issues during major system upgrades, because the underlying data structure is verified and reliable. The audit is not the end of the work. It is the beginning of a well-informed improvement programme.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Compliance</h3>
-              <p className="text-slate-600">
-                Does your RDS conform to IEC 81346? We assess structural correctness, syntax, and whether designation principles are applied consistently across your asset base and TAG numbering.
+            </div>
+
+            {/* ── PHOTO PLACEHOLDER 1 ── */}
+            <div className="mb-16 rounded-2xl bg-slate-100 border-2 border-dashed border-slate-300 flex items-center justify-center h-64">
+              <div className="text-center">
+                <p className="text-slate-400 text-sm font-semibold">Photo placeholder</p>
+                <p className="text-slate-400 text-xs mt-1">Suggested: Audit report document or facility inspection photo</p>
+              </div>
+            </div>
+
+            {/* Three audit dimensions */}
+            <div className="mb-16">
+              <h3 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-2xl font-bold text-slate-900 mb-8">
+                The three dimensions of a complete RDS audit
+              </h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                {[
+                  {
+                    label: 'Compliance',
+                    color: 'bg-sky-600',
+                    short: 'Does it conform?',
+                    desc: 'Technical review of syntactical and structural adherence to IEC 81346. Covers correct use of aspects, prefixes, hierarchy levels, and cross-system consistency.',
+                  },
+                  {
+                    label: 'Maturity',
+                    color: 'bg-indigo-600',
+                    short: 'Is it embedded?',
+                    desc: 'Assessment of governance frameworks, staff competency, change management procedures, and the organisation\'s ability to maintain the system over the full asset lifecycle.',
+                  },
+                  {
+                    label: 'Value',
+                    color: 'bg-emerald-600',
+                    short: 'Does it deliver?',
+                    desc: 'Evaluation of whether the RDS is practically useful. Can maintenance teams find documents by tag? Is the CMMS linked correctly? Does the system support real operational workflows?',
+                  },
+                ].map((item) => (
+                  <div key={item.label} className="p-6 rounded-xl border border-slate-200 hover:border-sky-200 transition-all">
+                    <div className={`w-10 h-10 ${item.color} rounded-lg flex items-center justify-center text-white font-bold text-sm mb-4`}>
+                      {item.label.charAt(0)}
+                    </div>
+                    <h4 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="font-bold text-slate-900 mb-1">{item.label}</h4>
+                    <p className="text-xs font-semibold text-sky-600 mb-3">{item.short}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Cost callout */}
+            <div className="mb-16 bg-amber-50 border border-amber-200 rounded-2xl p-8">
+              <div className="flex items-start gap-4 mb-4">
+                <AlertTriangle className="text-amber-600 flex-shrink-0 mt-1" size={22} />
+                <h3 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-xl font-bold text-amber-900">The cost of Standard Drift</h3>
+              </div>
+              <p className="text-amber-800 leading-relaxed mb-4">
+                Without independent verification, designation systems often evolve in silos. Over time, different departments such as Electrical and Mechanical may develop their own interpretations of the standard. This Standard Drift is invisible until a major system change forces a reckoning.
+              </p>
+              <p className="text-amber-800 leading-relaxed">
+                Consider a major utility upgrading its Asset Management System. If the underlying RDS data has suffered from Standard Drift, the new software will fail to automatically link thousands of assets. The cost of manual data cleanup and re-tagging for a single large facility can easily exceed <strong>€100,000</strong> in consultancy fees and internal labour. An RDS Audit identifies these inconsistencies early, allowing for proactive correction before they become multi-million euro integration bottlenecks.
               </p>
             </div>
-            <div className="bg-sky-50 border border-sky-100 p-8 rounded-xl">
-              <div className="w-12 h-12 bg-sky-500 rounded-lg flex items-center justify-center mb-6">
-                <TrendingUp className="text-white" size={24} />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Maturity</h3>
-              <p className="text-slate-600">
-                How embedded and sustainable is your RDS? We assess governance, staff competency, tooling, and change management to determine how well the designation system is maintained in practice.
-              </p>
-            </div>
-            <div className="bg-sky-50 border border-sky-100 p-8 rounded-xl">
-              <div className="w-12 h-12 bg-sky-500 rounded-lg flex items-center justify-center mb-6">
-                <Award className="text-white" size={24} />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Value</h3>
-              <p className="text-slate-600">
-                Is your reference designation system actually delivering? We evaluate fitness for purpose — whether your RDS supports the asset management and information management goals it was designed for.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Who It's For */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
-              Who commissions an IEC 81346 RDS audit?
-            </h2>
-            <p className="text-lg text-slate-600">
-              The need for an independent reference designation review arises in different ways for different organisations. Here are the three most common client profiles.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {audiences.map((audience) => (
-              <div key={audience.title} className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
-                <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center mb-6">
-                  <audience.icon className="text-sky-600" size={24} />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4">{audience.title}</h3>
-                <p className="text-slate-600">{audience.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ten Focus Areas */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
-              Ten focus areas covering the full scope of RDS compliance
-            </h2>
-            <p className="text-lg text-slate-600">
-              Every IEC 81346 audit follows a consistent methodology across ten defined areas — from technical conformance and TAG governance through to lifecycle traceability and fitness for purpose.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {focusAreas.map((area) => (
-              <div key={area.id} className="flex gap-5 p-6 rounded-xl border border-slate-100 hover:border-sky-200 hover:shadow-sm transition-all">
-                <div className="flex-shrink-0">
-                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-sky-50 text-sky-600 text-sm font-bold font-mono">
-                    {area.id}
-                  </span>
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-slate-900 mb-1">{area.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{area.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Comparison + Training teaser */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
-              RDS audit or quick assessment — which is right for you?
-            </h2>
-            <p className="text-lg text-slate-600">
-              Both services evaluate your reference designation system against IEC 81346. The difference is depth, scope, and what you receive at the end.
-            </p>
-          </div>
-
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-white rounded-xl border border-slate-200 overflow-hidden mb-4">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr>
-                    <th className="w-2/5 px-5 py-3 text-left"></th>
-                    <th className="w-[30%] px-5 py-3 bg-sky-600 text-white text-center font-semibold">Full RDS audit</th>
-                    <th className="w-[30%] px-5 py-3 bg-sky-50 text-sky-700 text-center font-semibold">Quick assessment</th>
-                  </tr>
-                </thead>
-                <tbody>
+            {/* Lifecycle diagram */}
+            <div className="mb-16">
+              <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">Where audits fit</p>
+              <h2 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-2xl font-bold text-slate-900 mb-6">
+                RDS audits are most critical at lifecycle transitions
+              </h2>
+              <div className="bg-slate-50 rounded-2xl border border-slate-200 p-6 overflow-x-auto">
+                <svg width="100%" viewBox="0 0 640 200" role="img">
+                  <title>Asset lifecycle with audit checkpoints</title>
+                  <desc>Five lifecycle phases with audit checkpoint markers at key transitions</desc>
+                  <defs>
+                    <marker id="marrA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                      <path d="M2 1L8 5L2 9" fill="none" stroke="#94a3b8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </marker>
+                  </defs>
                   {[
-                    { label: 'IEC 81346 coverage', audit: 'All 10 focus areas', quick: 'Targeted areas' },
-                    { label: 'Depth of review', audit: 'Comprehensive', quick: 'Gap-focused' },
-                    { label: 'Formal audit report', audit: '✓', quick: 'Summary findings' },
-                    { label: 'Maturity assessment', audit: '✓', quick: '—' },
-                    { label: 'Prioritised recommendations', audit: '✓', quick: 'Key priorities' },
-                    { label: 'Client response section', audit: '✓', quick: '—' },
-                    { label: 'Typical use', audit: 'Formal compliance verification, project handover, governance assurance', quick: 'Roadmap planning, initial RDS health check' },
-                  ].map((row, i) => (
-                    <tr key={i} className="border-t border-slate-100">
-                      <td className="px-5 py-3 font-medium text-slate-800">{row.label}</td>
-                      <td className="px-5 py-3 text-center text-sky-700 bg-sky-50/50 text-xs">{row.audit}</td>
-                      <td className="px-5 py-3 text-center text-slate-500 text-xs">{row.quick}</td>
-                    </tr>
+                    { label: 'Design', x: 20 },
+                    { label: 'Procurement', x: 132 },
+                    { label: 'Construction', x: 244 },
+                    { label: 'Commission', x: 356 },
+                  ].map((p) => (
+                    <g key={p.label}>
+                      <rect x={p.x} y={20} width={100} height={46} rx={6} fill="#f8fafc" stroke="#cbd5e1" strokeWidth={0.5}/>
+                      <text x={p.x + 50} y={43} textAnchor="middle" dominantBaseline="central" fontSize={12} fontWeight={500} fill="#334155">{p.label}</text>
+                      <line x1={p.x + 101} y1={43} x2={p.x + 130} y2={43} stroke="#94a3b8" strokeWidth={1} markerEnd="url(#marrA)"/>
+                    </g>
                   ))}
-                </tbody>
-              </table>
+                  <rect x={468} y={20} width={152} height={46} rx={6} fill="#f8fafc" stroke="#cbd5e1" strokeWidth={0.5}/>
+                  <text x={544} y={43} textAnchor="middle" dominantBaseline="central" fontSize={12} fontWeight={500} fill="#334155">Operations</text>
+                  {/* Audit checkpoint markers */}
+                  {[356, 468].map((x) => (
+                    <g key={x}>
+                      <line x1={x} y1={10} x2={x} y2={76} stroke="#f59e0b" strokeWidth={1.5} strokeDasharray="4 2"/>
+                      <circle cx={x} cy={8} r={5} fill="#f59e0b"/>
+                      <text x={x} y={8} textAnchor="middle" dominantBaseline="central" fontSize={9} fontWeight={700} fill="#fff">A</text>
+                    </g>
+                  ))}
+                  <rect x={20} y={100} width={600} height={36} rx={6} fill="#e0f2fe" stroke="#7dd3fc" strokeWidth={0.5}/>
+                  <text x={320} y={118} textAnchor="middle" dominantBaseline="central" fontSize={12} fontWeight={500} fill="#0c4a6e">Reference Designation System (IEC 81346)</text>
+                  <rect x={20} y={146} width={600} height={36} rx={6} fill="#dcfce7" stroke="#86efac" strokeWidth={0.5}/>
+                  <text x={320} y={164} textAnchor="middle" dominantBaseline="central" fontSize={12} fontWeight={500} fill="#14532d">RDS Audit Checkpoints: Pre-commissioning and Pre-handover</text>
+                </svg>
+              </div>
+              <p className="text-xs text-slate-400 mt-3 italic">
+                A markers indicate critical audit checkpoints before commissioning and before handover to operations.
+              </p>
             </div>
 
-            <p className="text-sm text-slate-500 text-center mb-8">
-              Many clients begin with a quick assessment to scope the gaps, then progress to a full IEC 81346 audit once priorities are clear.
-            </p>
+            {/* Ten-point methodology */}
+            <div className="mb-16">
+              <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">Our methodology</p>
+              <h2 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+                The SøDera ten-point audit
+              </h2>
+              <p className="text-lg text-slate-600 mb-10">
+                We employ a consistent, comprehensive methodology across ten defined focus areas. Every audit produces a formal findings report with graded findings: Major Non-Conformities, Minor Non-Conformities, and Observations, each with a prioritised remediation roadmap.
+              </p>
+              <div className="grid md:grid-cols-2 gap-5">
+                {[
+                  { n: '01', title: 'Conformance to IEC 81346', desc: 'Technical syntactical and structural review of all designations against the standard. Covers aspect usage, prefix correctness, hierarchy depth, and cross-system consistency.' },
+                  { n: '02', title: 'Organisational Consistency', desc: 'Verification that designation practices are uniform across all teams, disciplines, and contractor boundaries. Inconsistency between departments is one of the most common audit findings.' },
+                  { n: '03', title: 'Completeness of Coverage', desc: 'Ensuring all relevant assets across the facility carry valid, complete designations. Gaps in coverage create operational blind spots that surface during maintenance and upgrades.' },
+                  { n: '04', title: 'Governance and Ownership', desc: 'Reviewing rules, processes, and accountabilities for system maintenance. A well-governed RDS has a named owner, documented procedures, and a change management workflow.' },
+                  { n: '05', title: 'Tool and System Implementation', desc: 'Assessing how well the RDS is embedded in engineering tools, CMMS, asset registers, and document management systems. The tag must be the linking key across all platforms.' },
+                  { n: '06', title: 'Change Management', desc: 'Evaluating the controls in place for system updates, modifications, and additions. Without formal change management, a compliant system will drift back into non-conformance within months.' },
+                  { n: '07', title: 'Lifecycle Traceability', desc: 'Verifying the Digital Thread from design intent through procurement, construction, commissioning, and operations. Data loss at lifecycle transitions is among the costliest problems in asset management.' },
+                  { n: '08', title: 'Staff Competency', desc: 'Assessing the knowledge levels of personnel who create, maintain, and use the RDS. Technical compliance is impossible to sustain without the right competency in the right roles.' },
+                  { n: '09', title: 'Documentation Quality', desc: 'Reviewing the clarity, completeness, and accessibility of internal RDS guidelines, naming conventions, and master lists. Poor documentation is the leading cause of designation inconsistency.' },
+                  { n: '10', title: 'Fitness for Purpose', desc: 'Overall evaluation of practical operational value. Does the RDS actually help maintenance teams, engineers, and asset managers do their work? Compliance without usability is not enough.' },
+                ].map((item) => (
+                  <div key={item.n} className="flex gap-5 p-6 rounded-xl border border-slate-200 hover:border-sky-200 hover:shadow-sm transition-all">
+                    <span className="text-3xl font-bold text-slate-100 flex-shrink-0 w-10 leading-none" style={{ fontFamily: 'Georgia, serif' }}>{item.n}</span>
+                    <div>
+                      <h3 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>
+                      <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-            {/* Training teaser */}
-            <div className="bg-white border border-slate-200 rounded-xl p-5 flex items-center justify-between gap-4 flex-wrap">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <BookOpen className="text-slate-500" size={18} />
+            {/* ── PHOTO PLACEHOLDER 2 ── */}
+            <div className="mb-16 rounded-2xl bg-slate-100 border-2 border-dashed border-slate-300 flex items-center justify-center h-64">
+              <div className="text-center">
+                <p className="text-slate-400 text-sm font-semibold">Photo or graph placeholder</p>
+                <p className="text-slate-400 text-xs mt-1">Suggested: Sample audit finding matrix or severity breakdown chart</p>
+              </div>
+            </div>
+
+            <hr className="border-t border-slate-200 mb-16" />
+
+            {/* Case study */}
+            <div className="mb-16">
+              <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">A pattern we see repeatedly</p>
+              <h2 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-3xl sm:text-4xl font-bold text-slate-900 mb-10">
+                When the EPC says compliant but the data says otherwise
+              </h2>
+              <div className="space-y-8">
+                <div className="border-l-4 border-amber-400 pl-6">
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Situation</h3>
+                  <p className="text-slate-700 leading-relaxed">
+                    Across major offshore wind handovers, we consistently see the same scenario: an EPC contractor asserts full IEC 81346 compliance, yet the operations team uncovers discrepancies between the SCADA system tags and the as-built drawings within weeks of taking over the asset. By the time these are found, the leverage to compel the contractor to fix them is rapidly diminishing.
+                  </p>
                 </div>
-                <div>
-                  <div className="font-semibold text-slate-900 text-sm mb-0.5">IEC 81346 RDS Training</div>
-                  <div className="text-xs text-slate-500">Structured training for RDS implementors and operators — two tracks grounded in IEC 81346 and practical application.</div>
+                <div className="border-l-4 border-sky-400 pl-6">
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">What Good Looks Like</h3>
+                  <p className="text-slate-700 leading-relaxed">
+                    An independent RDS audit conducted before final handover changes this dynamic entirely. The audit identifies Major Non-Conformities in product-aspect hierarchies, observations regarding the absence of a formal change management procedure, and gaps in the completeness of coverage across specific turbine types. The findings report is formal, graded, and specific enough to form part of the contractual punch list.
+                  </p>
+                </div>
+                <div className="border-l-4 border-emerald-400 pl-6">
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Outcome</h3>
+                  <p className="text-slate-700 leading-relaxed">
+                    When an independent audit is in place before handover, operators have the leverage to ensure designation errors are corrected before final payment is released. The resulting clean audit report gives the operations team the confidence to launch their maintenance management system with accurate data from day one, avoiding the costly remediation work that otherwise follows an unchecked handover.
+                  </p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 flex-shrink-0">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-100 text-slate-500 rounded-full text-xs border border-slate-200">
-                  Coming soon
-                </span>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium hover:bg-slate-200 transition-colors border border-slate-200"
-                >
-                  Enquire <ArrowRight size={12} />
+            </div>
+
+            <hr className="border-t border-slate-200 mb-16" />
+
+            {/* Expertise */}
+            <div className="mb-16">
+              <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">Why partner with us</p>
+              <h2 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
+                Expertise you can measure. Trust you can verify.
+              </h2>
+              <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+                SøDera's audit practice is grounded in years of hands-on RDS implementation across offshore wind, power plants, substations, and industrial infrastructure. We do not audit against the standard from a desk. We have applied IEC 81346 in the field and understand exactly where real systems deviate from the intent of the standard and why.
+              </p>
+              <p className="text-slate-600 mb-8 leading-relaxed">
+                Our independence is the foundation of every audit we deliver. We have no commercial interest in the outcome of the findings. Our only obligation is to give you an accurate, actionable picture of where your system stands.
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-8 border-t border-b border-slate-100 mb-10">
+                {[
+                  { value: '10', label: 'Audit focus areas' },
+                  { value: 'IEC 81346', label: 'Core standard expertise' },
+                  { value: 'Independent', label: 'Third-party objectivity' },
+                  { value: 'Actionable', label: 'Prioritised roadmap' },
+                ].map((s) => (
+                  <div key={s.label}>
+                    <p style={{ fontFamily: 'Georgia, serif' }} className="text-2xl font-bold text-sky-600 mb-1">{s.value}</p>
+                    <p className="text-xs text-slate-500">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="grid md:grid-cols-2 gap-5">
+                {[
+                  { icon: ClipboardCheck, title: 'Pre-handover assurance', desc: 'Operators receiving assets from EPC contractors need independent verification before final payment. Our audit gives you the evidence base to hold contractors accountable for designation quality.' },
+                  { icon: Users, title: 'Operational readiness', desc: 'Maintenance teams cannot operate effectively from a designation system they cannot trust. An audit before system launch eliminates the data quality issues that otherwise surface during the first maintenance cycle.' },
+                  { icon: Settings, title: 'System upgrade preparation', desc: 'Before migrating to a new CMMS or asset management platform, an RDS audit ensures the underlying data is clean enough to migrate. Poor data imported into a new system is still poor data.' },
+                  { icon: GitMerge, title: 'Periodic compliance verification', desc: 'Designation systems degrade over time without active governance. Periodic audits identify Standard Drift before it becomes a costly remediation project, and reinforce the governance habits that prevent it recurring.' },
+                ].map((item) => (
+                  <div key={item.title} className="flex gap-4 p-5 rounded-xl border border-slate-200 hover:border-sky-200 transition-all">
+                    <div className="w-10 h-10 bg-sky-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <item.icon size={18} className="text-sky-600" />
+                    </div>
+                    <div>
+                      <h4 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="font-bold text-slate-900 mb-1">{item.title}</h4>
+                      <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <hr className="border-t border-slate-200 mb-16" />
+
+            {/* Related insights */}
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">From our team</p>
+              <h2 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-2xl font-bold text-slate-900 mb-8">Related insights</h2>
+              <div className="grid sm:grid-cols-3 gap-5">
+                {[
+                  { id: 'rds-ps-explained-plant-asset-tagging', title: 'RDS-PS Explained: How One Tag Connects Your Entire Plant', category: 'RDS', readTime: '8 min read' },
+                  { id: 'rdspp-vs-rdsps', title: 'RDS-PP vs RDS-PS: Understanding Standardisation, Flexibility, and the Choices Asset Owners Must Make', category: 'RDS', readTime: '5 min read' },
+                  { id: 'information-management-offshore-wind-rds-cost', title: 'Information Management in Offshore Wind: Why RDS and Structured Data Save €20,000 Per Incident', category: 'RDS', readTime: '11 min read' },
+                ].map((a) => (
+                  <Link key={a.id} to="/blog/$articleId" params={{ articleId: a.id }} className="block p-5 rounded-xl border border-slate-200 hover:border-sky-300 hover:shadow-sm transition-all group">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-sky-600">{a.category}</span>
+                    <h3 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-sm font-bold text-slate-900 mt-2 mb-2 leading-snug group-hover:text-sky-700 transition-colors">{a.title}</h3>
+                    <span className="text-xs text-slate-400">{a.readTime}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+          </div>{/* end main content */}
+
+          {/* ── Sticky Sidebar ── */}
+          <aside className="hidden xl:block w-64 flex-shrink-0">
+            <div className="sticky top-24 space-y-5">
+
+              <div className="bg-sky-50 border border-sky-200 rounded-2xl p-5">
+                <h3 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="font-bold text-slate-900 mb-2">Request an RDS Audit</h3>
+                <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                  Independent review across ten structured focus areas. Graded findings report with a prioritised remediation roadmap.
+                </p>
+                <Link to="/book-assessment" className="block w-full px-4 py-2.5 bg-sky-500 text-white text-sm font-semibold rounded-xl hover:bg-sky-400 transition-colors text-center">
+                  Get in Touch
                 </Link>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* What You Receive */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
-              What an RDS audit report includes
-            </h2>
-            <p className="text-lg text-slate-600">
-              A full IEC 81346 audit produces a structured, professional report you can act on immediately — covering findings, maturity, and a clear path forward for your reference designation system.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center">
-                  <CheckCircle className="text-sky-600" size={24} />
+              <div className="bg-white border border-slate-200 rounded-2xl p-5">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Related Services</h3>
+                <div className="space-y-1">
+                  {sidebarLinks.map((item) => (
+                    <Link key={item.label} to={item.href as any} className="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-50 group transition-colors text-sm text-slate-700 hover:text-sky-600">
+                      <ArrowRight size={12} className="text-slate-300 group-hover:text-sky-500 flex-shrink-0 transition-colors" />
+                      {item.label}
+                    </Link>
+                  ))}
                 </div>
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Executive Summary</h3>
-                <p className="text-slate-600">
-                  Overall RDS compliance findings, key strengths, and significant gaps — written for both technical and non-technical stakeholders.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center">
-                  <CheckCircle className="text-sky-600" size={24} />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Detailed Findings Across All 10 Areas</h3>
-                <p className="text-slate-600">
-                  Each finding classified as Major NC, Minor NC, Observation, or Positive — with supporting evidence and clear audit trails.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center">
-                  <CheckCircle className="text-sky-600" size={24} />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">RDS Maturity & Value Assessment</h3>
-                <p className="text-slate-600">
-                  Where your reference designation system sits on the maturity scale and how well it is delivering practical value to your asset management and engineering teams.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center">
-                  <CheckCircle className="text-sky-600" size={24} />
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Prioritised Recommendations</h3>
-                <p className="text-slate-600">
-                  Actionable steps ranked by priority — giving you a clear improvement roadmap for your RDS governance, TAG numbering, and designation compliance.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-20 relative overflow-hidden" style={{
-        backgroundImage: 'url(https://i.imgur.com/BrTo5LL.jpeg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}>
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-            Ready to review your reference designation system?
-          </h2>
-          <p className="text-xl text-sky-100 mb-8">
-            Whether you want a rapid IEC 81346 health check or a full third-party audit, we are ready to discuss scope and next steps.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-sky-600 rounded-lg font-bold hover:bg-sky-50 transition-all hover:scale-105 shadow-xl"
-            >
-              Get in Touch <ArrowRight size={20} />
-            </Link>
-            <Link
-              to="/book-assessment"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-sky-500/20 text-white border border-white/30 rounded-lg font-semibold hover:bg-sky-500/30 transition-all hover:scale-105"
-            >
-              Book a Quick Assessment
-            </Link>
-          </div>
-        </div>
-      </section>
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
+                <h3 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="font-bold text-slate-900 mb-2">Train your team on RDS</h3>
+                <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                  Ensure your team understands IEC 81346 before or after an audit. On-site or remote.
+                </p>
+                <Link to={'/service-training' as any} className="block w-full px-4 py-2.5 bg-amber-500 text-white text-sm font-semibold rounded-xl hover:bg-amber-400 transition-colors text-center">
+                  Explore Training
+                </Link>
+              </div>
 
+              <div className="bg-white border border-slate-200 rounded-2xl p-5">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Audit finding grades</h3>
+                <div className="space-y-3">
+                  {[
+                    { grade: 'Major NC', color: 'bg-red-100 text-red-700', desc: 'Requires correction before handover or system launch' },
+                    { grade: 'Minor NC', color: 'bg-amber-100 text-amber-700', desc: 'Should be corrected within an agreed timeframe' },
+                    { grade: 'Observation', color: 'bg-sky-100 text-sky-700', desc: 'Recommended improvement to reduce future risk' },
+                  ].map((item) => (
+                    <div key={item.grade}>
+                      <span className={`inline-block px-2 py-0.5 rounded text-xs font-bold mb-1 ${item.color}`}>{item.grade}</span>
+                      <p className="text-xs text-slate-500 leading-snug">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </aside>
+
+        </div>
+      </div>
     </div>
   )
 }
