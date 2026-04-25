@@ -430,6 +430,17 @@ function RootLayout() {
                   aria-label="SøDera on LinkedIn">
                   <Linkedin size={18} />
                 </a>
+                {/* Certification badges */}
+                <div className="mt-6 pt-6 border-t border-slate-800">
+                  <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Standards alignment</p>
+                  <div className="flex flex-wrap gap-2">
+                    {['IEC 81346', 'ISO 19650', 'ISO 9001', 'ISO 55001'].map((std) => (
+                      <span key={std} className="px-2.5 py-1 bg-slate-800 border border-slate-700 text-slate-300 text-xs font-semibold rounded-lg">
+                        {std}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
 
               <div className="grid grid-cols-2 gap-8">
