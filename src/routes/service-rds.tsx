@@ -8,6 +8,7 @@ import {
   Layers,
   GitMerge,
   Database,
+  ArrowRight,
 } from 'lucide-react'
 
 export const Route = createFileRoute('/service-rds')({
@@ -139,6 +140,13 @@ function RDSPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Main content + Sidebar ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid lg:grid-cols-[1fr_300px] gap-12 items-start">
+
+          {/* Left column */}
+          <div className="min-w-0">
 
       {/* ── What is RDS ── */}
       <section className="py-20 bg-white">
@@ -355,46 +363,48 @@ function RDSPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">
-              In practice
+              A pattern we see repeatedly
             </p>
             <h2
               style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
               className="text-3xl sm:text-4xl font-bold text-slate-900 mb-10"
             >
-              Harmonising a multi-vendor power substation
+              When three contractors speak three different languages
             </h2>
 
             <div className="space-y-8">
               <div className="border-l-4 border-amber-400 pl-6">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Challenge</h3>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Situation</h3>
                 <p className="text-slate-700 leading-relaxed">
-                  A regional power utility faced significant maintenance delays at a newly
-                  commissioned substation. Three different EPC contractors had used their own
-                  internal tagging systems during construction, resulting in over 15 percent of
-                  the equipment carrying conflicting identifiers across the SCADA system, the asset
-                  register, and the physical labels on site.
+                  In multi-contractor energy projects, we consistently see the same problem emerge
+                  at commissioning. Each EPC contractor has used their own internal tagging
+                  convention during design and construction. By the time the facility is handed
+                  over, a significant proportion of equipment carries conflicting identifiers
+                  across the SCADA system, the asset register, and the physical labels on site.
+                  Maintenance cannot begin with confidence until the ambiguity is resolved.
                 </p>
               </div>
 
               <div className="border-l-4 border-sky-400 pl-6">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Solution</h3>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">What Good Looks Like</h3>
                 <p className="text-slate-700 leading-relaxed">
-                  SøDera was brought in to harmonise the facility under a unified IEC 81346 RDS.
-                  We mapped all legacy tags to a new multi-aspect hierarchy covering functional,
-                  product, and location designations. The digital asset register and physical
-                  labels were updated systematically, and the new framework was embedded into
-                  the operator's CMMS to ensure ongoing compliance.
+                  The resolution requires mapping all legacy tags to a unified IEC 81346 hierarchy
+                  covering functional, product, and location designations. Every asset gets one
+                  authoritative identifier that is understood across engineering, operations, and
+                  maintenance. The digital asset register and physical labels are updated
+                  systematically, and the new framework is embedded into the operator's CMMS to
+                  ensure long-term compliance.
                 </p>
               </div>
 
               <div className="border-l-4 border-emerald-400 pl-6">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Result</h3>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Outcome</h3>
                 <p className="text-slate-700 leading-relaxed">
-                  The utility achieved a 100 percent unique identification rate across the entire
-                  facility. Maintenance search and verify time was reduced by 40 percent. The
-                  facility's digital twin became fully operational for the first time, enabling
-                  real-time data visualisation and laying the groundwork for predictive maintenance
-                  across the operator's wider portfolio.
+                  When this work is done properly, operators achieve complete unique identification
+                  across the facility. Maintenance search and verify time drops by around 40
+                  percent. Perhaps most significantly, the facility's digital twin becomes fully
+                  operational for the first time, enabling real-time data visualisation and laying
+                  the groundwork for predictive maintenance across the wider portfolio.
                 </p>
               </div>
             </div>
@@ -575,6 +585,94 @@ function RDSPage() {
           </div>
         </div>
       </section>
+
+          </div>{/* end left column */}
+
+          {/* ── Right: Sticky Sidebar ── */}
+          <aside className="hidden lg:block">
+            <div className="sticky top-24 space-y-5">
+
+              <div className="bg-sky-50 border border-sky-200 rounded-2xl p-6">
+                <h3
+                  style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                  className="font-bold text-slate-900 mb-2 text-base"
+                >
+                  Get your RDS reviewed
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                  An RDS Assessment identifies exactly where your designations are
+                  non-compliant or creating operational risk. Delivered in approximately two weeks.
+                </p>
+                <Link
+                  to="/book-assessment"
+                  className="block w-full px-4 py-3 bg-sky-500 text-white text-sm font-semibold rounded-xl hover:bg-sky-400 transition-colors text-center"
+                >
+                  Book an RDS Assessment
+                </Link>
+              </div>
+
+              <div className="bg-white border border-slate-200 rounded-2xl p-6">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">
+                  Related Services
+                </h3>
+                <div className="space-y-2">
+                  {[
+                    { label: 'Document Management', href: '/service-document-management' },
+                    { label: 'RDS Audit', href: '/service-rds-audit' },
+                    { label: 'Building Information Modelling', href: '/service-bim' },
+                    { label: 'Project Management', href: '/service-project-management' },
+                    { label: 'Training & SME', href: '/service-training' },
+                  ].map((item) => (
+                    <Link
+                      key={item.label}
+                      to={item.href as any}
+                      className="flex items-center gap-2 p-2.5 rounded-lg hover:bg-slate-50 group transition-colors text-sm text-slate-700 hover:text-sky-600"
+                    >
+                      <ArrowRight size={13} className="text-slate-300 group-hover:text-sky-500 flex-shrink-0 transition-colors" />
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
+                <h3
+                  style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                  className="font-bold text-slate-900 mb-2 text-base"
+                >
+                  Train your team on RDS
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                  Hands-on IEC 81346 training for your engineering team. On-site or remote,
+                  half-day to multi-day.
+                </p>
+                <Link
+                  to={'/service-training' as any}
+                  className="block w-full px-4 py-3 bg-amber-500 text-white text-sm font-semibold rounded-xl hover:bg-amber-400 transition-colors text-center"
+                >
+                  Explore Training
+                </Link>
+              </div>
+
+              <div className="bg-white border border-slate-200 rounded-2xl p-6">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">
+                  Standards we work with
+                </h3>
+                <div className="space-y-2">
+                  {['IEC 81346', 'RDS-PP', 'RDS-PS', 'RDS-CW', 'ISO 81346'].map((std) => (
+                    <div key={std} className="flex items-center gap-2 text-sm text-slate-700">
+                      <CheckCircle size={13} className="text-sky-500 flex-shrink-0" />
+                      {std}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </aside>
+
+        </div>
+      </div>
 
     </div>
   )
