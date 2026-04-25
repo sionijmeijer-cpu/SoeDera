@@ -10,6 +10,7 @@ import {
   Shield,
   Monitor,
   Newspaper,
+  ArrowRight,
 } from 'lucide-react'
 
 export const Route = createFileRoute('/service-document-management')({
@@ -141,6 +142,13 @@ function DocumentManagementPage() {
         </div>
       </section>
 
+      {/* ── Main content + Sidebar ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid lg:grid-cols-[1fr_300px] gap-12 items-start">
+
+          {/* ── Left: Main content ── */}
+          <div className="min-w-0">
+
       {/* ── What is Industrial Document Management ── */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -251,6 +259,62 @@ function DocumentManagementPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr className="border-t border-slate-200" /></div>
 
+      {/* ── Lifecycle Diagram ── */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mb-8">
+            <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">
+              Where we fit
+            </p>
+            <h2
+              style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+              className="text-2xl font-bold text-slate-900"
+            >
+              Document management spans the entire asset lifecycle
+            </h2>
+          </div>
+          <div className="bg-white rounded-2xl border border-slate-200 p-6 overflow-x-auto">
+            <svg width="100%" viewBox="0 0 680 280" role="img">
+              <title>Asset lifecycle diagram</title>
+              <desc>Five lifecycle phases from Design through Operations with SøDera services spanning all phases</desc>
+              <defs>
+                <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </marker>
+              </defs>
+              {/* Phase boxes */}
+              {[
+                { label: 'Design', sub: 'Engineering', x: 40 },
+                { label: 'Procurement', sub: 'Specification', x: 160 },
+                { label: 'Construction', sub: 'Installation', x: 280 },
+                { label: 'Commission', sub: 'Handover', x: 400 },
+              ].map((p) => (
+                <g key={p.label}>
+                  <rect x={p.x} y={40} width={100} height={56} rx={8} fill="none" stroke="#cbd5e1" strokeWidth={0.5}/>
+                  <rect x={p.x} y={40} width={100} height={56} rx={8} fill="#f8fafc"/>
+                  <text x={p.x + 50} y={62} textAnchor="middle" dominantBaseline="central" fontSize={13} fontWeight={500} fill="#1e293b">{p.label}</text>
+                  <text x={p.x + 50} y={82} textAnchor="middle" dominantBaseline="central" fontSize={11} fill="#94a3b8">{p.sub}</text>
+                  <line x1={p.x + 101} y1={68} x2={p.x + 118} y2={68} stroke="#94a3b8" strokeWidth={1} markerEnd="url(#arr)"/>
+                </g>
+              ))}
+              <rect x={520} y={40} width={120} height={56} rx={8} fill="none" stroke="#cbd5e1" strokeWidth={0.5}/>
+              <rect x={520} y={40} width={120} height={56} rx={8} fill="#f8fafc"/>
+              <text x={580} y={62} textAnchor="middle" dominantBaseline="central" fontSize={13} fontWeight={500} fill="#1e293b">Operations</text>
+              <text x={580} y={82} textAnchor="middle" dominantBaseline="central" fontSize={11} fill="#94a3b8">Maintenance</text>
+              {/* Service bars */}
+              <rect x={40} y={130} width={600} height={40} rx={8} fill="#dbeafe" stroke="#93c5fd" strokeWidth={0.5}/>
+              <text x={340} y={150} textAnchor="middle" dominantBaseline="central" fontSize={13} fontWeight={500} fill="#1e40af">Document &amp; Information Management (ISO 19650)</text>
+              <rect x={40} y={182} width={600} height={40} rx={8} fill="#e0f2fe" stroke="#7dd3fc" strokeWidth={0.5}/>
+              <text x={340} y={202} textAnchor="middle" dominantBaseline="central" fontSize={13} fontWeight={500} fill="#0c4a6e">Reference Designation System (IEC 81346)</text>
+              <rect x={40} y={234} width={600} height={36} rx={8} fill="#fef3c7" stroke="#fcd34d" strokeWidth={0.5}/>
+              <text x={340} y={252} textAnchor="middle" dominantBaseline="central" fontSize={13} fontWeight={500} fill="#78350f">Training &amp; SME Support</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr className="border-t border-slate-200" /></div>
+
       {/* ── Our Methodology ── */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -344,46 +408,48 @@ function DocumentManagementPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-3">
-              In practice
+              A pattern we see repeatedly
             </p>
             <h2
               style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
               className="text-3xl sm:text-4xl font-bold text-slate-900 mb-10"
             >
-              Restoring order to a North Sea wind asset
+              When 40,000 drawings become a liability
             </h2>
 
             <div className="space-y-8">
               <div className="border-l-4 border-amber-400 pl-6">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Challenge</h3>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Situation</h3>
                 <p className="text-slate-700 leading-relaxed">
-                  A major offshore wind operator struggled with a legacy archive where over 40,000
-                  drawings were scattered across three different systems. Maintenance teams were
-                  frequently using superseded versions of electrical diagrams, leading to significant
-                  rework during a planned outage and raising serious safety concerns during
-                  live-line operations.
+                  Across the offshore wind sector, we consistently encounter operators managing
+                  legacy archives where tens of thousands of drawings are scattered across multiple
+                  systems. Maintenance teams frequently work with superseded versions of electrical
+                  diagrams because no single source of truth exists. During planned outages, this
+                  leads to significant rework and raises serious safety concerns during live-line
+                  operations.
                 </p>
               </div>
 
               <div className="border-l-4 border-sky-400 pl-6">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Solution</h3>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">What Good Looks Like</h3>
                 <p className="text-slate-700 leading-relaxed">
-                  SøDera performed a comprehensive documentation audit and implemented a new
-                  metadata-driven structure aligned with IEC 81346. Every drawing was linked to its
-                  corresponding turbine component in a centralised Common Data Environment. Version
-                  control protocols were established and contractor submission workflows were
-                  restructured to prevent superseded documents from entering the active set.
+                  The resolution in every case follows the same pattern: a comprehensive
+                  documentation audit, a new metadata-driven structure aligned with IEC 81346,
+                  and every drawing linked to its corresponding asset in a centralised Common Data
+                  Environment. Version control protocols are established and contractor submission
+                  workflows are restructured to prevent superseded documents from re-entering the
+                  active set.
                 </p>
               </div>
 
               <div className="border-l-4 border-emerald-400 pl-6">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Result</h3>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">The Outcome</h3>
                 <p className="text-slate-700 leading-relaxed">
-                  Search times for critical drawings were reduced from 15 minutes to under 45
-                  seconds. The operator achieved 100 percent version accuracy during the subsequent
-                  maintenance cycle, eliminating rework costs and significantly enhancing site
-                  safety. The structured handover package delivered at the end of the engagement
-                  became the template for all subsequent projects within the operator's portfolio.
+                  When this work is done properly, search times for critical drawings drop from
+                  15 minutes to under 45 seconds. Operators achieve near-complete version accuracy
+                  during subsequent maintenance cycles, eliminating rework costs and materially
+                  enhancing site safety. The structured approach then becomes the template for all
+                  subsequent projects within the operator's portfolio.
                 </p>
               </div>
             </div>
@@ -567,6 +633,98 @@ function DocumentManagementPage() {
           </div>
         </div>
       </section>
+
+          </div>{/* end left column */}
+
+          {/* ── Right: Sticky Sidebar ── */}
+          <aside className="hidden lg:block">
+            <div className="sticky top-24 space-y-5">
+
+              {/* Book Assessment CTA */}
+              <div className="bg-sky-50 border border-sky-200 rounded-2xl p-6">
+                <h3
+                  style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                  className="font-bold text-slate-900 mb-2 text-base"
+                >
+                  Not sure where to start?
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                  A Document Assessment gives you a clear picture of where you stand and exactly
+                  what to do next. Delivered in approximately two weeks.
+                </p>
+                <Link
+                  to="/book-assessment"
+                  className="block w-full px-4 py-3 bg-sky-500 text-white text-sm font-semibold rounded-xl hover:bg-sky-400 transition-colors text-center"
+                >
+                  Book a Document Assessment
+                </Link>
+              </div>
+
+              {/* Related services */}
+              <div className="bg-white border border-slate-200 rounded-2xl p-6">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">
+                  Related Services
+                </h3>
+                <div className="space-y-2">
+                  {[
+                    { label: 'Reference Designation (RDS)', href: '/service-rds' },
+                    { label: 'RDS Audit', href: '/service-rds-audit' },
+                    { label: 'Building Information Modelling', href: '/service-bim' },
+                    { label: 'Project Management', href: '/service-project-management' },
+                    { label: 'Training & SME', href: '/service-training' },
+                  ].map((item) => (
+                    <Link
+                      key={item.label}
+                      to={item.href as any}
+                      className="flex items-center gap-2 p-2.5 rounded-lg hover:bg-slate-50 group transition-colors text-sm text-slate-700 hover:text-sky-600"
+                    >
+                      <ArrowRight size={13} className="text-slate-300 group-hover:text-sky-500 flex-shrink-0 transition-colors" />
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Training signpost */}
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
+                <h3
+                  style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                  className="font-bold text-slate-900 mb-2 text-base"
+                >
+                  Train your team
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                  We deliver practical document management training on ISO 19650 for engineers
+                  and project teams. On-site or remote.
+                </p>
+                <Link
+                  to={'/service-training' as any}
+                  className="block w-full px-4 py-3 bg-amber-500 text-white text-sm font-semibold rounded-xl hover:bg-amber-400 transition-colors text-center"
+                >
+                  Explore Training
+                </Link>
+              </div>
+
+              {/* Standards */}
+              <div className="bg-white border border-slate-200 rounded-2xl p-6">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">
+                  Standards we work with
+                </h3>
+                <div className="space-y-2">
+                  {['ISO 19650', 'ISO 9001', 'IEC 81346', 'ISO 55001'].map((std) => (
+                    <div key={std} className="flex items-center gap-2 text-sm text-slate-700">
+                      <CheckCircle size={13} className="text-sky-500 flex-shrink-0" />
+                      {std}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </aside>
+
+        </div>
+      </div>
 
     </div>
   )
