@@ -60,10 +60,11 @@ function RootLayout() {
 
   if (!mounted) return null
 
-  // Always transparent until scrolled — on all pages
-  const navBg = isScrolled
-    ? 'bg-slate-900/95 backdrop-blur-md shadow-lg'
-    : 'bg-transparent'
+  // Transparent only on homepage hero, dark on all other pages
+  const isHomePage = location.pathname === '/'
+  const navBg = isScrolled || !isHomePage
+    ? 'bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-slate-800'
+    : 'bg-transparent border-b border-white/10'
 
   const linkColor = 'text-white/90 hover:text-white'
   const activeLinkColor = 'text-white font-semibold'
