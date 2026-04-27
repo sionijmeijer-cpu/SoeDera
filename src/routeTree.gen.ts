@@ -25,6 +25,7 @@ import { Route as ServiceProjectManagementImport } from './routes/service-projec
 import { Route as ServiceDocumentManagementImport } from './routes/service-document-management'
 import { Route as ServiceProductDevelopmentImport } from './routes/service-product-development'
 import { Route as ServiceTrainingImport } from './routes/service-training'
+import { Route as ServiceRdsPsImport } from './routes/service-rds-ps'
 
 // Create/Update Routes
 
@@ -103,6 +104,12 @@ const ServiceDocumentManagementRoute = ServiceDocumentManagementImport.update({
 const ServiceProductDevelopmentRoute = ServiceProductDevelopmentImport.update({
   id: '/service-product-development',
   path: '/service-product-development',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ServiceRdsPsRoute = ServiceRdsPsImport.update({
+  id: '/service-rds-ps',
+  path: '/service-rds-ps',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -207,6 +214,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiceProductDevelopmentImport
       parentRoute: typeof rootRoute
     }
+    '/service-rds-ps': {
+      id: '/service-rds-ps'
+      path: '/service-rds-ps'
+      fullPath: '/service-rds-ps'
+      preLoaderRoute: typeof ServiceRdsPsImport
+      parentRoute: typeof rootRoute
+    }
     '/service-training': {
       id: '/service-training'
       path: '/service-training'
@@ -233,6 +247,7 @@ export interface FileRoutesByFullPath {
   '/service-project-management': typeof ServiceProjectManagementRoute
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
+  '/service-rds-ps': typeof ServiceRdsPsRoute
   '/service-training': typeof ServiceTrainingRoute
 }
 
@@ -250,6 +265,8 @@ export interface FileRoutesByTo {
   '/service-project-management': typeof ServiceProjectManagementRoute
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
+  '/service-rds-ps': typeof ServiceRdsPsRoute
+  '/service-rds-ps': typeof ServiceRdsPsRoute
   '/service-training': typeof ServiceTrainingRoute
 }
 
@@ -268,6 +285,8 @@ export interface FileRoutesById {
   '/service-project-management': typeof ServiceProjectManagementRoute
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
+  '/service-rds-ps': typeof ServiceRdsPsRoute
+  '/service-rds-ps': typeof ServiceRdsPsRoute
   '/service-training': typeof ServiceTrainingRoute
 }
 
@@ -287,6 +306,8 @@ export interface FileRouteTypes {
     | '/service-project-management'
     | '/service-document-management'
     | '/service-product-development'
+    | '/service-rds-ps'
+    | '/service-rds-ps'
     | '/service-training'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -303,6 +324,7 @@ export interface FileRouteTypes {
     | '/service-project-management'
     | '/service-document-management'
     | '/service-product-development'
+    | '/service-rds-ps'
     | '/service-training'
   id:
     | '__root__'
@@ -319,6 +341,8 @@ export interface FileRouteTypes {
     | '/service-project-management'
     | '/service-document-management'
     | '/service-product-development'
+    | '/service-rds-ps'
+    | '/service-rds-ps'
     | '/service-training'
   fileRoutesById: FileRoutesById
 }
@@ -337,6 +361,7 @@ export interface RootRouteChildren {
   ServiceProjectManagementRoute: typeof ServiceProjectManagementRoute
   ServiceDocumentManagementRoute: typeof ServiceDocumentManagementRoute
   ServiceProductDevelopmentRoute: typeof ServiceProductDevelopmentRoute
+  ServiceRdsPsRoute: typeof ServiceRdsPsRoute
   ServiceTrainingRoute: typeof ServiceTrainingRoute
 }
 
@@ -354,6 +379,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServiceProjectManagementRoute: ServiceProjectManagementRoute,
   ServiceDocumentManagementRoute: ServiceDocumentManagementRoute,
   ServiceProductDevelopmentRoute: ServiceProductDevelopmentRoute,
+  ServiceRdsPsRoute: ServiceRdsPsRoute,
   ServiceTrainingRoute: ServiceTrainingRoute,
 }
 
