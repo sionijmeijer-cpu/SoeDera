@@ -26,6 +26,7 @@ import { Route as ServiceDocumentManagementImport } from './routes/service-docum
 import { Route as ServiceProductDevelopmentImport } from './routes/service-product-development'
 import { Route as ServiceTrainingImport } from './routes/service-training'
 import { Route as ServiceRdsPsImport } from './routes/service-rds-ps'
+import { Route as ServiceIec81346Import } from './routes/service-iec81346'
 
 // Create/Update Routes
 
@@ -104,6 +105,12 @@ const ServiceDocumentManagementRoute = ServiceDocumentManagementImport.update({
 const ServiceProductDevelopmentRoute = ServiceProductDevelopmentImport.update({
   id: '/service-product-development',
   path: '/service-product-development',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ServiceIec81346Route = ServiceIec81346Import.update({
+  id: '/service-iec81346',
+  path: '/service-iec81346',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -214,6 +221,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiceProductDevelopmentImport
       parentRoute: typeof rootRoute
     }
+    '/service-iec81346': {
+      id: '/service-iec81346'
+      path: '/service-iec81346'
+      fullPath: '/service-iec81346'
+      preLoaderRoute: typeof ServiceIec81346Import
+      parentRoute: typeof rootRoute
+    }
     '/service-rds-ps': {
       id: '/service-rds-ps'
       path: '/service-rds-ps'
@@ -247,6 +261,7 @@ export interface FileRoutesByFullPath {
   '/service-project-management': typeof ServiceProjectManagementRoute
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
+  '/service-iec81346': typeof ServiceIec81346Route
   '/service-rds-ps': typeof ServiceRdsPsRoute
   '/service-training': typeof ServiceTrainingRoute
 }
@@ -266,6 +281,7 @@ export interface FileRoutesByTo {
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
   '/service-rds-ps': typeof ServiceRdsPsRoute
+  '/service-iec81346': typeof ServiceIec81346Route
   '/service-rds-ps': typeof ServiceRdsPsRoute
   '/service-training': typeof ServiceTrainingRoute
 }
@@ -286,6 +302,7 @@ export interface FileRoutesById {
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
   '/service-rds-ps': typeof ServiceRdsPsRoute
+  '/service-iec81346': typeof ServiceIec81346Route
   '/service-rds-ps': typeof ServiceRdsPsRoute
   '/service-training': typeof ServiceTrainingRoute
 }
@@ -307,6 +324,7 @@ export interface FileRouteTypes {
     | '/service-document-management'
     | '/service-product-development'
     | '/service-rds-ps'
+    | '/service-iec81346'
     | '/service-rds-ps'
     | '/service-training'
   fileRoutesByTo: FileRoutesByTo
@@ -324,6 +342,7 @@ export interface FileRouteTypes {
     | '/service-project-management'
     | '/service-document-management'
     | '/service-product-development'
+    | '/service-iec81346'
     | '/service-rds-ps'
     | '/service-training'
   id:
@@ -342,6 +361,7 @@ export interface FileRouteTypes {
     | '/service-document-management'
     | '/service-product-development'
     | '/service-rds-ps'
+    | '/service-iec81346'
     | '/service-rds-ps'
     | '/service-training'
   fileRoutesById: FileRoutesById
@@ -361,6 +381,7 @@ export interface RootRouteChildren {
   ServiceProjectManagementRoute: typeof ServiceProjectManagementRoute
   ServiceDocumentManagementRoute: typeof ServiceDocumentManagementRoute
   ServiceProductDevelopmentRoute: typeof ServiceProductDevelopmentRoute
+  ServiceIec81346Route: typeof ServiceIec81346Route
   ServiceRdsPsRoute: typeof ServiceRdsPsRoute
   ServiceTrainingRoute: typeof ServiceTrainingRoute
 }
@@ -379,6 +400,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServiceProjectManagementRoute: ServiceProjectManagementRoute,
   ServiceDocumentManagementRoute: ServiceDocumentManagementRoute,
   ServiceProductDevelopmentRoute: ServiceProductDevelopmentRoute,
+  ServiceIec81346Route: ServiceIec81346Route,
   ServiceRdsPsRoute: ServiceRdsPsRoute,
   ServiceTrainingRoute: ServiceTrainingRoute,
 }
