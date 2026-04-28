@@ -513,6 +513,10 @@ function ArticlePage() {
                         th: ({ children }) => <th className="text-left text-xs font-semibold uppercase tracking-wider text-slate-700 px-4 py-3 border-b border-slate-200">{children}</th>,
                         td: ({ children }) => <td className="text-sm text-slate-700 px-4 py-3 border-b border-slate-200 align-top">{children}</td>,
                         tr: ({ children }) => <tr className="last:[&>td]:border-b-0">{children}</tr>,
+
+                        a: ({ href, children }) => (
+                          <a href={href} target="_blank" rel="noopener noreferrer" className="text-sky-600 underline underline-offset-2 hover:text-sky-800 transition-colors">{children}</a>
+                        ),
                       }}
                     >
                       {article.content}
