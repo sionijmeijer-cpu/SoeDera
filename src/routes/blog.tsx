@@ -10,6 +10,7 @@ export const Route = createFileRoute('/blog')({
 
 const categories = [
   { id: 'all', label: 'All Insights' },
+  { id: 'Industry Events', label: 'Industry Events' },
   { id: 'RDS', label: 'RDS' },
   { id: 'Document Management', label: 'Document Management' },
   { id: 'BIM', label: 'BIM' },
