@@ -27,6 +27,7 @@ import { Route as ServiceProductDevelopmentImport } from './routes/service-produ
 import { Route as ServiceTrainingImport } from './routes/service-training'
 import { Route as ServiceRdsPsImport } from './routes/service-rds-ps'
 import { Route as ServiceIec81346Import } from './routes/service-iec81346'
+import { Route as ServiceRdsTrainingImport } from './routes/service-rds-training'
 
 // Create/Update Routes
 
@@ -105,6 +106,12 @@ const ServiceDocumentManagementRoute = ServiceDocumentManagementImport.update({
 const ServiceProductDevelopmentRoute = ServiceProductDevelopmentImport.update({
   id: '/service-product-development',
   path: '/service-product-development',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ServiceRdsTrainingRoute = ServiceRdsTrainingImport.update({
+  id: '/service-rds-training',
+  path: '/service-rds-training',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -221,6 +228,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiceProductDevelopmentImport
       parentRoute: typeof rootRoute
     }
+    '/service-rds-training': {
+      id: '/service-rds-training'
+      path: '/service-rds-training'
+      fullPath: '/service-rds-training'
+      preLoaderRoute: typeof ServiceRdsTrainingImport
+      parentRoute: typeof rootRoute
+    }
     '/service-iec81346': {
       id: '/service-iec81346'
       path: '/service-iec81346'
@@ -261,6 +275,7 @@ export interface FileRoutesByFullPath {
   '/service-project-management': typeof ServiceProjectManagementRoute
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
+  '/service-rds-training': typeof ServiceRdsTrainingRoute
   '/service-iec81346': typeof ServiceIec81346Route
   '/service-rds-ps': typeof ServiceRdsPsRoute
   '/service-training': typeof ServiceTrainingRoute
@@ -281,6 +296,7 @@ export interface FileRoutesByTo {
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
   '/service-rds-ps': typeof ServiceRdsPsRoute
+  '/service-rds-training': typeof ServiceRdsTrainingRoute
   '/service-iec81346': typeof ServiceIec81346Route
   '/service-rds-ps': typeof ServiceRdsPsRoute
   '/service-training': typeof ServiceTrainingRoute
@@ -302,6 +318,7 @@ export interface FileRoutesById {
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
   '/service-rds-ps': typeof ServiceRdsPsRoute
+  '/service-rds-training': typeof ServiceRdsTrainingRoute
   '/service-iec81346': typeof ServiceIec81346Route
   '/service-rds-ps': typeof ServiceRdsPsRoute
   '/service-training': typeof ServiceTrainingRoute
@@ -324,6 +341,7 @@ export interface FileRouteTypes {
     | '/service-document-management'
     | '/service-product-development'
     | '/service-rds-ps'
+    | '/service-rds-training'
     | '/service-iec81346'
     | '/service-rds-ps'
     | '/service-training'
@@ -342,6 +360,7 @@ export interface FileRouteTypes {
     | '/service-project-management'
     | '/service-document-management'
     | '/service-product-development'
+    | '/service-rds-training'
     | '/service-iec81346'
     | '/service-rds-ps'
     | '/service-training'
@@ -361,6 +380,7 @@ export interface FileRouteTypes {
     | '/service-document-management'
     | '/service-product-development'
     | '/service-rds-ps'
+    | '/service-rds-training'
     | '/service-iec81346'
     | '/service-rds-ps'
     | '/service-training'
@@ -381,6 +401,7 @@ export interface RootRouteChildren {
   ServiceProjectManagementRoute: typeof ServiceProjectManagementRoute
   ServiceDocumentManagementRoute: typeof ServiceDocumentManagementRoute
   ServiceProductDevelopmentRoute: typeof ServiceProductDevelopmentRoute
+  ServiceRdsTrainingRoute: typeof ServiceRdsTrainingRoute
   ServiceIec81346Route: typeof ServiceIec81346Route
   ServiceRdsPsRoute: typeof ServiceRdsPsRoute
   ServiceTrainingRoute: typeof ServiceTrainingRoute
@@ -400,6 +421,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServiceProjectManagementRoute: ServiceProjectManagementRoute,
   ServiceDocumentManagementRoute: ServiceDocumentManagementRoute,
   ServiceProductDevelopmentRoute: ServiceProductDevelopmentRoute,
+  ServiceRdsTrainingRoute: ServiceRdsTrainingRoute,
   ServiceIec81346Route: ServiceIec81346Route,
   ServiceRdsPsRoute: ServiceRdsPsRoute,
   ServiceTrainingRoute: ServiceTrainingRoute,
