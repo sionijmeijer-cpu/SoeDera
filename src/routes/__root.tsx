@@ -116,9 +116,9 @@ function RootLayout() {
       bg: 'bg-amber-50',
     },
     {
-      label: 'Document Training',
+      label: 'Training',
       href: '/service-training',
-      desc: 'ISO 19650 and document management training.',
+      desc: 'RDS and document management training.',
       icon: BookOpen,
       color: 'text-amber-600',
       bg: 'bg-amber-50',
