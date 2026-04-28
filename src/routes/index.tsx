@@ -16,7 +16,7 @@ import {
 } from 'lucide-react'
 import { blogPosts } from '../data/blogPosts'
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute('/')({ 
   component: HomePage,
 })
 
