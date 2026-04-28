@@ -27,63 +27,45 @@ export const blogPosts: BlogPost[] = [
     color: 'from-sky-600 to-indigo-500',
     published: true,
     content: `
-Madrid, Spain. On 22 April 2026, Søren Christensen and I had the privilege of attending Wind Europe Annual at IFEMA Madrid. It was, by all accounts, the largest edition of the event to date, drawing over 16,000 participants and more than 620 exhibitors. The atmosphere, despite the recent headwinds faced by Europe's wind sector, was one of palpable energy and determined optimism. The headline theme, "from crisis to confidence," perfectly encapsulated the prevailing mood: an industry not dwelling on past challenges, but actively building its future.
-
-We arrived in Madrid with a clear objective: to understand the pulse of the offshore wind sector, identify emerging trends, and engage in the kind of unscripted conversations that truly reveal where the industry is heading. We left with a wealth of insights, particularly concerning the increasingly critical role of information management in scaling Europe's renewable energy ambitions.
+Søren and I spent 22 April at Wind Europe Annual in Madrid. One day, a lot of ground covered. We came home with full notebooks, a few business cards, and more than a few things to think about.
 
 ![right: ](/soeren-christensen-sylvia-awoudu-wind-europe-soedera.jpg)
 
-## The Exhibition Floor: Where Connections Forge Understanding
+Wind Europe is a big show. Over 16,000 people, more than 600 exhibitors, and an exhibition floor that takes a full day just to cover properly. The theme this year was "from crisis to confidence" and honestly, that matched the atmosphere. The industry has had a hard few years of delayed projects, supply chain pressure, and auction uncertainty. But walking the floor in Madrid did not feel like an industry in crisis. It felt like one getting on with things.
 
-While the official conference programme offered valuable perspectives, it was on the bustling exhibition floor that the most profound insights emerged. This is where products are seen in context, where genuine connections are made, and where the industry's collective energy is most keenly felt. This year was no exception.
+## The conversations that stayed with us
 
-## A Highlight: Our Conversation with Onyx Insight
+The best thing about an event like this is the conversations you did not plan. You stop at a stand because something catches your eye and forty minutes later you are still talking.
 
-One of the most impactful discussions we had was with Bill Slater, Director of Blade Products at [Onyx Insight](https://onyxinsight.com/). Bill founded ELEVEN-I, a blade monitoring specialist acquired by Onyx in September 2025, and now spearheads their blade products division as part of a comprehensive whole-turbine predictive analytics platform. What Onyx is achieving is truly remarkable. Their ecoBlade system, which monitors blade structural health from within using accelerometers, can detect damage weeks before it becomes visible through conventional inspection methods such as drones. In an industry where a single blade failure can incur millions in costs and lead to significant downtime, such early warning capabilities are transformative.
+That is what happened with [Onyx Insight](https://onyxinsight.com/). We ended up in a long conversation with Bill Slater, who leads their blade products. The technology they are building around blade health monitoring is genuinely impressive. But what we appreciated most was that Bill took time to talk to us about building a company at the early stage. That kind of candour from someone who has been through it is rare and we are grateful for it.
 
-Beyond the impressive technology, Bill offered invaluable advice on building a company like SøDera. As a founder who has navigated similar entrepreneurial journeys, his candid insights into the early stages of a business were precisely what we needed to hear. This level of generosity from a leader of his stature is rare and deeply appreciated.
+[Jera Nex BP](https://www.jeranex.com/jera-nex-bp/) was another good conversation. The scale at which they operate means the information management challenge is significant and growing. Portfolio growth does not simplify data. It compounds it. We see a lot of that pattern in the sector and it is squarely in what SøDera works on.
 
-## Scaling Challenges: Insights from Jera Nex BP and Ørsted
+The same came up with [Ørsted](https://orsted.com/). At their scale, keeping asset data structured and operationally useful across a global portfolio is a genuine daily challenge. The appetite for better information foundations is real.
 
-Our conversation with a representative from [Jera Nex BP](https://www.jeranex.com/jera-nex-bp/), a prominent offshore wind developer in Europe, underscored a consistent theme: as project portfolios expand, so too do the complexities of information management. The challenge of maintaining structured, consistent, and usable asset data across multiple projects and diverse geographies does not diminish with growth. It intensifies. This sentiment was echoed in discussions with [Ørsted](https://orsted.com/), the world's largest offshore wind developer. At their operational scale, the task of ensuring asset information remains structured, consistent, and operationally valuable across a global portfolio is immense. These interactions confirmed what we observe across the sector: the demand for structured, IEC 81346 compliant information management is directly proportional to the industry's growth.
+## Familiar territory and new discoveries
 
-## Complementary Perspectives: IRTH Solutions and Bioseco
+[IRTH Solutions](https://irthsolutions.com/) was interesting because their world and ours are adjacent rather than the same. They work on utility asset management and damage prevention. We work on documentation and designation architecture. Different entry points, same underlying need: asset data that can be trusted. Worth keeping in touch.
 
-We also made some intriguing discoveries. [IRTH Solutions](https://irthsolutions.com/) focuses on utility asset management and damage prevention. While their work occupies a different segment of the information landscape to SøDera's — we concentrate on documentation and designation architecture, while they address operational safety — the underlying challenge remains the same: asset data must be structured, accessible, and trusted to support critical operational decisions. We see clear potential for future collaboration.
+[Bioseco](https://bioseco.com/) uses sound and light to deter birds and bats from wind turbines. A genuinely clever solution to a planning constraint that delays more projects than most people realise. The kind of niche innovation that the industry needs.
 
-[Bioseco](https://bioseco.com/) presented an innovative solution that genuinely surprised us. Their bird and bat protection system, utilising sound and light to deter wildlife from wind turbines, addresses a significant environmental compliance hurdle that can delay project approvals and impact operational availability. It was a powerful reminder of the diverse range of problems the sector is actively solving.
+[Resinex Trading](https://www.resinextrad.com/en/) was an eye-opener in the best sense. Seeing the materials supply side of wind up close made the documentation challenge feel even more tangible. Every component has a supply chain behind it. All of that needs to be traceable for the life of the asset.
 
-## Supply Chain Complexity: Resinex Trading and Taihan
+Jay J.H. Shim from [Taihan](https://www.taihan.com/en/) was a good conversation around their European expansion. The documentation and information management requirements that come with European energy projects are specific and we discussed how SøDera could support that. A conversation we intend to continue.
 
-[Resinex Trading](https://www.resinextrad.com/en/) was, to put it plainly, an eye-opener. Their expertise in materials supply for the wind sector provided a perspective we had not fully considered. The supply chain supporting an offshore wind project is extraordinarily intricate, and seeing it from the materials side amplified the critical importance of robust documentation and data management. Every component, from the smallest bolt to the largest blade, has a complex supply chain behind it, and all that associated data must be structured, accessible, and maintained for the asset's entire lifecycle.
+[Osonic](https://osonic.tech/) are working on noise reduction for wind turbines, which addresses a real planning and consent barrier for both onshore and offshore projects. Another example of how much specific problem-solving is happening across this industry.
 
-A productive conversation with Jay J.H. Shim from [Taihan](https://www.taihan.com/en/), a Korean cable manufacturer expanding its presence in the European market, highlighted the significant information management and documentation requirements inherent in European energy projects. We discussed how SøDera could support their expansion, and it is a conversation we intend to follow up.
+And then there was Marlon from [TenneT](https://www.tennet.eu/). Sylvia spent part of her career there and seeing a familiar face in a hall that size made the day feel that bit warmer. Some of the best moments at events like this are simply the ones where you run into someone you know and actually have time to talk.
 
-## Technological Innovation: Osonic
+## What we took away
 
-[Osonic](https://osonic.tech/) showcased their noise reduction technology for wind turbines, addressing a key planning and consent constraint for both onshore and offshore developments. This further illustrated the breadth of innovation present at the event, with solutions emerging from every angle to tackle the industry's multifaceted challenges.
+The sector is scaling fast. The technologies on display in Madrid were impressive across the board. But most of them generate data. And the value of that data depends entirely on whether the information architecture underneath it is solid. That means structured asset identification, clean documentation, and handovers that actually work. That gap is still wide in much of the industry and it is exactly where SøDera operates.
 
-## A Familiar Face: TenneT
+## Looking ahead
 
-Finally, seeing Marlon from [TenneT](https://www.tennet.eu/), the European transmission system operator, across the crowded hall brought a welcome sense of familiarity. Having spent part of my career there, encountering a respected colleague in such a large gathering added a personal touch to the event. These small moments of connection are often as valuable as the formal discussions, and seeing a familiar face made the day feel that much warmer and more bearable.
+We hope the conversations we had in Madrid lead somewhere. Not in a transactional sense, but in the sense that the right connections at the right moment tend to become the right collaborations later. We will see.
 
-## What Wind Europe 2026 Signals for Information Management
-
-Reflecting on our time in Madrid, several key takeaways emerged regarding the future of information management in the wind sector.
-
-The industry is scaling at an unprecedented pace, but our conversations consistently revealed a disconnect: physical assets are being deployed faster than the information systems designed to manage them. The persistent issues of scattered data, inconsistent tagging, and challenging handovers are not new, but their urgency is escalating dramatically with the industry's rapid expansion.
-
-The groundbreaking technologies showcased at Wind Europe, from Onyx's predictive analytics to Bioseco's environmental solutions, all generate vast amounts of data. The true value of these innovations can only be realised if this data is accurately linked to assets, structured correctly, and managed effectively throughout the asset lifecycle. Without IEC 81346 compliant designation and ISO 19650 aligned information management, the potential of these advanced tools is severely limited by the quality of the underlying data environment.
-
-WindEurope's ten-point Madrid Call to Action for accelerating European wind deployment is fundamentally about scale. Every new gigawatt of capacity represents a corresponding increase in documentation that requires structuring, assets that need precise designation, and handovers that demand meticulous management. The ambitious goals of the sector directly amplify the demand for the specialised information management work that SøDera does.
-
-## Beyond the Business Card: The True Value of Industry Events
-
-Wind Europe Annual is more than a trade show. It is a vital forum where the industry collectively assesses its current state, charts its future course, and identifies the innovators driving progress. The conversations we had over one day in Madrid were far more valuable than any amount of outbound outreach could generate.
-
-Meeting Bill Slater and receiving his honest advice on building a company. Discussing the information challenges of a growing offshore portfolio with the Jera Nex BP team. Seeing Marlon from TenneT across a crowded hall. These are the intangible yet profound benefits of attending events like this. They reinforce the human element at the heart of even the most technical industries.
-
-We look forward to returning.
+The next Wind Europe Annual will be in Copenhagen in 2027 and that one feels personal. It is Søren's city. It is where SøDera has roots. We will be there.
 
 *Sylvia Awoudu and Søren Christensen, Co-founders of SøDera, attended Wind Europe Annual 2026 in Madrid on 22 April.*
 `,
