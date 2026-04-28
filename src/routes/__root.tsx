@@ -116,14 +116,6 @@ function RootLayout() {
       bg: 'bg-amber-50',
     },
     {
-      label: 'Training',
-      href: '/service-training',
-      desc: 'RDS and document management training.',
-      icon: BookOpen,
-      color: 'text-amber-600',
-      bg: 'bg-amber-50',
-    },
-    {
       label: 'SAM',
       href: '/service-product-development',
       desc: 'Cloud-native RDS management platform on Azure.',
