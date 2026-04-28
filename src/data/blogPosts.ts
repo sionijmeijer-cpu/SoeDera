@@ -27,45 +27,82 @@ export const blogPosts: BlogPost[] = [
     color: 'from-sky-600 to-indigo-500',
     published: true,
     content: `
-Søren and I spent 22 April at Wind Europe Annual in Madrid. One day, a lot of ground covered. We came home with full notebooks, a few business cards, and more than a few things to think about.
+Søren and I spent 22 April at WindEurope Annual 2026 in Madrid and came away with a clear conclusion. The offshore wind industry is no longer waiting for stability. It is operating as if large scale deployment is already underway.
+
+On paper, this is a massive event. 16,000 people. More than 600 exhibitors. An exhibition floor that takes a full day just to cover properly. In reality, most of the value comes down to a handful of conversations you did not plan to have.
 
 ![right: ](/soeren-christensen-sylvia-awoudu-wind-europe-soedera.jpg)
 
-Wind Europe is a big show. Over 16,000 people, more than 600 exhibitors, and an exhibition floor that takes a full day just to cover properly. The theme this year was "from crisis to confidence" and honestly, that matched the atmosphere. The industry has had a hard few years of delayed projects, supply chain pressure, and auction uncertainty. But walking the floor in Madrid did not feel like an industry in crisis. It felt like one getting on with things.
+This year's theme was "from crisis to confidence." And to be fair, the mood has shifted. The last few years, delays, supply chain issues, and auction instability are still hanging in the background. But on the floor in Madrid, no one was waiting around for conditions to improve. People are building anyway.
 
-## The conversations that stayed with us
+With more than 16,000 attendees and over 600 exhibitors, the scale of the event reflects where the sector is heading. The real question now is not whether offshore wind will grow, but whether its information management and asset data systems are ready to support that growth.
 
-The best thing about an event like this is the conversations you did not plan. You stop at a stand because something catches your eye and forty minutes later you are still talking.
+## Onyx Insight and the reality of building in offshore wind
 
-That is what happened with [Onyx Insight](https://onyxinsight.com/). We ended up in a long conversation with Bill Slater, who leads their blade products. The technology they are building around blade health monitoring is genuinely impressive. But what we appreciated most was that Bill took time to talk to us about building a company at the early stage. That kind of candour from someone who has been through it is rare and we are grateful for it.
+The most valuable conversation we had was with [Onyx Insight](https://onyxinsight.com/).
 
-[Jera Nex BP](https://www.jeranex.com/jera-nex-bp/) was another good conversation. The scale at which they operate means the information management challenge is significant and growing. Portfolio growth does not simplify data. It compounds it. We see a lot of that pattern in the sector and it is squarely in what SøDera works on.
+We spoke at length with Bill Slater, who leads their blade product line. Onyx has built a whole-turbine predictive analytics platform, and their blade health monitoring technology is clearly advancing. Their ecoBlade system monitors structural integrity from inside the blade itself, detecting damage weeks before it would show up in a conventional drone inspection. In an industry where a single blade failure can take a site offline and cost millions, that kind of early warning matters.
 
-The same came up with [Ørsted](https://orsted.com/). At their scale, keeping asset data structured and operationally useful across a global portfolio is a genuine daily challenge. The appetite for better information foundations is real.
+But the more important part of the discussion was operational rather than technical. Building in offshore wind is structurally demanding. Development cycles are long. Integration into existing asset environments is complex. Trust is built over time across multiple stakeholders.
 
-## Familiar territory and new discoveries
+Bill spoke openly about these realities and gave us genuinely useful advice on navigating the early stages of a company in this space. That level of candour is rare and we appreciated it more than we can say.
 
-[IRTH Solutions](https://irthsolutions.com/) was interesting because their world and ours are adjacent rather than the same. They work on utility asset management and damage prevention. We work on documentation and designation architecture. Different entry points, same underlying need: asset data that can be trusted. Worth keeping in touch.
+## Offshore wind scale is increasing data complexity
 
-[Bioseco](https://bioseco.com/) uses sound and light to deter birds and bats from wind turbines. A genuinely clever solution to a planning constraint that delays more projects than most people realise. The kind of niche innovation that the industry needs.
+This theme came up repeatedly in conversations with [JERA Nex bp](https://www.jeranex.com/jera-nex-bp/) and [Ørsted](https://orsted.com/).
 
-[Resinex Trading](https://www.resinextrad.com/en/) was an eye-opener in the best sense. Seeing the materials supply side of wind up close made the documentation challenge feel even more tangible. Every component has a supply chain behind it. All of that needs to be traceable for the life of the asset.
+JERA Nex bp is one of the most significant new players in global offshore wind. A 50:50 joint venture between JERA and bp, launched in 2025, the company brings together a 13GW portfolio of operating assets and development projects across Europe, Asia Pacific and the US. Speaking with a representative of that organisation, it was clear that scale and data complexity grow together.
 
-Jay J.H. Shim from [Taihan](https://www.taihan.com/en/) was a good conversation around their European expansion. The documentation and information management requirements that come with European energy projects are specific and we discussed how SøDera could support that. A conversation we intend to continue.
+As offshore wind portfolios expand, the information challenge intensifies rather than simplifies. Each new asset introduces:
 
-[Osonic](https://osonic.tech/) are working on noise reduction for wind turbines, which addresses a real planning and consent barrier for both onshore and offshore projects. Another example of how much specific problem-solving is happening across this industry.
+- additional suppliers
+- different documentation standards
+- inconsistent asset structures
+- fragmented ownership of data
 
-And then there was Marlon from [TenneT](https://www.tennet.eu/). Sylvia spent part of her career there and seeing a familiar face in a hall that size made the day feel that bit warmer. Some of the best moments at events like this are simply the ones where you run into someone you know and actually have time to talk.
+From an information management perspective, this creates compounding risk. The industry continues to invest heavily in data generation through sensors, monitoring systems, and digital infrastructure. But the underlying data structures are often inconsistent. Without structured asset identification and reliable documentation, the value of that investment is significantly reduced.
 
-## What we took away
+[Ørsted](https://orsted.com/), the world's largest offshore wind developer, reinforced the same picture. At their scale, keeping asset information structured, consistent, and operationally usable across a global portfolio is a daily challenge. The appetite for better information foundations is real and growing.
 
-The sector is scaling fast. The technologies on display in Madrid were impressive across the board. But most of them generate data. And the value of that data depends entirely on whether the information architecture underneath it is solid. That means structured asset identification, clean documentation, and handovers that actually work. That gap is still wide in much of the industry and it is exactly where SøDera operates.
+## TenneT perspective: operational reality matters
 
-## Looking ahead
+Both Søren and I continue to work at [TenneT](https://www.tennet.eu/) alongside building SøDera. It was good to catch up with colleagues at the event, including Marlon, whose familiar face made a very full day feel a little warmer.
 
-We hope the conversations we had in Madrid lead somewhere. Not in a transactional sense, but in the sense that the right connections at the right moment tend to become the right collaborations later. We will see.
+This connection matters because it anchors the conversation in operational reality. Industry events tend to emphasise future capability. Teams working inside live transmission infrastructure focus on what can actually be implemented within complex, regulated, safety-critical systems. That contrast is useful. Offshore wind is advancing quickly, but the practical implementation of information management still faces structural constraints that are often underestimated from the outside.
 
-The next Wind Europe Annual will be in Copenhagen in 2027 and that one feels personal. It is Søren's city. It is where SøDera has roots. We will be there.
+## Supply chain depth and niche innovation
+
+Several companies reinforced just how broad the offshore wind ecosystem has become.
+
+[IRTH Solutions](https://irthsolutions.com/) work on utility asset management and damage prevention. Their world and ours are adjacent rather than identical, but the underlying requirement is the same: asset data that can be trusted when it matters. We see potential for collaboration and the conversation was worth having.
+
+[Bioseco](https://bioseco.com/) use sound and light to deter birds and bats from wind turbines, addressing an environmental compliance constraint that delays more projects than most people realise. A genuinely clever piece of niche innovation.
+
+[Resinex Trading](https://www.resinextrad.com/en/) was an eye-opener. Seeing the materials supply side of the sector up close made the documentation challenge feel more tangible. Every component has a supply chain behind it. All of that needs to be traceable for the life of the asset. Traceability without structure is just paperwork.
+
+[Osonic](https://osonic.tech/) are tackling noise-related constraints that continue to delay both onshore and offshore projects. Another example of the specific problem-solving that the sector needs and rarely gets enough credit for.
+
+## The core issue: information management is lagging behind
+
+A clear pattern emerged across the day.
+
+Offshore wind is generating more data than ever before, but the systems required to structure, validate, and maintain that data are still underdeveloped. The key challenges are not new:
+
+- inconsistent asset identification
+- incomplete or poorly structured documentation
+- weak data handover between project phases
+
+These are not theoretical concerns. They directly affect cost, risk, and operational performance. As offshore wind continues to scale, information management will become a limiting factor if it is not treated as core infrastructure rather than a secondary layer.
+
+## Looking ahead to Copenhagen
+
+The next WindEurope Annual will take place in Copenhagen in 2027. For us, that feels personal. It is Søren's home country and the place where SøDera has its roots. That proximity makes the next edition feel more immediate.
+
+We hope the conversations we had in Madrid lead somewhere. Not in a transactional sense, but in the sense that the right connections tend to become the right collaborations when the timing is right. We will see.
+
+By 2027, the offshore wind sector will have expanded further in scale and complexity. The question is whether information management will have kept pace. At present, it is still treated as a secondary concern rather than a foundational system. That position will become increasingly difficult to maintain.
+
+We will be in Copenhagen. Come find us.
 
 *Sylvia Awoudu and Søren Christensen, Co-founders of SøDera, attended Wind Europe Annual 2026 in Madrid on 22 April.*
 `,
