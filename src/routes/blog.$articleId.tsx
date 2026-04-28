@@ -19,10 +19,6 @@ import remarkGfm from 'remark-gfm'
 
 import HighlightBox from '@/components/HighlightBox'
 
-// Extract an italic paragraph immediately following a table and render it as a table caption.
-// Usage in markdown:
-//   | ...table... |
-//   *This becomes the table caption.*
 function remarkTableCaptions() {
   return (tree: any) => {
     const children = tree?.children
@@ -51,7 +47,6 @@ function remarkTableCaptions() {
       node.data = node.data || {}
       node.data.caption = caption
 
-      // Remove the caption paragraph so it doesn't render as normal text.
       children.splice(i + 1, 1)
     }
   }
@@ -78,8 +73,6 @@ function slugify(input: string) {
 }
 
 function extractToc(markdown: string): TocItem[] {
-  // Extract ## and ### only.
-  // Avoid headings inside fenced code blocks.
   const lines = (markdown || '').split(/\r?\n/)
   const items: TocItem[] = []
   const counts = new Map<string, number>()
@@ -155,49 +148,22 @@ function TocProgressCircle({
   return (
     <div className="relative w-[34px] h-[34px] flex items-center justify-center shrink-0">
       <svg width={size} height={size} className="absolute inset-0">
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" strokeWidth={stroke} className="stroke-slate-200" />
         <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={r}
-          fill="none"
-          strokeWidth={stroke}
-          className="stroke-slate-200"
-        />
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={r}
-          fill="none"
-          strokeWidth={stroke}
-          strokeDasharray={dash}
-          strokeDashoffset={offset}
-          strokeLinecap="round"
+          cx={size / 2} cy={size / 2} r={r} fill="none" strokeWidth={stroke}
+          strokeDasharray={dash} strokeDashoffset={offset} strokeLinecap="round"
           className={isActive || value > 0 ? 'stroke-emerald-700' : 'stroke-slate-200'}
           style={{ transform: 'rotate(-90deg)', transformOrigin: '50% 50%' }}
         />
       </svg>
-
-      <div
-        className={
-          'text-xs font-semibold ' +
-          (isActive ? 'text-emerald-800' : value >= 1 ? 'text-slate-700' : 'text-slate-500')
-        }
-      >
+      <div className={'text-xs font-semibold ' + (isActive ? 'text-emerald-800' : value >= 1 ? 'text-slate-700' : 'text-slate-500')}>
         {index}
       </div>
     </div>
   )
 }
 
-function Toc({
-  items,
-  activeId,
-  progressById,
-}: {
-  items: TocItem[]
-  activeId: string | null
-  progressById: Record<string, number>
-}) {
+function Toc({ items, activeId, progressById }: { items: TocItem[]; activeId: string | null; progressById: Record<string, number> }) {
   if (!items.length) return null
 
   const scrollTo = (id: string) => {
@@ -209,32 +175,17 @@ function Toc({
 
   return (
     <nav aria-label="Table of contents" className="text-sm">
-      <div className="text-xs uppercase tracking-[0.18em] text-slate-600 mb-4">
-        Table of contents
-      </div>
-
+      <div className="text-xs uppercase tracking-[0.18em] text-slate-600 mb-4">Table of contents</div>
       <ol className="space-y-3">
         {items.map((it) => {
           const isActive = activeId === it.id
           const progress = progressById[it.id] ?? 0
-
           return (
             <li key={it.id}>
-              <button
-                type="button"
-                onClick={() => scrollTo(it.id)}
-                className="w-full text-left flex items-start gap-3 group"
-              >
+              <button type="button" onClick={() => scrollTo(it.id)} className="w-full text-left flex items-start gap-3 group">
                 <TocProgressCircle value={progress} index={it.index} isActive={isActive} />
                 <div className="pt-[2px]">
-                  <div
-                    className={
-                      (it.level === 3 ? 'text-[13px] ' : 'text-[13px] ') +
-                      (isActive
-                        ? 'font-semibold text-emerald-800'
-                        : 'font-medium text-slate-700 group-hover:text-slate-900')
-                    }
-                  >
+                  <div className={(it.level === 3 ? 'text-[13px] ' : 'text-[13px] ') + (isActive ? 'font-semibold text-emerald-800' : 'font-medium text-slate-700 group-hover:text-slate-900')}>
                     {it.text}
                   </div>
                 </div>
@@ -247,98 +198,38 @@ function Toc({
   )
 }
 
-function SharePanel({
-  onLinkedIn,
-  onTwitter,
-  onEmail,
-  onCopy,
-  copied,
-}: {
-  onLinkedIn: () => void
-  onTwitter: () => void
-  onEmail: () => void
-  onCopy: () => void
-  copied: boolean
-}) {
+function SharePanel({ onLinkedIn, onTwitter, onEmail, onCopy, copied }: { onLinkedIn: () => void; onTwitter: () => void; onEmail: () => void; onCopy: () => void; copied: boolean }) {
   return (
     <div className="rounded-2xl bg-white shadow-md border border-slate-100 p-6">
-      <div className="text-xs uppercase tracking-[0.18em] text-slate-600 mb-4">
-        Share
-      </div>
-
+      <div className="text-xs uppercase tracking-[0.18em] text-slate-600 mb-4">Share</div>
       <div className="flex items-center gap-3 flex-wrap">
-        <button
-          onClick={onLinkedIn}
-          className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-blue-50 transition shadow-sm border border-slate-100"
-          aria-label="Share on LinkedIn"
-        >
+        <button onClick={onLinkedIn} className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-blue-50 transition shadow-sm border border-slate-100" aria-label="Share on LinkedIn">
           <Linkedin size={18} className="text-blue-600" />
         </button>
-
-        <button
-          onClick={onTwitter}
-          className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm border border-slate-100"
-          aria-label="Share on X"
-        >
+        <button onClick={onTwitter} className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm border border-slate-100" aria-label="Share on X">
           <Twitter size={18} className="text-slate-800" />
         </button>
-
-        <button
-          onClick={onEmail}
-          className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm border border-slate-100"
-          aria-label="Share by email"
-        >
+        <button onClick={onEmail} className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm border border-slate-100" aria-label="Share by email">
           <Mail size={18} className="text-slate-800" />
         </button>
-
-        <button
-          onClick={onCopy}
-          className="flex items-center gap-2 px-4 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm border border-slate-100 text-sm font-medium"
-        >
-          {copied ? (
-            <>
-              <Check size={16} className="text-green-600" />
-              Copied
-            </>
-          ) : (
-            <>
-              <Link2 size={16} className="text-slate-700" />
-              Copy
-            </>
-          )}
+        <button onClick={onCopy} className="flex items-center gap-2 px-4 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm border border-slate-100 text-sm font-medium">
+          {copied ? (<><Check size={16} className="text-green-600" />Copied</>) : (<><Link2 size={16} className="text-slate-700" />Copy</>)}
         </button>
       </div>
     </div>
   )
 }
 
-function RelatedPanel({
-  related,
-}: {
-  related: Array<{ id: string; title: string; category: string; date: string; readTime: string }>
-}) {
+function RelatedPanel({ related }: { related: Array<{ id: string; title: string; category: string; date: string; readTime: string }> }) {
   if (related.length === 0) return null
-
   return (
     <div className="rounded-2xl bg-white shadow-md border border-slate-100 p-6">
-      <div className="text-xs uppercase tracking-[0.18em] text-slate-600 mb-4">
-        Related articles
-      </div>
-
+      <div className="text-xs uppercase tracking-[0.18em] text-slate-600 mb-4">Related articles</div>
       <div className="space-y-4">
         {related.map((p) => (
-          <Link
-            key={p.id}
-            to="/blog/$articleId"
-            params={{ articleId: p.id }}
-            className="block group"
-          >
-            <div className="text-sm font-semibold text-slate-900 group-hover:text-emerald-800 transition">
-              {p.title}
-            </div>
-            <div className="text-xs text-slate-500 mt-1">
-              {p.category} • {p.date} • {p.readTime}
-            </div>
+          <Link key={p.id} to="/blog/$articleId" params={{ articleId: p.id }} className="block group">
+            <div className="text-sm font-semibold text-slate-900 group-hover:text-emerald-800 transition">{p.title}</div>
+            <div className="text-xs text-slate-500 mt-1">{p.category} • {p.date} • {p.readTime}</div>
           </Link>
         ))}
       </div>
@@ -361,11 +252,8 @@ function ArticlePage() {
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <div className="text-center p-6">
           <h1 className="text-2xl font-bold text-slate-900 mb-3">Article Not Found</h1>
-          <p className="text-slate-600 mb-6">This article isn’t published yet, or the link is incorrect.</p>
-          <Link
-            to="/blog"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all shadow-md hover:shadow-lg font-medium"
-          >
+          <p className="text-slate-600 mb-6">This article isn't published yet, or the link is incorrect.</p>
+          <Link to="/blog" className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all shadow-md hover:shadow-lg font-medium">
             <ArrowLeft size={16} /> Back to Insights
           </Link>
         </div>
@@ -386,17 +274,10 @@ function ArticlePage() {
   const tocItems = useMemo(() => extractToc(article.content), [article.content])
 
   const related = useMemo(() => {
-    // Keep it simple & deterministic: same category, published, exclude current, take 3.
     return blogPosts
       .filter((p) => p.published && p.id !== article.id && p.category === article.category)
       .slice(0, 3)
-      .map((p) => ({
-        id: p.id,
-        title: p.title,
-        category: p.category,
-        date: p.date,
-        readTime: p.readTime,
-      }))
+      .map((p) => ({ id: p.id, title: p.title, category: p.category, date: p.date, readTime: p.readTime }))
   }, [article.id, article.category])
 
   const shareOnLinkedIn = () => {
@@ -423,7 +304,6 @@ function ArticlePage() {
   }
 
   useEffect(() => {
-    // Scroll-position based ToC tracking (stable) + progress ring.
     const root = contentRootRef.current
     if (!root || tocItems.length === 0) return
 
@@ -432,9 +312,7 @@ function ArticlePage() {
 
     const compute = () => {
       const ids = tocItems.map((t) => t.id)
-      const els = ids
-        .map((id) => document.getElementById(id))
-        .filter(Boolean) as HTMLElement[]
+      const els = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[]
       if (els.length === 0) return
 
       const starts = els.map((el) => el.getBoundingClientRect().top + window.scrollY)
@@ -442,11 +320,8 @@ function ArticlePage() {
       const ends = starts.map((s, i) => (i < starts.length - 1 ? starts[i + 1] - 1 : docEnd))
 
       const y = window.scrollY + offsetPx
-
       let activeIdx = 0
-      for (let i = 0; i < starts.length; i++) {
-        if (y >= starts[i]) activeIdx = i
-      }
+      for (let i = 0; i < starts.length; i++) { if (y >= starts[i]) activeIdx = i }
 
       const nextActiveId = els[activeIdx]?.id ?? null
       setActiveId(nextActiveId)
@@ -464,15 +339,8 @@ function ArticlePage() {
       setProgressById(nextProgress)
     }
 
-    const onScroll = () => {
-      cancelAnimationFrame(raf)
-      raf = requestAnimationFrame(compute)
-    }
-
-    const onResize = () => {
-      cancelAnimationFrame(raf)
-      raf = requestAnimationFrame(compute)
-    }
+    const onScroll = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(compute) }
+    const onResize = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(compute) }
 
     compute()
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -485,110 +353,72 @@ function ArticlePage() {
     }
   }, [articleId, tocItems])
 
-  // B: hero background idea without relying on external images:
-  // - subtle gradient
-  // - soft pattern via inline SVG data URI
-  const heroPatternSvg =
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%2394a3b8' stroke-opacity='0.18'%3E%3Cpath d='M0 70h140M70 0v140'/%3E%3Cpath d='M0 0l140 140M140 0L0 140' stroke-opacity='0.10'/%3E%3C/g%3E%3C/svg%3E"
-
   return (
     <div className="min-h-screen bg-gray-100 pb-12">
       <SEOHead {...seoProps} />
 
-      {/* HERO */}
-      <div
-        className="relative overflow-hidden"
-        style={{
-          backgroundImage: `linear-gradient(to bottom, rgba(226,232,240,0.95), rgba(241,245,249,1)), url("${heroPatternSvg}")`,
-          backgroundSize: 'cover, 240px 240px',
-          backgroundPosition: 'center, top left',
-        }}
-      >
-        {/* A: reduce wasted vertical space */}
-        <div className="h-[76px]" />
-
-        <div className="absolute top-4 left-4 sm:left-6 z-20">
+      {/* ── Back to Insights bar — always visible at the top ── */}
+      <div className="bg-white border-b border-slate-200 sticky top-16 z-30">
+        <div className="max-w-[78rem] mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur text-slate-900 rounded-lg hover:bg-white transition-all shadow-sm text-sm font-medium"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-sky-600 transition-colors"
           >
             <ArrowLeft size={16} /> Back to Insights
           </Link>
-        </div>
-
-        {/* wider container (kept from your previous request) */}
-        <div className="max-w-[78rem] mx-auto px-4 sm:px-6 pt-4 pb-6">
-          <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-10">
-            <div className="bg-white rounded-2xl shadow-md border border-slate-100 p-6 sm:p-10">
-              <div className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-semibold uppercase tracking-wider mb-5">
-                {article.category}
-              </div>
-
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight mb-6">
-                {article.title}
-              </h1>
-
-              <div className="flex items-center gap-4 text-sm text-slate-500 mb-6 flex-wrap">
-                <span>{article.date}</span>
-
-                {article.author && (
-                  <span className="flex items-center gap-1">
-                    <User size={15} />
-                    <span>{article.author}</span>
-                  </span>
-                )}
-
-                <span className="flex items-center gap-1">
-                  <Clock size={15} />
-                  <span>{article.readTime}</span>
-                </span>
-              </div>
-
-              <p className="text-lg text-slate-600 leading-relaxed">
-                {article.excerpt}
-              </p>
-            </div>
-
-            <div className="hidden lg:block" />
+          <div className="flex items-center gap-2">
+            <button onClick={shareOnLinkedIn} className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-blue-700 transition-colors border border-slate-200 rounded px-3 py-1.5">
+              <Linkedin size={13} /> Share
+            </button>
+            <button onClick={shareOnTwitter} className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-sky-500 transition-colors border border-slate-200 rounded px-3 py-1.5">
+              <Twitter size={13} /> Tweet
+            </button>
           </div>
         </div>
       </div>
 
-      {/* ARTICLE + RIGHT RAIL */}
+      {/* ── Article header ── */}
+      <div className="max-w-[78rem] mx-auto px-4 sm:px-6 mt-6">
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-10">
+          <div className="bg-white rounded-2xl shadow-md border border-slate-100 p-6 sm:p-10">
+            <div className="inline-flex items-center px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-semibold uppercase tracking-wider mb-5">
+              {article.category}
+            </div>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight mb-6">
+              {article.title}
+            </h1>
+            <div className="flex items-center gap-4 text-sm text-slate-500 mb-6 flex-wrap">
+              <span>{article.date}</span>
+              {article.author && (
+                <span className="flex items-center gap-1"><User size={15} /><span>{article.author}</span></span>
+              )}
+              <span className="flex items-center gap-1"><Clock size={15} /><span>{article.readTime}</span></span>
+            </div>
+            <p className="text-lg text-slate-600 leading-relaxed">{article.excerpt}</p>
+          </div>
+          <div className="hidden lg:block" />
+        </div>
+      </div>
+
+      {/* ── Article + Right Rail ── */}
       <div className="max-w-[78rem] mx-auto px-4 sm:px-6 mt-6">
         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-10">
           <article className="bg-white rounded-2xl shadow-md border border-slate-100">
-            {/* image moved into article */}
+            {/* Hero image */}
             <div className="p-6 sm:p-10 pb-0">
               <div className="rounded-xl overflow-hidden shadow-sm border border-slate-100">
-                <img
-                  src={article.image}
-                  alt={article.title}
-                  className="w-full h-56 sm:h-72 object-cover"
-                />
+                <img src={article.image} alt={article.title} className="w-full h-56 sm:h-72 object-cover" />
               </div>
 
-              {/* Mobile: ToC + Share + Related live here (no right rail on mobile) */}
+              {/* Mobile ToC + Share + Related */}
               <div className="mt-6 lg:hidden space-y-4">
                 {tocItems.length > 0 && (
                   <details className="rounded-xl border border-slate-200 bg-white shadow-sm">
-                    <summary className="cursor-pointer select-none px-4 py-3 text-sm font-semibold text-slate-900">
-                      Table of contents
-                    </summary>
-                    <div className="px-4 pb-4">
-                      <Toc items={tocItems} activeId={activeId} progressById={progressById} />
-                    </div>
+                    <summary className="cursor-pointer select-none px-4 py-3 text-sm font-semibold text-slate-900">Table of contents</summary>
+                    <div className="px-4 pb-4"><Toc items={tocItems} activeId={activeId} progressById={progressById} /></div>
                   </details>
                 )}
-
-                <SharePanel
-                  onLinkedIn={shareOnLinkedIn}
-                  onTwitter={shareOnTwitter}
-                  onEmail={shareByEmail}
-                  onCopy={copyLink}
-                  copied={copied}
-                />
-
+                <SharePanel onLinkedIn={shareOnLinkedIn} onTwitter={shareOnTwitter} onEmail={shareByEmail} onCopy={copyLink} copied={copied} />
                 <RelatedPanel related={related} />
               </div>
             </div>
@@ -597,7 +427,6 @@ function ArticlePage() {
             <div className="p-6 sm:p-10">
               {(() => {
                 const headingCounts = new Map<string, number>()
-
                 const nextHeadingId = (text: string) => {
                   const base = slugify(text)
                   const next = (headingCounts.get(base) || 0) + 1
@@ -606,61 +435,27 @@ function ArticlePage() {
                 }
 
                 return (
-                  <div
-                    ref={contentRootRef}
-                    className="
-                      prose prose-slate max-w-none
-                      prose-p:my-4
-                      prose-figure:my-5
-                      prose-img:my-0
-                      prose-figcaption:mt-1
-                      prose-figcaption:leading-snug
-                    "
-                  >
+                  <div ref={contentRootRef} className="prose prose-slate max-w-none prose-p:my-4 prose-figure:my-5 prose-img:my-0 prose-figcaption:mt-1 prose-figcaption:leading-snug">
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm, remarkTableCaptions]}
                       components={{
-                        blockquote: ({ children }) => (
-                          <HighlightBox title="Key Insight">
-                            {children}
-                          </HighlightBox>
-                        ),
+                        blockquote: ({ children }) => <HighlightBox title="Key Insight">{children}</HighlightBox>,
 
                         h2: ({ children }) => {
                           const text = nodeToText(children).trim()
                           const id = nextHeadingId(text)
-                          return (
-                            <h2
-                              id={id}
-                              className="text-xl sm:text-2xl font-bold text-slate-900 mt-10 mb-4 scroll-mt-28"
-                            >
-                              {children}
-                            </h2>
-                          )
+                          return <h2 id={id} className="text-xl sm:text-2xl font-bold text-slate-900 mt-10 mb-4 scroll-mt-28">{children}</h2>
                         },
 
                         h3: ({ children }) => {
                           const text = nodeToText(children).trim()
                           const id = nextHeadingId(text)
-                          return (
-                            <h3
-                              id={id}
-                              className="text-lg sm:text-xl font-semibold text-slate-800 mt-8 mb-3 scroll-mt-28"
-                            >
-                              {children}
-                            </h3>
-                          )
+                          return <h3 id={id} className="text-lg sm:text-xl font-semibold text-slate-800 mt-8 mb-3 scroll-mt-28">{children}</h3>
                         },
 
-                        p: ({ children }) => (
-                          <p className="text-slate-700 leading-relaxed text-base my-4">
-                            {children}
-                          </p>
-                        ),
+                        p: ({ children }) => <p className="text-slate-700 leading-relaxed text-base my-4">{children}</p>,
 
-                        ul: ({ children }) => (
-                          <ul className="space-y-2 my-4">{children}</ul>
-                        ),
+                        ul: ({ children }) => <ul className="space-y-2 my-4">{children}</ul>,
 
                         li: ({ children }) => (
                           <li className="flex items-start gap-3 text-slate-700">
@@ -671,85 +466,53 @@ function ArticlePage() {
 
                         img: ({ alt, src }) => {
                           const altText = alt || ''
-                          const prefixMatch = altText.match(/^\s*(small|medium|large)\s*:\s*/i)
+                          const prefixMatch = altText.match(/^\s*(small|medium|large|right)\s*:\s*/i)
                           const prefix = (prefixMatch?.[1] || '').toLowerCase()
 
-                          const size =
-                            prefix === 'small'
-                              ? 'max-w-md'
-                              : prefix === 'medium'
-                                ? 'max-w-xl'
-                                : 'max-w-3xl'
+                          const cleanAlt = altText.replace(/^\s*(small|medium|large|right)\s*:\s*/i, '').trim()
 
-                          const cleanAlt = altText.replace(/^\s*(small|medium|large)\s*:\s*/i, '').trim()
+                          // right: prefix = float right beside text
+                          if (prefix === 'right') {
+                            return (
+                              <span style={{ float: 'right', width: '45%', marginLeft: '2rem', marginBottom: '1rem', display: 'block' }}>
+                                <img src={src} alt={cleanAlt} style={{ width: '100%', borderRadius: '12px', objectFit: 'cover' }} />
+                              </span>
+                            )
+                          }
+
+                          const size = prefix === 'small' ? 'max-w-md' : prefix === 'medium' ? 'max-w-xl' : 'max-w-3xl'
 
                           return (
                             <figure className="text-center">
-                              <img
-                                src={src}
-                                alt={cleanAlt}
-                                className={`mx-auto w-full ${size} object-contain`}
-                              />
-                              {cleanAlt && (
-                                <figcaption className="text-sm text-slate-500">
-                                  {cleanAlt}
-                                </figcaption>
-                              )}
+                              <img src={src} alt={cleanAlt} className={`mx-auto w-full ${size} object-contain`} />
+                              {cleanAlt && <figcaption className="text-sm text-slate-500">{cleanAlt}</figcaption>}
                             </figure>
                           )
                         },
 
                         table: ({ node, children }) => {
                           const caption = (node as any)?.data?.caption as string | undefined
-
                           return (
                             <figure className="my-8 flex flex-col items-center">
                               <div className="w-full flex justify-center">
                                 <div className="overflow-x-auto">
                                   <div className="inline-block min-w-max align-middle">
                                     <div className="rounded-xl border border-slate-200 bg-white shadow-sm">
-                                      <table className="table-auto border-collapse">
-                                        {children}
-                                      </table>
+                                      <table className="table-auto border-collapse">{children}</table>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-
-                              {caption && (
-                                <figcaption className="mt-2 text-sm text-slate-500 italic text-center max-w-2xl">
-                                  {caption}
-                                </figcaption>
-                              )}
+                              {caption && <figcaption className="mt-2 text-sm text-slate-500 italic text-center max-w-2xl">{caption}</figcaption>}
                             </figure>
                           )
                         },
 
-                        thead: ({ children }) => (
-                          <thead className="bg-slate-50">{children}</thead>
-                        ),
-
-                        tbody: ({ children }) => (
-                          <tbody className="[&>tr:nth-child(even)]:bg-slate-50/60">
-                            {children}
-                          </tbody>
-                        ),
-
-                        th: ({ children }) => (
-                          <th className="text-left text-xs font-semibold uppercase tracking-wider text-slate-700 px-4 py-3 border-b border-slate-200">
-                            {children}
-                          </th>
-                        ),
-
-                        td: ({ children }) => (
-                          <td className="text-sm text-slate-700 px-4 py-3 border-b border-slate-200 align-top">
-                            {children}
-                          </td>
-                        ),
-
-                        tr: ({ children }) => (
-                          <tr className="last:[&>td]:border-b-0">{children}</tr>
-                        ),
+                        thead: ({ children }) => <thead className="bg-slate-50">{children}</thead>,
+                        tbody: ({ children }) => <tbody className="[&>tr:nth-child(even)]:bg-slate-50/60">{children}</tbody>,
+                        th: ({ children }) => <th className="text-left text-xs font-semibold uppercase tracking-wider text-slate-700 px-4 py-3 border-b border-slate-200">{children}</th>,
+                        td: ({ children }) => <td className="text-sm text-slate-700 px-4 py-3 border-b border-slate-200 align-top">{children}</td>,
+                        tr: ({ children }) => <tr className="last:[&>td]:border-b-0">{children}</tr>,
                       }}
                     >
                       {article.content}
@@ -759,22 +522,16 @@ function ArticlePage() {
               })()}
             </div>
 
-            {/* Keep the PDF download if you want it still visible in-content */}
             {article.pdfDownload && (
               <div className="px-6 sm:px-10 pb-8">
-                <a
-                  href={article.pdfDownload}
-                  download
-                  className="inline-flex items-center gap-2 px-4 h-10 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-sm text-sm font-medium"
-                >
-                  <Download size={16} />
-                  Download PDF
+                <a href={article.pdfDownload} download className="inline-flex items-center gap-2 px-4 h-10 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-sm text-sm font-medium">
+                  <Download size={16} /> Download PDF
                 </a>
               </div>
             )}
           </article>
 
-          {/* Right rail: ToC + Share + Related (sticky) */}
+          {/* Right rail */}
           <aside className="hidden lg:block">
             <div className="sticky top-28 space-y-4">
               {tocItems.length > 0 && (
@@ -782,15 +539,7 @@ function ArticlePage() {
                   <Toc items={tocItems} activeId={activeId} progressById={progressById} />
                 </div>
               )}
-
-              <SharePanel
-                onLinkedIn={shareOnLinkedIn}
-                onTwitter={shareOnTwitter}
-                onEmail={shareByEmail}
-                onCopy={copyLink}
-                copied={copied}
-              />
-
+              <SharePanel onLinkedIn={shareOnLinkedIn} onTwitter={shareOnTwitter} onEmail={shareByEmail} onCopy={copyLink} copied={copied} />
               <RelatedPanel related={related} />
             </div>
           </aside>
