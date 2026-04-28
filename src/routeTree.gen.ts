@@ -30,6 +30,7 @@ import { Route as ServiceIec81346Import } from './routes/service-iec81346'
 import { Route as ServiceRdsTrainingImport } from './routes/service-rds-training'
 import { Route as ServiceDigitalTwinImport } from './routes/service-digital-twin'
 import { Route as ServiceDocumentAssessmentImport } from './routes/service-document-assessment'
+import { Route as ServiceDocumentationAuditImport } from './routes/service-documentation-audit'
 
 // Create/Update Routes
 
@@ -108,6 +109,12 @@ const ServiceDocumentManagementRoute = ServiceDocumentManagementImport.update({
 const ServiceProductDevelopmentRoute = ServiceProductDevelopmentImport.update({
   id: '/service-product-development',
   path: '/service-product-development',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ServiceDocumentationAuditRoute = ServiceDocumentationAuditImport.update({
+  id: '/service-documentation-audit',
+  path: '/service-documentation-audit',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -242,6 +249,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiceProductDevelopmentImport
       parentRoute: typeof rootRoute
     }
+    '/service-documentation-audit': {
+      id: '/service-documentation-audit'
+      path: '/service-documentation-audit'
+      fullPath: '/service-documentation-audit'
+      preLoaderRoute: typeof ServiceDocumentationAuditImport
+      parentRoute: typeof rootRoute
+    }
     '/service-document-assessment': {
       id: '/service-document-assessment'
       path: '/service-document-assessment'
@@ -303,6 +317,7 @@ export interface FileRoutesByFullPath {
   '/service-project-management': typeof ServiceProjectManagementRoute
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
+  '/service-documentation-audit': typeof ServiceDocumentationAuditRoute
   '/service-document-assessment': typeof ServiceDocumentAssessmentRoute
   '/service-digital-twin': typeof ServiceDigitalTwinRoute
   '/service-rds-training': typeof ServiceRdsTrainingRoute
@@ -326,6 +341,7 @@ export interface FileRoutesByTo {
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
   '/service-rds-ps': typeof ServiceRdsPsRoute
+  '/service-documentation-audit': typeof ServiceDocumentationAuditRoute
   '/service-document-assessment': typeof ServiceDocumentAssessmentRoute
   '/service-digital-twin': typeof ServiceDigitalTwinRoute
   '/service-rds-training': typeof ServiceRdsTrainingRoute
@@ -350,6 +366,7 @@ export interface FileRoutesById {
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
   '/service-rds-ps': typeof ServiceRdsPsRoute
+  '/service-documentation-audit': typeof ServiceDocumentationAuditRoute
   '/service-document-assessment': typeof ServiceDocumentAssessmentRoute
   '/service-digital-twin': typeof ServiceDigitalTwinRoute
   '/service-rds-training': typeof ServiceRdsTrainingRoute
@@ -375,6 +392,7 @@ export interface FileRouteTypes {
     | '/service-document-management'
     | '/service-product-development'
     | '/service-rds-ps'
+    | '/service-documentation-audit'
     | '/service-document-assessment'
     | '/service-digital-twin'
     | '/service-rds-training'
@@ -396,6 +414,7 @@ export interface FileRouteTypes {
     | '/service-project-management'
     | '/service-document-management'
     | '/service-product-development'
+    | '/service-documentation-audit'
     | '/service-document-assessment'
     | '/service-digital-twin'
     | '/service-rds-training'
@@ -418,6 +437,7 @@ export interface FileRouteTypes {
     | '/service-document-management'
     | '/service-product-development'
     | '/service-rds-ps'
+    | '/service-documentation-audit'
     | '/service-document-assessment'
     | '/service-digital-twin'
     | '/service-rds-training'
@@ -441,6 +461,7 @@ export interface RootRouteChildren {
   ServiceProjectManagementRoute: typeof ServiceProjectManagementRoute
   ServiceDocumentManagementRoute: typeof ServiceDocumentManagementRoute
   ServiceProductDevelopmentRoute: typeof ServiceProductDevelopmentRoute
+  ServiceDocumentationAuditRoute: typeof ServiceDocumentationAuditRoute
   ServiceDocumentAssessmentRoute: typeof ServiceDocumentAssessmentRoute
   ServiceDigitalTwinRoute: typeof ServiceDigitalTwinRoute
   ServiceRdsTrainingRoute: typeof ServiceRdsTrainingRoute
@@ -463,6 +484,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServiceProjectManagementRoute: ServiceProjectManagementRoute,
   ServiceDocumentManagementRoute: ServiceDocumentManagementRoute,
   ServiceProductDevelopmentRoute: ServiceProductDevelopmentRoute,
+  ServiceDocumentationAuditRoute: ServiceDocumentationAuditRoute,
   ServiceDocumentAssessmentRoute: ServiceDocumentAssessmentRoute,
   ServiceDigitalTwinRoute: ServiceDigitalTwinRoute,
   ServiceRdsTrainingRoute: ServiceRdsTrainingRoute,
