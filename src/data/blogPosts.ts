@@ -27,11 +27,11 @@ export const blogPosts: BlogPost[] = [
     color: 'from-sky-600 to-indigo-500',
     published: true,
     content: `
-![Søren Christensen and Sylvia Awoudu at Wind Europe Annual 2026 in Madrid](/soeren-christensen-sylvia-awoudu-wind-europe-soedera.jpg)
-
-Madrid, Spain. From 21 to 23 April 2026, Søren Christensen and I had the privilege of attending Wind Europe Annual at IFEMA Madrid. It was, by all accounts, the largest edition of the event to date, drawing over 16,000 participants and more than 620 exhibitors. The atmosphere, despite the recent headwinds faced by Europe's wind sector, was one of palpable energy and determined optimism. The headline theme, "from crisis to confidence," perfectly encapsulated the prevailing mood: an industry not dwelling on past challenges, but actively building its future.
+Madrid, Spain. From 22 to 23 April 2026, Søren Christensen and I had the privilege of attending Wind Europe Annual at IFEMA Madrid. It was, by all accounts, the largest edition of the event to date, drawing over 16,000 participants and more than 620 exhibitors. The atmosphere, despite the recent headwinds faced by Europe's wind sector, was one of palpable energy and determined optimism. The headline theme, "from crisis to confidence," perfectly encapsulated the prevailing mood: an industry not dwelling on past challenges, but actively building its future.
 
 We arrived in Madrid with a clear objective: to understand the pulse of the offshore wind sector, identify emerging trends, and engage in the kind of unscripted conversations that truly reveal where the industry is heading. We left with a wealth of insights, particularly concerning the increasingly critical role of information management in scaling Europe's renewable energy ambitions.
+
+![medium: ](/soeren-christensen-sylvia-awoudu-wind-europe-soedera.jpg)
 
 ## The Exhibition Floor: Where Connections Forge Understanding
 
@@ -65,7 +65,7 @@ A productive conversation with Jay J.H. Shim from [Taihan](https://www.taihan.co
 
 ## A Familiar Face: TenneT
 
-Finally, seeing Marlon from [TenneT](https://www.tennet.eu/), the European transmission system operator, across the crowded hall brought a welcome sense of familiarity. Having spent part of my career there, encountering a respected colleague in such a large gathering added a personal touch to the event. These small moments of connection are often as valuable as the formal discussions, and seeing a familiar face made the three days feel that much warmer and more bearable.
+Finally, seeing Marlon from [TenneT](https://www.tennet.eu/), the European transmission system operator, across the crowded hall brought a welcome sense of familiarity. Having spent part of my career there, encountering a respected colleague in such a large gathering added a personal touch to the event. These small moments of connection are often as valuable as the formal discussions, and seeing a familiar face made the two days feel that much warmer and more bearable.
 
 ## What Wind Europe 2026 Signals for Information Management
 
@@ -79,13 +79,13 @@ WindEurope's ten-point Madrid Call to Action for accelerating European wind depl
 
 ## Beyond the Business Card: The True Value of Industry Events
 
-Wind Europe Annual is more than a trade show. It is a vital forum where the industry collectively assesses its current state, charts its future course, and identifies the innovators driving progress. The conversations we had over three days in Madrid were far more valuable than any amount of outbound outreach could generate.
+Wind Europe Annual is more than a trade show. It is a vital forum where the industry collectively assesses its current state, charts its future course, and identifies the innovators driving progress. The conversations we had over two days in Madrid were far more valuable than any amount of outbound outreach could generate.
 
 Meeting Bill Slater and receiving his honest advice on building a company. Discussing the information challenges of a growing offshore portfolio with the Jera Nex BP team. Seeing Marlon from TenneT across a crowded hall. These are the intangible yet profound benefits of attending events like this. They reinforce the human element at the heart of even the most technical industries.
 
 We look forward to returning.
 
-*Sylvia Awoudu and Søren Christensen, Co-founders of SøDera, attended Wind Europe Annual 2026 in Madrid on 21 to 23 April.*
+*Sylvia Awoudu and Søren Christensen, Co-founders of SøDera, attended Wind Europe Annual 2026 in Madrid on 22 to 23 April.*
 `,
   },
   {
