@@ -80,8 +80,8 @@ function RootLayout() {
   const col2 = [
     { label: 'Document & Data Management', href: '/service-document-management' },
     { label: 'Building Information Modelling', href: '/service-bim' },
-    { label: 'Digital Twin', href: '/service-bim' },
-    { label: 'Document Assessment', href: '/service-document-management' },
+    { label: 'Digital Twin', href: '/service-digital-twin' },
+    { label: 'Document Assessment', href: '/service-document-assessment' },
     { label: 'Documentation Audit', href: '/service-document-management' },
   ]
 
