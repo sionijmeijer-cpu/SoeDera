@@ -10,7 +10,7 @@ if (typeof window !== 'undefined' && !document.getElementById('flash-animations'
       0% { transform: translateX(-100%); }
       100% { transform: translateX(100%); }
     }
-    .animate-shimmer { animation: shimmer 1.5s infinite; }
+    .animate-shimmer { animation: shimmer 1.5s infinite; } 
   `
   document.head.appendChild(style)
 }
