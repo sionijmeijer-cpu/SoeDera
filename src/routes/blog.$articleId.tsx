@@ -4,7 +4,6 @@ import {
   Clock,
   ArrowLeft,
   Linkedin,
-  Twitter,
   Mail,
   Link2,
   Check,
@@ -368,10 +367,7 @@ function ArticlePage() {
           </Link>
           <div className="flex items-center gap-2">
             <button onClick={shareOnLinkedIn} className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-blue-700 transition-colors border border-slate-200 rounded px-3 py-1.5">
-              <Linkedin size={13} /> Share
-            </button>
-            <button onClick={shareOnTwitter} className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-sky-500 transition-colors border border-slate-200 rounded px-3 py-1.5">
-              <Twitter size={13} /> Tweet
+              <Linkedin size={13} /> Share on LinkedIn
             </button>
           </div>
         </div>
