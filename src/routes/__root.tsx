@@ -74,7 +74,7 @@ function RootLayout() {
     { label: 'RDS-PS', href: '/service-rds-ps' },
     { label: 'IEC 81346', href: '/service-iec81346' },
     { label: 'RDS Audit', href: '/service-rds-audit' },
-    { label: 'RDS Training', href: '/service-training' },
+    { label: 'RDS Training', href: '/service-rds-training' },
   ]
 
   const col2 = [
