@@ -16,7 +16,7 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: 'wind-europe-2026-madrid',
-    title: 'WindEurope Annual 2026 Madrid: Offshore Wind Information Management Insights',
+    title: 'Wind Europe Annual 2026: A Dispatch from Madrid on the Future of Information Management in Offshore Wind',
     excerpt:
       'Søren and I attended Wind Europe Annual 2026 at IFEMA Madrid. Here is what stood out on the exhibition floor, the conversations that stayed with us, and what the event signals for information management in offshore wind.',
     image: '/wind_europe_madrid_2026.png',
@@ -27,7 +27,7 @@ export const blogPosts: BlogPost[] = [
     color: 'from-sky-600 to-indigo-500',
     published: true,
     content: `
-Søren and I spent 22 April at [WindEurope Annual 2026](https://windeurope.org/annual2026/) in Madrid and came away with a clear conclusion. The offshore wind industry is no longer waiting for stability. It is operating as if large scale deployment is already underway.
+Søren and I spent 22 April at WindEurope Annual 2026 in Madrid and came away with a clear conclusion. The offshore wind industry is no longer waiting for stability. It is operating as if large scale deployment is already underway.
 
 On paper, this is a massive event. 16,000 people. More than 600 exhibitors. An exhibition floor that takes a full day just to cover properly. In reality, most of the value comes down to a handful of conversations you did not plan to have.
 
@@ -45,56 +45,43 @@ We spoke at length with Bill Slater, who leads their blade product line. Onyx ha
 
 But the more important part of the discussion was operational rather than technical. Building in offshore wind is structurally demanding. Development cycles are long. Integration into existing asset environments is complex. Trust is built over time across multiple stakeholders.
 
-Bill spoke openly about these realities and gave us genuinely useful advice on navigating the early stages of a company in this space. That level of candour is rare and we appreciated it more than we can say.
+Bill spoke openly about these realities and gave us genuinely useful advice on navigating the early stages of a company in this space. That level of transparency is rare and we appreciated it more than we can say.
 
 ## Offshore wind scale is increasing data complexity
 
 This theme came up repeatedly in conversations with [JERA Nex bp](https://www.jeranex.com/jera-nex-bp/) and [Ørsted](https://orsted.com/).
 
-As offshore wind portfolios expand, data complexity increases rather than decreases. 
+JERA Nex bp is one of the most significant new players in global offshore wind. A 50:50 joint venture between JERA and bp, launched in 2025, the company brings together a 13GW portfolio of operating assets and development projects across Europe, Asia Pacific and the US. Speaking with a representative of that organisation, it was clear that scale and data complexity grow together.
 
-Each new asset introduces:
+As offshore wind portfolios expand, the information challenge intensifies rather than simplifies. Each new asset brings additional suppliers, different documentation standards, inconsistent asset structures, and fragmented ownership of data. From an information management perspective, this creates compounding risk. The industry continues to invest heavily in data generation through sensors, monitoring systems, and digital infrastructure. But the underlying data structures are often inconsistent. Without structured asset identification and reliable documentation, the value of that investment is significantly reduced.
 
-- additional suppliers
-- different documentation standards
-- inconsistent asset structures
-- fragmented ownership of data
-
-From an information management perspective, this creates compounding risk. The industry continues to invest heavily in data generation through sensors, monitoring systems, and digital infrastructure. But the underlying data structures are often inconsistent. Without structured asset identification and reliable documentation, the value of that investment is significantly reduced.
+[Ørsted](https://orsted.com/), the world's largest offshore wind developer, reinforced the same picture. At their scale, keeping asset information structured, consistent, and operationally usable across a global portfolio is a daily challenge. The appetite for better information foundations is real and growing.
 
 ## TenneT perspective: operational reality matters
 
-We also spent time with contacts from [TenneT](https://www.tennet.eu/) where Søren and I countinue to work.
+Both Søren and I continue to work at [TenneT](https://www.tennet.eu/) alongside building SøDera. It was good to catch up with colleagues at the event, including Marlon, whose familiar face made a very full day feel a little warmer.
 
 This connection matters because it anchors the conversation in operational reality. Industry events tend to emphasise future capability. Teams working inside live transmission infrastructure focus on what can actually be implemented within complex, regulated, safety-critical systems. That contrast is useful. Offshore wind is advancing quickly, but the practical implementation of information management still faces structural constraints that are often underestimated from the outside.
+
+> "Engineering and innovation always capture my attention, and the WindEurope exhibition did not disappoint. There is always something new to discover, at least from my perspective. When breaking down an asset using RDS, I usually focus primarily on its functional aspects. This approach requires a solid understanding of how the asset actually operates. Events like this reinforce the importance of staying informed and prepared, especially when clients seek advice on new systems or unfamiliar technologies." — Søren Christensen, Co-founder & CEO, SøDera
 
 ## Supply chain depth and niche innovation
 
 Several companies reinforced just how broad the offshore wind ecosystem has become.
 
-- [IRTH Solutions](https://irthsolutions.com/) 
-   work on utility asset management and damage prevention. Their world and ours are adjacent rather than identical, but the underlying requirement is the same: asset data that can be trusted when it matters. We see potential for collaboration and the conversation was worth having.
+[IRTH Solutions](https://irthsolutions.com/) work on utility asset management and damage prevention. Their world and ours are adjacent rather than identical, but the underlying requirement is the same: asset data that can be trusted when it matters. We see potential for collaboration and the conversation was worth having.
 
-- [Bioseco](https://bioseco.com/) 
-   use sound and light to deter birds and bats from wind turbines, addressing an environmental compliance constraint that delays more projects than most people realise. A genuinely clever piece of niche innovation.
+[Bioseco](https://bioseco.com/) use sound and light to deter birds and bats from wind turbines, addressing an environmental compliance constraint that delays more projects than most people realise. A genuinely clever piece of niche innovation.
 
-- [Resinex Trading](https://www.resinextrad.com/en/) 
-   was an eye-opener. Seeing the materials supply side of the sector up close made the documentation challenge feel more tangible. Every component has a supply chain behind it. All of that needs to be traceable for the life of the asset. Traceability without structure is just paperwork.
+[Resinex Trading](https://www.resinextrad.com/en/) was an eye-opener. Seeing the materials supply side of the sector up close made the documentation challenge feel more tangible. Every component has a supply chain behind it. All of that needs to be traceable for the life of the asset. Traceability without structure is just paperwork.
 
-- [Osonic](https://osonic.tech/) 
-   are tackling noise-related constraints that continue to delay both onshore and offshore projects. Another example of the specific problem-solving that the sector needs and rarely gets enough credit for.
+[Osonic](https://osonic.tech/) have developed a low-noise installation method for monopile foundations that removes the need for impact hammers entirely. No hammers, no noise abatement systems, and dramatically reduced underwater noise during installation. For a sector where installation noise is both a regulatory constraint and a genuine environmental concern, this is the kind of foundational innovation that tends to be underappreciated until it becomes standard practice. Osonic is also the recipient of the German Sustainability Award, and the connection to [Ørsted](https://orsted.com/) gives them a credibility that is hard to build from scratch.
 
 ## The core issue: information management is lagging behind
 
 A clear pattern emerged across the day.
 
-Offshore wind is generating more data than ever before, but the systems required to structure, validate, and maintain that data are still underdeveloped. The key challenges are not new:
-
-- inconsistent asset identification
-- incomplete or poorly structured documentation
-- weak data handover between project phases
-
-These are not theoretical concerns. They directly affect cost, risk, and operational performance. As offshore wind continues to scale, information management will become a limiting factor if it is not treated as core infrastructure rather than a secondary layer.
+Offshore wind is generating more data than ever before, but the systems required to structure, validate, and maintain that data are still underdeveloped. The challenges are not new: inconsistent asset identification, incomplete or poorly structured documentation, and weak data handover between project phases. These are not theoretical concerns. They directly affect cost, risk, and operational performance. As offshore wind continues to scale, information management will become a limiting factor if it is not treated as core infrastructure rather than a secondary layer.
 
 ## Looking ahead to Copenhagen
 
