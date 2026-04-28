@@ -197,7 +197,7 @@ function Toc({ items, activeId, progressById }: { items: TocItem[]; activeId: st
   )
 }
 
-function SharePanel({ onLinkedIn, onTwitter, onEmail, onCopy, copied }: { onLinkedIn: () => void; onTwitter: () => void; onEmail: () => void; onCopy: () => void; copied: boolean }) {
+function SharePanel({ onLinkedIn, onEmail, onCopy, copied }: { onLinkedIn: () => void; onEmail: () => void; onCopy: () => void; copied: boolean }) {
   return (
     <div className="rounded-2xl bg-white shadow-md border border-slate-100 p-6">
       <div className="text-xs uppercase tracking-[0.18em] text-slate-600 mb-4">Share</div>
@@ -205,10 +205,7 @@ function SharePanel({ onLinkedIn, onTwitter, onEmail, onCopy, copied }: { onLink
         <button onClick={onLinkedIn} className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-blue-50 transition shadow-sm border border-slate-100" aria-label="Share on LinkedIn">
           <Linkedin size={18} className="text-blue-600" />
         </button>
-        <button onClick={onTwitter} className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm border border-slate-100" aria-label="Share on X">
-          <Twitter size={18} className="text-slate-800" />
-        </button>
-        <button onClick={onEmail} className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm border border-slate-100" aria-label="Share by email">
+<button onClick={onEmail} className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm border border-slate-100" aria-label="Share by email">
           <Mail size={18} className="text-slate-800" />
         </button>
         <button onClick={onCopy} className="flex items-center gap-2 px-4 h-10 bg-white rounded-lg hover:bg-slate-100 transition shadow-sm border border-slate-100 text-sm font-medium">
@@ -284,13 +281,7 @@ function ArticlePage() {
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'width=600,height=400')
   }
 
-  const shareOnTwitter = () => {
-    const url = encodeURIComponent(window.location.href)
-    const text = encodeURIComponent(article.title)
-    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'width=600,height=400')
-  }
-
-  const shareByEmail = () => {
+const shareByEmail = () => {
     const subject = encodeURIComponent(article.title)
     const body = encodeURIComponent(`Check out this article: ${window.location.href}`)
     window.location.href = `mailto:?subject=${subject}&body=${body}`
@@ -414,7 +405,7 @@ function ArticlePage() {
                     <div className="px-4 pb-4"><Toc items={tocItems} activeId={activeId} progressById={progressById} /></div>
                   </details>
                 )}
-                <SharePanel onLinkedIn={shareOnLinkedIn} onTwitter={shareOnTwitter} onEmail={shareByEmail} onCopy={copyLink} copied={copied} />
+                <SharePanel onLinkedIn={shareOnLinkedIn} onEmail={shareByEmail} onCopy={copyLink} copied={copied} />
                 <RelatedPanel related={related} />
               </div>
             </div>
@@ -539,7 +530,7 @@ function ArticlePage() {
                   <Toc items={tocItems} activeId={activeId} progressById={progressById} />
                 </div>
               )}
-              <SharePanel onLinkedIn={shareOnLinkedIn} onTwitter={shareOnTwitter} onEmail={shareByEmail} onCopy={copyLink} copied={copied} />
+              <SharePanel onLinkedIn={shareOnLinkedIn} onEmail={shareByEmail} onCopy={copyLink} copied={copied} />
               <RelatedPanel related={related} />
             </div>
           </aside>
