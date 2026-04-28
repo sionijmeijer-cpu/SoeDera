@@ -28,6 +28,8 @@ import { Route as ServiceTrainingImport } from './routes/service-training'
 import { Route as ServiceRdsPsImport } from './routes/service-rds-ps'
 import { Route as ServiceIec81346Import } from './routes/service-iec81346'
 import { Route as ServiceRdsTrainingImport } from './routes/service-rds-training'
+import { Route as ServiceDigitalTwinImport } from './routes/service-digital-twin'
+import { Route as ServiceDocumentAssessmentImport } from './routes/service-document-assessment'
 
 // Create/Update Routes
 
@@ -106,6 +108,18 @@ const ServiceDocumentManagementRoute = ServiceDocumentManagementImport.update({
 const ServiceProductDevelopmentRoute = ServiceProductDevelopmentImport.update({
   id: '/service-product-development',
   path: '/service-product-development',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ServiceDocumentAssessmentRoute = ServiceDocumentAssessmentImport.update({
+  id: '/service-document-assessment',
+  path: '/service-document-assessment',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ServiceDigitalTwinRoute = ServiceDigitalTwinImport.update({
+  id: '/service-digital-twin',
+  path: '/service-digital-twin',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -228,6 +242,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiceProductDevelopmentImport
       parentRoute: typeof rootRoute
     }
+    '/service-document-assessment': {
+      id: '/service-document-assessment'
+      path: '/service-document-assessment'
+      fullPath: '/service-document-assessment'
+      preLoaderRoute: typeof ServiceDocumentAssessmentImport
+      parentRoute: typeof rootRoute
+    }
+    '/service-digital-twin': {
+      id: '/service-digital-twin'
+      path: '/service-digital-twin'
+      fullPath: '/service-digital-twin'
+      preLoaderRoute: typeof ServiceDigitalTwinImport
+      parentRoute: typeof rootRoute
+    }
     '/service-rds-training': {
       id: '/service-rds-training'
       path: '/service-rds-training'
@@ -275,6 +303,8 @@ export interface FileRoutesByFullPath {
   '/service-project-management': typeof ServiceProjectManagementRoute
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
+  '/service-document-assessment': typeof ServiceDocumentAssessmentRoute
+  '/service-digital-twin': typeof ServiceDigitalTwinRoute
   '/service-rds-training': typeof ServiceRdsTrainingRoute
   '/service-iec81346': typeof ServiceIec81346Route
   '/service-rds-ps': typeof ServiceRdsPsRoute
@@ -296,6 +326,8 @@ export interface FileRoutesByTo {
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
   '/service-rds-ps': typeof ServiceRdsPsRoute
+  '/service-document-assessment': typeof ServiceDocumentAssessmentRoute
+  '/service-digital-twin': typeof ServiceDigitalTwinRoute
   '/service-rds-training': typeof ServiceRdsTrainingRoute
   '/service-iec81346': typeof ServiceIec81346Route
   '/service-rds-ps': typeof ServiceRdsPsRoute
@@ -318,6 +350,8 @@ export interface FileRoutesById {
   '/service-document-management': typeof ServiceDocumentManagementRoute
   '/service-product-development': typeof ServiceProductDevelopmentRoute
   '/service-rds-ps': typeof ServiceRdsPsRoute
+  '/service-document-assessment': typeof ServiceDocumentAssessmentRoute
+  '/service-digital-twin': typeof ServiceDigitalTwinRoute
   '/service-rds-training': typeof ServiceRdsTrainingRoute
   '/service-iec81346': typeof ServiceIec81346Route
   '/service-rds-ps': typeof ServiceRdsPsRoute
@@ -341,6 +375,8 @@ export interface FileRouteTypes {
     | '/service-document-management'
     | '/service-product-development'
     | '/service-rds-ps'
+    | '/service-document-assessment'
+    | '/service-digital-twin'
     | '/service-rds-training'
     | '/service-iec81346'
     | '/service-rds-ps'
@@ -360,6 +396,8 @@ export interface FileRouteTypes {
     | '/service-project-management'
     | '/service-document-management'
     | '/service-product-development'
+    | '/service-document-assessment'
+    | '/service-digital-twin'
     | '/service-rds-training'
     | '/service-iec81346'
     | '/service-rds-ps'
@@ -380,6 +418,8 @@ export interface FileRouteTypes {
     | '/service-document-management'
     | '/service-product-development'
     | '/service-rds-ps'
+    | '/service-document-assessment'
+    | '/service-digital-twin'
     | '/service-rds-training'
     | '/service-iec81346'
     | '/service-rds-ps'
@@ -401,6 +441,8 @@ export interface RootRouteChildren {
   ServiceProjectManagementRoute: typeof ServiceProjectManagementRoute
   ServiceDocumentManagementRoute: typeof ServiceDocumentManagementRoute
   ServiceProductDevelopmentRoute: typeof ServiceProductDevelopmentRoute
+  ServiceDocumentAssessmentRoute: typeof ServiceDocumentAssessmentRoute
+  ServiceDigitalTwinRoute: typeof ServiceDigitalTwinRoute
   ServiceRdsTrainingRoute: typeof ServiceRdsTrainingRoute
   ServiceIec81346Route: typeof ServiceIec81346Route
   ServiceRdsPsRoute: typeof ServiceRdsPsRoute
@@ -421,6 +463,8 @@ const rootRouteChildren: RootRouteChildren = {
   ServiceProjectManagementRoute: ServiceProjectManagementRoute,
   ServiceDocumentManagementRoute: ServiceDocumentManagementRoute,
   ServiceProductDevelopmentRoute: ServiceProductDevelopmentRoute,
+  ServiceDocumentAssessmentRoute: ServiceDocumentAssessmentRoute,
+  ServiceDigitalTwinRoute: ServiceDigitalTwinRoute,
   ServiceRdsTrainingRoute: ServiceRdsTrainingRoute,
   ServiceIec81346Route: ServiceIec81346Route,
   ServiceRdsPsRoute: ServiceRdsPsRoute,
