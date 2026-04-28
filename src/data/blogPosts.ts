@@ -27,13 +27,11 @@ export const blogPosts: BlogPost[] = [
     color: 'from-sky-600 to-indigo-500',
     published: true,
     content: `
-<div style="overflow: hidden; margin-bottom: 1.5rem;">
-  <img src="/soeren-christensen-sylvia-awoudu-wind-europe-soedera.jpg" alt="Søren Christensen and Sylvia Awoudu at Wind Europe Annual 2026 in Madrid" style="float: right; width: 280px; margin: 0 0 1rem 2rem; border-radius: 12px; object-fit: cover;" />
+![Søren Christensen and Sylvia Awoudu at Wind Europe Annual 2026 in Madrid](/soeren-christensen-sylvia-awoudu-wind-europe-soedera.jpg)
 
 Madrid, Spain. From 21 to 23 April 2026, Søren Christensen and I had the privilege of attending Wind Europe Annual at IFEMA Madrid. It was, by all accounts, the largest edition of the event to date, drawing over 16,000 participants and more than 620 exhibitors. The atmosphere, despite the recent headwinds faced by Europe's wind sector, was one of palpable energy and determined optimism. The headline theme, "from crisis to confidence," perfectly encapsulated the prevailing mood: an industry not dwelling on past challenges, but actively building its future.
 
 We arrived in Madrid with a clear objective: to understand the pulse of the offshore wind sector, identify emerging trends, and engage in the kind of unscripted conversations that truly reveal where the industry is heading. We left with a wealth of insights, particularly concerning the increasingly critical role of information management in scaling Europe's renewable energy ambitions.
-</div>
 
 ## The Exhibition Floor: Where Connections Forge Understanding
 
