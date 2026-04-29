@@ -16,7 +16,7 @@ import {
 } from 'lucide-react'
 import { blogPosts } from '../data/blogPosts'
 
-export const Route = createFileRoute('/')({ 
+export const Route = createFileRoute('/')({
   component: HomePage,
 })
 
@@ -217,17 +217,15 @@ function HomePage() {
                     <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-1">
                       <Clock size={12} /> ~2 weeks
                     </div>
-                    <p className="text-xl font-bold text-slate-900">
-                      From €3,300
+                    <p className="text-sm text-slate-500 italic">
+                      Want to hear more?
                     </p>
                   </div>
                   <a
-                    href="https://outlook.office.com/book/AssessmentBooking1@soedera.eu/s/GDHl_HOriUOW0kXs3yLfJA2?ismsaljsauthenabled"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="mailto:info@soedera.eu?subject=RDS Assessment Enquiry&body=Hi SøDera team,%0A%0AI would like to hear more about your RDS Assessment service.%0A%0AKind regards,"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl transition-all text-sm group-hover:shadow-lg group-hover:shadow-sky-500/20"
                   >
-                    Discuss <ArrowRight size={15} />
+                    Get in Touch <ArrowRight size={15} />
                   </a>
                 </div>
               </div>
@@ -287,17 +285,15 @@ function HomePage() {
                     <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-1">
                       <Clock size={12} /> ~2 weeks
                     </div>
-                    <p className="text-xl font-bold text-slate-900">
-                      From €3,300
+                    <p className="text-sm text-slate-500 italic">
+                      Want to hear more?
                     </p>
                   </div>
                   <a
-                    href="https://outlook.office.com/book/AssessmentBooking1@soedera.eu/s/GDHl_HOriUOW0kXs3yLfJA2?ismsaljsauthenabled"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="mailto:info@soedera.eu?subject=Document Assessment Enquiry&body=Hi SøDera team,%0A%0AI would like to hear more about your Document Assessment service.%0A%0AKind regards,"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl transition-all text-sm group-hover:shadow-lg group-hover:shadow-sky-500/20"
                   >
-                    Discuss <ArrowRight size={15} />
+                    Get in Touch <ArrowRight size={15} />
                   </a>
                 </div>
               </div>
@@ -306,7 +302,7 @@ function HomePage() {
           </div>
 
           <p className="mt-8 text-slate-400 text-sm italic text-center max-w-5xl mx-auto">
-            Both assessments are short, paid engagements designed to provide clarity. Not to lock you into a larger project.
+            Both assessments are focused engagements designed to give you clarity. Not to lock you into a larger project.
           </p>
 
           {/* Training signpost */}
