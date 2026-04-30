@@ -39,10 +39,11 @@ function RDSAuditPage() {
 
   const sidebarLinks = [
     { label: 'Reference Designation (RDS)', href: '/service-rds' },
+    { label: 'IEC 81346', href: '/service-iec81346' },
+    { label: 'RDS-PS', href: '/service-rds-ps' },
+    { label: 'RDS Training', href: '/service-rds-training' },
     { label: 'Document Management', href: '/service-document-management' },
-    { label: 'Building Information Modelling', href: '/service-bim' },
-    { label: 'Project Management', href: '/service-project-management' },
-    { label: 'Training & SME', href: '/service-training' },
+    { label: 'Documentation Audit', href: '/service-documentation-audit' },
   ]
 
   return (
