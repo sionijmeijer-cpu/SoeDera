@@ -41,6 +41,7 @@ function DocumentationAuditPage() {
     { label: 'Document Assessment', href: '/service-document-assessment' },
     { label: 'Document Management', href: '/service-document-management' },
     { label: 'RDS Audit', href: '/service-rds-audit' },
+    { label: 'RDS Training', href: '/service-rds-training' },
     { label: 'Project Management', href: '/service-project-management' },
     { label: 'Training & SME', href: '/service-training' },
   ]
