@@ -1,8 +1,11 @@
 {
   "name": "soedera-api",
   "version": "1.0.0",
-  "description": "Azure Functions API for SøDera SEO handling",
+  "description": "Azure Functions API for SøDera",
   "engines": {
     "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@azure/functions": "^3.5.1"
   }
 }
