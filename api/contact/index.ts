@@ -25,7 +25,7 @@ const httpTrigger: AzureFunction = async function (
       context.res = {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ error: 'Server configuration error.' }),
+        body: JSON.stringify({ error: `Missing env vars: tenant=${!!tenantId} client=${!!clientId} secret=${!!clientSecret}` }),
       }
       return
     }
@@ -51,7 +51,7 @@ const httpTrigger: AzureFunction = async function (
       context.res = {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ error: 'Failed to authenticate with Microsoft.' }),
+        body: JSON.stringify({ error: `Token failed: ${err}` }),
       }
       return
     }
@@ -126,7 +126,7 @@ const httpTrigger: AzureFunction = async function (
       context.res = {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ error: 'Failed to send email. Please try again or email us directly at info@soedera.eu.' }),
+        body: JSON.stringify({ error: `Send failed: ${err}` }),
       }
       return
     }
