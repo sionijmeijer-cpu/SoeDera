@@ -1,15 +1,14 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { SEOHead } from '@/components/SEOHead'
 import { useState } from 'react'
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
+import {
+  Mail,
+  MapPin,
+  Clock,
   Send,
-  Linkedin,
   CheckCircle2,
-  Calendar
+  AlertCircle,
+  Loader2,
 } from 'lucide-react'
 
 export const Route = createFileRoute('/contact')({
@@ -18,87 +17,100 @@ export const Route = createFileRoute('/contact')({
 
 function ContactPage() {
   SEOHead({
-    title: 'Contact Us - Book a Consultation',
-    description: 'Get in touch with S\u00f8Dera for expert consulting on documentation, RDS (IEC 81346), and asset data management. Book a free assessment today.',
-    keywords: 'contact S\u00f8Dera, RDS consultation, document management help, energy consulting Denmark',
-    canonicalUrl: 'https://www.soedera.eu/contact'
+    title: 'Contact SøDera | Get in Touch',
+    description:
+      'Get in touch with SøDera for expert consulting on ISO/IEC 81346, Reference Designation Systems, document management, and asset information. Based in Portugal, serving Europe.',
+    keywords:
+      'contact SøDera, RDS consultation, ISO/IEC 81346 consulting, document management help, energy consulting Europe',
+    canonicalUrl: 'https://www.soedera.eu/contact',
   })
 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
-    message: ''
+    message: '',
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    setFormData({ name: '', email: '', company: '', message: '' })
-  }
+    setStatus('sending')
+    setErrorMessage('')
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }))
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        setStatus('success')
+        setFormData({ name: '', email: '', company: '', message: '' })
+      } else {
+        setStatus('error')
+        setErrorMessage(data.error || 'Something went wrong. Please try again.')
+      }
+    } catch {
+      setStatus('error')
+      setErrorMessage('Something went wrong. Please email us directly at info@soedera.eu.')
+    }
   }
 
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="py-10 sm:py-12 md:py-14 bg-gradient-to-b from-sky-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }} />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-sky-400/10 rounded-full blur-[150px]" />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-sky-600 font-semibold text-sm uppercase tracking-wider">Get in Touch</span>
-          <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mt-3 mb-6">
-            Let&apos;s Start a
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-sky-400"> Conversation</span>
-          </h1>
-          <p className="text-slate-600 text-lg max-w-3xl mx-auto">
-            Whether you have a specific project in mind or want to explore how we can help, 
-            we would love to hear from you. Get in touch and let&apos;s discuss your needs.
-          </p>
+    <div className="min-h-screen bg-white">
+
+      {/* ── Hero ── */}
+      <section className="py-20 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-4">Get in touch</p>
+            <h1 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+              Let's start a conversation
+            </h1>
+            <p className="text-slate-600 text-lg leading-relaxed">
+              Whether you have a specific project in mind or just want to explore whether we can help, we would love to hear from you. No sales pitch, no pressure — just an honest conversation about your situation.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Contact Content */}
-      <section className="py-6 sm:py-8 md:py-10 bg-slate-50">
+      {/* ── Main content ── */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-            {/* Contact Form */}
-            <div className="bg-white border-2 border-slate-200 rounded-2xl p-6 sm:p-8 md:p-10 hover:shadow-xl transition-all">
-              <h2 className="text-2xl font-bold text-slate-900 mb-2">Send Us a Message</h2>
-              <p className="text-slate-600 mb-8">
-                Fill out the form below and we&apos;ll get back to you within 24 hours.
+          <div className="grid lg:grid-cols-2 gap-16">
+
+            {/* ── Contact form ── */}
+            <div>
+              <h2 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-2xl font-bold text-slate-900 mb-2">
+                Send us a message
+              </h2>
+              <p className="text-slate-500 text-sm mb-8">
+                We will get back to you within one business day.
               </p>
 
-              {isSubmitted ? (
-                <div className="bg-sky-50 border-2 border-sky-200 rounded-xl p-6 text-center">
-                  <div className="flex justify-center mb-4">
-                    <CheckCircle2 size={48} className="text-sky-500" />
+              {status === 'success' ? (
+                <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-10 text-center">
+                  <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-5">
+                    <CheckCircle2 size={32} className="text-emerald-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Thank you!</h3>
-                  <p className="text-slate-600 mb-4">
-                    We&apos;ve received your message and will be in touch shortly.
+                  <h3 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-xl font-bold text-slate-900 mb-2">
+                    Message received
+                  </h3>
+                  <p className="text-slate-600 mb-6 leading-relaxed">
+                    Thank you for reaching out. We have received your message and will be in touch shortly.
                   </p>
                   <button
-                    onClick={() => setIsSubmitted(false)}
-                    className="text-sky-600 font-semibold hover:text-sky-700 transition-colors"
+                    onClick={() => setStatus('idle')}
+                    className="text-sm font-semibold text-sky-600 hover:text-sky-700 transition-colors"
                   >
                     Send another message
                   </button>
@@ -106,8 +118,8 @@ function ContactPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label className="block text-sm font-semibold text-slate-900 mb-2">
-                      Name *
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Your name <span className="text-sky-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -115,14 +127,15 @@ function ContactPage() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:outline-none focus:border-sky-500 transition-colors"
-                      placeholder="Your name"
+                      disabled={status === 'sending'}
+                      className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100 transition-all text-slate-900 placeholder:text-slate-400 disabled:opacity-60"
+                      placeholder="Your full name"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-slate-900 mb-2">
-                      Email *
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Email address <span className="text-sky-500">*</span>
                     </label>
                     <input
                       type="email"
@@ -130,13 +143,14 @@ function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:outline-none focus:border-sky-500 transition-colors"
+                      disabled={status === 'sending'}
+                      className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100 transition-all text-slate-900 placeholder:text-slate-400 disabled:opacity-60"
                       placeholder="you@company.com"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-slate-900 mb-2">
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
                       Company
                     </label>
                     <input
@@ -144,14 +158,15 @@ function ContactPage() {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:outline-none focus:border-sky-500 transition-colors"
-                      placeholder="Your company"
+                      disabled={status === 'sending'}
+                      className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100 transition-all text-slate-900 placeholder:text-slate-400 disabled:opacity-60"
+                      placeholder="Your organisation"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-slate-900 mb-2">
-                      Message *
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Message <span className="text-sky-500">*</span>
                     </label>
                     <textarea
                       name="message"
@@ -159,148 +174,155 @@ function ContactPage() {
                       onChange={handleChange}
                       required
                       rows={6}
-                      className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:outline-none focus:border-sky-500 transition-colors resize-none"
-                      placeholder="Tell us about your project or challenges..."
+                      disabled={status === 'sending'}
+                      className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100 transition-all resize-none text-slate-900 placeholder:text-slate-400 disabled:opacity-60"
+                      placeholder="Tell us about your project or challenge..."
                     />
                   </div>
 
+                  {status === 'error' && (
+                    <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 rounded-xl">
+                      <AlertCircle size={18} className="text-red-500 flex-shrink-0 mt-0.5" />
+                      <p className="text-sm text-red-700">{errorMessage}</p>
+                    </div>
+                  )}
+
                   <button
                     type="submit"
-                    disabled={isSubmitting}
-                    className="w-full px-6 py-3 bg-sky-500 text-white font-semibold rounded-lg hover:bg-sky-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 text-sm sm:text-base"
+                    disabled={status === 'sending'}
+                    className="w-full px-6 py-4 bg-sky-500 text-white font-semibold rounded-xl hover:bg-sky-400 disabled:opacity-60 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
                   >
-                    <Send size={16} />
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    {status === 'sending' ? (
+                      <>
+                        <Loader2 size={16} className="animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={16} />
+                        Send Message
+                      </>
+                    )}
                   </button>
                 </form>
               )}
             </div>
 
-            {/* Contact Information */}
+            {/* ── Right column ── */}
             <div className="space-y-6">
-              {/* Contact Details */}
-              <div className="bg-white border-2 border-slate-200 rounded-2xl p-6 sm:p-8 hover:shadow-xl transition-all">
-                <h3 className="text-xl font-bold text-slate-900 mb-6">Contact Information</h3>
-                
-                <div className="space-y-4">
+
+              {/* Contact details */}
+              <div className="bg-slate-50 rounded-2xl border border-slate-200 p-8">
+                <h3 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-xl font-bold text-slate-900 mb-6">
+                  Contact information
+                </h3>
+                <div className="space-y-5">
                   <div className="flex items-start gap-4">
-                    <Mail size={20} className="text-sky-500 shrink-0 mt-1" />
+                    <div className="w-9 h-9 bg-sky-50 rounded-lg flex items-center justify-center flex-shrink-0 border border-sky-100">
+                      <Mail size={15} className="text-sky-600" />
+                    </div>
                     <div>
-                      <p className="text-sm text-slate-600">Email</p>
-                      <a href="mailto:info@soedera.eu" className="text-slate-900 font-semibold hover:text-sky-600 transition-colors">
+                      <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Email</p>
+                      <a href="mailto:info@soedera.eu" className="text-slate-800 font-semibold hover:text-sky-600 transition-colors">
                         info@soedera.eu
                       </a>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <MapPin size={20} className="text-sky-500 shrink-0 mt-1" />
+                    <div className="w-9 h-9 bg-sky-50 rounded-lg flex items-center justify-center flex-shrink-0 border border-sky-100">
+                      <MapPin size={15} className="text-sky-600" />
+                    </div>
                     <div>
-                      <p className="text-sm text-slate-600">Location</p>
-                      <p className="text-slate-900 font-semibold">Braga, Portugal</p>
+                      <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Based in</p>
+                      <p className="text-slate-800 font-semibold">Portugal</p>
+                      <p className="text-slate-500 text-sm">Serving clients across Europe</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <Clock size={20} className="text-sky-500 shrink-0 mt-1" />
+                    <div className="w-9 h-9 bg-sky-50 rounded-lg flex items-center justify-center flex-shrink-0 border border-sky-100">
+                      <Clock size={15} className="text-sky-600" />
+                    </div>
                     <div>
-                      <p className="text-sm text-slate-600">Business Hours</p>
-                      <p className="text-slate-900 font-semibold">Monday - Friday</p>
-                      <p className="text-slate-900 font-semibold">09:00 - 17:00 CET</p>
+                      <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Response time</p>
+                      <p className="text-slate-800 font-semibold">Within one business day</p>
+                      <p className="text-slate-500 text-sm">Monday to Friday, 09:00 to 17:00 CET</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Quick Links */}
-              <div className="bg-white border-2 border-slate-200 rounded-2xl p-6 sm:p-8 hover:shadow-xl transition-all">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Quick Assessments</h3>
-                <p className="text-slate-600 text-sm mb-4">
-                  Ready to get started? Book one of our quick paid assessments:
+              {/* Reach us directly */}
+              <div className="bg-slate-50 rounded-2xl border border-slate-200 p-8">
+                <h3 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-xl font-bold text-slate-900 mb-2">
+                  Reach us directly
+                </h3>
+                <p className="text-slate-500 text-sm mb-6">
+                  Prefer to email one of us directly? We are both happy to hear from you.
                 </p>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2 text-slate-700">
-                    <CheckCircle2 size={16} className="text-sky-500" />
-                    <span className="text-sm">RDS Review Assessment (~2 weeks)</span>
-                  </li>
-                  <li className="flex items-center gap-2 text-slate-700">
-                    <CheckCircle2 size={16} className="text-sky-500" />
-                    <span className="text-sm">Document Management Assessment</span>
-                  </li>
-                </ul>
+                <div className="space-y-4">
+                  <a
+                    href="mailto:soeren.christensen@soedera.eu?subject=Enquiry via soedera.eu"
+                    className="flex items-center gap-4 p-4 bg-white rounded-xl border border-slate-200 hover:border-sky-200 hover:shadow-sm transition-all group"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">SC</div>
+                    <div>
+                      <p className="font-semibold text-slate-900 text-sm group-hover:text-sky-600 transition-colors">Søren Christensen</p>
+                      <p className="text-xs text-slate-400">Co-founder & CEO · RDS and ISO/IEC 81346</p>
+                    </div>
+                  </a>
+                  <a
+                    href="mailto:sylvia.awoudu@soedera.eu?subject=Enquiry via soedera.eu"
+                    className="flex items-center gap-4 p-4 bg-white rounded-xl border border-slate-200 hover:border-sky-200 hover:shadow-sm transition-all group"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-sky-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">SA</div>
+                    <div>
+                      <p className="font-semibold text-slate-900 text-sm group-hover:text-sky-600 transition-colors">Sylvia Awoudu</p>
+                      <p className="text-xs text-slate-400">Co-founder & COO · Document Management and BIM</p>
+                    </div>
+                  </a>
+                </div>
               </div>
 
-              {/* Schedule Call */}
-              <div className="bg-gradient-to-br from-sky-50 to-sky-100 border-2 border-sky-200 rounded-2xl p-6 sm:p-8">
-                <div className="flex items-start gap-3 mb-4">
-                  <Calendar size={20} className="text-sky-600 shrink-0 mt-1" />
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-900">Schedule a Call</h3>
-                    <p className="text-sm text-slate-600">Book a 30-minute consultation</p>
-                  </div>
+              {/* FAQ */}
+              <div className="bg-slate-50 rounded-2xl border border-slate-200 p-8">
+                <h3 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-xl font-bold text-slate-900 mb-6">
+                  Common questions
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    {
+                      q: 'What is the typical engagement process?',
+                      a: 'We start with a conversation to understand your challenge, then propose a scope and timeline. We work collaboratively with your team from day one.',
+                    },
+                    {
+                      q: 'Do you work with organisations of all sizes?',
+                      a: 'Yes. From small utilities to large transmission operators. Our approach is tailored to your organisation's size and where you currently are.',
+                    },
+                    {
+                      q: 'What if we are just starting with RDS?',
+                      a: 'That is a good starting point. We have experience helping organisations from greenfield implementations through to optimising existing systems.',
+                    },
+                  ].map((faq) => (
+                    <details key={faq.q} className="group cursor-pointer">
+                      <summary className="flex items-center justify-between text-sm font-semibold text-slate-800 py-3 border-b border-slate-200 list-none">
+                        {faq.q}
+                        <span className="text-slate-400 group-open:rotate-180 transition-transform text-xs ml-4 flex-shrink-0">▼</span>
+                      </summary>
+                      <p className="text-slate-500 text-sm leading-relaxed pt-3 pb-1">
+                        {faq.a}
+                      </p>
+                    </details>
+                  ))}
                 </div>
-                <p className="text-slate-600 text-sm mb-4">
-                  Prefer a direct conversation? Schedule a free 30-minute call with our team to discuss your needs.
-                </p>
-                <a 
-                  href="https://outlook.office.com/book/AssessmentBooking1@soedera.eu/s/GDHl_HOriUOW0kXs3yLfJA2?ismsaljsauthenabled"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full px-4 py-3 bg-sky-500 text-white font-semibold rounded-lg hover:bg-sky-600 transition-all text-sm text-center block"
-                >
-                  Schedule Now
-                </a>
               </div>
+
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-6 sm:py-8 md:py-10 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-slate-600">
-              Have a question? Check our FAQ below or reach out directly.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {[
-              {
-                question: 'What is the typical engagement process?',
-                answer: 'We start with a discovery call to understand your challenges, followed by a proposal with scope, timeline, and investment. Upon agreement, we begin with a kickoff meeting and work collaboratively with your team.'
-              },
-              {
-                question: 'How long do projects typically take?',
-                answer: 'Our quick assessments take 2 weeks. Full engagements vary based on scope, typically ranging from 2-6 months. We discuss timeline expectations during the discovery phase.'
-              },
-              {
-                question: 'Do you work with organizations of all sizes?',
-                answer: 'Yes. We work with small utilities, large transmission operators, and everything in between. Our approach is scalable to match your organization\'s size and maturity.'
-              },
-              {
-                question: 'What if we\'re just starting with RDS?',
-                answer: 'Perfect. We have experience helping organizations at all maturity levels, from greenfield implementations to optimizing existing systems. We\'ll start where you are.'
-              }
-            ].map((faq, index) => (
-              <details
-                key={index}
-                className="group bg-slate-50 border-2 border-slate-200 hover:border-sky-300 rounded-xl p-4 sm:p-6 cursor-pointer transition-all"
-              >
-                <summary className="flex items-center justify-between font-semibold text-slate-900">
-                  {faq.question}
-                  <span className="transform group-open:rotate-180 transition-transform">▼</span>
-                </summary>
-                <p className="text-slate-600 mt-4 leading-relaxed">
-                  {faq.answer}
-                </p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
