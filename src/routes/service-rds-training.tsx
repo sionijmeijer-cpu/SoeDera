@@ -42,6 +42,7 @@ function RDSTrainingPage() {
     { label: 'IEC 81346', href: '/service-iec81346' },
     { label: 'RDS-PS', href: '/service-rds-ps' },
     { label: 'RDS Audit', href: '/service-rds-audit' },
+    { label: 'Document Management', href: '/service-document-management' },
     { label: 'All Training & SME', href: '/service-training' },
   ]
 
