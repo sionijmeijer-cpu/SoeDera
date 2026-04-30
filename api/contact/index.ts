@@ -99,14 +99,17 @@ const httpTrigger: AzureFunction = async function (
             </div>
           `,
         },
-        toRecipients: [{ emailAddress: { address: 'info@soedera.eu' } }],
+        toRecipients: [
+          { emailAddress: { address: 'sylvia.awoudu@soedera.eu' } },
+          { emailAddress: { address: 'soeren.christensen@soedera.eu' } },
+        ],
         replyTo: [{ emailAddress: { address: email, name: name } }],
       },
       saveToSentItems: false,
     }
 
     const sendResponse = await fetch(
-      `https://graph.microsoft.com/v1.0/users/info@soedera.eu/sendMail`,
+      `https://graph.microsoft.com/v1.0/users/sylvia.awoudu@soedera.eu/sendMail`,
       {
         method: 'POST',
         headers: {
