@@ -69,15 +69,23 @@ function ContactPage() {
     <div className="min-h-screen bg-white">
 
       {/* ── Hero ── */}
-      <section className="py-20 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section
+        className="relative py-32 overflow-hidden"
+        style={{
+          backgroundImage: 'url(https://i.imgur.com/lCNBEPI.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-slate-900/70" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-widest text-sky-600 mb-4">Get in touch</p>
-            <h1 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-              Let's start a conversation
+            <p className="text-xs font-bold uppercase tracking-widest text-sky-400 mb-4">Get in touch</p>
+            <h1 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+              Let us start a conversation
             </h1>
-            <p className="text-slate-600 text-lg leading-relaxed">
-              Whether you have a specific project in mind or just want to explore whether we can help, we would love to hear from you. No sales pitch, no pressure — just an honest conversation about your situation.
+            <p className="text-slate-200 text-lg leading-relaxed">
+              Whether you have a specific project in mind or just want to explore whether we can help, we would love to hear from you. No sales pitch, no pressure. Just an honest conversation about your situation.
             </p>
           </div>
         </div>
@@ -98,9 +106,9 @@ function ContactPage() {
               </p>
 
               {status === 'success' ? (
-                <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-10 text-center">
-                  <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-5">
-                    <CheckCircle2 size={32} className="text-emerald-600" />
+                <div className="bg-sky-50 border border-sky-200 rounded-2xl p-10 text-center">
+                  <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-5">
+                    <CheckCircle2 size={32} className="text-sky-600" />
                   </div>
                   <h3 style={{ fontFamily: 'Georgia, "Times New Roman", serif' }} className="text-xl font-bold text-slate-900 mb-2">
                     Message received
@@ -235,8 +243,9 @@ function ContactPage() {
                     </div>
                     <div>
                       <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Based in</p>
-                      <p className="text-slate-800 font-semibold">Portugal</p>
-                      <p className="text-slate-500 text-sm">Serving clients across Europe</p>
+                      <p className="text-slate-800 font-semibold">Portugal and Denmark</p>
+                      <p className="text-slate-500 text-sm">Serving clients across the globe</p>
+                      <p className="text-slate-400 text-xs mt-1">Oil and gas, energy, offshore wind, power plants</p>
                     </div>
                   </div>
 
@@ -279,7 +288,7 @@ function ContactPage() {
                     <div className="w-10 h-10 rounded-full bg-sky-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">SA</div>
                     <div>
                       <p className="font-semibold text-slate-900 text-sm group-hover:text-sky-600 transition-colors">Sylvia Awoudu</p>
-                      <p className="text-xs text-slate-400">Co-founder & COO · Document Management and BIM</p>
+                      <p className="text-xs text-slate-400">Co-founder & COO · Information and Document Management, Product Development</p>
                     </div>
                   </a>
                 </div>
