@@ -10,7 +10,7 @@ if (typeof window !== 'undefined' && !document.getElementById('flash-animations'
       0% { transform: translateX(-100%); }
       100% { transform: translateX(100%); }
     }
-    .animate-shimmer { animation: shimmer 1.5s infinite; } 
+    .animate-shimmer { animation: shimmer 1.5s infinite; }
   `
   document.head.appendChild(style)
 }
@@ -101,7 +101,7 @@ function RootLayout() {
     },
     {
       label: 'Document Audit',
-      href: '/service-document-management',
+      href: '/service-documentation-audit',
       desc: 'Review of your document system, structure and workflows.',
       icon: FileText,
       color: 'text-blue-600',
@@ -109,9 +109,17 @@ function RootLayout() {
     },
     {
       label: 'RDS Training',
-      href: '/service-training',
+      href: '/service-rds-training',
       desc: 'Hands-on IEC 81346 training for your team.',
       icon: Network,
+      color: 'text-amber-600',
+      bg: 'bg-amber-50',
+    },
+    {
+      label: 'Document Training',
+      href: '/service-training',
+      desc: 'ISO 19650 and document management training.',
+      icon: BookOpen,
       color: 'text-amber-600',
       bg: 'bg-amber-50',
     },
