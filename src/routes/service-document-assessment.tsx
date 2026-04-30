@@ -40,6 +40,7 @@ function DocumentAssessmentPage() {
   const sidebarLinks = [
     { label: 'Document Management', href: '/service-document-management' },
     { label: 'Documentation Audit', href: '/service-documentation-audit' },
+    { label: 'RDS Audit', href: '/service-rds-audit' },
     { label: 'Reference Designation (RDS)', href: '/service-rds' },
     { label: 'Project Management', href: '/service-project-management' },
     { label: 'Training & SME', href: '/service-training' },
