@@ -298,7 +298,7 @@ function ContactPage() {
                     },
                     {
                       q: 'Do you work with organisations of all sizes?',
-                      a: 'Yes. From small utilities to large transmission operators. Our approach is tailored to your organisation's size and where you currently are.',
+                      a: 'Yes. From small utilities to large transmission operators. Our approach is tailored to your organisation size and where you currently are.',
                     },
                     {
                       q: 'What if we are just starting with RDS?',
